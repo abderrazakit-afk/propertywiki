@@ -5,21 +5,45 @@ import JsonLd from '@/components/seo/JsonLd'
 import { generateBreadcrumbSchema } from '@/lib/seo'
 
 export const metadata: Metadata = {
-  title: 'Property Buying Guide - How to Buy Property in Dubai',
-  description: 'Expert guide to buying property in Dubai as a foreigner. Step-by-step instructions covering freehold zones, visa requirements, and legal processes.',
+  title: 'Property Guides - Buy, Sell & Rent in UAE',
+  description: 'Comprehensive guides to buying, selling, and renting property in the UAE. Expert advice on procedures, documentation, costs, and legal requirements.',
   openGraph: {
-    title: 'Property Buying Guide | PropertyWiki',
-    description: 'Expert guide to buying property in Dubai for foreign investors.',
+    title: 'Property Guides - Buy, Sell & Rent in UAE | PropertyWiki',
+    description: 'Expert guides to buying, selling, and renting property across the UAE.',
   },
 }
 
 const guides = [
   {
+    title: 'How to Buy Property in the UAE',
+    slug: 'how-to-buy-property-in-uae',
+    description: 'Comprehensive guide to buying property across all UAE emirates. Learn about ownership laws, procedures, costs, and residency visas.',
+    readTime: '18 min read',
+    category: 'Buying',
+    featured: true,
+  },
+  {
     title: 'How to Buy Property in Dubai',
     slug: 'how-to-buy-property-in-dubai',
     description: 'Complete step-by-step guide to purchasing property in Dubai as a foreigner, including visa requirements, freehold zones, and legal processes.',
     readTime: '15 min read',
-    category: 'International',
+    category: 'Buying',
+  },
+  {
+    title: 'How to Sell Property in the UAE',
+    slug: 'how-to-sell-property-in-uae',
+    description: 'Complete seller\'s guide covering documentation, NOC process, DLD transfer, pricing strategy, and timeline for selling property in the UAE.',
+    readTime: '14 min read',
+    category: 'Selling',
+    featured: true,
+  },
+  {
+    title: 'How to Rent Property in the UAE',
+    slug: 'how-to-rent-property-in-uae',
+    description: 'Everything you need to know about renting in the UAE: Ejari registration, tenancy contracts, tenant rights, costs, and utilities setup.',
+    readTime: '16 min read',
+    category: 'Renting',
+    featured: true,
   },
 ]
 
@@ -40,11 +64,11 @@ export default function GuidesPage() {
 
         <header className="mb-12">
           <h1 className="text-4xl font-serif font-bold text-gray-900 mb-4">
-            Property Buying Guides
+            Property Guides
           </h1>
           <p className="text-xl text-gray-600">
-            Expert guides to help you navigate the property buying process with confidence. 
-            From first-time purchases to international investments.
+            Expert guides to help you navigate buying, selling, and renting property in the UAE.
+            Step-by-step procedures, costs, and legal requirements explained.
           </p>
         </header>
 

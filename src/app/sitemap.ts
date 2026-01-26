@@ -81,6 +81,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   const guides = [
     { slug: 'how-to-buy-property-in-dubai', lastModified: '2024-12-20' },
+    { slug: 'how-to-buy-property-in-uae', lastModified: '2024-12-20' },
+    { slug: 'how-to-sell-property-in-uae', lastModified: '2024-12-20' },
+    { slug: 'how-to-rent-property-in-uae', lastModified: '2024-12-20' },
   ]
 
   const definitionUrls = definitions.map((def) => ({
