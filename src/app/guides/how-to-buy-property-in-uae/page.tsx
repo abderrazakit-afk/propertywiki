@@ -8,7 +8,6 @@ import FAQSection from '@/components/article/FAQSection'
 import RelatedArticles from '@/components/article/RelatedArticles'
 import JsonLd from '@/components/seo/JsonLd'
 import { generateArticleSchema, generateBreadcrumbSchema, generateFAQSchema } from '@/lib/seo'
-import { authors } from '@/lib/content'
 
 export const metadata: Metadata = {
   title: 'How to Buy Property in UAE - Complete Buyer\'s Guide for All Emirates',
@@ -85,7 +84,11 @@ export default function HowToBuyPropertyUAEPage() {
     { name: 'How to Buy Property in UAE', href: '/guides/how-to-buy-property-in-uae' },
   ]
 
-  const author = authors['sarah-chen']
+  const author = {
+    name: 'PropertyWiki Team',
+    role: 'Editorial Team',
+    bio: 'The PropertyWiki editorial team brings together real estate experts, legal advisors, and market analysts to provide comprehensive property guidance across the UAE.',
+  }
 
   return (
     <>

@@ -7,7 +7,6 @@ import FAQSection from '@/components/article/FAQSection'
 import RelatedArticles from '@/components/article/RelatedArticles'
 import JsonLd from '@/components/seo/JsonLd'
 import { generateArticleSchema, generateBreadcrumbSchema, generateFAQSchema } from '@/lib/seo'
-import { authors } from '@/lib/content'
 
 export const metadata: Metadata = {
   title: 'How to Rent Property in UAE - Complete Tenant\'s Guide',
@@ -84,7 +83,11 @@ export default function HowToRentPropertyUAEPage() {
     { name: 'How to Rent Property in UAE', href: '/guides/how-to-rent-property-in-uae' },
   ]
 
-  const author = authors['james-wilson']
+  const author = {
+    name: 'PropertyWiki Team',
+    role: 'Editorial Team',
+    bio: 'The PropertyWiki editorial team brings together real estate experts, legal advisors, and market analysts to provide comprehensive property guidance across the UAE.',
+  }
 
   return (
     <>
