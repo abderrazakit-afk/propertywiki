@@ -1,5 +1,6 @@
 import { Metadata } from 'next'
 import Link from 'next/link'
+import Image from 'next/image'
 import Breadcrumbs from '@/components/layout/Breadcrumbs'
 import JsonLd from '@/components/seo/JsonLd'
 import { generateBreadcrumbSchema } from '@/lib/seo'
@@ -70,6 +71,16 @@ export default function DubaiPage() {
             and diverse range of properties.
           </p>
         </header>
+
+        <div className="relative w-full h-64 md:h-80 rounded-xl overflow-hidden mb-10">
+          <Image
+            src="/images/dubai-skyline.jpg"
+            alt="Dubai skyline featuring modern skyscrapers and Burj Khalifa against a clear sky, showcasing the city's world-class real estate"
+            fill
+            className="object-cover"
+            priority
+          />
+        </div>
 
         <section className="mb-12">
           <h2 className="text-2xl font-serif font-semibold text-gray-900 mb-4">Why Invest in Dubai?</h2>

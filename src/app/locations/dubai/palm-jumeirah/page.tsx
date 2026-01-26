@@ -1,5 +1,6 @@
 import { Metadata } from 'next'
 import Link from 'next/link'
+import Image from 'next/image'
 import Breadcrumbs from '@/components/layout/Breadcrumbs'
 import TableOfContents from '@/components/article/TableOfContents'
 import AuthorBox from '@/components/article/AuthorBox'
@@ -7,7 +8,6 @@ import FAQSection from '@/components/article/FAQSection'
 import RelatedArticles from '@/components/article/RelatedArticles'
 import JsonLd from '@/components/seo/JsonLd'
 import { generateArticleSchema, generateBreadcrumbSchema, generateFAQSchema } from '@/lib/seo'
-import { authors } from '@/lib/content'
 
 export const metadata: Metadata = {
   title: 'Palm Jumeirah Property Guide - Villas, Apartments & Prices',
@@ -66,7 +66,11 @@ export default function PalmJumeirahPage() {
     { name: 'Palm Jumeirah', href: '/locations/dubai/palm-jumeirah' },
   ]
 
-  const author = authors['ahmed-hassan']
+  const author = {
+    name: 'PropertyWiki Team',
+    role: 'Editorial Team',
+    bio: 'The PropertyWiki editorial team brings together real estate experts, legal advisors, and market analysts to provide comprehensive property guidance across the UAE.',
+  }
 
   return (
     <>
@@ -105,6 +109,16 @@ export default function PalmJumeirahPage() {
             waterfront apartments, and world-class resorts.
           </p>
         </header>
+
+        <div className="relative w-full h-64 md:h-80 rounded-xl overflow-hidden mb-8">
+          <Image
+            src="/images/palm-jumeirah.jpg"
+            alt="Aerial view of Palm Jumeirah island in Dubai showing luxury villas, beaches, and the iconic palm tree shape"
+            fill
+            className="object-cover"
+            priority
+          />
+        </div>
 
         <TableOfContents items={tableOfContents} />
 

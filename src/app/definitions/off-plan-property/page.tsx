@@ -1,5 +1,6 @@
 import { Metadata } from 'next'
 import Link from 'next/link'
+import Image from 'next/image'
 import Breadcrumbs from '@/components/layout/Breadcrumbs'
 import TableOfContents from '@/components/article/TableOfContents'
 import AuthorBox from '@/components/article/AuthorBox'
@@ -7,7 +8,6 @@ import FAQSection from '@/components/article/FAQSection'
 import RelatedArticles from '@/components/article/RelatedArticles'
 import JsonLd from '@/components/seo/JsonLd'
 import { generateArticleSchema, generateBreadcrumbSchema, generateFAQSchema } from '@/lib/seo'
-import { authors } from '@/lib/content'
 
 export const metadata: Metadata = {
   title: 'What is Off-Plan Property? Definition, Risks & Benefits',
@@ -65,7 +65,11 @@ export default function OffPlanPropertyPage() {
     { name: 'Off-Plan Property', href: '/definitions/off-plan-property' },
   ]
 
-  const author = authors['james-wilson']
+  const author = {
+    name: 'PropertyWiki Team',
+    role: 'Editorial Team',
+    bio: 'The PropertyWiki editorial team brings together real estate experts, legal advisors, and market analysts to provide comprehensive property guidance across the UAE.',
+  }
 
   return (
     <>
@@ -103,6 +107,16 @@ export default function OffPlanPropertyPage() {
             risks, and essential due diligence steps.
           </p>
         </header>
+
+        <div className="relative w-full h-64 md:h-80 rounded-xl overflow-hidden mb-8">
+          <Image
+            src="/images/off-plan-property.jpg"
+            alt="Construction site with new buildings under development representing off-plan property investment opportunities"
+            fill
+            className="object-cover"
+            priority
+          />
+        </div>
 
         <TableOfContents items={tableOfContents} />
 
