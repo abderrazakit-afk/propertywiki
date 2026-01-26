@@ -1,4 +1,6 @@
 import { Metadata } from 'next'
+import Link from 'next/link'
+import Image from 'next/image'
 import Breadcrumbs from '@/components/layout/Breadcrumbs'
 import JsonLd from '@/components/seo/JsonLd'
 import { generateBreadcrumbSchema } from '@/lib/seo'
@@ -20,6 +22,7 @@ const posts = [
     date: 'January 15, 2025',
     author: 'PropertyWiki Team',
     category: 'Market Analysis',
+    image: '/images/blog/dubai-market-2025.jpg',
   },
   {
     title: 'Understanding Off-Plan Investment Risks',
@@ -28,6 +31,7 @@ const posts = [
     date: 'January 10, 2025',
     author: 'PropertyWiki Team',
     category: 'Investment',
+    image: '/images/blog/off-plan-risks.jpg',
   },
   {
     title: 'Golden Visa Changes: What Property Investors Need to Know',
@@ -36,6 +40,7 @@ const posts = [
     date: 'January 5, 2025',
     author: 'PropertyWiki Team',
     category: 'Regulations',
+    image: '/images/blog/golden-visa.jpg',
   },
 ]
 
@@ -65,20 +70,32 @@ export default function BlogPage() {
 
         <div className="space-y-8">
           {posts.map((post) => (
-            <article key={post.slug} className="luxury-card p-6">
-              <div className="flex items-center gap-3 mb-3">
-                <span className="text-xs font-semibold text-primary-600 uppercase tracking-wider">
-                  {post.category}
-                </span>
-                <span className="text-xs text-gray-400">•</span>
-                <span className="text-xs text-gray-500">{post.date}</span>
-              </div>
-              <h2 className="text-xl font-medium text-gray-900 mb-3">
-                {post.title}
-              </h2>
-              <p className="text-gray-600 mb-4">{post.excerpt}</p>
-              <span className="text-sm text-gray-500">By {post.author}</span>
-            </article>
+            <Link key={post.slug} href={`/blog/${post.slug}`} className="block">
+              <article className="luxury-card overflow-hidden hover:shadow-lg transition-shadow">
+                <div className="relative h-48 w-full">
+                  <Image
+                    src={post.image}
+                    alt={post.title}
+                    fill
+                    className="object-cover"
+                  />
+                </div>
+                <div className="p-6">
+                  <div className="flex items-center gap-3 mb-3">
+                    <span className="text-xs font-semibold text-primary-600 uppercase tracking-wider">
+                      {post.category}
+                    </span>
+                    <span className="text-xs text-gray-400">|</span>
+                    <span className="text-xs text-gray-500">{post.date}</span>
+                  </div>
+                  <h2 className="text-xl font-medium text-gray-900 mb-3 group-hover:text-primary-600 transition-colors">
+                    {post.title}
+                  </h2>
+                  <p className="text-gray-600 mb-4">{post.excerpt}</p>
+                  <span className="text-sm text-gray-500">By {post.author}</span>
+                </div>
+              </article>
+            </Link>
           ))}
         </div>
       </div>
