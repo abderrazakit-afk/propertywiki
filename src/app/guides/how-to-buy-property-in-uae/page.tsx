@@ -13,12 +13,16 @@ export const metadata: Metadata = {
   title: 'How to Buy Property in UAE - Complete Buyer\'s Guide for All Emirates',
   description: 'Comprehensive guide to buying property in the UAE including Dubai, Abu Dhabi, Sharjah, and other emirates. Learn about ownership laws, procedures, costs, and residency visas.',
   keywords: ['buy property UAE', 'UAE property guide', 'Dubai real estate', 'Abu Dhabi property', 'foreigner buy property UAE'],
+  alternates: {
+    canonical: 'https://propertywiki.com/guides/how-to-buy-property-in-uae',
+  },
   openGraph: {
     title: 'How to Buy Property in UAE - Complete Buyer\'s Guide',
     description: 'Comprehensive guide to buying property across all UAE emirates for foreign investors.',
     type: 'article',
     publishedTime: '2024-04-01',
     modifiedTime: '2024-12-20',
+    url: 'https://propertywiki.com/guides/how-to-buy-property-in-uae',
   },
 }
 
@@ -130,7 +134,7 @@ export default function HowToBuyPropertyUAEPage() {
         <div className="relative w-full h-64 md:h-80 rounded-xl overflow-hidden mb-8">
           <Image
             src="/images/buy-property-uae.jpg"
-            alt="UAE skyline with modern buildings"
+            alt="Modern Dubai skyline with luxury high-rise residential towers and commercial buildings showcasing UAE real estate opportunities"
             fill
             className="object-cover"
             priority

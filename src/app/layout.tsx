@@ -14,9 +14,12 @@ export const metadata: Metadata = {
   },
   description: 'PropertyWiki is the definitive resource for real estate knowledge. Explore property definitions, location guides, investing strategies, and expert insights.',
   keywords: ['real estate', 'property', 'investing', 'dubai', 'property guide', 'real estate wiki'],
-  authors: [{ name: 'PropertyWiki Editorial Team' }],
+  authors: [{ name: 'PropertyWiki Team' }],
   creator: 'PropertyWiki',
   publisher: 'PropertyWiki',
+  alternates: {
+    canonical: 'https://propertywiki.com',
+  },
   openGraph: {
     type: 'website',
     locale: 'en_US',
@@ -29,6 +32,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'PropertyWiki - Your Complete Real Estate Knowledge Hub',
     description: 'PropertyWiki is the definitive resource for real estate knowledge.',
+    creator: '@propertywiki',
   },
   robots: {
     index: true,
@@ -40,6 +44,9 @@ export const metadata: Metadata = {
       'max-image-preview': 'large',
       'max-snippet': -1,
     },
+  },
+  verification: {
+    google: 'google-site-verification-code',
   },
 }
 

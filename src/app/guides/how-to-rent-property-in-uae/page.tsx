@@ -12,12 +12,16 @@ export const metadata: Metadata = {
   title: 'How to Rent Property in UAE - Complete Tenant\'s Guide',
   description: 'Complete guide to renting property in the UAE. Learn about Ejari, tenancy contracts, tenant rights, security deposits, DEWA connections, and rental regulations.',
   keywords: ['rent property UAE', 'rent apartment Dubai', 'Ejari registration', 'UAE tenancy contract', 'tenant rights UAE'],
+  alternates: {
+    canonical: 'https://propertywiki.com/guides/how-to-rent-property-in-uae',
+  },
   openGraph: {
     title: 'How to Rent Property in UAE - Complete Tenant\'s Guide',
     description: 'Everything you need to know about renting property in Dubai, Abu Dhabi, and across the UAE.',
     type: 'article',
     publishedTime: '2024-05-01',
     modifiedTime: '2024-12-20',
+    url: 'https://propertywiki.com/guides/how-to-rent-property-in-uae',
   },
 }
 
@@ -129,7 +133,7 @@ export default function HowToRentPropertyUAEPage() {
         <div className="relative w-full h-64 md:h-80 rounded-xl overflow-hidden mb-8">
           <Image
             src="/images/rent-property-uae.jpg"
-            alt="Modern apartment interior in UAE"
+            alt="Stylish modern apartment interior in UAE featuring contemporary furniture and art, representing rental properties available in Dubai and Abu Dhabi"
             fill
             className="object-cover"
             priority

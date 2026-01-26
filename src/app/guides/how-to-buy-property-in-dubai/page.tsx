@@ -12,12 +12,16 @@ export const metadata: Metadata = {
   title: 'How to Buy Property in Dubai - Complete Guide for Foreigners',
   description: 'Step-by-step guide to buying property in Dubai as a foreigner. Learn about freehold zones, visa requirements, legal processes, costs, and financing options.',
   keywords: ['buy property Dubai', 'Dubai property guide', 'foreigner buy property Dubai', 'Dubai real estate'],
+  alternates: {
+    canonical: 'https://propertywiki.com/guides/how-to-buy-property-in-dubai',
+  },
   openGraph: {
     title: 'How to Buy Property in Dubai - Complete Guide for Foreigners',
     description: 'Step-by-step guide to buying property in Dubai as a foreigner, including freehold zones and legal processes.',
     type: 'article',
     publishedTime: '2024-03-01',
     modifiedTime: '2024-12-20',
+    url: 'https://propertywiki.com/guides/how-to-buy-property-in-dubai',
   },
 }
 

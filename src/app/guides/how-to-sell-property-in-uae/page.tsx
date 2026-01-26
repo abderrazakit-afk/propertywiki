@@ -12,12 +12,16 @@ export const metadata: Metadata = {
   title: 'How to Sell Property in UAE - Complete Seller\'s Guide',
   description: 'Complete guide to selling property in the UAE. Learn about documentation, NOC process, DLD transfer, agent selection, pricing strategy, and timeline.',
   keywords: ['sell property UAE', 'sell property Dubai', 'UAE property sale', 'DLD transfer', 'property seller guide'],
+  alternates: {
+    canonical: 'https://propertywiki.com/guides/how-to-sell-property-in-uae',
+  },
   openGraph: {
     title: 'How to Sell Property in UAE - Complete Seller\'s Guide',
     description: 'Step-by-step guide to selling property in the UAE, including documentation and legal processes.',
     type: 'article',
     publishedTime: '2024-06-15',
     modifiedTime: '2024-12-20',
+    url: 'https://propertywiki.com/guides/how-to-sell-property-in-uae',
   },
 }
 
@@ -128,7 +132,7 @@ export default function HowToSellPropertyUAEPage() {
         <div className="relative w-full h-64 md:h-80 rounded-xl overflow-hidden mb-8">
           <Image
             src="/images/sell-property-uae.jpg"
-            alt="Modern UAE property for sale"
+            alt="Elegant interior of a luxury UAE property ready for sale, featuring spacious rooms and natural lighting through large windows"
             fill
             className="object-cover"
             priority
