@@ -274,8 +274,11 @@ export default function HowToBuyPropertyUAEPage() {
             
             <h3>1. Research and Property Selection</h3>
             <p>
-              Work with a registered real estate agent (RERA-certified in Dubai) to identify suitable
-              properties based on your budget, goals, and preferred location.
+              Begin your property search on the UAE&apos;s major real estate portals: <strong>Bayut</strong>, <strong>PropertyFinder</strong>, 
+              and <strong>Dubizzle</strong>. These platforms list thousands of properties across Dubai, Abu Dhabi, 
+              and other emirates with detailed photos, floor plans, and pricing. After shortlisting properties, 
+              work with a registered real estate agent (RERA-certified in Dubai) to arrange viewings and 
+              negotiate on your behalf.
             </p>
 
             <h3>2. Due Diligence</h3>

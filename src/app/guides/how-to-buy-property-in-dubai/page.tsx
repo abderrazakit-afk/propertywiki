@@ -192,8 +192,10 @@ export default function HowToBuyPropertyDubaiPage() {
             
             <h3>Step 1: Property Search & Selection</h3>
             <p>
-              Work with a RERA-registered real estate agent to find suitable properties. 
-              Consider factors like location, budget, property type, and investment goals.
+              Start your search on the UAE&apos;s leading property portals: <strong>Bayut</strong>, <strong>PropertyFinder</strong>, 
+              and <strong>Dubizzle</strong>. These platforms offer comprehensive listings with filters for location, 
+              price, property type, and amenities. Once you&apos;ve identified potential properties, work with a 
+              RERA-registered real estate agent to arrange viewings and guide you through the process.
             </p>
 
             <h3>Step 2: Make an Offer</h3>
