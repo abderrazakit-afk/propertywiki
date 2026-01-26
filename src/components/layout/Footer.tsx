@@ -28,9 +28,29 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           <div className="md:col-span-1">
             <Link href="/" className="flex items-center space-x-2">
-              <div className="w-8 h-8 bg-primary-600 rounded-lg flex items-center justify-center">
-                <span className="text-white font-bold text-lg">P</span>
-              </div>
+              <svg 
+                width="32" 
+                height="32" 
+                viewBox="0 0 40 40" 
+                fill="none" 
+                xmlns="http://www.w3.org/2000/svg"
+                className="flex-shrink-0"
+              >
+                <rect width="40" height="40" rx="8" fill="#9b7260"/>
+                <path 
+                  d="M12 32V12L20 8L28 12V18" 
+                  stroke="white" 
+                  strokeWidth="2.5" 
+                  strokeLinecap="round" 
+                  strokeLinejoin="round"
+                  fill="none"
+                />
+                <path 
+                  d="M14 18H22C24.2091 18 26 19.7909 26 22C26 24.2091 24.2091 26 22 26H14V18Z" 
+                  fill="white"
+                />
+                <rect x="14" y="26" width="3" height="6" fill="white"/>
+              </svg>
               <span className="font-serif text-xl font-bold text-gray-900">PropertyWiki</span>
             </Link>
             <p className="mt-4 text-sm text-gray-600 leading-relaxed">
