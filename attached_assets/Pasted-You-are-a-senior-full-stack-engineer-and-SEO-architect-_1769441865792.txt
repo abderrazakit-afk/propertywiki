@@ -1,0 +1,94 @@
+You are a senior full-stack engineer and SEO architect.
+
+Build a production-ready, SEO-optimized content website called "PropertyWiki" using Next.js (App Router).
+
+GOALS
+- Primary goal: generate organic search traffic via high-quality, informational real estate content.
+- Secondary goal: position the site as an authoritative property knowledge hub (wiki-style).
+- NO aggressive sales, ads, or popups.
+
+TECH STACK
+- Next.js 14+ (App Router)
+- TypeScript
+- Server Components by default
+- Static Site Generation (SSG) + ISR where applicable
+- Tailwind CSS (clean, minimal, editorial look)
+- No external CMS (content via MDX or local JSON)
+
+SEO REQUIREMENTS (VERY IMPORTANT)
+- Use `next/head` or Metadata API correctly
+- Dynamic metadata per page (title, description, canonical)
+- Open Graph + Twitter cards
+- JSON-LD structured data:
+  - Article
+  - BreadcrumbList
+  - FAQPage (when applicable)
+- Clean semantic HTML (article, section, nav, aside)
+- Optimized internal linking (wiki-style)
+- Fast loading, Core Web Vitals friendly
+
+SITE STRUCTURE
+- / (homepage – educational hub)
+- /guides/ (long-form educational content)
+- /definitions/ (wiki-style explanations)
+- /locations/
+  - /locations/dubai/
+  - /locations/dubai/dubai-marina/
+- /investing/
+- /blog/
+- /sitemap.xml (dynamic)
+- /robots.txt
+
+CONTENT REQUIREMENTS
+Each article page must include:
+- H1 with primary keyword
+- Table of contents (auto-generated)
+- Sections with H2/H3
+- Internal links to related articles
+- FAQ section (schema enabled)
+- “Related Articles” section
+- Author box (E-E-A-T)
+- Last updated date
+
+HOMEPAGE REQUIREMENTS
+- Editorial hero section (no sales CTA)
+- Content category blocks (Definitions, Locations, Guides, Investing)
+- Featured articles
+- SEO-optimized copy (not marketing)
+
+PROGRAMMATIC SEO SUPPORT
+- Ability to generate pages from structured data:
+  - City
+  - Area
+  - Intent (buy, rent, invest)
+- URL example:
+  /locations/dubai/dubai-marina/property-prices/
+
+PERFORMANCE
+- Image optimization via next/image
+- Font optimization
+- Lazy loading where appropriate
+
+DESIGN
+- Clean, modern, “Wikipedia + Notion” style
+- White background
+- Excellent readability
+- Mobile-first
+
+DELIVERABLES
+- Full Next.js project structure
+- Example pages:
+  - Definition page (e.g. "What is Freehold Property?")
+  - Location page (Dubai Marina)
+  - Guide page (How to Buy Property in Dubai)
+- Reusable SEO utilities
+- Reusable layout components
+- Sample content (realistic, not placeholder)
+
+DO NOT
+- Use heavy animations
+- Use client-side rendering everywhere
+- Use external paid services
+- Over-optimize keywords
+
+Build it as if it will scale to 100k+ SEO pages.
