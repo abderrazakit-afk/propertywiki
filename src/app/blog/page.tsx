@@ -18,7 +18,7 @@ const posts = [
     slug: 'dubai-market-outlook-2025',
     excerpt: 'Analysis of Dubai\'s property market performance and predictions for the coming year, including key drivers and areas to watch.',
     date: 'January 15, 2025',
-    author: 'James Wilson',
+    author: 'PropertyWiki Team',
     category: 'Market Analysis',
   },
   {
@@ -26,7 +26,7 @@ const posts = [
     slug: 'off-plan-investment-risks',
     excerpt: 'A balanced look at the risks and rewards of investing in off-plan property, with strategies to protect your investment.',
     date: 'January 10, 2025',
-    author: 'Sarah Chen',
+    author: 'PropertyWiki Team',
     category: 'Investment',
   },
   {
@@ -34,7 +34,7 @@ const posts = [
     slug: 'golden-visa-changes-2025',
     excerpt: 'Recent updates to the UAE Golden Visa program and how they affect property investors seeking residency.',
     date: 'January 5, 2025',
-    author: 'Ahmed Hassan',
+    author: 'PropertyWiki Team',
     category: 'Regulations',
   },
 ]
