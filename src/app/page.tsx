@@ -45,8 +45,6 @@ const categories = [
     ),
     articles: [
       { title: 'How to Buy Property in Dubai', href: '/guides/how-to-buy-property-in-dubai' },
-      { title: 'First-Time Buyer\'s Checklist', href: '/guides/first-time-buyer-checklist' },
-      { title: 'Property Inspection Guide', href: '/guides/property-inspection-guide' },
     ],
   },
   {
@@ -59,9 +57,7 @@ const categories = [
       </svg>
     ),
     articles: [
-      { title: 'Rental Yield Explained', href: '/investing/rental-yield-explained' },
-      { title: 'Capital Appreciation Guide', href: '/investing/capital-appreciation' },
-      { title: 'Diversifying Property Portfolio', href: '/investing/portfolio-diversification' },
+      { title: 'Investment Overview', href: '/investing' },
     ],
   },
 ]

@@ -1,5 +1,4 @@
 import { Metadata } from 'next'
-import Link from 'next/link'
 import Breadcrumbs from '@/components/layout/Breadcrumbs'
 import JsonLd from '@/components/seo/JsonLd'
 import { generateBreadcrumbSchema } from '@/lib/seo'
@@ -67,20 +66,18 @@ export default function BlogPage() {
         <div className="space-y-8">
           {posts.map((post) => (
             <article key={post.slug} className="luxury-card p-6">
-              <Link href={`/blog/${post.slug}`} className="group">
-                <div className="flex items-center gap-3 mb-3">
-                  <span className="text-xs font-semibold text-primary-600 uppercase tracking-wider">
-                    {post.category}
-                  </span>
-                  <span className="text-xs text-gray-400">•</span>
-                  <span className="text-xs text-gray-500">{post.date}</span>
-                </div>
-                <h2 className="text-xl font-medium text-gray-900 group-hover:text-primary-600 transition-colors mb-3">
-                  {post.title}
-                </h2>
-                <p className="text-gray-600 mb-4">{post.excerpt}</p>
-                <span className="text-sm text-gray-500">By {post.author}</span>
-              </Link>
+              <div className="flex items-center gap-3 mb-3">
+                <span className="text-xs font-semibold text-primary-600 uppercase tracking-wider">
+                  {post.category}
+                </span>
+                <span className="text-xs text-gray-400">•</span>
+                <span className="text-xs text-gray-500">{post.date}</span>
+              </div>
+              <h2 className="text-xl font-medium text-gray-900 mb-3">
+                {post.title}
+              </h2>
+              <p className="text-gray-600 mb-4">{post.excerpt}</p>
+              <span className="text-sm text-gray-500">By {post.author}</span>
             </article>
           ))}
         </div>

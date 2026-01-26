@@ -5,11 +5,11 @@ import JsonLd from '@/components/seo/JsonLd'
 import { generateBreadcrumbSchema } from '@/lib/seo'
 
 export const metadata: Metadata = {
-  title: 'Property Buying Guides - Step-by-Step Resources',
-  description: 'Comprehensive property buying guides covering everything from first-time purchases to international real estate investment. Expert advice and step-by-step instructions.',
+  title: 'Property Buying Guide - How to Buy Property in Dubai',
+  description: 'Expert guide to buying property in Dubai as a foreigner. Step-by-step instructions covering freehold zones, visa requirements, and legal processes.',
   openGraph: {
-    title: 'Property Buying Guides - Step-by-Step Resources | PropertyWiki',
-    description: 'Comprehensive property buying guides with expert advice and step-by-step instructions.',
+    title: 'Property Buying Guide | PropertyWiki',
+    description: 'Expert guide to buying property in Dubai for foreign investors.',
   },
 }
 
@@ -20,20 +20,6 @@ const guides = [
     description: 'Complete step-by-step guide to purchasing property in Dubai as a foreigner, including visa requirements, freehold zones, and legal processes.',
     readTime: '15 min read',
     category: 'International',
-  },
-  {
-    title: 'First-Time Buyer\'s Checklist',
-    slug: 'first-time-buyer-checklist',
-    description: 'Essential checklist for first-time property buyers covering budgeting, mortgage preparation, and the purchase process.',
-    readTime: '10 min read',
-    category: 'Beginner',
-  },
-  {
-    title: 'Property Inspection Guide',
-    slug: 'property-inspection-guide',
-    description: 'What to look for when inspecting a property, red flags to avoid, and questions to ask before making an offer.',
-    readTime: '12 min read',
-    category: 'Practical',
   },
 ]
 

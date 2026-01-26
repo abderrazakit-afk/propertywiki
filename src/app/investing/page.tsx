@@ -5,34 +5,13 @@ import JsonLd from '@/components/seo/JsonLd'
 import { generateBreadcrumbSchema } from '@/lib/seo'
 
 export const metadata: Metadata = {
-  title: 'Property Investment Guides - Strategies & Insights',
-  description: 'Expert property investment guides covering rental yields, capital appreciation, portfolio diversification, and market analysis for smart investment decisions.',
+  title: 'Property Investment Insights - Fundamentals & Strategy',
+  description: 'Learn the fundamentals of property investment including rental yields, capital appreciation, and strategic guidance for real estate investing.',
   openGraph: {
-    title: 'Property Investment Guides - Strategies & Insights | PropertyWiki',
-    description: 'Expert property investment guides for smart real estate decisions.',
+    title: 'Property Investment Insights | PropertyWiki',
+    description: 'Learn the fundamentals of property investment and real estate investing strategies.',
   },
 }
-
-const articles = [
-  {
-    title: 'Understanding Rental Yield',
-    slug: 'rental-yield-explained',
-    description: 'Learn how to calculate and interpret rental yields, and what constitutes a good yield in different markets.',
-    readTime: '8 min read',
-  },
-  {
-    title: 'Capital Appreciation Guide',
-    slug: 'capital-appreciation',
-    description: 'Understanding property value growth and the factors that drive capital appreciation in real estate.',
-    readTime: '10 min read',
-  },
-  {
-    title: 'Diversifying Your Property Portfolio',
-    slug: 'portfolio-diversification',
-    description: 'Strategies for building a balanced property investment portfolio across different markets and property types.',
-    readTime: '12 min read',
-  },
-]
 
 export default function InvestingPage() {
   const breadcrumbs = [{ name: 'Investing', href: '/investing' }]
@@ -86,28 +65,20 @@ export default function InvestingPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-serif font-semibold text-gray-900 mb-6">Investment Articles</h2>
-          <div className="space-y-6">
-            {articles.map((article) => (
-              <Link
-                key={article.slug}
-                href={`/investing/${article.slug}`}
-                className="block luxury-card p-6 group"
-              >
-                <div className="flex items-start justify-between">
-                  <div className="flex-1">
-                    <span className="text-xs text-gray-500 mb-2 block">{article.readTime}</span>
-                    <h3 className="text-xl font-medium text-gray-900 group-hover:text-primary-600 transition-colors mb-2">
-                      {article.title}
-                    </h3>
-                    <p className="text-gray-600">{article.description}</p>
-                  </div>
-                  <svg className="w-5 h-5 text-gray-400 group-hover:text-primary-500 mt-1 ml-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                  </svg>
-                </div>
-              </Link>
-            ))}
+          <h2 className="text-2xl font-serif font-semibold text-gray-900 mb-6">Explore More</h2>
+          <div className="grid md:grid-cols-2 gap-4">
+            <Link href="/guides/how-to-buy-property-in-dubai" className="luxury-card p-6 group">
+              <h3 className="text-lg font-medium text-gray-900 group-hover:text-primary-600 transition-colors mb-2">
+                How to Buy Property in Dubai
+              </h3>
+              <p className="text-sm text-gray-600">Complete guide to purchasing property in Dubai as a foreigner.</p>
+            </Link>
+            <Link href="/locations/dubai/dubai-marina" className="luxury-card p-6 group">
+              <h3 className="text-lg font-medium text-gray-900 group-hover:text-primary-600 transition-colors mb-2">
+                Dubai Marina Property Guide
+              </h3>
+              <p className="text-sm text-gray-600">Explore property prices and investment potential in Dubai Marina.</p>
+            </Link>
           </div>
         </section>
       </div>

@@ -40,6 +40,30 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: 'daily' as const,
       priority: 0.8,
     },
+    {
+      url: `${baseUrl}/about`,
+      lastModified: new Date(),
+      changeFrequency: 'monthly' as const,
+      priority: 0.5,
+    },
+    {
+      url: `${baseUrl}/contact`,
+      lastModified: new Date(),
+      changeFrequency: 'monthly' as const,
+      priority: 0.5,
+    },
+    {
+      url: `${baseUrl}/privacy`,
+      lastModified: new Date(),
+      changeFrequency: 'yearly' as const,
+      priority: 0.3,
+    },
+    {
+      url: `${baseUrl}/editorial-policy`,
+      lastModified: new Date(),
+      changeFrequency: 'yearly' as const,
+      priority: 0.4,
+    },
   ]
 
   const definitions = [
@@ -57,8 +81,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   const guides = [
     { slug: 'how-to-buy-property-in-dubai', lastModified: '2024-12-20' },
-    { slug: 'first-time-buyer-checklist', lastModified: '2024-11-25' },
-    { slug: 'property-inspection-guide', lastModified: '2024-11-20' },
   ]
 
   const definitionUrls = definitions.map((def) => ({
