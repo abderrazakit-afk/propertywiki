@@ -68,3 +68,13 @@ npm run start # Production server
 - Modern, luxurious design requested
 - Clean, professional appearance
 - SEO-focused content structure
+- All content attributed to "PropertyWiki Team" for unified brand voice
+
+## Recent Changes (January 2026)
+- Added stock images to all content pages (guides, locations, definitions, blog)
+- Created full blog post pages with tables, charts, and interactive elements:
+  - Dubai Property Market Outlook 2025 (market analysis with data tables and bar charts)
+  - Understanding Off-Plan Investment Risks (risk analysis with visual indicators)
+  - Golden Visa Changes 2025 (requirements tables and process timeline)
+- Updated author attribution across all pages to "PropertyWiki Team"
+- Added descriptive alt text to all images for SEO and accessibility
