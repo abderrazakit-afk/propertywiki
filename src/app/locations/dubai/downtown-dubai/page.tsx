@@ -77,7 +77,7 @@ export default function DowntownDubaiPage() {
         data={generateArticleSchema({
           title: 'Downtown Dubai Property Guide - Prices, Investment & Lifestyle',
           description: 'Complete guide to Downtown Dubai real estate.',
-          url: 'https://propertywiki.com/locations/dubai/downtown-dubai',
+          url: 'https://propertywiki.ai/locations/dubai/downtown-dubai',
           datePublished: '2024-03-01',
           dateModified: '2024-12-10',
           author: { name: author.name },
@@ -85,10 +85,10 @@ export default function DowntownDubaiPage() {
       />
       <JsonLd
         data={generateBreadcrumbSchema([
-          { name: 'Home', url: 'https://propertywiki.com' },
-          { name: 'Locations', url: 'https://propertywiki.com/locations' },
-          { name: 'Dubai', url: 'https://propertywiki.com/locations/dubai' },
-          { name: 'Downtown Dubai', url: 'https://propertywiki.com/locations/dubai/downtown-dubai' },
+          { name: 'Home', url: 'https://propertywiki.ai' },
+          { name: 'Locations', url: 'https://propertywiki.ai/locations' },
+          { name: 'Dubai', url: 'https://propertywiki.ai/locations/dubai' },
+          { name: 'Downtown Dubai', url: 'https://propertywiki.ai/locations/dubai/downtown-dubai' },
         ])}
       />
       <JsonLd data={generateFAQSchema(faqs)} />

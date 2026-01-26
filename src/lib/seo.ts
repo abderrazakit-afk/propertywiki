@@ -72,7 +72,7 @@ export function generateArticleSchema(article: ArticleSchema) {
       name: 'PropertyWiki',
       logo: {
         '@type': 'ImageObject',
-        url: 'https://propertywiki.com/logo.png',
+        url: 'https://propertywiki.ai/logo.png',
       },
     },
     image: article.image,
@@ -126,8 +126,8 @@ export function generateOrganizationSchema() {
     '@context': 'https://schema.org',
     '@type': 'Organization',
     name: 'PropertyWiki',
-    url: 'https://propertywiki.com',
-    logo: 'https://propertywiki.com/logo.png',
+    url: 'https://propertywiki.ai',
+    logo: 'https://propertywiki.ai/logo.png',
     sameAs: [
       'https://twitter.com/propertywiki',
       'https://linkedin.com/company/propertywiki',

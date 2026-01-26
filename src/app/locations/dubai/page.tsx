@@ -49,9 +49,9 @@ export default function DubaiPage() {
     <>
       <JsonLd
         data={generateBreadcrumbSchema([
-          { name: 'Home', url: 'https://propertywiki.com' },
-          { name: 'Locations', url: 'https://propertywiki.com/locations' },
-          { name: 'Dubai', url: 'https://propertywiki.com/locations/dubai' },
+          { name: 'Home', url: 'https://propertywiki.ai' },
+          { name: 'Locations', url: 'https://propertywiki.ai/locations' },
+          { name: 'Dubai', url: 'https://propertywiki.ai/locations/dubai' },
         ])}
       />
 

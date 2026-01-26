@@ -53,8 +53,8 @@ export default function DefinitionsPage() {
     <>
       <JsonLd
         data={generateBreadcrumbSchema([
-          { name: 'Home', url: 'https://propertywiki.com' },
-          { name: 'Definitions', url: 'https://propertywiki.com/definitions' },
+          { name: 'Home', url: 'https://propertywiki.ai' },
+          { name: 'Definitions', url: 'https://propertywiki.ai/definitions' },
         ])}
       />
 

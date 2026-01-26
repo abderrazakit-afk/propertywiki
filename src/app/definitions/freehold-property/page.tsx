@@ -89,7 +89,7 @@ export default function FreeholdPropertyPage() {
         data={generateArticleSchema({
           title: 'What is Freehold Property? Complete Definition & Guide',
           description: 'Learn what freehold property means, how it differs from leasehold, and why it matters for property buyers and investors.',
-          url: 'https://propertywiki.com/definitions/freehold-property',
+          url: 'https://propertywiki.ai/definitions/freehold-property',
           datePublished: '2024-01-15',
           dateModified: '2024-12-10',
           author: { name: author.name },
@@ -97,9 +97,9 @@ export default function FreeholdPropertyPage() {
       />
       <JsonLd
         data={generateBreadcrumbSchema([
-          { name: 'Home', url: 'https://propertywiki.com' },
-          { name: 'Definitions', url: 'https://propertywiki.com/definitions' },
-          { name: 'Freehold Property', url: 'https://propertywiki.com/definitions/freehold-property' },
+          { name: 'Home', url: 'https://propertywiki.ai' },
+          { name: 'Definitions', url: 'https://propertywiki.ai/definitions' },
+          { name: 'Freehold Property', url: 'https://propertywiki.ai/definitions/freehold-property' },
         ])}
       />
       <JsonLd data={generateFAQSchema(faqs)} />

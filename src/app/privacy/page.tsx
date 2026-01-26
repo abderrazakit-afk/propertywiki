@@ -86,7 +86,7 @@ export default function PrivacyPage() {
           <h2>Contact Us</h2>
           <p>
             If you have questions about this Privacy Policy, please contact us at{' '}
-            <strong>privacy@propertywiki.com</strong>.
+            <strong>privacy@propertywiki.ai</strong>.
           </p>
         </section>
       </div>

@@ -20,8 +20,8 @@ export default function InvestingPage() {
     <>
       <JsonLd
         data={generateBreadcrumbSchema([
-          { name: 'Home', url: 'https://propertywiki.com' },
-          { name: 'Investing', url: 'https://propertywiki.com/investing' },
+          { name: 'Home', url: 'https://propertywiki.ai' },
+          { name: 'Investing', url: 'https://propertywiki.ai/investing' },
         ])}
       />
 

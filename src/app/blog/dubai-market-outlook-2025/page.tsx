@@ -69,7 +69,7 @@ export default function DubaiMarketOutlook2025() {
         data={generateArticleSchema({
           title: 'Dubai Property Market Outlook 2025',
           description: 'Comprehensive analysis of Dubai\'s property market for 2025.',
-          url: 'https://propertywiki.com/blog/dubai-market-outlook-2025',
+          url: 'https://propertywiki.ai/blog/dubai-market-outlook-2025',
           datePublished: '2025-01-15',
           dateModified: '2025-01-15',
           author: { name: author.name },
@@ -77,9 +77,9 @@ export default function DubaiMarketOutlook2025() {
       />
       <JsonLd
         data={generateBreadcrumbSchema([
-          { name: 'Home', url: 'https://propertywiki.com' },
-          { name: 'Blog', url: 'https://propertywiki.com/blog' },
-          { name: 'Dubai Market Outlook 2025', url: 'https://propertywiki.com/blog/dubai-market-outlook-2025' },
+          { name: 'Home', url: 'https://propertywiki.ai' },
+          { name: 'Blog', url: 'https://propertywiki.ai/blog' },
+          { name: 'Dubai Market Outlook 2025', url: 'https://propertywiki.ai/blog/dubai-market-outlook-2025' },
         ])}
       />
 

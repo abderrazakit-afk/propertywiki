@@ -33,21 +33,21 @@ export default function ContactPage() {
               <p className="text-gray-600">
                 For content-related questions, corrections, or contributions:
               </p>
-              <p className="text-primary-600 font-medium">editorial@propertywiki.com</p>
+              <p className="text-primary-600 font-medium">editorial@propertywiki.ai</p>
             </div>
             <div>
               <h3 className="font-medium text-gray-900 mb-2">General Inquiries</h3>
               <p className="text-gray-600">
                 For general questions about PropertyWiki:
               </p>
-              <p className="text-primary-600 font-medium">info@propertywiki.com</p>
+              <p className="text-primary-600 font-medium">info@propertywiki.ai</p>
             </div>
             <div>
               <h3 className="font-medium text-gray-900 mb-2">Partnership Opportunities</h3>
               <p className="text-gray-600">
                 Interested in working with us?
               </p>
-              <p className="text-primary-600 font-medium">partnerships@propertywiki.com</p>
+              <p className="text-primary-600 font-medium">partnerships@propertywiki.ai</p>
             </div>
           </div>
         </div>

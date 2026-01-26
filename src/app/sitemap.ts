@@ -1,7 +1,7 @@
 import { MetadataRoute } from 'next'
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = 'https://propertywiki.com'
+  const baseUrl = 'https://propertywiki.ai'
 
   const staticPages = [
     {

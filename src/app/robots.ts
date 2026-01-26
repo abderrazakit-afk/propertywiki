@@ -9,6 +9,6 @@ export default function robots(): MetadataRoute.Robots {
         disallow: ['/api/', '/admin/', '/_next/'],
       },
     ],
-    sitemap: 'https://propertywiki.com/sitemap.xml',
+    sitemap: 'https://propertywiki.ai/sitemap.xml',
   }
 }

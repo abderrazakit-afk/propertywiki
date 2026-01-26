@@ -13,7 +13,7 @@ export const metadata: Metadata = {
   description: 'Step-by-step guide to buying property in Dubai as a foreigner. Learn about freehold zones, visa requirements, legal processes, costs, and financing options.',
   keywords: ['buy property Dubai', 'Dubai property guide', 'foreigner buy property Dubai', 'Dubai real estate'],
   alternates: {
-    canonical: 'https://propertywiki.com/guides/how-to-buy-property-in-dubai',
+    canonical: 'https://propertywiki.ai/guides/how-to-buy-property-in-dubai',
   },
   openGraph: {
     title: 'How to Buy Property in Dubai - Complete Guide for Foreigners',
@@ -21,7 +21,7 @@ export const metadata: Metadata = {
     type: 'article',
     publishedTime: '2024-03-01',
     modifiedTime: '2024-12-20',
-    url: 'https://propertywiki.com/guides/how-to-buy-property-in-dubai',
+    url: 'https://propertywiki.ai/guides/how-to-buy-property-in-dubai',
   },
 }
 
@@ -97,7 +97,7 @@ export default function HowToBuyPropertyDubaiPage() {
         data={generateArticleSchema({
           title: 'How to Buy Property in Dubai - Complete Guide for Foreigners',
           description: 'Step-by-step guide to buying property in Dubai as a foreigner.',
-          url: 'https://propertywiki.com/guides/how-to-buy-property-in-dubai',
+          url: 'https://propertywiki.ai/guides/how-to-buy-property-in-dubai',
           datePublished: '2024-03-01',
           dateModified: '2024-12-20',
           author: { name: author.name },
@@ -105,9 +105,9 @@ export default function HowToBuyPropertyDubaiPage() {
       />
       <JsonLd
         data={generateBreadcrumbSchema([
-          { name: 'Home', url: 'https://propertywiki.com' },
-          { name: 'Guides', url: 'https://propertywiki.com/guides' },
-          { name: 'How to Buy Property in Dubai', url: 'https://propertywiki.com/guides/how-to-buy-property-in-dubai' },
+          { name: 'Home', url: 'https://propertywiki.ai' },
+          { name: 'Guides', url: 'https://propertywiki.ai/guides' },
+          { name: 'How to Buy Property in Dubai', url: 'https://propertywiki.ai/guides/how-to-buy-property-in-dubai' },
         ])}
       />
       <JsonLd data={generateFAQSchema(faqs)} />

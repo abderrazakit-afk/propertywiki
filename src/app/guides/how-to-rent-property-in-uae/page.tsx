@@ -13,7 +13,7 @@ export const metadata: Metadata = {
   description: 'Complete guide to renting property in the UAE. Learn about Ejari, tenancy contracts, tenant rights, security deposits, DEWA connections, and rental regulations.',
   keywords: ['rent property UAE', 'rent apartment Dubai', 'Ejari registration', 'UAE tenancy contract', 'tenant rights UAE'],
   alternates: {
-    canonical: 'https://propertywiki.com/guides/how-to-rent-property-in-uae',
+    canonical: 'https://propertywiki.ai/guides/how-to-rent-property-in-uae',
   },
   openGraph: {
     title: 'How to Rent Property in UAE - Complete Tenant\'s Guide',
@@ -21,7 +21,7 @@ export const metadata: Metadata = {
     type: 'article',
     publishedTime: '2024-05-01',
     modifiedTime: '2024-12-20',
-    url: 'https://propertywiki.com/guides/how-to-rent-property-in-uae',
+    url: 'https://propertywiki.ai/guides/how-to-rent-property-in-uae',
   },
 }
 
@@ -99,7 +99,7 @@ export default function HowToRentPropertyUAEPage() {
         data={generateArticleSchema({
           title: 'How to Rent Property in UAE - Complete Tenant\'s Guide',
           description: 'Complete guide to renting property in the UAE.',
-          url: 'https://propertywiki.com/guides/how-to-rent-property-in-uae',
+          url: 'https://propertywiki.ai/guides/how-to-rent-property-in-uae',
           datePublished: '2024-05-01',
           dateModified: '2024-12-20',
           author: { name: author.name },
@@ -107,9 +107,9 @@ export default function HowToRentPropertyUAEPage() {
       />
       <JsonLd
         data={generateBreadcrumbSchema([
-          { name: 'Home', url: 'https://propertywiki.com' },
-          { name: 'Guides', url: 'https://propertywiki.com/guides' },
-          { name: 'How to Rent Property in UAE', url: 'https://propertywiki.com/guides/how-to-rent-property-in-uae' },
+          { name: 'Home', url: 'https://propertywiki.ai' },
+          { name: 'Guides', url: 'https://propertywiki.ai/guides' },
+          { name: 'How to Rent Property in UAE', url: 'https://propertywiki.ai/guides/how-to-rent-property-in-uae' },
         ])}
       />
       <JsonLd data={generateFAQSchema(faqs)} />

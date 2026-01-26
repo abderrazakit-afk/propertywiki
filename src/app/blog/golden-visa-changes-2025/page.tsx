@@ -93,7 +93,7 @@ export default function GoldenVisaChanges2025() {
         data={generateArticleSchema({
           title: 'Golden Visa Changes 2025 - What Property Investors Need to Know',
           description: 'Comprehensive guide to UAE Golden Visa updates for 2025.',
-          url: 'https://propertywiki.com/blog/golden-visa-changes-2025',
+          url: 'https://propertywiki.ai/blog/golden-visa-changes-2025',
           datePublished: '2025-01-05',
           dateModified: '2025-01-05',
           author: { name: author.name },
@@ -101,9 +101,9 @@ export default function GoldenVisaChanges2025() {
       />
       <JsonLd
         data={generateBreadcrumbSchema([
-          { name: 'Home', url: 'https://propertywiki.com' },
-          { name: 'Blog', url: 'https://propertywiki.com/blog' },
-          { name: 'Golden Visa Changes 2025', url: 'https://propertywiki.com/blog/golden-visa-changes-2025' },
+          { name: 'Home', url: 'https://propertywiki.ai' },
+          { name: 'Blog', url: 'https://propertywiki.ai/blog' },
+          { name: 'Golden Visa Changes 2025', url: 'https://propertywiki.ai/blog/golden-visa-changes-2025' },
         ])}
       />
       <JsonLd data={generateFAQSchema(faqs)} />

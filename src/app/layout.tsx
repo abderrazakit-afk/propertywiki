@@ -7,7 +7,7 @@ import Footer from '@/components/layout/Footer'
 const inter = Inter({ subsets: ['latin'], variable: '--font-inter' })
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://propertywiki.com'),
+  metadataBase: new URL('https://propertywiki.ai'),
   title: {
     default: 'PropertyWiki - Your Complete Real Estate Knowledge Hub',
     template: '%s | PropertyWiki',
@@ -18,12 +18,12 @@ export const metadata: Metadata = {
   creator: 'PropertyWiki',
   publisher: 'PropertyWiki',
   alternates: {
-    canonical: 'https://propertywiki.com',
+    canonical: 'https://propertywiki.ai',
   },
   openGraph: {
     type: 'website',
     locale: 'en_US',
-    url: 'https://propertywiki.com',
+    url: 'https://propertywiki.ai',
     siteName: 'PropertyWiki',
     title: 'PropertyWiki - Your Complete Real Estate Knowledge Hub',
     description: 'PropertyWiki is the definitive resource for real estate knowledge. Explore property definitions, location guides, investing strategies, and expert insights.',

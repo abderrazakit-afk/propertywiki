@@ -78,7 +78,7 @@ export default function LeaseholdPage() {
         data={generateArticleSchema({
           title: 'What is Leasehold Property? Complete Definition & Guide',
           description: 'Learn what leasehold property means and how it differs from freehold.',
-          url: 'https://propertywiki.com/definitions/leasehold',
+          url: 'https://propertywiki.ai/definitions/leasehold',
           datePublished: '2024-02-01',
           dateModified: '2024-11-20',
           author: { name: author.name },
@@ -86,9 +86,9 @@ export default function LeaseholdPage() {
       />
       <JsonLd
         data={generateBreadcrumbSchema([
-          { name: 'Home', url: 'https://propertywiki.com' },
-          { name: 'Definitions', url: 'https://propertywiki.com/definitions' },
-          { name: 'Leasehold', url: 'https://propertywiki.com/definitions/leasehold' },
+          { name: 'Home', url: 'https://propertywiki.ai' },
+          { name: 'Definitions', url: 'https://propertywiki.ai/definitions' },
+          { name: 'Leasehold', url: 'https://propertywiki.ai/definitions/leasehold' },
         ])}
       />
       <JsonLd data={generateFAQSchema(faqs)} />

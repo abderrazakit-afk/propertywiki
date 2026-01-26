@@ -90,7 +90,7 @@ export default function EditorialPolicyPage() {
           <h2>Feedback</h2>
           <p>
             We welcome feedback on our content. If you believe information is inaccurate 
-            or outdated, please contact us at <strong>editorial@propertywiki.com</strong>.
+            or outdated, please contact us at <strong>editorial@propertywiki.ai</strong>.
           </p>
         </section>
       </div>

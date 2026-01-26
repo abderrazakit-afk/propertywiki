@@ -54,8 +54,8 @@ export default function GuidesPage() {
     <>
       <JsonLd
         data={generateBreadcrumbSchema([
-          { name: 'Home', url: 'https://propertywiki.com' },
-          { name: 'Guides', url: 'https://propertywiki.com/guides' },
+          { name: 'Home', url: 'https://propertywiki.ai' },
+          { name: 'Guides', url: 'https://propertywiki.ai/guides' },
         ])}
       />
 

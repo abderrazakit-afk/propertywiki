@@ -51,8 +51,8 @@ export default function BlogPage() {
     <>
       <JsonLd
         data={generateBreadcrumbSchema([
-          { name: 'Home', url: 'https://propertywiki.com' },
-          { name: 'Blog', url: 'https://propertywiki.com/blog' },
+          { name: 'Home', url: 'https://propertywiki.ai' },
+          { name: 'Blog', url: 'https://propertywiki.ai/blog' },
         ])}
       />
 

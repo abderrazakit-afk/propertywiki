@@ -78,7 +78,7 @@ export default function PalmJumeirahPage() {
         data={generateArticleSchema({
           title: 'Palm Jumeirah Property Guide - Villas, Apartments & Prices',
           description: 'Complete guide to Palm Jumeirah real estate.',
-          url: 'https://propertywiki.com/locations/dubai/palm-jumeirah',
+          url: 'https://propertywiki.ai/locations/dubai/palm-jumeirah',
           datePublished: '2024-03-15',
           dateModified: '2024-12-10',
           author: { name: author.name },
@@ -86,10 +86,10 @@ export default function PalmJumeirahPage() {
       />
       <JsonLd
         data={generateBreadcrumbSchema([
-          { name: 'Home', url: 'https://propertywiki.com' },
-          { name: 'Locations', url: 'https://propertywiki.com/locations' },
-          { name: 'Dubai', url: 'https://propertywiki.com/locations/dubai' },
-          { name: 'Palm Jumeirah', url: 'https://propertywiki.com/locations/dubai/palm-jumeirah' },
+          { name: 'Home', url: 'https://propertywiki.ai' },
+          { name: 'Locations', url: 'https://propertywiki.ai/locations' },
+          { name: 'Dubai', url: 'https://propertywiki.ai/locations/dubai' },
+          { name: 'Palm Jumeirah', url: 'https://propertywiki.ai/locations/dubai/palm-jumeirah' },
         ])}
       />
       <JsonLd data={generateFAQSchema(faqs)} />

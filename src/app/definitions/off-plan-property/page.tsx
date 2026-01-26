@@ -77,7 +77,7 @@ export default function OffPlanPropertyPage() {
         data={generateArticleSchema({
           title: 'What is Off-Plan Property? Definition, Risks & Benefits',
           description: 'Learn what off-plan property means and how to evaluate off-plan investments.',
-          url: 'https://propertywiki.com/definitions/off-plan-property',
+          url: 'https://propertywiki.ai/definitions/off-plan-property',
           datePublished: '2024-02-15',
           dateModified: '2024-11-15',
           author: { name: author.name },
@@ -85,9 +85,9 @@ export default function OffPlanPropertyPage() {
       />
       <JsonLd
         data={generateBreadcrumbSchema([
-          { name: 'Home', url: 'https://propertywiki.com' },
-          { name: 'Definitions', url: 'https://propertywiki.com/definitions' },
-          { name: 'Off-Plan Property', url: 'https://propertywiki.com/definitions/off-plan-property' },
+          { name: 'Home', url: 'https://propertywiki.ai' },
+          { name: 'Definitions', url: 'https://propertywiki.ai/definitions' },
+          { name: 'Off-Plan Property', url: 'https://propertywiki.ai/definitions/off-plan-property' },
         ])}
       />
       <JsonLd data={generateFAQSchema(faqs)} />

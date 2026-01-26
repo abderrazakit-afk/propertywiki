@@ -89,7 +89,7 @@ export default function OffPlanInvestmentRisks() {
         data={generateArticleSchema({
           title: 'Understanding Off-Plan Investment Risks',
           description: 'A balanced analysis of off-plan property investment risks and rewards.',
-          url: 'https://propertywiki.com/blog/off-plan-investment-risks',
+          url: 'https://propertywiki.ai/blog/off-plan-investment-risks',
           datePublished: '2025-01-10',
           dateModified: '2025-01-10',
           author: { name: author.name },
@@ -97,9 +97,9 @@ export default function OffPlanInvestmentRisks() {
       />
       <JsonLd
         data={generateBreadcrumbSchema([
-          { name: 'Home', url: 'https://propertywiki.com' },
-          { name: 'Blog', url: 'https://propertywiki.com/blog' },
-          { name: 'Off-Plan Investment Risks', url: 'https://propertywiki.com/blog/off-plan-investment-risks' },
+          { name: 'Home', url: 'https://propertywiki.ai' },
+          { name: 'Blog', url: 'https://propertywiki.ai/blog' },
+          { name: 'Off-Plan Investment Risks', url: 'https://propertywiki.ai/blog/off-plan-investment-risks' },
         ])}
       />
       <JsonLd data={generateFAQSchema(faqs)} />

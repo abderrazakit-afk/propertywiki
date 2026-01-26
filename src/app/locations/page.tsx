@@ -38,8 +38,8 @@ export default function LocationsPage() {
     <>
       <JsonLd
         data={generateBreadcrumbSchema([
-          { name: 'Home', url: 'https://propertywiki.com' },
-          { name: 'Locations', url: 'https://propertywiki.com/locations' },
+          { name: 'Home', url: 'https://propertywiki.ai' },
+          { name: 'Locations', url: 'https://propertywiki.ai/locations' },
         ])}
       />
 

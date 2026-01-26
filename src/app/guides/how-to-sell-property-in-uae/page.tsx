@@ -13,7 +13,7 @@ export const metadata: Metadata = {
   description: 'Complete guide to selling property in the UAE. Learn about documentation, NOC process, DLD transfer, agent selection, pricing strategy, and timeline.',
   keywords: ['sell property UAE', 'sell property Dubai', 'UAE property sale', 'DLD transfer', 'property seller guide'],
   alternates: {
-    canonical: 'https://propertywiki.com/guides/how-to-sell-property-in-uae',
+    canonical: 'https://propertywiki.ai/guides/how-to-sell-property-in-uae',
   },
   openGraph: {
     title: 'How to Sell Property in UAE - Complete Seller\'s Guide',
@@ -21,7 +21,7 @@ export const metadata: Metadata = {
     type: 'article',
     publishedTime: '2024-06-15',
     modifiedTime: '2024-12-20',
-    url: 'https://propertywiki.com/guides/how-to-sell-property-in-uae',
+    url: 'https://propertywiki.ai/guides/how-to-sell-property-in-uae',
   },
 }
 
@@ -98,7 +98,7 @@ export default function HowToSellPropertyUAEPage() {
         data={generateArticleSchema({
           title: 'How to Sell Property in UAE - Complete Seller\'s Guide',
           description: 'Step-by-step guide to selling property in the UAE.',
-          url: 'https://propertywiki.com/guides/how-to-sell-property-in-uae',
+          url: 'https://propertywiki.ai/guides/how-to-sell-property-in-uae',
           datePublished: '2024-06-15',
           dateModified: '2024-12-20',
           author: { name: author.name },
@@ -106,9 +106,9 @@ export default function HowToSellPropertyUAEPage() {
       />
       <JsonLd
         data={generateBreadcrumbSchema([
-          { name: 'Home', url: 'https://propertywiki.com' },
-          { name: 'Guides', url: 'https://propertywiki.com/guides' },
-          { name: 'How to Sell Property in UAE', url: 'https://propertywiki.com/guides/how-to-sell-property-in-uae' },
+          { name: 'Home', url: 'https://propertywiki.ai' },
+          { name: 'Guides', url: 'https://propertywiki.ai/guides' },
+          { name: 'How to Sell Property in UAE', url: 'https://propertywiki.ai/guides/how-to-sell-property-in-uae' },
         ])}
       />
       <JsonLd data={generateFAQSchema(faqs)} />

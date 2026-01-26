@@ -14,7 +14,7 @@ export const metadata: Metadata = {
   description: 'Comprehensive guide to buying property in the UAE including Dubai, Abu Dhabi, Sharjah, and other emirates. Learn about ownership laws, procedures, costs, and residency visas.',
   keywords: ['buy property UAE', 'UAE property guide', 'Dubai real estate', 'Abu Dhabi property', 'foreigner buy property UAE'],
   alternates: {
-    canonical: 'https://propertywiki.com/guides/how-to-buy-property-in-uae',
+    canonical: 'https://propertywiki.ai/guides/how-to-buy-property-in-uae',
   },
   openGraph: {
     title: 'How to Buy Property in UAE - Complete Buyer\'s Guide',
@@ -22,7 +22,7 @@ export const metadata: Metadata = {
     type: 'article',
     publishedTime: '2024-04-01',
     modifiedTime: '2024-12-20',
-    url: 'https://propertywiki.com/guides/how-to-buy-property-in-uae',
+    url: 'https://propertywiki.ai/guides/how-to-buy-property-in-uae',
   },
 }
 
@@ -100,7 +100,7 @@ export default function HowToBuyPropertyUAEPage() {
         data={generateArticleSchema({
           title: 'How to Buy Property in UAE - Complete Buyer\'s Guide',
           description: 'Comprehensive guide to buying property across all UAE emirates.',
-          url: 'https://propertywiki.com/guides/how-to-buy-property-in-uae',
+          url: 'https://propertywiki.ai/guides/how-to-buy-property-in-uae',
           datePublished: '2024-04-01',
           dateModified: '2024-12-20',
           author: { name: author.name },
@@ -108,9 +108,9 @@ export default function HowToBuyPropertyUAEPage() {
       />
       <JsonLd
         data={generateBreadcrumbSchema([
-          { name: 'Home', url: 'https://propertywiki.com' },
-          { name: 'Guides', url: 'https://propertywiki.com/guides' },
-          { name: 'How to Buy Property in UAE', url: 'https://propertywiki.com/guides/how-to-buy-property-in-uae' },
+          { name: 'Home', url: 'https://propertywiki.ai' },
+          { name: 'Guides', url: 'https://propertywiki.ai/guides' },
+          { name: 'How to Buy Property in UAE', url: 'https://propertywiki.ai/guides/how-to-buy-property-in-uae' },
         ])}
       />
       <JsonLd data={generateFAQSchema(faqs)} />

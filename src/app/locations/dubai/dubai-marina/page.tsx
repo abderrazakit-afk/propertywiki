@@ -97,7 +97,7 @@ export default function DubaiMarinaPage() {
         data={generateArticleSchema({
           title: 'Dubai Marina Property Guide - Prices, Investment & Lifestyle',
           description: 'Complete guide to Dubai Marina real estate with property prices, rental yields, and investment analysis.',
-          url: 'https://propertywiki.com/locations/dubai/dubai-marina',
+          url: 'https://propertywiki.ai/locations/dubai/dubai-marina',
           datePublished: '2024-02-20',
           dateModified: '2024-12-15',
           author: { name: author.name },
@@ -105,10 +105,10 @@ export default function DubaiMarinaPage() {
       />
       <JsonLd
         data={generateBreadcrumbSchema([
-          { name: 'Home', url: 'https://propertywiki.com' },
-          { name: 'Locations', url: 'https://propertywiki.com/locations' },
-          { name: 'Dubai', url: 'https://propertywiki.com/locations/dubai' },
-          { name: 'Dubai Marina', url: 'https://propertywiki.com/locations/dubai/dubai-marina' },
+          { name: 'Home', url: 'https://propertywiki.ai' },
+          { name: 'Locations', url: 'https://propertywiki.ai/locations' },
+          { name: 'Dubai', url: 'https://propertywiki.ai/locations/dubai' },
+          { name: 'Dubai Marina', url: 'https://propertywiki.ai/locations/dubai/dubai-marina' },
         ])}
       />
       <JsonLd data={generateFAQSchema(faqs)} />
