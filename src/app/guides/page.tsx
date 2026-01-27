@@ -45,6 +45,34 @@ const guides = [
     category: 'Renting',
     featured: true,
   },
+  {
+    title: 'DEWA Electricity & Water Guide',
+    slug: 'dewa-electricity-water-guide',
+    description: 'Complete guide to setting up DEWA services in Dubai. Learn about registration, deposits, documents required, and bill payment options.',
+    readTime: '10 min read',
+    category: 'Homeowner',
+  },
+  {
+    title: 'AC Maintenance in Dubai',
+    slug: 'ac-maintenance-dubai',
+    description: 'Essential guide to AC maintenance in Dubai. Types of systems, maintenance tips, finding technicians, and reducing energy bills.',
+    readTime: '12 min read',
+    category: 'Homeowner',
+  },
+  {
+    title: 'Home Cleaning Services in Dubai',
+    slug: 'home-cleaning-services-dubai',
+    description: 'Complete guide to finding cleaning services in Dubai. Popular companies, pricing, hiring maids, and legal requirements.',
+    readTime: '10 min read',
+    category: 'Homeowner',
+  },
+  {
+    title: 'Building Facilities & Amenities',
+    slug: 'building-facilities-amenities-dubai',
+    description: 'Understanding building amenities in Dubai. Service charges, gym & pool access, parking, security, and community rules.',
+    readTime: '11 min read',
+    category: 'Homeowner',
+  },
 ]
 
 export default function GuidesPage() {

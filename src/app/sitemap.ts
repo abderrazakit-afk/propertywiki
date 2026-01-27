@@ -73,17 +73,25 @@ export default function sitemap(): MetadataRoute.Sitemap {
   ]
 
   const locations = [
-    { path: 'dubai', lastModified: '2024-12-15' },
-    { path: 'dubai/dubai-marina', lastModified: '2024-12-15' },
-    { path: 'dubai/downtown-dubai', lastModified: '2024-12-10' },
-    { path: 'dubai/palm-jumeirah', lastModified: '2024-12-10' },
+    { path: 'dubai', lastModified: '2025-01-27' },
+    { path: 'dubai/dubai-marina', lastModified: '2025-01-27' },
+    { path: 'dubai/downtown-dubai', lastModified: '2025-01-27' },
+    { path: 'dubai/palm-jumeirah', lastModified: '2025-01-27' },
+    { path: 'dubai/business-bay', lastModified: '2025-01-27' },
+    { path: 'dubai/jbr', lastModified: '2025-01-27' },
+    { path: 'dubai/arabian-ranches', lastModified: '2025-01-27' },
+    { path: 'dubai/difc', lastModified: '2025-01-27' },
   ]
 
   const guides = [
-    { slug: 'how-to-buy-property-in-dubai', lastModified: '2024-12-20' },
-    { slug: 'how-to-buy-property-in-uae', lastModified: '2024-12-20' },
-    { slug: 'how-to-sell-property-in-uae', lastModified: '2024-12-20' },
-    { slug: 'how-to-rent-property-in-uae', lastModified: '2024-12-20' },
+    { slug: 'how-to-buy-property-in-dubai', lastModified: '2025-01-27' },
+    { slug: 'how-to-buy-property-in-uae', lastModified: '2025-01-27' },
+    { slug: 'how-to-sell-property-in-uae', lastModified: '2025-01-27' },
+    { slug: 'how-to-rent-property-in-uae', lastModified: '2025-01-27' },
+    { slug: 'dewa-electricity-water-guide', lastModified: '2025-01-27' },
+    { slug: 'ac-maintenance-dubai', lastModified: '2025-01-27' },
+    { slug: 'home-cleaning-services-dubai', lastModified: '2025-01-27' },
+    { slug: 'building-facilities-amenities-dubai', lastModified: '2025-01-27' },
   ]
 
   const definitionUrls = definitions.map((def) => ({

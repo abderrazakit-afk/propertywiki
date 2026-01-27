@@ -29,14 +29,16 @@ const categories = [
       </svg>
     ),
     articles: [
-      { title: 'Dubai Real Estate Overview', href: '/locations/dubai' },
-      { title: 'Dubai Marina Property Guide', href: '/locations/dubai/dubai-marina' },
-      { title: 'Downtown Dubai Analysis', href: '/locations/dubai/downtown-dubai' },
+      { title: 'Palm Jumeirah', href: '/locations/dubai/palm-jumeirah' },
+      { title: 'Dubai Marina', href: '/locations/dubai/dubai-marina' },
+      { title: 'Business Bay', href: '/locations/dubai/business-bay' },
+      { title: 'JBR Beach Residence', href: '/locations/dubai/jbr' },
+      { title: 'Arabian Ranches', href: '/locations/dubai/arabian-ranches' },
     ],
   },
   {
-    title: 'Buying Guides',
-    description: 'Step-by-step guides for property purchase decisions',
+    title: 'Homeowner Guides',
+    description: 'Essential guides for living in Dubai properties',
     href: '/guides',
     icon: (
       <svg className="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -45,6 +47,10 @@ const categories = [
     ),
     articles: [
       { title: 'How to Buy Property in Dubai', href: '/guides/how-to-buy-property-in-dubai' },
+      { title: 'DEWA Electricity & Water Setup', href: '/guides/dewa-electricity-water-guide' },
+      { title: 'AC Maintenance Guide', href: '/guides/ac-maintenance-dubai' },
+      { title: 'Home Cleaning Services', href: '/guides/home-cleaning-services-dubai' },
+      { title: 'Building Facilities & Amenities', href: '/guides/building-facilities-amenities-dubai' },
     ],
   },
   {

@@ -3,15 +3,18 @@ import Link from 'next/link'
 const footerNavigation = {
   knowledge: [
     { name: 'All Definitions', href: '/definitions' },
-    { name: 'Property Glossary', href: '/definitions' },
     { name: 'Buying Guides', href: '/guides' },
     { name: 'Investment Tips', href: '/investing' },
+    { name: 'DEWA Setup', href: '/guides/dewa-electricity-water-guide' },
+    { name: 'AC Maintenance', href: '/guides/ac-maintenance-dubai' },
   ],
   locations: [
-    { name: 'Dubai', href: '/locations/dubai' },
+    { name: 'Palm Jumeirah', href: '/locations/dubai/palm-jumeirah' },
     { name: 'Dubai Marina', href: '/locations/dubai/dubai-marina' },
-    { name: 'Downtown Dubai', href: '/locations/dubai/downtown-dubai' },
-    { name: 'All Locations', href: '/locations' },
+    { name: 'Business Bay', href: '/locations/dubai/business-bay' },
+    { name: 'JBR', href: '/locations/dubai/jbr' },
+    { name: 'Arabian Ranches', href: '/locations/dubai/arabian-ranches' },
+    { name: 'DIFC', href: '/locations/dubai/difc' },
   ],
   company: [
     { name: 'About Us', href: '/about' },

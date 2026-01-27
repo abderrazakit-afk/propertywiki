@@ -17,11 +17,32 @@ export const metadata: Metadata = {
 
 const areas = [
   {
+    name: 'Palm Jumeirah',
+    slug: 'palm-jumeirah',
+    description: 'The world-famous palm-shaped island offering exclusive villas and apartments.',
+    priceRange: 'AED 1.5M - AED 100M+',
+    propertyTypes: ['Villas', 'Apartments', 'Penthouses'],
+  },
+  {
     name: 'Dubai Marina',
     slug: 'dubai-marina',
     description: 'Vibrant waterfront community with luxury high-rises, restaurants, and yacht clubs.',
-    priceRange: 'AED 1.2M - AED 15M+',
+    priceRange: 'AED 700K - AED 15M+',
     propertyTypes: ['Apartments', 'Penthouses'],
+  },
+  {
+    name: 'Business Bay',
+    slug: 'business-bay',
+    description: 'Dubai\'s central business district along the Dubai Canal with modern high-rise towers.',
+    priceRange: 'AED 600K - AED 10M+',
+    propertyTypes: ['Apartments', 'Penthouses'],
+  },
+  {
+    name: 'JBR (Jumeirah Beach Residence)',
+    slug: 'jbr',
+    description: 'Iconic beachfront community with The Walk promenade and direct beach access.',
+    priceRange: 'AED 800K - AED 12M+',
+    propertyTypes: ['Apartments', 'Penthouses', 'Duplexes'],
   },
   {
     name: 'Downtown Dubai',
@@ -31,11 +52,18 @@ const areas = [
     propertyTypes: ['Apartments', 'Penthouses', 'Serviced Residences'],
   },
   {
-    name: 'Palm Jumeirah',
-    slug: 'palm-jumeirah',
-    description: 'The world-famous palm-shaped island offering exclusive villas and apartments.',
-    priceRange: 'AED 2M - AED 100M+',
-    propertyTypes: ['Villas', 'Apartments', 'Townhouses'],
+    name: 'Arabian Ranches',
+    slug: 'arabian-ranches',
+    description: 'Family-friendly villa community with golf course, schools, and green spaces.',
+    priceRange: 'AED 2M - AED 15M+',
+    propertyTypes: ['Villas', 'Townhouses'],
+  },
+  {
+    name: 'DIFC',
+    slug: 'difc',
+    description: 'Dubai\'s financial hub with premium apartments and proximity to Emirates Towers.',
+    priceRange: 'AED 1.8M - AED 25M+',
+    propertyTypes: ['Apartments', 'Penthouses'],
   },
 ]
 
