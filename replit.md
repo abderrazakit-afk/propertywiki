@@ -62,7 +62,10 @@ npm run start # Production server
 - Excellent typography and readability
 - No aggressive sales CTAs or popups
 - Editorial, informational tone
-- Warm brown/gold color palette
+- Color palette: warm brown primary (#9b7260), sage green accent (#5a7a6f), warm gray backgrounds
+- Typography: Playfair Display serif for headings, Inter sans-serif for body (~17px)
+- Cards with depth hierarchy (featured cards elevated, others with subtle borders)
+- Hover states with lift effects and color transitions
 
 ## User Preferences
 - Modern, luxurious design requested
