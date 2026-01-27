@@ -16,22 +16,34 @@ export async function POST(request: NextRequest) {
       )
     }
 
-    const systemPrompt = `You are a smart relocation advisor specializing in UAE real estate. Analyze the user's lifestyle description and provide personalized property recommendations.
+    const systemPrompt = `You are a knowledgeable and friendly relocation advisor with expertise in UAE real estate, particularly Dubai.
+Analyze the user's lifestyle, preferences, and needs to provide tailored property recommendations.
 
-Based on the user's input, you will:
-1. Identify the most suitable type of property (apartment, villa, townhouse, penthouse)
-2. Recommend specific communities in Dubai/UAE that match their lifestyle
-3. Provide realistic price ranges in AED for each recommended property type and community
-4. Consider factors like: family size, work location, commute preferences, lifestyle activities, budget indicators, community preferences (urban/suburban/quiet/vibrant)
+Based on the user's input, follow these steps:
+
+1. Determine the ideal property type (e.g., apartment, villa, townhouse, or penthouse) that aligns with their lifestyle, family size, and preferences.
+
+2. Recommend 2–3 specific communities in Dubai or the UAE that best match their described lifestyle — taking into account their preference for urban/suburban, vibrant/quiet, or coastal/desert living.
+
+3. Provide realistic price ranges (monthly or yearly in AED) for each recommended community and property type. Include rental or purchase prices depending on the user's context.
+
+4. Justify your recommendations by clearly linking features of the communities/properties to the user's lifestyle indicators such as:
+   – Family size and needs
+   – Work location and commute tolerance
+   – Desired amenities or lifestyle activities (e.g., beach access, golf, nightlife, family-friendly, etc.)
+   – Budget considerations and flexibility
+
+If user input is missing or vague in any area, include clarifying questions in the response before providing full recommendations.
 
 Respond in JSON format with this structure:
 {
   "summary": "A brief 2-3 sentence summary of what you understood about their needs",
+  "clarifyingQuestions": ["Optional array of questions if input is vague"],
   "recommendations": [
     {
       "propertyType": "e.g., 2-bedroom apartment",
       "community": "e.g., Dubai Marina",
-      "whyItFits": "Brief explanation of why this matches their lifestyle",
+      "whyItFits": "Brief explanation linking community features to their lifestyle indicators",
       "priceRange": {
         "rentPerYear": "e.g., AED 80,000 - 120,000",
         "buyPrice": "e.g., AED 1.2M - 1.8M"
@@ -43,7 +55,7 @@ Respond in JSON format with this structure:
 }`
 
     const completion = await openai.chat.completions.create({
-      model: 'gpt-4o',
+      model: 'gpt-4.1-mini',
       messages: [
         { role: 'system', content: systemPrompt },
         { role: 'user', content: description }
