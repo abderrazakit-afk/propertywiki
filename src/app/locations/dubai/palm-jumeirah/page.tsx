@@ -1,5 +1,4 @@
 import { Metadata } from 'next'
-import Link from 'next/link'
 import Image from 'next/image'
 import Breadcrumbs from '@/components/layout/Breadcrumbs'
 import TableOfContents from '@/components/article/TableOfContents'
@@ -10,53 +9,85 @@ import JsonLd from '@/components/seo/JsonLd'
 import { generateArticleSchema, generateBreadcrumbSchema, generateFAQSchema } from '@/lib/seo'
 
 export const metadata: Metadata = {
-  title: 'Palm Jumeirah Property Guide - Villas, Apartments & Prices',
-  description: 'Complete guide to Palm Jumeirah real estate. Explore luxury villas, waterfront apartments, prices, and investment opportunities on Dubai\'s iconic palm island.',
-  keywords: ['Palm Jumeirah', 'Palm Jumeirah villas', 'Palm Jumeirah property', 'Dubai luxury real estate'],
+  title: 'Palm Jumeirah Property Guide - Luxury Villas, Apartments & Prices 2025',
+  description: 'Complete guide to Palm Jumeirah real estate. Explore luxury villas, waterfront apartments, signature residences, prices, rental yields, and investment opportunities on Dubai\'s iconic palm-shaped island.',
+  keywords: ['Palm Jumeirah', 'Palm Jumeirah villas', 'Palm Jumeirah property', 'Dubai luxury real estate', 'Palm Jumeirah apartments', 'Atlantis residences', 'Dubai waterfront property', 'Palm Jumeirah prices'],
+  openGraph: {
+    title: 'Palm Jumeirah Property Guide - Luxury Villas, Apartments & Prices 2025',
+    description: 'Complete guide to Palm Jumeirah real estate with luxury property prices, rental yields, and investment analysis on Dubai\'s iconic man-made island.',
+    type: 'article',
+    publishedTime: '2024-03-15',
+    modifiedTime: '2025-01-15',
+  },
 }
 
 const tableOfContents = [
   { id: 'overview', title: 'Palm Jumeirah Overview', level: 2 },
-  { id: 'property-types', title: 'Property Types', level: 2 },
-  { id: 'prices', title: 'Current Prices', level: 2 },
+  { id: 'property-types', title: 'Property Types & Prices', level: 2 },
+  { id: 'rental-yields', title: 'Rental Yields & ROI', level: 2 },
   { id: 'lifestyle', title: 'Lifestyle & Amenities', level: 2 },
-  { id: 'investment', title: 'Investment Outlook', level: 2 },
+  { id: 'transportation', title: 'Transportation & Connectivity', level: 2 },
+  { id: 'investment-outlook', title: 'Investment Outlook', level: 2 },
 ]
 
 const faqs = [
   {
     question: 'Can foreigners buy property on Palm Jumeirah?',
-    answer: 'Yes, Palm Jumeirah is a freehold zone where foreign nationals can purchase and fully own property, including villas and apartments.',
+    answer: 'Yes, Palm Jumeirah is a designated freehold zone where foreign nationals from any country can purchase and fully own property with complete ownership rights, including villas, apartments, and penthouses.',
   },
   {
-    question: 'What is the average price of a villa on Palm Jumeirah?',
-    answer: 'Villa prices on Palm Jumeirah range from AED 15 million for garden homes to over AED 200 million for signature beach villas with private pools.',
+    question: 'What are the average property prices on Palm Jumeirah?',
+    answer: 'As of 2025, studio apartments start from around AED 1.5 million, one-bedroom apartments from AED 2.5 million, two-bedroom apartments from AED 4 million, and villas range from AED 15 million to over AED 200 million for signature beachfront properties.',
+  },
+  {
+    question: 'What is the rental yield on Palm Jumeirah?',
+    answer: 'Palm Jumeirah offers rental yields averaging 4-6% gross, which is lower than some other Dubai areas due to the premium property prices. However, the area offers excellent capital appreciation potential and strong demand from high-net-worth tenants.',
   },
   {
     question: 'Is Palm Jumeirah a good investment?',
-    answer: 'Palm Jumeirah is considered a trophy asset location with strong value retention. While rental yields are modest (3-5%), the area offers excellent capital appreciation potential and prestige value.',
+    answer: 'Palm Jumeirah is considered a trophy asset location with strong value retention and global recognition. While rental yields are moderate compared to other areas, the limited supply, prestigious address, and consistent demand from ultra-high-net-worth individuals make it an excellent long-term investment.',
+  },
+  {
+    question: 'How is Palm Jumeirah connected to the rest of Dubai?',
+    answer: 'Palm Jumeirah is connected via the Palm Monorail running from the Gateway Towers to Atlantis. The monorail connects to the Dubai Tram at Palm Gateway station, which links to the Dubai Metro Red Line. Road access is via a multi-lane tunnel and bridge system to Sheikh Zayed Road.',
   },
 ]
 
 const relatedArticles = [
   {
+    title: 'How to Buy Property in Dubai',
+    href: '/guides/how-to-buy-property-in-dubai',
+    category: 'Guide',
+    description: 'Step-by-step guide to purchasing property in Dubai as a foreigner.',
+  },
+  {
+    title: 'What is Freehold Property?',
+    href: '/definitions/freehold-property',
+    category: 'Definition',
+    description: 'Understanding freehold ownership and what it means for buyers.',
+  },
+  {
     title: 'Dubai Marina Property Guide',
     href: '/locations/dubai/dubai-marina',
     category: 'Location',
-    description: 'Explore Dubai Marina\'s waterfront apartments.',
+    description: 'Explore Dubai Marina\'s waterfront apartments and lifestyle.',
   },
   {
     title: 'Downtown Dubai Guide',
     href: '/locations/dubai/downtown-dubai',
     category: 'Location',
-    description: 'Discover Downtown Dubai\'s iconic properties.',
+    description: 'Discover Downtown Dubai\'s iconic properties near Burj Khalifa.',
   },
-  {
-    title: 'How to Buy Property in Dubai',
-    href: '/guides/how-to-buy-property-in-dubai',
-    category: 'Guide',
-    description: 'Complete guide to purchasing property in Dubai.',
-  },
+]
+
+const propertyPrices = [
+  { type: 'Studio', sizeRange: '500-800 sq ft', priceRange: 'AED 1.5M - 2.5M', avgRent: 'AED 80-120K/year' },
+  { type: '1 Bedroom', sizeRange: '900-1,400 sq ft', priceRange: 'AED 2.5M - 4.5M', avgRent: 'AED 120-180K/year' },
+  { type: '2 Bedroom', sizeRange: '1,400-2,200 sq ft', priceRange: 'AED 4M - 8M', avgRent: 'AED 180-280K/year' },
+  { type: '3 Bedroom', sizeRange: '2,200-3,500 sq ft', priceRange: 'AED 6M - 15M', avgRent: 'AED 280-450K/year' },
+  { type: '4 Bedroom', sizeRange: '3,500-5,000 sq ft', priceRange: 'AED 12M - 25M', avgRent: 'AED 400-650K/year' },
+  { type: 'Villa', sizeRange: '5,000-15,000 sq ft', priceRange: 'AED 15M - 200M+', avgRent: 'AED 500K-2M+/year' },
+  { type: 'Penthouse', sizeRange: '4,000-20,000 sq ft', priceRange: 'AED 20M - 150M+', avgRent: 'AED 600K-3M+/year' },
 ]
 
 export default function PalmJumeirahPage() {
@@ -76,11 +107,11 @@ export default function PalmJumeirahPage() {
     <>
       <JsonLd
         data={generateArticleSchema({
-          title: 'Palm Jumeirah Property Guide - Villas, Apartments & Prices',
-          description: 'Complete guide to Palm Jumeirah real estate.',
+          title: 'Palm Jumeirah Property Guide - Luxury Villas, Apartments & Prices 2025',
+          description: 'Complete guide to Palm Jumeirah real estate with luxury property prices, rental yields, and investment analysis on Dubai\'s iconic man-made island.',
           url: 'https://propertywiki.ai/locations/dubai/palm-jumeirah',
           datePublished: '2024-03-15',
-          dateModified: '2024-12-10',
+          dateModified: '2025-01-15',
           author: { name: author.name },
         })}
       />
@@ -105,15 +136,15 @@ export default function PalmJumeirahPage() {
             Palm Jumeirah Property Guide
           </h1>
           <p className="text-xl text-gray-600 leading-relaxed">
-            Explore Dubai&apos;s iconic palm-shaped island, home to luxury villas, 
-            waterfront apartments, and world-class resorts.
+            A comprehensive guide to Dubai&apos;s iconic palm-shaped island, featuring ultra-luxury villas, 
+            signature residences, waterfront apartments, and world-class amenities.
           </p>
         </header>
 
         <div className="relative w-full h-64 md:h-80 rounded-xl overflow-hidden mb-8">
           <Image
-            src="/images/palm-jumeirah.jpg"
-            alt="Aerial view of Palm Jumeirah island in Dubai showing luxury villas, beaches, and the iconic palm tree shape"
+            src="/images/palm-jumeirah-hero.jpg"
+            alt="Aerial view of Palm Jumeirah island in Dubai showing the iconic palm tree shape, luxury villas, waterfront properties, and the Atlantis hotel"
             fill
             className="object-cover"
             priority
@@ -126,65 +157,144 @@ export default function PalmJumeirahPage() {
           <section id="overview">
             <h2>Palm Jumeirah Overview</h2>
             <p>
-              Palm Jumeirah is one of the world&apos;s most recognizable man-made islands, 
-              developed by Nakheel. Shaped like a palm tree, the island adds 78 kilometers 
-              of coastline to Dubai and is home to some of the city&apos;s most exclusive 
-              residential properties.
+              Palm Jumeirah is one of the world&apos;s most recognizable and ambitious man-made islands, 
+              developed by Nakheel and completed in 2006. Shaped like a palm tree when viewed from above, 
+              this engineering marvel adds 78 kilometers of coastline to Dubai and has become synonymous 
+              with ultra-luxury living in the Middle East.
             </p>
             <p>
-              The island comprises the Trunk, 16 Fronds, and the Crescent. The Fronds offer 
-              beachfront villas, the Trunk features high-rise apartments, and the Crescent 
-              hosts luxury hotels including Atlantis, The Palm.
+              The island comprises three main sections: the Trunk (featuring high-rise apartments and hotels), 
+              16 Fronds (home to exclusive beachfront villas), and the Crescent (hosting world-renowned 
+              hotels including the iconic Atlantis, The Palm). With a resident population of over 80,000, 
+              Palm Jumeirah offers an exclusive island lifestyle while remaining connected to mainland Dubai.
+            </p>
+            <p>
+              As a <a href="/definitions/freehold-property">freehold zone</a>, Palm Jumeirah allows 
+              foreign nationals to purchase property with full ownership rights. The area has attracted 
+              celebrities, business magnates, and high-net-worth individuals from around the world, 
+              cementing its status as one of Dubai&apos;s most prestigious addresses.
             </p>
           </section>
 
           <section id="property-types">
-            <h2>Property Types</h2>
-            <ul>
-              <li><strong>Signature Villas:</strong> Beachfront mansions on the Fronds with private beaches</li>
-              <li><strong>Garden Homes:</strong> Villa-style living with shared beach access</li>
-              <li><strong>Townhouses:</strong> Multi-story homes in select developments</li>
-              <li><strong>Apartments:</strong> High-rise living on the Trunk and Shoreline</li>
-              <li><strong>Penthouses:</strong> Ultra-luxury units in premium buildings</li>
-            </ul>
+            <h2>Property Types & Prices</h2>
+            <p>
+              Palm Jumeirah offers diverse property options ranging from apartments to ultra-luxury 
+              villas. The island features several distinct property categories including Shoreline 
+              Apartments, Signature Villas, Garden Homes, and branded residences at Atlantis The Royal 
+              and other premium developments.
+            </p>
+            <div className="overflow-x-auto my-6">
+              <table className="min-w-full divide-y divide-gray-200">
+                <thead className="bg-gray-50">
+                  <tr>
+                    <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase">Type</th>
+                    <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase">Size Range</th>
+                    <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase">Sale Price</th>
+                    <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase">Annual Rent</th>
+                  </tr>
+                </thead>
+                <tbody className="bg-white divide-y divide-gray-200">
+                  {propertyPrices.map((row) => (
+                    <tr key={row.type}>
+                      <td className="px-4 py-3 text-sm font-medium text-gray-900">{row.type}</td>
+                      <td className="px-4 py-3 text-sm text-gray-500">{row.sizeRange}</td>
+                      <td className="px-4 py-3 text-sm text-gray-500">{row.priceRange}</td>
+                      <td className="px-4 py-3 text-sm text-gray-500">{row.avgRent}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+            <p>
+              Premium developments like Atlantis The Royal Residences, One Palm, and FIVE Palm Jumeirah 
+              command the highest prices due to their exceptional amenities, branded services, and 
+              unparalleled waterfront locations. Signature Villas on the Fronds with private beaches 
+              represent the pinnacle of luxury living on the island.
+            </p>
           </section>
 
-          <section id="prices">
-            <h2>Current Prices</h2>
-            <p>Palm Jumeirah commands premium pricing:</p>
+          <section id="rental-yields">
+            <h2>Rental Yields & ROI</h2>
+            <p>
+              Palm Jumeirah offers moderate rental yields compared to other Dubai communities, 
+              reflecting the premium property values. However, the area compensates with strong 
+              capital appreciation and consistent demand from high-net-worth tenants.
+            </p>
             <ul>
-              <li><strong>1-Bed Apartment:</strong> AED 1.8M - 4M</li>
-              <li><strong>2-Bed Apartment:</strong> AED 3M - 8M</li>
-              <li><strong>Garden Homes:</strong> AED 15M - 35M</li>
-              <li><strong>Signature Villas:</strong> AED 35M - 200M+</li>
-              <li><strong>Penthouses:</strong> AED 20M - 150M+</li>
+              <li><strong>Studios:</strong> 5-6% gross yield</li>
+              <li><strong>1-2 Bedroom Apartments:</strong> 4-5% gross yield</li>
+              <li><strong>3-4 Bedroom Apartments:</strong> 3-4% gross yield</li>
+              <li><strong>Villas:</strong> 3-4% gross yield</li>
+              <li><strong>Penthouses:</strong> 2-3% gross yield</li>
             </ul>
+            <p>
+              While yields are lower than areas like Dubai Marina or JVC, Palm Jumeirah properties 
+              have historically shown strong capital appreciation. The limited supply of beachfront 
+              land and global prestige of the address ensure sustained demand. Short-term rentals 
+              through platforms like Airbnb can achieve significantly higher returns for furnished 
+              apartments, particularly during peak tourist seasons.
+            </p>
           </section>
 
           <section id="lifestyle">
             <h2>Lifestyle & Amenities</h2>
+            <p>
+              Palm Jumeirah delivers an unparalleled luxury lifestyle with world-class amenities:
+            </p>
             <ul>
-              <li>Private beaches for villa residents</li>
-              <li>World-class hotels and resorts (Atlantis, One&Only, Fairmont)</li>
-              <li>The Pointe entertainment and dining destination</li>
-              <li>Nakheel Mall shopping center</li>
-              <li>Palm Monorail connecting to Dubai Metro</li>
-              <li>Water sports and yacht clubs</li>
+              <li><strong>Private Beaches:</strong> Exclusive beach access for villa and apartment residents</li>
+              <li><strong>5-Star Hotels:</strong> Atlantis The Palm, Atlantis The Royal, One&Only, Fairmont, Waldorf Astoria, Jumeirah Zabeel Saray, and more</li>
+              <li><strong>Fine Dining:</strong> Award-winning restaurants including Nobu, Gordon Ramsay&apos;s Bread Street Kitchen, and Ossiano</li>
+              <li><strong>The Pointe:</strong> Waterfront dining and entertainment destination with stunning Atlantis views</li>
+              <li><strong>Nakheel Mall:</strong> Premium shopping center with luxury boutiques and dining</li>
+              <li><strong>Spas & Wellness:</strong> World-class spa facilities at major hotels</li>
+              <li><strong>Water Sports:</strong> Jet skiing, paddleboarding, diving, and yacht charters</li>
+              <li><strong>Aquaventure:</strong> The region&apos;s largest waterpark at Atlantis</li>
             </ul>
           </section>
 
-          <section id="investment">
-            <h2>Investment Outlook</h2>
+          <section id="transportation">
+            <h2>Transportation & Connectivity</h2>
             <p>
-              Palm Jumeirah represents a unique investment proposition:
+              Palm Jumeirah offers multiple transportation options connecting residents to mainland Dubai:
             </p>
             <ul>
-              <li>Trophy asset with global recognition</li>
-              <li>Strong capital appreciation history</li>
-              <li>Moderate rental yields (3-5%) offset by prestige value</li>
-              <li>Limited supply ensures value retention</li>
-              <li>Popular with ultra-high-net-worth individuals</li>
+              <li><strong>Palm Monorail:</strong> A 5.45km automated rail system running from Gateway Towers to Atlantis, connecting to Dubai Tram at Palm Gateway station</li>
+              <li><strong>Dubai Tram Integration:</strong> Palm Gateway station connects to the Dubai Tram, which links to Dubai Metro Red Line at JLT and DMCC stations</li>
+              <li><strong>Road Access:</strong> Multi-lane undersea tunnel and bridge system connecting to Sheikh Zayed Road (E11)</li>
+              <li><strong>Dubai Airport:</strong> 25-35 minutes to Dubai International Airport (DXB)</li>
+              <li><strong>Al Maktoum Airport:</strong> 35-45 minutes to Dubai World Central (DWC)</li>
             </ul>
+            <p>
+              Future infrastructure improvements include planned expansions to the Dubai Metro network 
+              that will further enhance connectivity to Palm Jumeirah, making the island even more 
+              accessible while maintaining its exclusive character.
+            </p>
+          </section>
+
+          <section id="investment-outlook">
+            <h2>Investment Outlook</h2>
+            <p>
+              Palm Jumeirah represents a unique investment proposition in the global luxury real estate 
+              market. Key factors supporting its investment appeal include:
+            </p>
+            <ul>
+              <li><strong>Trophy Asset Status:</strong> Global recognition as one of the world&apos;s most iconic addresses</li>
+              <li><strong>Finite Supply:</strong> No additional Fronds or land can be created, ensuring scarcity</li>
+              <li><strong>Strong Capital Appreciation:</strong> Consistent price growth over the past decade</li>
+              <li><strong>UHNW Demand:</strong> Continued interest from ultra-high-net-worth individuals and celebrities</li>
+              <li><strong>Tourism Hub:</strong> World-class hotels drive visitor traffic and short-term rental potential</li>
+              <li><strong>Golden Visa Eligibility:</strong> Properties above AED 2M qualify for UAE Golden Visa</li>
+              <li><strong>Established Infrastructure:</strong> Mature community with complete amenities and services</li>
+            </ul>
+            <p>
+              For investors seeking a prestigious address with strong value retention and long-term 
+              appreciation potential, Palm Jumeirah remains one of Dubai&apos;s premier investment 
+              destinations. The combination of limited supply, global brand recognition, and 
+              continued development of ultra-luxury projects ensures the island&apos;s position at 
+              the apex of Dubai&apos;s property market.
+            </p>
           </section>
         </div>
 
@@ -193,7 +303,7 @@ export default function PalmJumeirahPage() {
         <AuthorBox
           author={author}
           datePublished="2024-03-15"
-          dateModified="2024-12-10"
+          dateModified="2025-01-15"
         />
 
         <RelatedArticles articles={relatedArticles} />
