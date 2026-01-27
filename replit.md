@@ -74,15 +74,23 @@ npm run start # Production server
 - All content attributed to "PropertyWiki Team" for unified brand voice
 
 ## Recent Changes (January 2026)
-- Added stock images to all content pages (guides, locations, definitions, blog)
-- Created full blog post pages with tables, charts, and interactive elements:
-  - Dubai Property Market Outlook 2025 (market analysis with data tables and bar charts)
-  - Understanding Off-Plan Investment Risks (risk analysis with visual indicators)
-  - Golden Visa Changes 2025 (requirements tables and process timeline)
+- Added 5 new Dubai community pages:
+  - Palm Jumeirah (luxury island living)
+  - Business Bay (commercial/residential hub)
+  - JBR Jumeirah Beach Residence (beachfront lifestyle)
+  - Arabian Ranches (family villa community)
+  - DIFC (financial district living)
+- Added 4 new homeowner guides:
+  - DEWA Electricity & Water Guide (utility setup)
+  - AC Maintenance Dubai (cooling systems)
+  - Home Cleaning Services Dubai (maid services)
+  - Building Facilities & Amenities Dubai (community amenities)
+- Updated homepage navigation with new content links
+- Updated footer with expanded location and guide links
+- Updated sitemap with all new pages
+- Created full blog post pages with tables, charts, and interactive elements
 - Updated author attribution across all pages to "PropertyWiki Team"
-- Added descriptive alt text to all images for SEO and accessibility
 - Updated domain to propertywiki.ai in sitemap and all email addresses
-- Updated buying guides to mention Bayut, PropertyFinder, and Dubizzle portals
 
 ## Find Home Feature
 Interactive AI-powered property recommendation tool:
