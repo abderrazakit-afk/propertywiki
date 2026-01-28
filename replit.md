@@ -103,10 +103,11 @@ Floating chat assistant for real-time property questions:
 
 ## Find Home Feature
 Interactive AI-powered property recommendation tool:
-- "Find Home" button in header opens a modal
+- Dedicated page at `/find-home` (linked from header button)
+- Multi-step flow: describe lifestyle → phone verification → AI recommendations
 - User describes their ideal home and lifestyle in free-form text
 - Phone verification with OTP (currently using dummy code: 00000)
 - AI analyzes description and provides personalized recommendations
 - Results include property types, communities, price ranges (rent & buy), and highlights
 - Uses OpenAI API (requires OPENAI_API_KEY secret)
-- Located at: src/components/find-home/FindHomeModal.tsx, src/app/api/find-home/route.ts
+- Located at: src/app/find-home/page.tsx, src/app/api/find-home/route.ts
