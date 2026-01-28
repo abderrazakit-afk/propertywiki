@@ -93,6 +93,15 @@ npm run start # Production server
 - Updated domain to propertywiki.ai in sitemap and all email addresses
 - Added custom 404 page with branded design and helpful navigation links
 
+## Search Feature
+Fuzzy search across all site content:
+- Uses Fuse.js for fuzzy matching (handles typos and partial matches)
+- Searches titles, descriptions, and tags
+- Shows results in dropdown with category badges
+- Keyboard navigation (arrow keys + Enter)
+- Works on both desktop and mobile
+- Located at: src/components/search/SearchBar.tsx, src/lib/searchData.ts
+
 ## AI Chat Assistant
 Floating chat assistant for real-time property questions:
 - Chat button appears in bottom-right corner of all pages
