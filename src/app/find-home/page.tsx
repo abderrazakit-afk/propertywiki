@@ -5,7 +5,7 @@ import Link from 'next/link'
 import Breadcrumbs from '@/components/layout/Breadcrumbs'
 import { trackFindHomeStarted, trackFindHomeDescriptionSubmitted, trackFindHomePhoneVerified, trackFindHomeResultsViewed } from '@/lib/posthog'
 
-type Step = 'describe' | 'verify' | 'loading' | 'results'
+type Step = 'describe' | 'verify' | 'loading' | 'results' | 'limit-reached'
 
 interface Recommendation {
   propertyType: string
@@ -34,6 +34,8 @@ export default function FindHomePage() {
   const [otpError, setOtpError] = useState('')
   const [results, setResults] = useState<Results | null>(null)
   const [error, setError] = useState('')
+  const [remainingSearches, setRemainingSearches] = useState<number | null>(null)
+  const [checkingUsage, setCheckingUsage] = useState(false)
 
   const breadcrumbs = [{ name: 'Find Home', href: '/find-home' }]
 
@@ -47,13 +49,35 @@ export default function FindHomePage() {
     setStep('verify')
   }
 
-  const handleSendOtp = () => {
+  const handleSendOtp = async () => {
     if (phone.length < 8) {
       setOtpError('Please enter a valid phone number.')
       return
     }
     setOtpError('')
-    setOtpSent(true)
+    setCheckingUsage(true)
+
+    try {
+      const response = await fetch('/api/check-usage', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ phone, action: 'check' }),
+      })
+      const data = await response.json()
+
+      if (!data.canUse) {
+        setStep('limit-reached')
+        setCheckingUsage(false)
+        return
+      }
+
+      setRemainingSearches(data.remaining)
+      setOtpSent(true)
+    } catch {
+      setOtpError('Failed to verify. Please try again.')
+    } finally {
+      setCheckingUsage(false)
+    }
   }
 
   const handleVerifyOtp = async () => {
@@ -66,6 +90,20 @@ export default function FindHomePage() {
     setStep('loading')
 
     try {
+      const usageResponse = await fetch('/api/check-usage', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ phone, action: 'increment' }),
+      })
+      const usageData = await usageResponse.json()
+
+      if (!usageData.canUse) {
+        setStep('limit-reached')
+        return
+      }
+
+      setRemainingSearches(usageData.remaining)
+
       const response = await fetch('/api/find-home', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -96,6 +134,7 @@ export default function FindHomePage() {
     setOtpError('')
     setResults(null)
     setError('')
+    setRemainingSearches(null)
   }
 
   return (
@@ -180,14 +219,16 @@ export default function FindHomePage() {
                   />
                   <button
                     onClick={handleSendOtp}
-                    disabled={otpSent}
+                    disabled={otpSent || checkingUsage}
                     className={`px-6 py-4 rounded-xl font-medium transition-colors whitespace-nowrap ${
                       otpSent
                         ? 'bg-green-100 text-green-700 cursor-not-allowed'
+                        : checkingUsage
+                        ? 'bg-gray-100 text-gray-400 cursor-not-allowed'
                         : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
                     }`}
                   >
-                    {otpSent ? 'Sent!' : 'Send Code'}
+                    {otpSent ? 'Sent!' : checkingUsage ? 'Checking...' : 'Send Code'}
                   </button>
                 </div>
               </div>
@@ -208,6 +249,11 @@ export default function FindHomePage() {
                   <p className="text-sm text-gray-500 mt-2 text-center">
                     Demo mode: Enter <strong>00000</strong> as the code
                   </p>
+                  {remainingSearches !== null && (
+                    <p className="text-sm text-primary-600 mt-2 text-center font-medium">
+                      {remainingSearches} free {remainingSearches === 1 ? 'search' : 'searches'} remaining today
+                    </p>
+                  )}
                 </div>
               )}
 
@@ -247,6 +293,80 @@ export default function FindHomePage() {
             <p className="text-lg text-gray-600 max-w-md mx-auto">
               Our AI is analyzing your preferences and searching for the best property matches in Dubai.
             </p>
+          </div>
+        )}
+
+        {step === 'limit-reached' && (
+          <div className="bg-white rounded-2xl shadow-lg p-8 md:p-12">
+            <div className="text-center mb-8">
+              <div className="w-20 h-20 bg-amber-100 rounded-full flex items-center justify-center mx-auto mb-6">
+                <svg className="w-10 h-10 text-amber-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+                </svg>
+              </div>
+              <h1 className="text-3xl md:text-4xl font-serif font-bold text-gray-900 mb-3">Daily Limit Reached</h1>
+              <p className="text-lg text-gray-600 max-w-xl mx-auto mb-2">
+                You've used all 3 free home searches for today.
+              </p>
+              <p className="text-gray-500">
+                Upgrade to PropertyWiki Premium for unlimited searches and exclusive features.
+              </p>
+            </div>
+
+            <div className="bg-gradient-to-br from-primary-50 to-accent-50 rounded-xl p-6 mb-8">
+              <h3 className="font-semibold text-gray-900 mb-4 text-center">Premium Benefits</h3>
+              <ul className="space-y-3">
+                <li className="flex items-center gap-3">
+                  <svg className="w-5 h-5 text-green-600 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                  </svg>
+                  <span className="text-gray-700">Unlimited AI home recommendations</span>
+                </li>
+                <li className="flex items-center gap-3">
+                  <svg className="w-5 h-5 text-green-600 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                  </svg>
+                  <span className="text-gray-700">Priority support from our property experts</span>
+                </li>
+                <li className="flex items-center gap-3">
+                  <svg className="w-5 h-5 text-green-600 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                  </svg>
+                  <span className="text-gray-700">Exclusive market insights and price alerts</span>
+                </li>
+                <li className="flex items-center gap-3">
+                  <svg className="w-5 h-5 text-green-600 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                  </svg>
+                  <span className="text-gray-700">Personalized property shortlists</span>
+                </li>
+              </ul>
+            </div>
+
+            <div className="space-y-4">
+              <button
+                className="w-full bg-primary-600 text-white py-4 px-6 rounded-xl font-medium text-lg hover:bg-primary-700 transition-colors shadow-sm"
+              >
+                Upgrade to Premium
+              </button>
+              <p className="text-center text-sm text-gray-500">
+                Or come back tomorrow for 3 more free searches
+              </p>
+              <div className="flex gap-4 pt-2">
+                <Link
+                  href="/guides"
+                  className="flex-1 bg-gray-100 text-gray-700 py-3 px-4 rounded-xl font-medium hover:bg-gray-200 transition-colors text-center"
+                >
+                  Explore Guides
+                </Link>
+                <Link
+                  href="/locations/dubai"
+                  className="flex-1 bg-gray-100 text-gray-700 py-3 px-4 rounded-xl font-medium hover:bg-gray-200 transition-colors text-center"
+                >
+                  Browse Locations
+                </Link>
+              </div>
+            </div>
           </div>
         )}
 
