@@ -2,14 +2,25 @@
 
 import { useState } from 'react'
 import ChatModal from './ChatModal'
+import { trackChatOpened, trackChatClosed } from '@/lib/posthog'
 
 export default function ChatButton() {
   const [isOpen, setIsOpen] = useState(false)
 
+  const handleOpen = () => {
+    setIsOpen(true)
+    trackChatOpened()
+  }
+
+  const handleClose = () => {
+    setIsOpen(false)
+    trackChatClosed()
+  }
+
   return (
     <>
       <button
-        onClick={() => setIsOpen(true)}
+        onClick={handleOpen}
         className="fixed bottom-6 right-6 z-40 w-14 h-14 bg-primary-500 text-white rounded-full shadow-lg hover:bg-primary-600 hover:shadow-xl hover:scale-105 transition-all flex items-center justify-center group"
         aria-label="Open chat assistant"
       >
@@ -21,7 +32,7 @@ export default function ChatButton() {
         </span>
       </button>
       
-      <ChatModal isOpen={isOpen} onClose={() => setIsOpen(false)} />
+      <ChatModal isOpen={isOpen} onClose={handleClose} />
     </>
   )
 }

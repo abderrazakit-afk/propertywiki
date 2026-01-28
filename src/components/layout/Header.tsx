@@ -4,6 +4,7 @@ import Link from 'next/link'
 import { useState } from 'react'
 import { usePathname } from 'next/navigation'
 import SearchBar from '@/components/search/SearchBar'
+import { trackLanguageSwitch } from '@/lib/posthog'
 
 const navigation = [
   { name: 'Definitions', href: '/definitions' },
@@ -69,6 +70,7 @@ export default function Header() {
             <div className="hidden lg:flex lg:items-center lg:gap-3">
               <Link
                 href={arabicPath}
+                onClick={() => trackLanguageSwitch('en', 'ar')}
                 className="text-sm text-warm-600 hover:text-warm-800 transition-colors"
               >
                 العربية
@@ -127,7 +129,7 @@ export default function Header() {
                 <Link
                   href={arabicPath}
                   className="block py-3 px-3 text-base font-medium text-warm-500 hover:text-accent-600 hover:bg-warm-50 rounded-xl transition-colors"
-                  onClick={() => setMobileMenuOpen(false)}
+                  onClick={() => { setMobileMenuOpen(false); trackLanguageSwitch('en', 'ar'); }}
                 >
                   العربية
                 </Link>

@@ -3,6 +3,7 @@
 import { useState } from 'react'
 import Link from 'next/link'
 import Breadcrumbs from '@/components/layout/Breadcrumbs'
+import { trackFindHomeStarted, trackFindHomeDescriptionSubmitted, trackFindHomePhoneVerified, trackFindHomeResultsViewed } from '@/lib/posthog'
 
 type Step = 'describe' | 'verify' | 'loading' | 'results'
 
@@ -42,6 +43,7 @@ export default function FindHomePage() {
       return
     }
     setError('')
+    trackFindHomeDescriptionSubmitted(description.length)
     setStep('verify')
   }
 
@@ -60,6 +62,7 @@ export default function FindHomePage() {
       return
     }
     setOtpError('')
+    trackFindHomePhoneVerified()
     setStep('loading')
 
     try {
@@ -76,6 +79,7 @@ export default function FindHomePage() {
 
       const data = await response.json()
       setResults(data)
+      trackFindHomeResultsViewed()
       setStep('results')
     } catch (err) {
       setError(err instanceof Error ? err.message : 'Something went wrong')

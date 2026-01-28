@@ -1,8 +1,10 @@
 import type { Metadata } from 'next'
 import { Inter, Playfair_Display } from 'next/font/google'
 import Script from 'next/script'
+import { Suspense } from 'react'
 import './globals.css'
 import ConditionalLayout from '@/components/layout/ConditionalLayout'
+import PostHogProvider from '@/components/providers/PostHogProvider'
 
 const inter = Inter({ 
   subsets: ['latin'], 
@@ -82,9 +84,13 @@ export default function RootLayout({
         </Script>
       </head>
       <body className="min-h-screen flex flex-col font-sans">
-        <ConditionalLayout>
-          {children}
-        </ConditionalLayout>
+        <Suspense fallback={null}>
+          <PostHogProvider>
+            <ConditionalLayout>
+              {children}
+            </ConditionalLayout>
+          </PostHogProvider>
+        </Suspense>
       </body>
     </html>
   )

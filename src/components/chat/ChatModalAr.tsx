@@ -2,6 +2,7 @@
 
 import { useState, useRef, useEffect } from 'react'
 import Link from 'next/link'
+import { trackChatMessageSent } from '@/lib/posthog'
 
 interface Message {
   role: 'user' | 'assistant'
@@ -71,6 +72,7 @@ export default function ChatModalAr({ isOpen, onClose }: ChatModalProps) {
     if (!input.trim() || isLoading) return
 
     const userMessage = input.trim()
+    trackChatMessageSent(userMessage.length)
     setInput('')
     setMessages(prev => [...prev, { role: 'user', content: userMessage }])
     setIsLoading(true)

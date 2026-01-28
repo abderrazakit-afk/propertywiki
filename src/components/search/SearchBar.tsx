@@ -4,6 +4,7 @@ import { useState, useEffect, useRef, useCallback } from 'react'
 import { useRouter } from 'next/navigation'
 import Fuse, { FuseResult } from 'fuse.js'
 import { searchData, categoryLabels, categoryColors, type SearchItem } from '@/lib/searchData'
+import { trackSearch, trackSearchResultClick } from '@/lib/posthog'
 
 const fuse = new Fuse(searchData, {
   keys: [
@@ -41,16 +42,22 @@ export default function SearchBar({ isMobile = false, onClose }: SearchBarProps)
     setResults(searchResults)
     setIsOpen(searchResults.length > 0)
     setSelectedIndex(-1)
+    if (searchResults.length > 0) {
+      trackSearch(searchQuery, searchResults.length)
+    }
   }, [])
 
-  const handleSelect = useCallback((href: string) => {
+  const handleSelect = useCallback((href: string, title?: string) => {
+    if (title) {
+      trackSearchResultClick(query, title, href)
+    }
     router.push(href)
     setQuery('')
     setResults([])
     setIsOpen(false)
     setSelectedIndex(-1)
     onClose?.()
-  }, [router, onClose])
+  }, [router, onClose, query])
 
   const handleKeyDown = useCallback((e: React.KeyboardEvent) => {
     if (!isOpen || results.length === 0) return
@@ -67,7 +74,7 @@ export default function SearchBar({ isMobile = false, onClose }: SearchBarProps)
       case 'Enter':
         e.preventDefault()
         if (selectedIndex >= 0 && results[selectedIndex]) {
-          handleSelect(results[selectedIndex].item.href)
+          handleSelect(results[selectedIndex].item.href, results[selectedIndex].item.title)
         }
         break
       case 'Escape':
@@ -144,7 +151,7 @@ export default function SearchBar({ isMobile = false, onClose }: SearchBarProps)
                 id={`result-${index}`}
                 role="option"
                 aria-selected={selectedIndex === index}
-                onClick={() => handleSelect(result.item.href)}
+                onClick={() => handleSelect(result.item.href, result.item.title)}
                 className={`w-full px-4 py-3 text-left hover:bg-warm-50 transition-colors ${
                   selectedIndex === index ? 'bg-warm-50' : ''
                 }`}

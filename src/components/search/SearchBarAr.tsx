@@ -3,6 +3,7 @@
 import { useState, useEffect, useRef, useCallback } from 'react'
 import { useRouter } from 'next/navigation'
 import Fuse, { FuseResult } from 'fuse.js'
+import { trackSearch, trackSearchResultClick } from '@/lib/posthog'
 
 interface SearchItem {
   title: string
@@ -137,16 +138,22 @@ export default function SearchBarAr({ isMobile = false, onClose }: SearchBarProp
     setResults(searchResults)
     setIsOpen(searchResults.length > 0)
     setSelectedIndex(-1)
+    if (searchResults.length > 0) {
+      trackSearch(searchQuery, searchResults.length)
+    }
   }, [])
 
-  const handleSelect = useCallback((href: string) => {
+  const handleSelect = useCallback((href: string, title?: string) => {
+    if (title) {
+      trackSearchResultClick(query, title, href)
+    }
     router.push(href)
     setQuery('')
     setResults([])
     setIsOpen(false)
     setSelectedIndex(-1)
     onClose?.()
-  }, [router, onClose])
+  }, [router, onClose, query])
 
   const handleKeyDown = useCallback((e: React.KeyboardEvent) => {
     if (!isOpen || results.length === 0) return
@@ -163,7 +170,7 @@ export default function SearchBarAr({ isMobile = false, onClose }: SearchBarProp
       case 'Enter':
         e.preventDefault()
         if (selectedIndex >= 0 && results[selectedIndex]) {
-          handleSelect(results[selectedIndex].item.hrefAr)
+          handleSelect(results[selectedIndex].item.hrefAr, results[selectedIndex].item.titleAr)
         }
         break
       case 'Escape':
@@ -230,7 +237,7 @@ export default function SearchBarAr({ isMobile = false, onClose }: SearchBarProp
             {results.map((result, index) => (
               <button
                 key={result.item.hrefAr}
-                onClick={() => handleSelect(result.item.hrefAr)}
+                onClick={() => handleSelect(result.item.hrefAr, result.item.titleAr)}
                 className={`w-full px-4 py-3 text-right hover:bg-warm-50 transition-colors ${
                   selectedIndex === index ? 'bg-warm-50' : ''
                 }`}

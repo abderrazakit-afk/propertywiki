@@ -2,14 +2,25 @@
 
 import { useState } from 'react'
 import ChatModalAr from './ChatModalAr'
+import { trackChatOpened, trackChatClosed } from '@/lib/posthog'
 
 export default function ChatButtonAr() {
   const [isOpen, setIsOpen] = useState(false)
 
+  const handleOpen = () => {
+    setIsOpen(true)
+    trackChatOpened()
+  }
+
+  const handleClose = () => {
+    setIsOpen(false)
+    trackChatClosed()
+  }
+
   return (
     <>
       <button
-        onClick={() => setIsOpen(true)}
+        onClick={handleOpen}
         className="fixed bottom-6 left-6 w-14 h-14 bg-primary-500 hover:bg-primary-600 text-white rounded-full shadow-lg hover:shadow-xl transition-all flex items-center justify-center z-40 group"
         aria-label="افتح المحادثة"
       >
@@ -28,7 +39,7 @@ export default function ChatButtonAr() {
         </svg>
       </button>
 
-      <ChatModalAr isOpen={isOpen} onClose={() => setIsOpen(false)} />
+      <ChatModalAr isOpen={isOpen} onClose={handleClose} />
     </>
   )
 }
