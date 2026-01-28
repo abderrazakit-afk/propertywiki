@@ -119,7 +119,11 @@ Interactive AI-powered property recommendation tool:
 - AI analyzes description and provides personalized recommendations
 - Results include property types, communities, price ranges (rent & buy), and highlights
 - Uses OpenAI API (requires OPENAI_API_KEY secret)
-- Located at: src/app/find-home/page.tsx, src/app/api/find-home/route.ts
+- **Daily usage limit**: 3 free searches per phone number per day
+- Shows remaining searches after verification
+- Upgrade prompt when limit is reached with Premium benefits
+- Usage tracked in MongoDB (MONGODB_URI secret required)
+- Located at: src/app/find-home/page.tsx, src/app/api/find-home/route.ts, src/app/api/check-usage/route.ts, src/lib/mongodb.ts
 
 ## Arabic Version (RTL) - 100% Coverage
 Full Arabic translation of the website with RTL support (33 Arabic pages matching 33 English pages):
