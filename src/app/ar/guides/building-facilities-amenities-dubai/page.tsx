@@ -1,0 +1,164 @@
+import Link from 'next/link'
+import type { Metadata } from 'next'
+
+export const metadata: Metadata = {
+  title: 'مرافق المباني في دبي - دليل شامل | بروبرتي ويكي',
+  description: 'دليل مرافق المباني السكنية في دبي. الخدمات، رسوم الخدمات، وما يجب معرفته.',
+}
+
+export default function BuildingFacilitiesPage() {
+  return (
+    <div className="bg-white min-h-screen">
+      <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 py-12">
+        <nav className="mb-8">
+          <Link href="/ar" className="text-primary-600 hover:text-primary-700 text-sm">الرئيسية</Link>
+          <span className="mx-2 text-warm-400">/</span>
+          <Link href="/ar/guides" className="text-primary-600 hover:text-primary-700 text-sm">الأدلة</Link>
+          <span className="mx-2 text-warm-400">/</span>
+          <span className="text-warm-600 text-sm">مرافق المباني</span>
+        </nav>
+
+        <article>
+          <h1 className="text-4xl font-serif font-bold text-gray-900 mb-4">مرافق المباني السكنية في دبي</h1>
+          <p className="text-xl text-warm-600 mb-8">ما تحتاج معرفته عن خدمات ومرافق المجتمعات السكنية</p>
+
+          <section className="mb-10">
+            <h2 className="text-2xl font-serif font-bold text-gray-900 mb-4">المرافق الشائعة</h2>
+            <div className="grid md:grid-cols-2 gap-4">
+              <div className="flex items-start gap-3">
+                <span className="text-xl">🏊</span>
+                <div>
+                  <p className="font-medium text-gray-900">حمام سباحة</p>
+                  <p className="text-sm text-warm-600">متوفر في معظم الأبراج الحديثة</p>
+                </div>
+              </div>
+              <div className="flex items-start gap-3">
+                <span className="text-xl">🏋️</span>
+                <div>
+                  <p className="font-medium text-gray-900">صالة رياضية</p>
+                  <p className="text-sm text-warm-600">مجهزة بأحدث الأجهزة</p>
+                </div>
+              </div>
+              <div className="flex items-start gap-3">
+                <span className="text-xl">🅿️</span>
+                <div>
+                  <p className="font-medium text-gray-900">مواقف سيارات</p>
+                  <p className="text-sm text-warm-600">عادة 1-2 موقف لكل وحدة</p>
+                </div>
+              </div>
+              <div className="flex items-start gap-3">
+                <span className="text-xl">🛡️</span>
+                <div>
+                  <p className="font-medium text-gray-900">أمن 24 ساعة</p>
+                  <p className="text-sm text-warm-600">حراسة وكاميرات مراقبة</p>
+                </div>
+              </div>
+              <div className="flex items-start gap-3">
+                <span className="text-xl">🧒</span>
+                <div>
+                  <p className="font-medium text-gray-900">منطقة ألعاب أطفال</p>
+                  <p className="text-sm text-warm-600">داخلية أو خارجية</p>
+                </div>
+              </div>
+              <div className="flex items-start gap-3">
+                <span className="text-xl">🌳</span>
+                <div>
+                  <p className="font-medium text-gray-900">حدائق ومساحات خضراء</p>
+                  <p className="text-sm text-warm-600">للاسترخاء والتنزه</p>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <section className="mb-10">
+            <h2 className="text-2xl font-serif font-bold text-gray-900 mb-4">رسوم الخدمات</h2>
+            <p className="text-warm-700 leading-relaxed mb-4">
+              رسوم الخدمات هي مبالغ سنوية تُدفع لصيانة المرافق المشتركة. تختلف حسب المنطقة ونوع المبنى.
+            </p>
+            <div className="overflow-x-auto">
+              <table className="w-full text-sm">
+                <thead>
+                  <tr className="bg-warm-100">
+                    <th className="text-right py-3 px-4 font-semibold">نوع العقار</th>
+                    <th className="text-right py-3 px-4 font-semibold">رسوم الخدمات/قدم مربع</th>
+                  </tr>
+                </thead>
+                <tbody className="divide-y divide-warm-100">
+                  <tr>
+                    <td className="py-3 px-4">شقة عادية</td>
+                    <td className="py-3 px-4">12-18 درهم</td>
+                  </tr>
+                  <tr>
+                    <td className="py-3 px-4">شقة فاخرة</td>
+                    <td className="py-3 px-4">18-35 درهم</td>
+                  </tr>
+                  <tr>
+                    <td className="py-3 px-4">فيلا في مجتمع</td>
+                    <td className="py-3 px-4">3-8 درهم</td>
+                  </tr>
+                  <tr>
+                    <td className="py-3 px-4">تاون هاوس</td>
+                    <td className="py-3 px-4">5-12 درهم</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+
+          <section className="mb-10">
+            <h2 className="text-2xl font-serif font-bold text-gray-900 mb-4">ماذا تشمل رسوم الخدمات؟</h2>
+            <ul className="space-y-2 text-warm-700">
+              <li className="flex items-center gap-2">
+                <svg className="w-5 h-5 text-accent-600" fill="currentColor" viewBox="0 0 20 20">
+                  <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                </svg>
+                صيانة المرافق المشتركة (مسبح، صالة رياضية)
+              </li>
+              <li className="flex items-center gap-2">
+                <svg className="w-5 h-5 text-accent-600" fill="currentColor" viewBox="0 0 20 20">
+                  <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                </svg>
+                تنظيف المناطق المشتركة
+              </li>
+              <li className="flex items-center gap-2">
+                <svg className="w-5 h-5 text-accent-600" fill="currentColor" viewBox="0 0 20 20">
+                  <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                </svg>
+                خدمات الأمن والحراسة
+              </li>
+              <li className="flex items-center gap-2">
+                <svg className="w-5 h-5 text-accent-600" fill="currentColor" viewBox="0 0 20 20">
+                  <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                </svg>
+                صيانة المصاعد والبنية التحتية
+              </li>
+              <li className="flex items-center gap-2">
+                <svg className="w-5 h-5 text-accent-600" fill="currentColor" viewBox="0 0 20 20">
+                  <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                </svg>
+                تأمين المبنى
+              </li>
+            </ul>
+          </section>
+
+          <div className="bg-accent-50 rounded-2xl p-6 border border-accent-200">
+            <h3 className="font-semibold text-accent-800 mb-2">نصيحة للمشترين</h3>
+            <p className="text-accent-700 text-sm">
+              عند شراء عقار، اسأل عن رسوم الخدمات السنوية واحتسبها ضمن تكاليف الملكية. بعض المباني الفاخرة قد تصل رسومها إلى 30,000 درهم سنوياً.
+            </p>
+          </div>
+        </article>
+
+        <div className="mt-12 pt-8 border-t border-warm-200">
+          <p className="text-sm text-warm-500 mb-4">آخر تحديث: يناير 2026 | بواسطة فريق بروبرتي ويكي</p>
+          <Link href="/ar/guides" className="text-primary-600 hover:text-primary-700 font-medium inline-flex items-center">
+            <svg className="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+            </svg>
+            العودة للأدلة
+          </Link>
+        </div>
+      </div>
+    </div>
+  )
+}
