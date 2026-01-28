@@ -2,6 +2,7 @@
 
 import Link from 'next/link'
 import { useState } from 'react'
+import SearchBar from '@/components/search/SearchBar'
 
 const navigation = [
   { name: 'Definitions', href: '/definitions' },
@@ -61,28 +62,7 @@ export default function Header() {
             </div>
 
             <div className="hidden lg:flex lg:items-center lg:gap-3">
-              <div className="relative">
-                <label htmlFor="desktop-search" className="sr-only">Search articles</label>
-                <input
-                  id="desktop-search"
-                  type="search"
-                  placeholder="Search articles..."
-                  className="w-52 pl-10 pr-4 py-2.5 text-sm bg-warm-50 border border-warm-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-accent-500 focus:border-transparent focus:bg-white transition-all placeholder:text-warm-400"
-                />
-                <svg
-                  className="absolute left-3.5 top-1/2 -translate-y-1/2 h-4 w-4 text-warm-400"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
-                  />
-                </svg>
-              </div>
+              <SearchBar />
               <Link
                 href="/find-home"
                 className="bg-primary-600 text-white px-5 py-2.5 rounded-xl text-sm font-medium hover:bg-primary-700 transition-all flex items-center gap-2 shadow-sm hover:shadow-md"
@@ -145,28 +125,7 @@ export default function Header() {
                   </svg>
                   Find Home
                 </Link>
-                <div className="relative">
-                  <label htmlFor="mobile-search" className="sr-only">Search articles</label>
-                  <input
-                    id="mobile-search"
-                    type="search"
-                    placeholder="Search articles..."
-                    className="w-full px-4 py-3 pl-11 text-sm bg-warm-50 border border-warm-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-accent-500 placeholder:text-warm-400"
-                  />
-                  <svg
-                    className="absolute left-4 top-1/2 -translate-y-1/2 h-4 w-4 text-warm-400"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
-                    />
-                  </svg>
-                </div>
+                <SearchBar isMobile onClose={() => setMobileMenuOpen(false)} />
               </div>
             </div>
           )}
