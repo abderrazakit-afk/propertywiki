@@ -3,6 +3,7 @@ import { Inter, Playfair_Display } from 'next/font/google'
 import './globals.css'
 import Header from '@/components/layout/Header'
 import Footer from '@/components/layout/Footer'
+import ChatButton from '@/components/chat/ChatButton'
 
 const inter = Inter({ 
   subsets: ['latin'], 
@@ -73,6 +74,7 @@ export default function RootLayout({
           {children}
         </main>
         <Footer />
+        <ChatButton />
       </body>
     </html>
   )
