@@ -130,4 +130,11 @@ Full Arabic translation of the website with RTL support:
 - Language switcher in both English and Arabic headers
 - Translations managed in src/lib/translations.ts
 - Key components: HeaderAr, FooterAr, SearchBarAr, ChatModalAr
-- Content includes homepage, guides, communities, and definitions (partial)
+- Arabic pages available:
+  - Homepage (/ar)
+  - Guides index and detail pages (/ar/guides/*)
+  - Locations index and detail pages (/ar/locations/*)
+  - Definitions index and detail pages (/ar/definitions/*)
+  - Blog index (/ar/blog)
+  - Investing index (/ar/investing)
+  - Find Home feature (/ar/find-home)
