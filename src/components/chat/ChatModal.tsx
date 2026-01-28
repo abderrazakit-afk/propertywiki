@@ -1,10 +1,39 @@
 'use client'
 
 import { useState, useRef, useEffect } from 'react'
+import Link from 'next/link'
 
 interface Message {
   role: 'user' | 'assistant'
   content: string
+}
+
+function formatMessage(content: string) {
+  const linkRegex = /Learn more: (\/[^\s]+)/g
+  const parts = content.split(linkRegex)
+  
+  if (parts.length === 1) {
+    return <span>{content}</span>
+  }
+  
+  return (
+    <>
+      {parts.map((part, index) => {
+        if (part.startsWith('/')) {
+          return (
+            <Link 
+              key={index} 
+              href={part} 
+              className="text-primary-600 hover:text-primary-700 underline font-medium"
+            >
+              Read full guide
+            </Link>
+          )
+        }
+        return <span key={index}>{part}</span>
+      })}
+    </>
+  )
 }
 
 interface ChatModalProps {
@@ -109,7 +138,9 @@ export default function ChatModal({ isOpen, onClose }: ChatModalProps) {
                     : 'bg-white text-gray-800 shadow-sm border border-gray-100 rounded-bl-md'
                 }`}
               >
-                <p className="text-sm whitespace-pre-wrap leading-relaxed">{message.content}</p>
+                <p className="text-sm whitespace-pre-wrap leading-relaxed">
+                  {message.role === 'assistant' ? formatMessage(message.content) : message.content}
+                </p>
               </div>
             </div>
           ))}
