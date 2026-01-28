@@ -11,19 +11,35 @@ export default function Icon() {
     (
       <div
         style={{
-          fontSize: 24,
-          background: '#9b7260',
           width: '100%',
           height: '100%',
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
-          color: 'white',
+          background: '#9b7260',
           borderRadius: '4px',
-          fontWeight: 'bold',
         }}
       >
-        P
+        <svg
+          width="28"
+          height="28"
+          viewBox="0 0 40 40"
+          fill="none"
+        >
+          <path
+            d="M12 32V12L20 8L28 12V18"
+            stroke="white"
+            strokeWidth="3"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            fill="none"
+          />
+          <path
+            d="M14 18H22C24.2091 18 26 19.7909 26 22C26 24.2091 24.2091 26 22 26H14V18Z"
+            fill="white"
+          />
+          <rect x="14" y="26" width="3" height="6" fill="white" />
+        </svg>
       </div>
     ),
     {
