@@ -24,6 +24,8 @@ function formatMessage(content: string) {
             <Link 
               key={index} 
               href={part} 
+              target="_blank"
+              rel="noopener noreferrer"
               className="text-primary-600 hover:text-primary-700 underline font-medium"
             >
               Read full guide
