@@ -2,7 +2,6 @@
 
 import Link from 'next/link'
 import { useState } from 'react'
-import FindHomeModal from '../find-home/FindHomeModal'
 
 const navigation = [
   { name: 'Definitions', href: '/definitions' },
@@ -14,7 +13,6 @@ const navigation = [
 
 export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
-  const [findHomeOpen, setFindHomeOpen] = useState(false)
 
   return (
     <>
@@ -85,26 +83,26 @@ export default function Header() {
                   />
                 </svg>
               </div>
-              <button
-                onClick={() => setFindHomeOpen(true)}
+              <Link
+                href="/find-home"
                 className="bg-primary-600 text-white px-5 py-2.5 rounded-xl text-sm font-medium hover:bg-primary-700 transition-all flex items-center gap-2 shadow-sm hover:shadow-md"
               >
                 <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
                 </svg>
                 Find Home
-              </button>
+              </Link>
             </div>
 
             <div className="lg:hidden flex items-center gap-2">
-              <button
-                onClick={() => setFindHomeOpen(true)}
+              <Link
+                href="/find-home"
                 className="bg-primary-600 text-white p-2.5 rounded-xl shadow-sm"
               >
                 <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
                 </svg>
-              </button>
+              </Link>
               <button
                 type="button"
                 className="p-2.5 text-warm-600 hover:bg-warm-50 rounded-xl transition-colors"
@@ -137,18 +135,16 @@ export default function Header() {
                 ))}
               </div>
               <div className="mt-5 pt-5 border-t border-warm-100 space-y-4">
-                <button
-                  onClick={() => {
-                    setMobileMenuOpen(false)
-                    setFindHomeOpen(true)
-                  }}
+                <Link
+                  href="/find-home"
+                  onClick={() => setMobileMenuOpen(false)}
                   className="w-full bg-primary-600 text-white py-3.5 rounded-xl font-medium flex items-center justify-center gap-2 shadow-sm"
                 >
                   <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
                   </svg>
                   Find Home
-                </button>
+                </Link>
                 <div className="relative">
                   <label htmlFor="mobile-search" className="sr-only">Search articles</label>
                   <input
@@ -176,8 +172,6 @@ export default function Header() {
           )}
         </nav>
       </header>
-
-      <FindHomeModal isOpen={findHomeOpen} onClose={() => setFindHomeOpen(false)} />
     </>
   )
 }
