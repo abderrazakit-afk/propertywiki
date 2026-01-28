@@ -121,8 +121,8 @@ Interactive AI-powered property recommendation tool:
 - Uses OpenAI API (requires OPENAI_API_KEY secret)
 - Located at: src/app/find-home/page.tsx, src/app/api/find-home/route.ts
 
-## Arabic Version (RTL)
-Full Arabic translation of the website with RTL support:
+## Arabic Version (RTL) - 100% Coverage
+Full Arabic translation of the website with RTL support (33 Arabic pages matching 33 English pages):
 - Arabic pages accessible at `/ar/` prefix
 - RTL layout with Noto Sans Arabic font
 - Separate layout (src/app/ar/layout.tsx) with dir="rtl" and lang="ar"
@@ -130,11 +130,12 @@ Full Arabic translation of the website with RTL support:
 - Language switcher in both English and Arabic headers
 - Translations managed in src/lib/translations.ts
 - Key components: HeaderAr, FooterAr, SearchBarAr, ChatModalAr
-- Arabic pages available:
+- Full Arabic coverage includes:
   - Homepage (/ar)
-  - Guides index and detail pages (/ar/guides/*)
-  - Locations index and detail pages (/ar/locations/*)
-  - Definitions index and detail pages (/ar/definitions/*)
-  - Blog index (/ar/blog)
+  - All guide pages (/ar/guides/*): How to buy, sell, rent property, DEWA guide, AC maintenance, home cleaning, building facilities
+  - All location pages (/ar/locations/*): Dubai Marina, Palm Jumeirah, Downtown Dubai, Business Bay, JBR, Arabian Ranches, DIFC
+  - All definition pages (/ar/definitions/*): Freehold, Leasehold, Off-plan
+  - All blog articles (/ar/blog/*): Dubai Market Outlook 2025, Golden Visa Changes, Off-plan Investment Risks
   - Investing index (/ar/investing)
   - Find Home feature (/ar/find-home)
+  - Company pages: About, Contact, Privacy Policy, Editorial Policy
