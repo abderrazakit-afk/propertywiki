@@ -93,6 +93,14 @@ npm run start # Production server
 - Updated domain to propertywiki.ai in sitemap and all email addresses
 - Added custom 404 page with branded design and helpful navigation links
 
+## AI Chat Assistant
+Floating chat assistant for real-time property questions:
+- Chat button appears in bottom-right corner of all pages
+- Opens modal with message history
+- AI responds with PropertyWiki content knowledge (communities, prices, buying process, utilities)
+- Uses OpenAI gpt-4.1-mini model
+- Located at: src/components/chat/ChatButton.tsx, src/components/chat/ChatModal.tsx, src/app/api/chat/route.ts
+
 ## Find Home Feature
 Interactive AI-powered property recommendation tool:
 - "Find Home" button in header opens a modal
