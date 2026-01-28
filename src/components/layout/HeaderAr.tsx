@@ -2,26 +2,26 @@
 
 import Link from 'next/link'
 import { useState } from 'react'
-import SearchBar from '@/components/search/SearchBar'
+import SearchBarAr from '@/components/search/SearchBarAr'
 
 const navigation = [
-  { name: 'Definitions', href: '/definitions' },
-  { name: 'Locations', href: '/locations' },
-  { name: 'Guides', href: '/guides' },
-  { name: 'Investing', href: '/investing' },
-  { name: 'Blog', href: '/blog' },
+  { name: 'التعريفات', href: '/ar/definitions' },
+  { name: 'المواقع', href: '/ar/locations' },
+  { name: 'الأدلة', href: '/ar/guides' },
+  { name: 'الاستثمار', href: '/ar/investing' },
+  { name: 'المدونة', href: '/ar/blog' },
 ]
 
-export default function Header() {
+export default function HeaderAr() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
 
   return (
     <>
       <header className="bg-white/95 backdrop-blur-md border-b border-warm-100 sticky top-0 z-50">
-        <nav className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8" aria-label="Main navigation">
+        <nav className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8" aria-label="التنقل الرئيسي">
           <div className="flex h-18 items-center justify-between py-4">
             <div className="flex items-center">
-              <Link href="/" className="flex items-center space-x-3 group">
+              <Link href="/ar" className="flex items-center space-x-3 space-x-reverse group">
                 <svg 
                   width="36" 
                   height="36" 
@@ -45,11 +45,11 @@ export default function Header() {
                   />
                   <rect x="14" y="26" width="3" height="6" fill="white"/>
                 </svg>
-                <span className="font-serif text-xl font-bold text-gray-900">PropertyWiki</span>
+                <span className="font-serif text-xl font-bold text-gray-900">بروبرتي ويكي</span>
               </Link>
             </div>
 
-            <div className="hidden lg:flex lg:items-center lg:space-x-1">
+            <div className="hidden lg:flex lg:items-center lg:space-x-1 lg:space-x-reverse">
               {navigation.map((item) => (
                 <Link
                   key={item.name}
@@ -63,26 +63,26 @@ export default function Header() {
 
             <div className="hidden lg:flex lg:items-center lg:gap-3">
               <Link
-                href="/ar"
+                href="/"
                 className="text-sm text-warm-600 hover:text-warm-800 transition-colors"
               >
-                العربية
+                English
               </Link>
-              <SearchBar />
+              <SearchBarAr />
               <Link
-                href="/find-home"
+                href="/ar/find-home"
                 className="bg-primary-600 text-white px-5 py-2.5 rounded-xl text-sm font-medium hover:bg-primary-700 transition-all flex items-center gap-2 shadow-sm hover:shadow-md"
               >
                 <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
                 </svg>
-                Find Home
+                ابحث عن منزل
               </Link>
             </div>
 
             <div className="lg:hidden flex items-center gap-2">
               <Link
-                href="/find-home"
+                href="/ar/find-home"
                 className="bg-primary-600 text-white p-2.5 rounded-xl shadow-sm"
               >
                 <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -94,7 +94,7 @@ export default function Header() {
                 className="p-2.5 text-warm-600 hover:bg-warm-50 rounded-xl transition-colors"
                 onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
               >
-                <span className="sr-only">Open menu</span>
+                <span className="sr-only">فتح القائمة</span>
                 <svg className="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   {mobileMenuOpen ? (
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
@@ -119,19 +119,26 @@ export default function Header() {
                     {item.name}
                   </Link>
                 ))}
+                <Link
+                  href="/"
+                  className="block py-3 px-3 text-base font-medium text-warm-500 hover:text-accent-600 hover:bg-warm-50 rounded-xl transition-colors"
+                  onClick={() => setMobileMenuOpen(false)}
+                >
+                  English
+                </Link>
               </div>
               <div className="mt-5 pt-5 border-t border-warm-100 space-y-4">
                 <Link
-                  href="/find-home"
+                  href="/ar/find-home"
                   onClick={() => setMobileMenuOpen(false)}
                   className="w-full bg-primary-600 text-white py-3.5 rounded-xl font-medium flex items-center justify-center gap-2 shadow-sm"
                 >
                   <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
                   </svg>
-                  Find Home
+                  ابحث عن منزل
                 </Link>
-                <SearchBar isMobile onClose={() => setMobileMenuOpen(false)} />
+                <SearchBarAr isMobile onClose={() => setMobileMenuOpen(false)} />
               </div>
             </div>
           )}

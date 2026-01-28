@@ -59,6 +59,7 @@ const config: Config = {
       fontFamily: {
         serif: ['var(--font-playfair)', 'Georgia', 'Times New Roman', 'serif'],
         sans: ['var(--font-inter)', 'system-ui', 'sans-serif'],
+        arabic: ['var(--font-arabic)', 'var(--font-inter)', 'system-ui', 'sans-serif'],
       },
       fontSize: {
         'body': ['1.0625rem', { lineHeight: '1.7' }],
