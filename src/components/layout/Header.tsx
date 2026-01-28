@@ -2,6 +2,7 @@
 
 import Link from 'next/link'
 import { useState } from 'react'
+import { usePathname } from 'next/navigation'
 import SearchBar from '@/components/search/SearchBar'
 
 const navigation = [
@@ -14,6 +15,10 @@ const navigation = [
 
 export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+  const pathname = usePathname()
+  
+  // Convert English path to Arabic path (add /ar prefix)
+  const arabicPath = `/ar${pathname === '/' ? '' : pathname}`
 
   return (
     <>
@@ -63,7 +68,7 @@ export default function Header() {
 
             <div className="hidden lg:flex lg:items-center lg:gap-3">
               <Link
-                href="/ar"
+                href={arabicPath}
                 className="text-sm text-warm-600 hover:text-warm-800 transition-colors"
               >
                 العربية
@@ -119,6 +124,13 @@ export default function Header() {
                     {item.name}
                   </Link>
                 ))}
+                <Link
+                  href={arabicPath}
+                  className="block py-3 px-3 text-base font-medium text-warm-500 hover:text-accent-600 hover:bg-warm-50 rounded-xl transition-colors"
+                  onClick={() => setMobileMenuOpen(false)}
+                >
+                  العربية
+                </Link>
               </div>
               <div className="mt-5 pt-5 border-t border-warm-100 space-y-4">
                 <Link
