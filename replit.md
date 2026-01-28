@@ -120,3 +120,14 @@ Interactive AI-powered property recommendation tool:
 - Results include property types, communities, price ranges (rent & buy), and highlights
 - Uses OpenAI API (requires OPENAI_API_KEY secret)
 - Located at: src/app/find-home/page.tsx, src/app/api/find-home/route.ts
+
+## Arabic Version (RTL)
+Full Arabic translation of the website with RTL support:
+- Arabic pages accessible at `/ar/` prefix
+- RTL layout with Noto Sans Arabic font
+- Separate layout (src/app/ar/layout.tsx) with dir="rtl" and lang="ar"
+- Arabic header, footer, search bar, and chat components
+- Language switcher in both English and Arabic headers
+- Translations managed in src/lib/translations.ts
+- Key components: HeaderAr, FooterAr, SearchBarAr, ChatModalAr
+- Content includes homepage, guides, communities, and definitions (partial)
