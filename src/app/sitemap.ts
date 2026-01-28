@@ -2,118 +2,197 @@ import { MetadataRoute } from 'next'
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = 'https://propertywiki.ai'
+  const lastModified = new Date()
 
-  const staticPages = [
-    {
-      url: baseUrl,
-      lastModified: new Date(),
-      changeFrequency: 'weekly' as const,
-      priority: 1,
-    },
-    {
-      url: `${baseUrl}/definitions`,
-      lastModified: new Date(),
-      changeFrequency: 'weekly' as const,
-      priority: 0.9,
-    },
-    {
-      url: `${baseUrl}/locations`,
-      lastModified: new Date(),
-      changeFrequency: 'weekly' as const,
-      priority: 0.9,
-    },
-    {
-      url: `${baseUrl}/guides`,
-      lastModified: new Date(),
-      changeFrequency: 'weekly' as const,
-      priority: 0.9,
-    },
-    {
-      url: `${baseUrl}/investing`,
-      lastModified: new Date(),
-      changeFrequency: 'weekly' as const,
-      priority: 0.8,
-    },
-    {
-      url: `${baseUrl}/blog`,
-      lastModified: new Date(),
-      changeFrequency: 'daily' as const,
-      priority: 0.8,
-    },
-    {
-      url: `${baseUrl}/about`,
-      lastModified: new Date(),
-      changeFrequency: 'monthly' as const,
-      priority: 0.5,
-    },
-    {
-      url: `${baseUrl}/contact`,
-      lastModified: new Date(),
-      changeFrequency: 'monthly' as const,
-      priority: 0.5,
-    },
-    {
-      url: `${baseUrl}/privacy`,
-      lastModified: new Date(),
-      changeFrequency: 'yearly' as const,
-      priority: 0.3,
-    },
-    {
-      url: `${baseUrl}/editorial-policy`,
-      lastModified: new Date(),
-      changeFrequency: 'yearly' as const,
-      priority: 0.4,
-    },
+  const pages = [
+    { path: '', priority: 1, changeFreq: 'weekly' as const },
+    { path: '/definitions', priority: 0.9, changeFreq: 'weekly' as const },
+    { path: '/locations', priority: 0.9, changeFreq: 'weekly' as const },
+    { path: '/guides', priority: 0.9, changeFreq: 'weekly' as const },
+    { path: '/investing', priority: 0.8, changeFreq: 'weekly' as const },
+    { path: '/blog', priority: 0.8, changeFreq: 'daily' as const },
+    { path: '/find-home', priority: 0.8, changeFreq: 'monthly' as const },
+    { path: '/about', priority: 0.5, changeFreq: 'monthly' as const },
+    { path: '/contact', priority: 0.5, changeFreq: 'monthly' as const },
+    { path: '/privacy', priority: 0.3, changeFreq: 'yearly' as const },
+    { path: '/editorial-policy', priority: 0.4, changeFreq: 'yearly' as const },
   ]
 
   const definitions = [
-    { slug: 'freehold-property', lastModified: '2024-12-10' },
-    { slug: 'leasehold', lastModified: '2024-11-20' },
-    { slug: 'off-plan-property', lastModified: '2024-11-15' },
+    'freehold-property',
+    'leasehold',
+    'off-plan-property',
   ]
 
   const locations = [
-    { path: 'dubai', lastModified: '2025-01-27' },
-    { path: 'dubai/dubai-marina', lastModified: '2025-01-27' },
-    { path: 'dubai/downtown-dubai', lastModified: '2025-01-27' },
-    { path: 'dubai/palm-jumeirah', lastModified: '2025-01-27' },
-    { path: 'dubai/business-bay', lastModified: '2025-01-27' },
-    { path: 'dubai/jbr', lastModified: '2025-01-27' },
-    { path: 'dubai/arabian-ranches', lastModified: '2025-01-27' },
-    { path: 'dubai/difc', lastModified: '2025-01-27' },
+    'dubai',
+    'dubai/dubai-marina',
+    'dubai/downtown-dubai',
+    'dubai/palm-jumeirah',
+    'dubai/business-bay',
+    'dubai/jbr',
+    'dubai/arabian-ranches',
+    'dubai/difc',
   ]
 
   const guides = [
-    { slug: 'how-to-buy-property-in-dubai', lastModified: '2025-01-27' },
-    { slug: 'how-to-buy-property-in-uae', lastModified: '2025-01-27' },
-    { slug: 'how-to-sell-property-in-uae', lastModified: '2025-01-27' },
-    { slug: 'how-to-rent-property-in-uae', lastModified: '2025-01-27' },
-    { slug: 'dewa-electricity-water-guide', lastModified: '2025-01-27' },
-    { slug: 'ac-maintenance-dubai', lastModified: '2025-01-27' },
-    { slug: 'home-cleaning-services-dubai', lastModified: '2025-01-27' },
-    { slug: 'building-facilities-amenities-dubai', lastModified: '2025-01-27' },
+    'how-to-buy-property-in-dubai',
+    'how-to-buy-property-in-uae',
+    'how-to-sell-property-in-uae',
+    'how-to-rent-property-in-uae',
+    'dewa-electricity-water-guide',
+    'ac-maintenance-dubai',
+    'home-cleaning-services-dubai',
+    'building-facilities-amenities-dubai',
   ]
 
-  const definitionUrls = definitions.map((def) => ({
-    url: `${baseUrl}/definitions/${def.slug}`,
-    lastModified: new Date(def.lastModified),
-    changeFrequency: 'monthly' as const,
-    priority: 0.7,
-  }))
+  const blogPosts = [
+    'dubai-market-outlook-2025',
+    'golden-visa-changes-2024',
+    'off-plan-investment-risks',
+  ]
 
-  const locationUrls = locations.map((loc) => ({
-    url: `${baseUrl}/locations/${loc.path}`,
-    lastModified: new Date(loc.lastModified),
-    changeFrequency: 'weekly' as const,
-    priority: 0.8,
-  }))
+  const sitemapEntries: MetadataRoute.Sitemap = []
 
-  const guideUrls = guides.map((guide) => ({
-    url: `${baseUrl}/guides/${guide.slug}`,
-    lastModified: new Date(guide.lastModified),
-    changeFrequency: 'monthly' as const,
-    priority: 0.8,
-  }))
+  pages.forEach((page) => {
+    sitemapEntries.push({
+      url: `${baseUrl}${page.path}`,
+      lastModified,
+      changeFrequency: page.changeFreq,
+      priority: page.priority,
+      alternates: {
+        languages: {
+          en: `${baseUrl}${page.path}`,
+          ar: `${baseUrl}/ar${page.path}`,
+        },
+      },
+    })
 
-  return [...staticPages, ...definitionUrls, ...locationUrls, ...guideUrls]
+    sitemapEntries.push({
+      url: `${baseUrl}/ar${page.path}`,
+      lastModified,
+      changeFrequency: page.changeFreq,
+      priority: page.priority,
+      alternates: {
+        languages: {
+          en: `${baseUrl}${page.path}`,
+          ar: `${baseUrl}/ar${page.path}`,
+        },
+      },
+    })
+  })
+
+  definitions.forEach((slug) => {
+    sitemapEntries.push({
+      url: `${baseUrl}/definitions/${slug}`,
+      lastModified,
+      changeFrequency: 'monthly',
+      priority: 0.7,
+      alternates: {
+        languages: {
+          en: `${baseUrl}/definitions/${slug}`,
+          ar: `${baseUrl}/ar/definitions/${slug}`,
+        },
+      },
+    })
+
+    sitemapEntries.push({
+      url: `${baseUrl}/ar/definitions/${slug}`,
+      lastModified,
+      changeFrequency: 'monthly',
+      priority: 0.7,
+      alternates: {
+        languages: {
+          en: `${baseUrl}/definitions/${slug}`,
+          ar: `${baseUrl}/ar/definitions/${slug}`,
+        },
+      },
+    })
+  })
+
+  locations.forEach((path) => {
+    sitemapEntries.push({
+      url: `${baseUrl}/locations/${path}`,
+      lastModified,
+      changeFrequency: 'weekly',
+      priority: 0.8,
+      alternates: {
+        languages: {
+          en: `${baseUrl}/locations/${path}`,
+          ar: `${baseUrl}/ar/locations/${path}`,
+        },
+      },
+    })
+
+    sitemapEntries.push({
+      url: `${baseUrl}/ar/locations/${path}`,
+      lastModified,
+      changeFrequency: 'weekly',
+      priority: 0.8,
+      alternates: {
+        languages: {
+          en: `${baseUrl}/locations/${path}`,
+          ar: `${baseUrl}/ar/locations/${path}`,
+        },
+      },
+    })
+  })
+
+  guides.forEach((slug) => {
+    sitemapEntries.push({
+      url: `${baseUrl}/guides/${slug}`,
+      lastModified,
+      changeFrequency: 'monthly',
+      priority: 0.8,
+      alternates: {
+        languages: {
+          en: `${baseUrl}/guides/${slug}`,
+          ar: `${baseUrl}/ar/guides/${slug}`,
+        },
+      },
+    })
+
+    sitemapEntries.push({
+      url: `${baseUrl}/ar/guides/${slug}`,
+      lastModified,
+      changeFrequency: 'monthly',
+      priority: 0.8,
+      alternates: {
+        languages: {
+          en: `${baseUrl}/guides/${slug}`,
+          ar: `${baseUrl}/ar/guides/${slug}`,
+        },
+      },
+    })
+  })
+
+  blogPosts.forEach((slug) => {
+    sitemapEntries.push({
+      url: `${baseUrl}/blog/${slug}`,
+      lastModified,
+      changeFrequency: 'monthly',
+      priority: 0.7,
+      alternates: {
+        languages: {
+          en: `${baseUrl}/blog/${slug}`,
+          ar: `${baseUrl}/ar/blog/${slug}`,
+        },
+      },
+    })
+
+    sitemapEntries.push({
+      url: `${baseUrl}/ar/blog/${slug}`,
+      lastModified,
+      changeFrequency: 'monthly',
+      priority: 0.7,
+      alternates: {
+        languages: {
+          en: `${baseUrl}/blog/${slug}`,
+          ar: `${baseUrl}/ar/blog/${slug}`,
+        },
+      },
+    })
+  })
+
+  return sitemapEntries
 }
