@@ -48,7 +48,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   const blogPosts = [
     'dubai-market-outlook-2025',
-    'golden-visa-changes-2024',
+    'golden-visa-changes-2025',
     'off-plan-investment-risks',
   ]
 
