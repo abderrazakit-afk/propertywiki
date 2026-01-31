@@ -77,6 +77,18 @@ const relatedArticles = [
     category: 'Location',
     description: 'Overview of Dubai\'s property market and investment opportunities.',
   },
+  {
+    title: 'What is Leasehold Property?',
+    href: '/definitions/leasehold',
+    category: 'Definition',
+    description: 'Understanding leasehold ownership and how it differs from freehold.',
+  },
+  {
+    title: 'How to Rent Property in UAE',
+    href: '/guides/how-to-rent-property-in-uae',
+    category: 'Guide',
+    description: 'Complete guide to renting property in the UAE.',
+  },
 ]
 
 export default function HowToBuyPropertyDubaiPage() {
@@ -136,14 +148,15 @@ export default function HowToBuyPropertyDubaiPage() {
             <p>
               Yes, foreign nationals from any country can purchase property in Dubai. The UAE 
               government opened the real estate market to foreign ownership in 2002, making Dubai 
-              one of the most accessible property markets in the Middle East.
+              one of the most accessible property markets in the Middle East. All transactions are 
+              registered with the <a href="https://www.dubailand.gov.ae" target="_blank" rel="noopener noreferrer" className="text-primary-600 hover:underline">Dubai Land Department</a> (DLD).
             </p>
             <p>
               Key points about foreign property ownership in Dubai:
             </p>
             <ul>
               <li>No residency or visa requirements to purchase property</li>
-              <li>Full <a href="/definitions/freehold-property">freehold ownership</a> rights in designated zones</li>
+              <li>Full <Link href="/definitions/freehold-property" className="text-primary-600 hover:underline">freehold ownership</Link> rights in designated zones</li>
               <li>Property can be purchased remotely with power of attorney</li>
               <li>No restrictions on nationality, age, or number of properties</li>
               <li>Corporate entities can also purchase property</li>
@@ -162,10 +175,10 @@ export default function HowToBuyPropertyDubaiPage() {
                 <ul className="text-sm space-y-1">
                   <li><Link href="/locations/dubai/dubai-marina" className="text-primary-600 hover:underline">Dubai Marina</Link></li>
                   <li><Link href="/locations/dubai/downtown-dubai" className="text-primary-600 hover:underline">Downtown Dubai</Link></li>
-                  <li>Palm Jumeirah</li>
-                  <li>Jumeirah Beach Residence (JBR)</li>
-                  <li>Business Bay</li>
-                  <li>Arabian Ranches</li>
+                  <li><Link href="/locations/dubai/palm-jumeirah" className="text-primary-600 hover:underline">Palm Jumeirah</Link></li>
+                  <li><Link href="/locations/dubai/jbr" className="text-primary-600 hover:underline">Jumeirah Beach Residence (JBR)</Link></li>
+                  <li><Link href="/locations/dubai/business-bay" className="text-primary-600 hover:underline">Business Bay</Link></li>
+                  <li><Link href="/locations/dubai/arabian-ranches" className="text-primary-600 hover:underline">Arabian Ranches</Link></li>
                   <li>Dubai Hills Estate</li>
                 </ul>
               </div>
@@ -195,7 +208,7 @@ export default function HowToBuyPropertyDubaiPage() {
               Start your search on the UAE&apos;s leading property portals: <strong>Bayut</strong>, <strong>PropertyFinder</strong>, 
               and <strong>Dubizzle</strong>. These platforms offer comprehensive listings with filters for location, 
               price, property type, and amenities. Once you&apos;ve identified potential properties, work with a 
-              RERA-registered real estate agent to arrange viewings and guide you through the process.
+              <a href="https://www.rera.gov.ae" target="_blank" rel="noopener noreferrer" className="text-primary-600 hover:underline">RERA</a>-registered real estate agent to arrange viewings and guide you through the process.
             </p>
 
             <h3>Step 2: Make an Offer</h3>
@@ -218,7 +231,7 @@ export default function HowToBuyPropertyDubaiPage() {
 
             <h3>Step 5: Transfer at Dubai Land Department</h3>
             <p>
-              Both parties visit the DLD (or use a service center) to complete the transfer. 
+              Both parties visit the <a href="https://www.dubailand.gov.ae" target="_blank" rel="noopener noreferrer" className="text-primary-600 hover:underline">Dubai Land Department</a> (or use a service center) to complete the transfer. 
               Payment of the remaining balance and fees is made at this stage.
             </p>
 
@@ -307,7 +320,7 @@ export default function HowToBuyPropertyDubaiPage() {
           <section id="tips-for-buyers">
             <h2>Tips for Buyers</h2>
             <ul>
-              <li><strong>Work with registered agents:</strong> Only use RERA-registered real estate agents</li>
+              <li><strong>Work with registered agents:</strong> Only use <a href="https://www.rera.gov.ae" target="_blank" rel="noopener noreferrer" className="text-primary-600 hover:underline">RERA</a>-registered real estate agents</li>
               <li><strong>Verify the property:</strong> Check the title deed and ensure there are no 
               outstanding mortgages or disputes</li>
               <li><strong>Understand service charges:</strong> These can vary significantly between 

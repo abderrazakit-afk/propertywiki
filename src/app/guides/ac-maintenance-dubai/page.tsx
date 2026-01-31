@@ -1,5 +1,6 @@
 import { Metadata } from 'next'
 import Image from 'next/image'
+import Link from 'next/link'
 import Breadcrumbs from '@/components/layout/Breadcrumbs'
 import TableOfContents from '@/components/article/TableOfContents'
 import AuthorBox from '@/components/article/AuthorBox'
@@ -90,6 +91,18 @@ const relatedArticles = [
     category: 'Location',
     description: 'Comprehensive guide to Dubai Marina including property types and amenities.',
   },
+  {
+    title: 'Building Facilities & Amenities Guide',
+    href: '/guides/building-facilities-amenities-dubai',
+    category: 'Guide',
+    description: 'Understanding building amenities and service charges in Dubai.',
+  },
+  {
+    title: 'Home Cleaning Services Guide',
+    href: '/guides/home-cleaning-services-dubai',
+    category: 'Guide',
+    description: 'Find reliable home cleaning services in Dubai.',
+  },
 ]
 
 export default function ACMaintenanceDubaiPage() {
@@ -165,7 +178,7 @@ export default function ACMaintenanceDubaiPage() {
             </p>
             <ul>
               <li><strong>Energy Efficiency:</strong> A well-maintained AC uses 15-25% less energy than 
-              a neglected unit, directly reducing your DEWA bills</li>
+              a neglected unit, directly reducing your <Link href="/guides/dewa-electricity-water-guide" className="text-primary-600 hover:underline">DEWA</Link> bills</li>
               <li><strong>System Longevity:</strong> Regular maintenance can extend your AC lifespan 
               from 8-10 years to 15+ years</li>
               <li><strong>Air Quality:</strong> Clean filters and coils prevent dust, mold, and bacteria 
@@ -211,7 +224,7 @@ export default function ACMaintenanceDubaiPage() {
               Many newer Dubai developments use district cooling provided by <strong>Empower</strong> or 
               <strong>Emicool</strong>. Chilled water from a central plant cools your property through 
               fan coil units. You pay for usage (measured in Refrigeration Ton hours) rather than 
-              owning the equipment.
+              owning the equipment. District cooling is separate from your <a href="https://www.dewa.gov.ae" target="_blank" rel="noopener noreferrer" className="text-primary-600 hover:underline">DEWA</a> electricity bill.
             </p>
           </section>
 
@@ -398,7 +411,7 @@ export default function ACMaintenanceDubaiPage() {
             </div>
             <p>
               <strong>Tip for Renters:</strong> Check your tenancy contract to understand who is 
-              responsible for AC maintenance and district cooling bills.
+              responsible for AC maintenance and district cooling bills. See our <Link href="/guides/how-to-rent-property-in-uae" className="text-primary-600 hover:underline">renting guide</Link> for more on tenant responsibilities.
             </p>
           </section>
 

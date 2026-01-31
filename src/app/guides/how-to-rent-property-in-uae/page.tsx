@@ -1,5 +1,6 @@
 import { Metadata } from 'next'
 import Image from 'next/image'
+import Link from 'next/link'
 import Breadcrumbs from '@/components/layout/Breadcrumbs'
 import TableOfContents from '@/components/article/TableOfContents'
 import AuthorBox from '@/components/article/AuthorBox'
@@ -78,6 +79,18 @@ const relatedArticles = [
     href: '/locations/dubai/downtown-dubai',
     category: 'Location',
     description: 'Prime rental location in the heart of Dubai.',
+  },
+  {
+    title: 'DEWA Electricity & Water Guide',
+    href: '/guides/dewa-electricity-water-guide',
+    category: 'Guide',
+    description: 'Complete guide to setting up utilities in Dubai.',
+  },
+  {
+    title: 'Building Facilities & Amenities Guide',
+    href: '/guides/building-facilities-amenities-dubai',
+    category: 'Guide',
+    description: 'Understanding building amenities and service charges.',
   },
 ]
 
@@ -179,7 +192,7 @@ export default function HowToRentPropertyUAEPage() {
               Real estate agents can help find properties and negotiate terms. In the UAE:
             </p>
             <ul>
-              <li>Agents must be RERA-registered (Dubai) or DED-licensed (other emirates)</li>
+              <li>Agents must be <a href="https://www.rera.gov.ae" target="_blank" rel="noopener noreferrer" className="text-primary-600 hover:underline">RERA</a>-registered (Dubai) or DED-licensed (other emirates)</li>
               <li>Commission is typically 5% of annual rent (paid by tenant)</li>
               <li>Agents can arrange viewings and handle paperwork</li>
             </ul>
@@ -338,7 +351,7 @@ export default function HowToRentPropertyUAEPage() {
 
             <h3>Rent Increase Limits</h3>
             <p>
-              Landlords cannot increase rent arbitrarily. Dubai&apos;s RERA Rental Index Calculator determines
+              Landlords cannot increase rent arbitrarily. Dubai&apos;s <a href="https://www.rera.gov.ae" target="_blank" rel="noopener noreferrer" className="text-primary-600 hover:underline">RERA</a> Rental Index Calculator determines
               allowable increases based on market rates:
             </p>
             <ul>
@@ -373,7 +386,7 @@ export default function HowToRentPropertyUAEPage() {
             
             <h3>DEWA (Dubai)</h3>
             <p>
-              Dubai Electricity and Water Authority (DEWA) handles electricity and water. To connect:
+              <a href="https://www.dewa.gov.ae" target="_blank" rel="noopener noreferrer" className="text-primary-600 hover:underline">Dubai Electricity and Water Authority (DEWA)</a> handles electricity and water. To connect:
             </p>
             <ul>
               <li>Apply online, via DEWA app, or at a customer service center</li>
@@ -381,6 +394,9 @@ export default function HowToRentPropertyUAEPage() {
               <li>Pay security deposit (refundable when you leave)</li>
               <li>Connection is usually within 24 hours</li>
             </ul>
+            <p>
+              For more details, see our complete <Link href="/guides/dewa-electricity-water-guide" className="text-primary-600 hover:underline">DEWA electricity and water guide</Link>.
+            </p>
 
             <h3>Internet and TV</h3>
             <p>

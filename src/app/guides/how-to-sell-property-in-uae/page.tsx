@@ -1,5 +1,6 @@
 import { Metadata } from 'next'
 import Image from 'next/image'
+import Link from 'next/link'
 import Breadcrumbs from '@/components/layout/Breadcrumbs'
 import TableOfContents from '@/components/article/TableOfContents'
 import AuthorBox from '@/components/article/AuthorBox'
@@ -78,6 +79,18 @@ const relatedArticles = [
     category: 'Location',
     description: 'Market insights for Dubai Marina properties.',
   },
+  {
+    title: 'How to Rent Property in UAE',
+    href: '/guides/how-to-rent-property-in-uae',
+    category: 'Guide',
+    description: 'Complete guide to renting property in the UAE.',
+  },
+  {
+    title: 'Downtown Dubai Property Guide',
+    href: '/locations/dubai/downtown-dubai',
+    category: 'Location',
+    description: 'Premium location guide for Downtown Dubai properties.',
+  },
 ]
 
 export default function HowToSellPropertyUAEPage() {
@@ -153,9 +166,9 @@ export default function HowToSellPropertyUAEPage() {
               The key regulatory bodies are:
             </p>
             <ul>
-              <li><strong>Dubai Land Department (DLD)</strong> - For properties in Dubai</li>
+              <li><strong><a href="https://www.dubailand.gov.ae" target="_blank" rel="noopener noreferrer" className="text-primary-600 hover:underline">Dubai Land Department (DLD)</a></strong> - For properties in Dubai</li>
               <li><strong>Abu Dhabi Department of Municipalities and Transport</strong> - For Abu Dhabi properties</li>
-              <li><strong>RERA (Real Estate Regulatory Agency)</strong> - Regulates real estate agents and brokers</li>
+              <li><strong><a href="https://www.rera.gov.ae" target="_blank" rel="noopener noreferrer" className="text-primary-600 hover:underline">RERA (Real Estate Regulatory Agency)</a></strong> - Regulates real estate agents and brokers</li>
             </ul>
           </section>
 
@@ -235,7 +248,7 @@ export default function HowToSellPropertyUAEPage() {
             
             <h3>Step 1: Appoint a Real Estate Agent</h3>
             <p>
-              Choose a RERA-registered agent with experience in your property type and area.
+              Choose a <a href="https://www.rera.gov.ae" target="_blank" rel="noopener noreferrer" className="text-primary-600 hover:underline">RERA</a>-registered agent with experience in your property type and area.
               Sign a listing agreement specifying the commission rate (typically 2%) and listing period.
             </p>
 
@@ -275,7 +288,7 @@ export default function HowToSellPropertyUAEPage() {
 
             <h3>Step 7: Transfer at Dubai Land Department</h3>
             <p>
-              Both parties attend the DLD trustee office or authorized transfer center. The buyer pays
+              Both parties attend the <a href="https://www.dubailand.gov.ae" target="_blank" rel="noopener noreferrer" className="text-primary-600 hover:underline">Dubai Land Department</a> trustee office or authorized transfer center. The buyer pays
               the remaining balance, and ownership is transferred to their name.
             </p>
           </section>

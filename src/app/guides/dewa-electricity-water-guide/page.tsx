@@ -1,5 +1,6 @@
 import { Metadata } from 'next'
 import Image from 'next/image'
+import Link from 'next/link'
 import Breadcrumbs from '@/components/layout/Breadcrumbs'
 import TableOfContents from '@/components/article/TableOfContents'
 import AuthorBox from '@/components/article/AuthorBox'
@@ -90,6 +91,18 @@ const relatedArticles = [
     category: 'Location',
     description: 'Overview of Dubai\'s property market and popular neighborhoods.',
   },
+  {
+    title: 'Building Facilities & Amenities Guide',
+    href: '/guides/building-facilities-amenities-dubai',
+    category: 'Guide',
+    description: 'Understanding building amenities and service charges in Dubai.',
+  },
+  {
+    title: 'AC Maintenance in Dubai',
+    href: '/guides/ac-maintenance-dubai',
+    category: 'Guide',
+    description: 'Complete guide to maintaining your AC in Dubai\'s climate.',
+  },
 ]
 
 export default function DEWAGuidePage() {
@@ -158,7 +171,7 @@ export default function DEWAGuidePage() {
           <section id="dewa-overview">
             <h2>DEWA Overview</h2>
             <p>
-              The Dubai Electricity and Water Authority (DEWA) is the exclusive provider of electricity 
+              The <a href="https://www.dewa.gov.ae" target="_blank" rel="noopener noreferrer" className="text-primary-600 hover:underline">Dubai Electricity and Water Authority (DEWA)</a> is the exclusive provider of electricity 
               and water services across Dubai. Established in 1992, DEWA serves over 1 million customers 
               and is known for its world-class infrastructure and digital services.
             </p>
@@ -223,7 +236,8 @@ export default function DEWAGuidePage() {
             </div>
             <p>
               <strong>Note:</strong> All documents must be clear, valid, and in PDF or image format 
-              if applying online. The tenancy contract must be registered with Ejari to be accepted.
+              if applying online. The tenancy contract must be registered with Ejari to be accepted. 
+              For more information about renting and Ejari registration, see our <Link href="/guides/how-to-rent-property-in-uae" className="text-primary-600 hover:underline">guide to renting property in the UAE</Link>.
             </p>
           </section>
 
@@ -241,7 +255,7 @@ export default function DEWAGuidePage() {
 
             <h3>Step 2: Choose Registration Method</h3>
             <p>
-              Download the DEWA app or visit dewa.gov.ae. Create an account using your Emirates ID 
+              Download the DEWA app or visit <a href="https://www.dewa.gov.ae" target="_blank" rel="noopener noreferrer" className="text-primary-600 hover:underline">dewa.gov.ae</a>. Create an account using your Emirates ID 
               and mobile number if you do not already have one.
             </p>
 
@@ -400,10 +414,13 @@ export default function DEWAGuidePage() {
             </p>
             <ul>
               <li><strong>District Cooling:</strong> Billed separately by providers like Empower or Emicool based on BTU consumption</li>
-              <li><strong>Individual AC:</strong> Electricity cost included in your DEWA bill</li>
+              <li><strong>Individual AC:</strong> Electricity cost included in your <a href="https://www.dewa.gov.ae" target="_blank" rel="noopener noreferrer" className="text-primary-600 hover:underline">DEWA</a> bill</li>
               <li>District cooling is generally more energy-efficient but may have higher or lower costs depending on usage patterns</li>
               <li>Check with your landlord or building management which system your property uses</li>
             </ul>
+            <p>
+              Learn more about AC systems and maintenance in our <Link href="/guides/ac-maintenance-dubai" className="text-primary-600 hover:underline">AC maintenance guide</Link>.
+            </p>
 
             <h3>First-Time Setup Tips</h3>
             <ul>

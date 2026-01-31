@@ -97,6 +97,12 @@ const relatedArticles = [
     category: 'Guide',
     description: 'Step-by-step guide to renting property across the UAE.',
   },
+  {
+    title: 'Home Cleaning Services Guide',
+    href: '/guides/home-cleaning-services-dubai',
+    category: 'Guide',
+    description: 'Find reliable home cleaning services in Dubai.',
+  },
 ]
 
 export default function BuildingFacilitiesAmenitiesPage() {
@@ -168,7 +174,7 @@ export default function BuildingFacilitiesAmenitiesPage() {
             <p>
               Service charges are mandatory fees paid by property owners to cover the maintenance and 
               upkeep of common areas and shared facilities in residential buildings. In Dubai, these 
-              charges are regulated by RERA (Real Estate Regulatory Agency) and must be approved annually.
+              charges are regulated by <a href="https://www.rera.gov.ae" target="_blank" rel="noopener noreferrer" className="text-primary-600 hover:underline">RERA (Real Estate Regulatory Agency)</a> and must be approved annually.
             </p>
             
             <h3>Typical Service Charge Rates</h3>
@@ -225,7 +231,7 @@ export default function BuildingFacilitiesAmenitiesPage() {
             <div className="bg-yellow-50 border-l-4 border-yellow-400 p-4 my-6">
               <p className="text-sm text-yellow-700">
                 <strong>Note:</strong> Chiller/district cooling charges for AC are sometimes included in 
-                service charges but are often billed separately. Always clarify this when purchasing or 
+                service charges but are often billed separately. See our <Link href="/guides/ac-maintenance-dubai" className="text-primary-600 hover:underline">AC maintenance guide</Link> for more on cooling systems. Always clarify this when purchasing or 
                 renting a property.
               </p>
             </div>
@@ -456,7 +462,7 @@ export default function BuildingFacilitiesAmenitiesPage() {
               <li><strong>Building Emergency Line:</strong> Available 24/7 for urgent issues</li>
               <li><strong>Civil Defense:</strong> 997 (fire emergencies)</li>
               <li><strong>Dubai Police:</strong> 999 (emergencies) or 901 (non-emergency)</li>
-              <li><strong>DEWA:</strong> 991 (electricity and water emergencies)</li>
+              <li><strong><a href="https://www.dewa.gov.ae" target="_blank" rel="noopener noreferrer" className="text-primary-600 hover:underline">DEWA</a>:</strong> 991 (electricity and water emergencies)</li>
               <li><strong>Dubai Municipality:</strong> 800 900 (pest control, health issues)</li>
             </ul>
           </section>

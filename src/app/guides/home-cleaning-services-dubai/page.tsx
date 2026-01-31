@@ -1,5 +1,6 @@
 import { Metadata } from 'next'
 import Image from 'next/image'
+import Link from 'next/link'
 import Breadcrumbs from '@/components/layout/Breadcrumbs'
 import TableOfContents from '@/components/article/TableOfContents'
 import AuthorBox from '@/components/article/AuthorBox'
@@ -89,6 +90,18 @@ const relatedArticles = [
     href: '/guides/how-to-rent-property-in-uae',
     category: 'Guide',
     description: 'Complete guide to renting apartments and villas in the UAE.',
+  },
+  {
+    title: 'Building Facilities & Amenities Guide',
+    href: '/guides/building-facilities-amenities-dubai',
+    category: 'Guide',
+    description: 'Understanding building amenities and service charges.',
+  },
+  {
+    title: 'Dubai Marina Property Guide',
+    href: '/locations/dubai/dubai-marina',
+    category: 'Location',
+    description: 'Comprehensive guide to Dubai Marina including property types.',
   },
 ]
 
@@ -347,7 +360,7 @@ export default function HomeCleaningServicesDubaiPage() {
             </ul>
             <p>
               Live-in arrangements are common for villas, especially in communities like 
-              Arabian Ranches, Emirates Hills, and Palm Jumeirah where properties include 
+              <Link href="/locations/dubai/arabian-ranches" className="text-primary-600 hover:underline">Arabian Ranches</Link>, Emirates Hills, and <Link href="/locations/dubai/palm-jumeirah" className="text-primary-600 hover:underline">Palm Jumeirah</Link> where properties include 
               maid&apos;s quarters.
             </p>
           </section>
@@ -413,7 +426,7 @@ export default function HomeCleaningServicesDubaiPage() {
               <li><strong>Pay Fairly and On Time:</strong> Reliable payment builds trust and 
               loyalty</li>
               <li><strong>Check Building Services:</strong> Many buildings offer resident 
-              cleaning services at competitive rates through their shared housekeeping staff</li>
+              cleaning services at competitive rates through their shared housekeeping staff. Learn more in our <Link href="/guides/building-facilities-amenities-dubai" className="text-primary-600 hover:underline">building facilities guide</Link></li>
             </ul>
           </section>
         </div>

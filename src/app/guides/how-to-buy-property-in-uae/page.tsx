@@ -80,6 +80,18 @@ const relatedArticles = [
     category: 'Definition',
     description: 'Understanding freehold ownership rights.',
   },
+  {
+    title: 'What is Leasehold Property?',
+    href: '/definitions/leasehold',
+    category: 'Definition',
+    description: 'Understanding leasehold ownership and how it differs from freehold.',
+  },
+  {
+    title: 'Dubai Marina Property Guide',
+    href: '/locations/dubai/dubai-marina',
+    category: 'Location',
+    description: 'Comprehensive guide to one of Dubai\'s most popular investment areas.',
+  },
 ]
 
 export default function HowToBuyPropertyUAEPage() {
@@ -149,7 +161,8 @@ export default function HowToBuyPropertyUAEPage() {
             <p>
               The United Arab Emirates has become one of the world&apos;s most attractive property markets for
               international investors. With tax-free ownership, world-class infrastructure, and strong rental
-              yields, the UAE offers compelling opportunities across its seven emirates.
+              yields, the UAE offers compelling opportunities across its seven emirates. Property transactions 
+              are registered with the <a href="https://www.dubailand.gov.ae" target="_blank" rel="noopener noreferrer" className="text-primary-600 hover:underline">Dubai Land Department</a> (for Dubai) or the respective emirate&apos;s land department.
             </p>
             <p>
               Key advantages of UAE property investment:
@@ -277,7 +290,7 @@ export default function HowToBuyPropertyUAEPage() {
               Begin your property search on the UAE&apos;s major real estate portals: <strong>Bayut</strong>, <strong>PropertyFinder</strong>, 
               and <strong>Dubizzle</strong>. These platforms list thousands of properties across Dubai, Abu Dhabi, 
               and other emirates with detailed photos, floor plans, and pricing. After shortlisting properties, 
-              work with a registered real estate agent (RERA-certified in Dubai) to arrange viewings and 
+              work with a registered real estate agent (<a href="https://www.rera.gov.ae" target="_blank" rel="noopener noreferrer" className="text-primary-600 hover:underline">RERA</a>-certified in Dubai) to arrange viewings and 
               negotiate on your behalf.
             </p>
 
@@ -307,7 +320,7 @@ export default function HowToBuyPropertyUAEPage() {
 
             <h3>6. Transfer of Ownership</h3>
             <p>
-              Complete the transfer at the relevant Land Department. Pay remaining funds and receive
+              Complete the transfer at the relevant Land Department (such as the <a href="https://www.dubailand.gov.ae" target="_blank" rel="noopener noreferrer" className="text-primary-600 hover:underline">Dubai Land Department</a>). Pay remaining funds and receive
               your title deed.
             </p>
           </section>
