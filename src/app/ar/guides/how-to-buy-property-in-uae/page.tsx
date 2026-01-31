@@ -4,6 +4,9 @@ import type { Metadata } from 'next'
 export const metadata: Metadata = {
   title: 'كيفية شراء عقار في الإمارات - دليل شامل | بروبرتي ويكي',
   description: 'دليل شامل لشراء العقارات في جميع إمارات الدولة. القوانين والإجراءات والمتطلبات.',
+  alternates: {
+    canonical: 'https://propertywiki.ai/ar/guides/how-to-buy-property-in-uae',
+  },
 }
 
 const relatedArticles = [

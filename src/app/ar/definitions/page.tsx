@@ -4,6 +4,9 @@ import type { Metadata } from 'next'
 export const metadata: Metadata = {
   title: 'تعريفات عقارية - بروبرتي ويكي',
   description: 'دليل شامل للمصطلحات العقارية في دبي والإمارات. فهم الملكية الحرة، حق الانتفاع، العقارات على المخطط، والمزيد.',
+  alternates: {
+    canonical: 'https://propertywiki.ai/ar/definitions',
+  },
 }
 
 const definitions = [

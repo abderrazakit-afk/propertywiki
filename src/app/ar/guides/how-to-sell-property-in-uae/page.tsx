@@ -4,6 +4,9 @@ import type { Metadata } from 'next'
 export const metadata: Metadata = {
   title: 'كيفية بيع عقار في الإمارات - دليل شامل | بروبرتي ويكي',
   description: 'دليل شامل لبيع العقارات في الإمارات. من التقييم إلى إتمام الصفقة، كل ما تحتاج معرفته.',
+  alternates: {
+    canonical: 'https://propertywiki.ai/ar/guides/how-to-sell-property-in-uae',
+  },
 }
 
 const relatedArticles = [

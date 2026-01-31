@@ -4,6 +4,9 @@ import type { Metadata } from 'next'
 export const metadata: Metadata = {
   title: 'دبي مارينا - دليل المنطقة السكنية | بروبرتي ويكي',
   description: 'دليل شامل لمنطقة دبي مارينا السكنية. الأسعار، المرافق، نمط الحياة، وكل ما تحتاج معرفته.',
+  alternates: {
+    canonical: 'https://propertywiki.ai/ar/locations/dubai/dubai-marina',
+  },
 }
 
 export default function DubaiMarinaPage() {

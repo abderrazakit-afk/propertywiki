@@ -4,6 +4,9 @@ import type { Metadata } from 'next'
 export const metadata: Metadata = {
   title: 'صيانة المكيفات في دبي - دليل شامل | بروبرتي ويكي',
   description: 'دليل صيانة أنظمة التكييف في دبي. نصائح للحفاظ على برودة منزلك وتقليل فواتير الكهرباء.',
+  alternates: {
+    canonical: 'https://propertywiki.ai/ar/guides/ac-maintenance-dubai',
+  },
 }
 
 const relatedArticles = [

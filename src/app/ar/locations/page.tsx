@@ -4,6 +4,9 @@ import type { Metadata } from 'next'
 export const metadata: Metadata = {
   title: 'مواقع عقارية في دبي - بروبرتي ويكي',
   description: 'استكشف أفضل المجتمعات السكنية في دبي. أدلة شاملة لكل حي تشمل الأسعار والمرافق ونمط الحياة.',
+  alternates: {
+    canonical: 'https://propertywiki.ai/ar/locations',
+  },
 }
 
 const locations = [

@@ -4,6 +4,9 @@ import type { Metadata } from 'next'
 export const metadata: Metadata = {
   title: 'الخليج التجاري (بزنس باي) - دليل المنطقة | بروبرتي ويكي',
   description: 'دليل شامل لمنطقة الخليج التجاري في دبي. مركز الأعمال والسكن الحديث.',
+  alternates: {
+    canonical: 'https://propertywiki.ai/ar/locations/dubai/business-bay',
+  },
 }
 
 export default function BusinessBayPage() {

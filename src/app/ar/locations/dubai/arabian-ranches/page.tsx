@@ -4,6 +4,9 @@ import type { Metadata } from 'next'
 export const metadata: Metadata = {
   title: 'المرابع العربية (Arabian Ranches) - دليل المنطقة | بروبرتي ويكي',
   description: 'دليل شامل لمنطقة المرابع العربية في دبي. الفلل العائلية والمجتمع الهادئ.',
+  alternates: {
+    canonical: 'https://propertywiki.ai/ar/locations/dubai/arabian-ranches',
+  },
 }
 
 export default function ArabianRanchesPage() {

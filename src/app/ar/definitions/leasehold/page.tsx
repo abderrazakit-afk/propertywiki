@@ -4,6 +4,9 @@ import type { Metadata } from 'next'
 export const metadata: Metadata = {
   title: 'حق الانتفاع (Leasehold) - تعريف ومعنى | بروبرتي ويكي',
   description: 'ما هو حق الانتفاع في دبي والإمارات؟ تعرف على مفهوم Leasehold والفرق بينه وبين الملكية الحرة.',
+  alternates: {
+    canonical: 'https://propertywiki.ai/ar/definitions/leasehold',
+  },
 }
 
 export default function LeaseholdDefinitionPage() {

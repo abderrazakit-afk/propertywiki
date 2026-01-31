@@ -4,6 +4,9 @@ import type { Metadata } from 'next'
 export const metadata: Metadata = {
   title: 'جميرا بيتش ريزيدنس (JBR) - دليل المنطقة | بروبرتي ويكي',
   description: 'دليل شامل لمنطقة JBR في دبي. الشاطئ، المطاعم، الأسعار ونمط الحياة.',
+  alternates: {
+    canonical: 'https://propertywiki.ai/ar/locations/dubai/jbr',
+  },
 }
 
 export default function JBRPage() {

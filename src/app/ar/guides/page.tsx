@@ -4,6 +4,9 @@ import type { Metadata } from 'next'
 export const metadata: Metadata = {
   title: 'أدلة عقارية - بروبرتي ويكي',
   description: 'أدلة شاملة لشراء وبيع واستئجار العقارات في دبي والإمارات. نصائح للمشترين والمستثمرين.',
+  alternates: {
+    canonical: 'https://propertywiki.ai/ar/guides',
+  },
 }
 
 const guides = [

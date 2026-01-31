@@ -4,6 +4,9 @@ import type { Metadata } from 'next'
 export const metadata: Metadata = {
   title: 'دليل ديوا للكهرباء والمياه في دبي | بروبرتي ويكي',
   description: 'دليل شامل لإعداد خدمات الكهرباء والمياه مع هيئة كهرباء ومياه دبي (ديوا). التسجيل والفواتير والنصائح.',
+  alternates: {
+    canonical: 'https://propertywiki.ai/ar/guides/dewa-electricity-water-guide',
+  },
 }
 
 const relatedArticles = [

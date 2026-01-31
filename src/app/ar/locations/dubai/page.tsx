@@ -4,6 +4,9 @@ import type { Metadata } from 'next'
 export const metadata: Metadata = {
   title: 'مناطق دبي السكنية - دليل المجتمعات | بروبرتي ويكي',
   description: 'استكشف أفضل المناطق السكنية في دبي. من المارينا إلى نخلة جميرا، اعرف أين تسكن.',
+  alternates: {
+    canonical: 'https://propertywiki.ai/ar/locations/dubai',
+  },
 }
 
 const communities = [

@@ -4,6 +4,9 @@ import type { Metadata } from 'next'
 export const metadata: Metadata = {
   title: 'مركز دبي المالي العالمي (DIFC) - دليل المنطقة | بروبرتي ويكي',
   description: 'دليل شامل لمنطقة DIFC في دبي. المركز المالي والفني والثقافي.',
+  alternates: {
+    canonical: 'https://propertywiki.ai/ar/locations/dubai/difc',
+  },
 }
 
 export default function DIFCPage() {

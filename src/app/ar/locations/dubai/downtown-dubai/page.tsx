@@ -4,6 +4,9 @@ import type { Metadata } from 'next'
 export const metadata: Metadata = {
   title: 'داون تاون دبي - دليل المنطقة السكنية | بروبرتي ويكي',
   description: 'دليل شامل لمنطقة داون تاون دبي. برج خليفة، دبي مول، الأسعار والمرافق.',
+  alternates: {
+    canonical: 'https://propertywiki.ai/ar/locations/dubai/downtown-dubai',
+  },
 }
 
 export default function DowntownDubaiPage() {

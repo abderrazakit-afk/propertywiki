@@ -4,6 +4,9 @@ import type { Metadata } from 'next'
 export const metadata: Metadata = {
   title: 'مخاطر الاستثمار في العقارات على المخطط | بروبرتي ويكي',
   description: 'تعرف على مخاطر شراء العقارات على المخطط في دبي وكيفية تجنبها. دليل شامل للمستثمرين.',
+  alternates: {
+    canonical: 'https://propertywiki.ai/ar/blog/off-plan-investment-risks',
+  },
 }
 
 export default function OffPlanRisksPage() {

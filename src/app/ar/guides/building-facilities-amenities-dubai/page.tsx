@@ -4,6 +4,9 @@ import type { Metadata } from 'next'
 export const metadata: Metadata = {
   title: 'مرافق المباني في دبي - دليل شامل | بروبرتي ويكي',
   description: 'دليل مرافق المباني السكنية في دبي. الخدمات، رسوم الخدمات، وما يجب معرفته.',
+  alternates: {
+    canonical: 'https://propertywiki.ai/ar/guides/building-facilities-amenities-dubai',
+  },
 }
 
 const relatedArticles = [

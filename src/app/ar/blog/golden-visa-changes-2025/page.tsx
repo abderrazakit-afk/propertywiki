@@ -4,6 +4,9 @@ import type { Metadata } from 'next'
 export const metadata: Metadata = {
   title: 'تغييرات الإقامة الذهبية 2025 | بروبرتي ويكي',
   description: 'آخر تحديثات الإقامة الذهبية في الإمارات لعام 2025. الشروط الجديدة والمتطلبات.',
+  alternates: {
+    canonical: 'https://propertywiki.ai/ar/blog/golden-visa-changes-2025',
+  },
 }
 
 export default function GoldenVisaChangesPage() {

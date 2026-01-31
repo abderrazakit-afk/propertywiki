@@ -4,6 +4,9 @@ import type { Metadata } from 'next'
 export const metadata: Metadata = {
   title: 'مدونة العقارات - بروبرتي ويكي',
   description: 'آخر أخبار سوق العقارات في دبي والإمارات. تحليلات وتوقعات من خبراء العقارات.',
+  alternates: {
+    canonical: 'https://propertywiki.ai/ar/blog',
+  },
 }
 
 const posts = [

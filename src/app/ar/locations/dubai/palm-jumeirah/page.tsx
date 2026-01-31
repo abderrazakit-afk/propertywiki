@@ -4,6 +4,9 @@ import type { Metadata } from 'next'
 export const metadata: Metadata = {
   title: 'نخلة جميرا - دليل المنطقة السكنية | بروبرتي ويكي',
   description: 'دليل شامل لمنطقة نخلة جميرا السكنية. الأسعار، الفلل، الشقق، والحياة الفاخرة على الجزيرة.',
+  alternates: {
+    canonical: 'https://propertywiki.ai/ar/locations/dubai/palm-jumeirah',
+  },
 }
 
 export default function PalmJumeirahPage() {

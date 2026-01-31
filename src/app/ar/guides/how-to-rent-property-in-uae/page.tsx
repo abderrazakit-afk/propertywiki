@@ -4,6 +4,9 @@ import type { Metadata } from 'next'
 export const metadata: Metadata = {
   title: 'كيفية استئجار عقار في الإمارات - دليل المستأجر | بروبرتي ويكي',
   description: 'دليل شامل لاستئجار العقارات في الإمارات. عقود الإيجار، إيجاري، حقوق المستأجر والمزيد.',
+  alternates: {
+    canonical: 'https://propertywiki.ai/ar/guides/how-to-rent-property-in-uae',
+  },
 }
 
 const relatedArticles = [

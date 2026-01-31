@@ -4,6 +4,9 @@ import type { Metadata } from 'next'
 export const metadata: Metadata = {
   title: 'العقارات على المخطط (Off-Plan) - تعريف ومعنى | بروبرتي ويكي',
   description: 'ما هي العقارات على المخطط في دبي؟ تعرف على مفهوم Off-Plan Property ومزاياه ومخاطره.',
+  alternates: {
+    canonical: 'https://propertywiki.ai/ar/definitions/off-plan-property',
+  },
 }
 
 export default function OffPlanDefinitionPage() {

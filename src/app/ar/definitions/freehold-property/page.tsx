@@ -4,6 +4,9 @@ import type { Metadata } from 'next'
 export const metadata: Metadata = {
   title: 'الملكية الحرة (Freehold) - تعريف ومعنى | بروبرتي ويكي',
   description: 'ما هي الملكية الحرة في دبي والإمارات؟ تعرف على مفهوم Freehold Property ومناطق التملك الحر.',
+  alternates: {
+    canonical: 'https://propertywiki.ai/ar/definitions/freehold-property',
+  },
 }
 
 export default function FreeholdDefinitionPage() {

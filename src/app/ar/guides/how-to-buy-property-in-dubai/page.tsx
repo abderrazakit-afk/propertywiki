@@ -4,6 +4,9 @@ import type { Metadata } from 'next'
 export const metadata: Metadata = {
   title: 'كيفية شراء عقار في دبي - دليل شامل 2026',
   description: 'دليل خطوة بخطوة لشراء العقارات في دبي. تعرف على المتطلبات والإجراءات والتكاليف للمقيمين والأجانب.',
+  alternates: {
+    canonical: 'https://propertywiki.ai/ar/guides/how-to-buy-property-in-dubai',
+  },
 }
 
 const relatedArticles = [

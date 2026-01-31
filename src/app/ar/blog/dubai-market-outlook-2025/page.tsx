@@ -4,6 +4,9 @@ import type { Metadata } from 'next'
 export const metadata: Metadata = {
   title: 'توقعات سوق دبي العقاري 2025 | بروبرتي ويكي',
   description: 'تحليل شامل لتوقعات سوق العقارات في دبي لعام 2025. الأسعار، الطلب، والفرص الاستثمارية.',
+  alternates: {
+    canonical: 'https://propertywiki.ai/ar/blog/dubai-market-outlook-2025',
+  },
 }
 
 export default function DubaiMarketOutlookPage() {
