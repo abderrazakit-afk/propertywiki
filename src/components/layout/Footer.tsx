@@ -1,6 +1,13 @@
 import Link from 'next/link'
 
 const footerNavigation = {
+  quickLinks: [
+    { name: 'Home', href: '/' },
+    { name: 'Arabic Version', href: '/ar' },
+    { name: 'Find Your Home', href: '/find-home' },
+    { name: 'All Guides', href: '/guides' },
+    { name: 'All Locations', href: '/locations' },
+  ],
   knowledge: [
     { name: 'All Definitions', href: '/definitions' },
     { name: 'Buying Guides', href: '/guides' },
@@ -36,7 +43,7 @@ export default function Footer() {
       <h2 id="footer-heading" className="sr-only">Footer</h2>
       
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-14 lg:py-20">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 lg:gap-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-10 lg:gap-12">
           <div className="lg:col-span-2">
             <Link href="/" className="flex items-center space-x-3 group">
               <svg 
@@ -76,6 +83,19 @@ export default function Footer() {
                 </div>
               ))}
             </div>
+          </div>
+
+          <div>
+            <h3 className="text-sm font-semibold text-gray-900 tracking-wider uppercase mb-5">Quick Links</h3>
+            <ul className="space-y-3.5">
+              {footerNavigation.quickLinks.map((item) => (
+                <li key={item.name}>
+                  <Link href={item.href} className="text-warm-600 hover:text-accent-600 transition-colors">
+                    {item.name}
+                  </Link>
+                </li>
+              ))}
+            </ul>
           </div>
 
           <div>

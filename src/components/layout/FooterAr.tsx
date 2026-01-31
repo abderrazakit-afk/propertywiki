@@ -1,6 +1,13 @@
 import Link from 'next/link'
 
 const footerLinks = {
+  روابط_سريعة: [
+    { name: 'الصفحة الرئيسية', href: '/ar' },
+    { name: 'English Version', href: '/' },
+    { name: 'ابحث عن منزلك', href: '/ar/find-home' },
+    { name: 'جميع الأدلة', href: '/ar/guides' },
+    { name: 'جميع المواقع', href: '/ar/locations' },
+  ],
   الأدلة: [
     { name: 'كيفية شراء عقار في دبي', href: '/ar/guides/how-to-buy-property-in-dubai' },
     { name: 'كيفية بيع عقار في الإمارات', href: '/ar/guides/how-to-sell-property-in-uae' },
@@ -30,7 +37,7 @@ export default function FooterAr() {
   return (
     <footer className="bg-warm-900 text-warm-100">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16">
-        <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-8 lg:gap-12">
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8 lg:gap-12">
           <div className="col-span-2 lg:col-span-1">
             <Link href="/ar" className="flex items-center space-x-3 space-x-reverse mb-6">
               <svg 
