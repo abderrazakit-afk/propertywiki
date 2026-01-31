@@ -29,9 +29,6 @@ export const metadata: Metadata = {
   authors: [{ name: 'PropertyWiki Team' }],
   creator: 'PropertyWiki',
   publisher: 'PropertyWiki',
-  alternates: {
-    canonical: 'https://propertywiki.ai',
-  },
   openGraph: {
     type: 'website',
     locale: 'en_US',

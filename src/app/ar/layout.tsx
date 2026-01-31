@@ -19,13 +19,6 @@ export const metadata: Metadata = {
   description: 'بروبرتي ويكي هو المصدر الموثوق للمعرفة العقارية. استكشف تعريفات العقارات، أدلة المواقع، استراتيجيات الاستثمار، ورؤى الخبراء.',
   keywords: ['عقارات', 'دبي', 'شراء عقار', 'استثمار عقاري', 'إيجار دبي'],
   authors: [{ name: 'فريق بروبرتي ويكي' }],
-  alternates: {
-    canonical: 'https://propertywiki.ai/ar',
-    languages: {
-      'en': 'https://propertywiki.ai',
-      'ar': 'https://propertywiki.ai/ar',
-    },
-  },
   openGraph: {
     type: 'website',
     locale: 'ar_AE',
