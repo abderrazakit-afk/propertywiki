@@ -4,6 +4,9 @@ import Breadcrumbs from '@/components/layout/Breadcrumbs'
 export const metadata: Metadata = {
   title: 'Editorial Policy - PropertyWiki',
   description: 'PropertyWiki editorial standards and guidelines. Learn about our commitment to accuracy, transparency, and quality content.',
+  alternates: {
+    canonical: 'https://propertywiki.ai/editorial-policy',
+  },
 }
 
 export default function EditorialPolicyPage() {

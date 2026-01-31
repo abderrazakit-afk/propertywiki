@@ -4,6 +4,9 @@ import Breadcrumbs from '@/components/layout/Breadcrumbs'
 export const metadata: Metadata = {
   title: 'Contact PropertyWiki - Get in Touch',
   description: 'Contact the PropertyWiki team for questions, feedback, or partnership inquiries.',
+  alternates: {
+    canonical: 'https://propertywiki.ai/contact',
+  },
 }
 
 export default function ContactPage() {

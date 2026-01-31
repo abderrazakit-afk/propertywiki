@@ -4,6 +4,9 @@ import Breadcrumbs from '@/components/layout/Breadcrumbs'
 export const metadata: Metadata = {
   title: 'About PropertyWiki - Our Mission & Team',
   description: 'Learn about PropertyWiki, our mission to democratize real estate knowledge, and the expert team behind our content.',
+  alternates: {
+    canonical: 'https://propertywiki.ai/about',
+  },
 }
 
 export default function AboutPage() {

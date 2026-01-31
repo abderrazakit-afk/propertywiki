@@ -4,6 +4,9 @@ import Breadcrumbs from '@/components/layout/Breadcrumbs'
 export const metadata: Metadata = {
   title: 'Privacy Policy - PropertyWiki',
   description: 'PropertyWiki privacy policy. Learn how we collect, use, and protect your personal information.',
+  alternates: {
+    canonical: 'https://propertywiki.ai/privacy',
+  },
 }
 
 export default function PrivacyPage() {
