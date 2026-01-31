@@ -9,14 +9,20 @@ import JsonLd from '@/components/seo/JsonLd'
 import { generateArticleSchema, generateBreadcrumbSchema, generateFAQSchema } from '@/lib/seo'
 
 export const metadata: Metadata = {
-  title: 'Dubai Marina Property Guide - Prices, Investment & Lifestyle',
-  description: 'Complete guide to Dubai Marina real estate. Explore property prices, rental yields, amenities, and investment opportunities in this iconic waterfront community.',
+  title: 'Dubai Marina Property Guide - Prices & Investment',
+  description: 'Complete guide to Dubai Marina real estate. Explore property prices, rental yields, amenities, and investment opportunities in this waterfront community.',
   keywords: ['Dubai Marina', 'Dubai Marina property', 'Dubai Marina apartments', 'Dubai Marina prices'],
   alternates: {
     canonical: 'https://propertywiki.ai/locations/dubai/dubai-marina',
+    languages: {
+      'en': 'https://propertywiki.ai/locations/dubai/dubai-marina',
+      'ar': 'https://propertywiki.ai/ar/locations/dubai/dubai-marina',
+      'x-default': 'https://propertywiki.ai/locations/dubai/dubai-marina',
+    },
   },
   openGraph: {
-    title: 'Dubai Marina Property Guide - Prices, Investment & Lifestyle',
+    url: 'https://propertywiki.ai/locations/dubai/dubai-marina',
+    title: 'Dubai Marina Property Guide - Prices & Investment',
     description: 'Complete guide to Dubai Marina real estate with property prices, rental yields, and investment analysis.',
     type: 'article',
     publishedTime: '2024-02-20',

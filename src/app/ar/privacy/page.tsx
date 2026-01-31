@@ -4,8 +4,19 @@ import type { Metadata } from 'next'
 export const metadata: Metadata = {
   title: 'سياسة الخصوصية | بروبرتي ويكي',
   description: 'سياسة الخصوصية لموقع بروبرتي ويكي وكيفية حماية بياناتك.',
+  openGraph: {
+    url: 'https://propertywiki.ai/ar/privacy',
+    title: 'سياسة الخصوصية | بروبرتي ويكي',
+    description: 'سياسة الخصوصية لموقع بروبرتي ويكي وكيفية حماية بياناتك.',
+    locale: 'ar_AE',
+  },
   alternates: {
     canonical: 'https://propertywiki.ai/ar/privacy',
+    languages: {
+      'en': 'https://propertywiki.ai/privacy',
+      'ar': 'https://propertywiki.ai/ar/privacy',
+      'x-default': 'https://propertywiki.ai/privacy',
+    },
   },
 }
 

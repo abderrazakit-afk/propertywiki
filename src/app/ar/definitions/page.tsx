@@ -2,10 +2,21 @@ import Link from 'next/link'
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'تعريفات عقارية - بروبرتي ويكي',
-  description: 'دليل شامل للمصطلحات العقارية في دبي والإمارات. فهم الملكية الحرة، حق الانتفاع، العقارات على المخطط، والمزيد.',
+  title: 'تعريفات عقارية | بروبرتي ويكي',
+  description: 'دليل المصطلحات العقارية في دبي والإمارات. الملكية الحرة، حق الانتفاع، والعقارات على المخطط.',
+  openGraph: {
+    url: 'https://propertywiki.ai/ar/definitions',
+    title: 'تعريفات عقارية | بروبرتي ويكي',
+    description: 'دليل المصطلحات العقارية في دبي والإمارات. الملكية الحرة، حق الانتفاع، والعقارات على المخطط.',
+    locale: 'ar_AE',
+  },
   alternates: {
     canonical: 'https://propertywiki.ai/ar/definitions',
+    languages: {
+      'en': 'https://propertywiki.ai/definitions',
+      'ar': 'https://propertywiki.ai/ar/definitions',
+      'x-default': 'https://propertywiki.ai/definitions',
+    },
   },
 }
 

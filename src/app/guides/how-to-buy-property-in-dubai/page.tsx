@@ -9,19 +9,24 @@ import JsonLd from '@/components/seo/JsonLd'
 import { generateArticleSchema, generateBreadcrumbSchema, generateFAQSchema } from '@/lib/seo'
 
 export const metadata: Metadata = {
-  title: 'How to Buy Property in Dubai - Complete Guide for Foreigners',
-  description: 'Step-by-step guide to buying property in Dubai as a foreigner. Learn about freehold zones, visa requirements, legal processes, costs, and financing options.',
+  title: 'How to Buy Property in Dubai - Foreigner\'s Guide',
+  description: 'Step-by-step guide to buying property in Dubai as a foreigner. Learn about freehold zones, visa requirements, legal processes, and costs.',
   keywords: ['buy property Dubai', 'Dubai property guide', 'foreigner buy property Dubai', 'Dubai real estate'],
   alternates: {
     canonical: 'https://propertywiki.ai/guides/how-to-buy-property-in-dubai',
+    languages: {
+      'en': 'https://propertywiki.ai/guides/how-to-buy-property-in-dubai',
+      'ar': 'https://propertywiki.ai/ar/guides/how-to-buy-property-in-dubai',
+      'x-default': 'https://propertywiki.ai/guides/how-to-buy-property-in-dubai',
+    },
   },
   openGraph: {
-    title: 'How to Buy Property in Dubai - Complete Guide for Foreigners',
-    description: 'Step-by-step guide to buying property in Dubai as a foreigner, including freehold zones and legal processes.',
+    url: 'https://propertywiki.ai/guides/how-to-buy-property-in-dubai',
+    title: 'How to Buy Property in Dubai - Foreigner\'s Guide',
+    description: 'Step-by-step guide to buying property in Dubai as a foreigner.',
     type: 'article',
     publishedTime: '2024-03-01',
     modifiedTime: '2024-12-20',
-    url: 'https://propertywiki.ai/guides/how-to-buy-property-in-dubai',
   },
 }
 

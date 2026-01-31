@@ -4,8 +4,19 @@ import type { Metadata } from 'next'
 export const metadata: Metadata = {
   title: 'من نحن | بروبرتي ويكي',
   description: 'تعرف على بروبرتي ويكي - مصدرك الموثوق للمعلومات العقارية في الإمارات.',
+  openGraph: {
+    url: 'https://propertywiki.ai/ar/about',
+    title: 'من نحن | بروبرتي ويكي',
+    description: 'تعرف على بروبرتي ويكي - مصدرك الموثوق للمعلومات العقارية في الإمارات.',
+    locale: 'ar_AE',
+  },
   alternates: {
     canonical: 'https://propertywiki.ai/ar/about',
+    languages: {
+      'en': 'https://propertywiki.ai/about',
+      'ar': 'https://propertywiki.ai/ar/about',
+      'x-default': 'https://propertywiki.ai/about',
+    },
   },
 }
 

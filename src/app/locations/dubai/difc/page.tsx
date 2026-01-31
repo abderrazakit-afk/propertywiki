@@ -9,15 +9,21 @@ import JsonLd from '@/components/seo/JsonLd'
 import { generateArticleSchema, generateBreadcrumbSchema, generateFAQSchema } from '@/lib/seo'
 
 export const metadata: Metadata = {
-  title: 'DIFC Property Guide - Dubai International Financial Centre Real Estate',
-  description: 'Complete guide to DIFC (Dubai International Financial Centre) property. Explore luxury apartments, prices, rental yields, and investment opportunities in Dubai\'s premier financial hub.',
+  title: 'DIFC Property Guide - Prices & Investment',
+  description: 'Complete guide to DIFC property. Explore luxury apartments, prices, rental yields, and investment opportunities in Dubai\'s financial hub.',
   keywords: ['DIFC', 'DIFC property', 'DIFC apartments', 'Dubai International Financial Centre', 'DIFC real estate', 'DIFC investment', 'Gate Building Dubai'],
   alternates: {
     canonical: 'https://propertywiki.ai/locations/dubai/difc',
+    languages: {
+      'en': 'https://propertywiki.ai/locations/dubai/difc',
+      'ar': 'https://propertywiki.ai/ar/locations/dubai/difc',
+      'x-default': 'https://propertywiki.ai/locations/dubai/difc',
+    },
   },
   openGraph: {
-    title: 'DIFC Property Guide - Dubai International Financial Centre Real Estate',
-    description: 'Comprehensive guide to DIFC real estate featuring property prices, rental yields, and investment analysis in Dubai\'s financial hub.',
+    url: 'https://propertywiki.ai/locations/dubai/difc',
+    title: 'DIFC Property Guide - Prices & Investment',
+    description: 'Comprehensive guide to DIFC real estate with property prices and investment analysis.',
     type: 'article',
     publishedTime: '2024-03-15',
     modifiedTime: '2024-12-20',

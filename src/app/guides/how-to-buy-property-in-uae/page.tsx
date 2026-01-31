@@ -10,19 +10,24 @@ import JsonLd from '@/components/seo/JsonLd'
 import { generateArticleSchema, generateBreadcrumbSchema, generateFAQSchema } from '@/lib/seo'
 
 export const metadata: Metadata = {
-  title: 'How to Buy Property in UAE - Complete Buyer\'s Guide for All Emirates',
-  description: 'Comprehensive guide to buying property in the UAE including Dubai, Abu Dhabi, Sharjah, and other emirates. Learn about ownership laws, procedures, costs, and residency visas.',
+  title: 'How to Buy Property in UAE - Complete Buyer\'s Guide',
+  description: 'Comprehensive guide to buying property in the UAE including Dubai, Abu Dhabi, and Sharjah. Learn about ownership laws, procedures, costs, and visas.',
   keywords: ['buy property UAE', 'UAE property guide', 'Dubai real estate', 'Abu Dhabi property', 'foreigner buy property UAE'],
   alternates: {
     canonical: 'https://propertywiki.ai/guides/how-to-buy-property-in-uae',
+    languages: {
+      'en': 'https://propertywiki.ai/guides/how-to-buy-property-in-uae',
+      'ar': 'https://propertywiki.ai/ar/guides/how-to-buy-property-in-uae',
+      'x-default': 'https://propertywiki.ai/guides/how-to-buy-property-in-uae',
+    },
   },
   openGraph: {
+    url: 'https://propertywiki.ai/guides/how-to-buy-property-in-uae',
     title: 'How to Buy Property in UAE - Complete Buyer\'s Guide',
     description: 'Comprehensive guide to buying property across all UAE emirates for foreign investors.',
     type: 'article',
     publishedTime: '2024-04-01',
     modifiedTime: '2024-12-20',
-    url: 'https://propertywiki.ai/guides/how-to-buy-property-in-uae',
   },
 }
 

@@ -2,10 +2,21 @@ import Link from 'next/link'
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'كيفية شراء عقار في دبي - دليل شامل 2026',
-  description: 'دليل خطوة بخطوة لشراء العقارات في دبي. تعرف على المتطلبات والإجراءات والتكاليف للمقيمين والأجانب.',
+  title: 'كيفية شراء عقار في دبي 2026 | بروبرتي ويكي',
+  description: 'دليل خطوة بخطوة لشراء العقارات في دبي. المتطلبات والإجراءات والتكاليف للمقيمين والأجانب.',
+  openGraph: {
+    url: 'https://propertywiki.ai/ar/guides/how-to-buy-property-in-dubai',
+    title: 'كيفية شراء عقار في دبي 2026 | بروبرتي ويكي',
+    description: 'دليل خطوة بخطوة لشراء العقارات في دبي. المتطلبات والإجراءات والتكاليف للمقيمين والأجانب.',
+    locale: 'ar_AE',
+  },
   alternates: {
     canonical: 'https://propertywiki.ai/ar/guides/how-to-buy-property-in-dubai',
+    languages: {
+      'en': 'https://propertywiki.ai/guides/how-to-buy-property-in-dubai',
+      'ar': 'https://propertywiki.ai/ar/guides/how-to-buy-property-in-dubai',
+      'x-default': 'https://propertywiki.ai/guides/how-to-buy-property-in-dubai',
+    },
   },
 }
 

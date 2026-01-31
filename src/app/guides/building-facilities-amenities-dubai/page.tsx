@@ -10,19 +10,24 @@ import JsonLd from '@/components/seo/JsonLd'
 import { generateArticleSchema, generateBreadcrumbSchema, generateFAQSchema } from '@/lib/seo'
 
 export const metadata: Metadata = {
-  title: 'Building Facilities & Amenities Guide Dubai - Complete Overview',
-  description: 'Comprehensive guide to building facilities and amenities in Dubai. Learn about service charges, gym & pool access, parking, security features, concierge services, and community rules.',
+  title: 'Dubai Building Facilities & Amenities Guide',
+  description: 'Guide to building facilities and amenities in Dubai. Learn about service charges, gym & pool access, parking, security, and community rules.',
   keywords: ['Dubai building amenities', 'Dubai service charges', 'apartment facilities Dubai', 'building management Dubai', 'Dubai property amenities', 'residential facilities UAE'],
   alternates: {
     canonical: 'https://propertywiki.ai/guides/building-facilities-amenities-dubai',
+    languages: {
+      'en': 'https://propertywiki.ai/guides/building-facilities-amenities-dubai',
+      'ar': 'https://propertywiki.ai/ar/guides/building-facilities-amenities-dubai',
+      'x-default': 'https://propertywiki.ai/guides/building-facilities-amenities-dubai',
+    },
   },
   openGraph: {
-    title: 'Building Facilities & Amenities Guide Dubai - Complete Overview',
-    description: 'Everything you need to know about building facilities, service charges, amenities, and community rules in Dubai residential properties.',
+    url: 'https://propertywiki.ai/guides/building-facilities-amenities-dubai',
+    title: 'Dubai Building Facilities & Amenities Guide',
+    description: 'Everything about building facilities, service charges, and amenities in Dubai properties.',
     type: 'article',
     publishedTime: '2024-06-15',
     modifiedTime: '2025-01-15',
-    url: 'https://propertywiki.ai/guides/building-facilities-amenities-dubai',
     images: [
       {
         url: 'https://propertywiki.ai/images/building-facilities-amenities-dubai.jpg',

@@ -2,10 +2,21 @@ import Link from 'next/link'
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'أدلة عقارية - بروبرتي ويكي',
+  title: 'أدلة عقارية | بروبرتي ويكي',
   description: 'أدلة شاملة لشراء وبيع واستئجار العقارات في دبي والإمارات. نصائح للمشترين والمستثمرين.',
+  openGraph: {
+    url: 'https://propertywiki.ai/ar/guides',
+    title: 'أدلة عقارية | بروبرتي ويكي',
+    description: 'أدلة شاملة لشراء وبيع واستئجار العقارات في دبي والإمارات. نصائح للمشترين والمستثمرين.',
+    locale: 'ar_AE',
+  },
   alternates: {
     canonical: 'https://propertywiki.ai/ar/guides',
+    languages: {
+      'en': 'https://propertywiki.ai/guides',
+      'ar': 'https://propertywiki.ai/ar/guides',
+      'x-default': 'https://propertywiki.ai/guides',
+    },
   },
 }
 

@@ -10,19 +10,24 @@ import JsonLd from '@/components/seo/JsonLd'
 import { generateArticleSchema, generateBreadcrumbSchema, generateFAQSchema } from '@/lib/seo'
 
 export const metadata: Metadata = {
-  title: 'Home Cleaning Services in Dubai - Complete Guide 2025',
-  description: 'Find the best home cleaning services in Dubai. Compare prices, companies, and learn about hiring full-time maids, visa requirements, and tips for homeowners.',
+  title: 'Home Cleaning Services in Dubai - Guide 2025',
+  description: 'Find the best home cleaning services in Dubai. Compare prices, companies, and learn about hiring full-time maids and visa requirements.',
   keywords: ['home cleaning Dubai', 'maid services Dubai', 'cleaning companies Dubai', 'domestic helper UAE', 'housekeeping Dubai', 'deep cleaning Dubai'],
   alternates: {
     canonical: 'https://propertywiki.ai/guides/home-cleaning-services-dubai',
+    languages: {
+      'en': 'https://propertywiki.ai/guides/home-cleaning-services-dubai',
+      'ar': 'https://propertywiki.ai/ar/guides/home-cleaning-services-dubai',
+      'x-default': 'https://propertywiki.ai/guides/home-cleaning-services-dubai',
+    },
   },
   openGraph: {
-    title: 'Home Cleaning Services in Dubai - Complete Guide 2025',
-    description: 'Find the best home cleaning services in Dubai. Compare prices, companies, and learn about hiring full-time maids and visa requirements.',
+    url: 'https://propertywiki.ai/guides/home-cleaning-services-dubai',
+    title: 'Home Cleaning Services in Dubai - Guide 2025',
+    description: 'Find the best home cleaning services in Dubai. Compare prices and companies.',
     type: 'article',
     publishedTime: '2025-01-15',
     modifiedTime: '2025-01-27',
-    url: 'https://propertywiki.ai/guides/home-cleaning-services-dubai',
     images: [
       {
         url: 'https://propertywiki.ai/images/home-cleaning-services-dubai.jpg',

@@ -2,10 +2,21 @@ import Link from 'next/link'
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'الخليج التجاري (بزنس باي) - دليل المنطقة | بروبرتي ويكي',
+  title: 'الخليج التجاري (بزنس باي) | بروبرتي ويكي',
   description: 'دليل شامل لمنطقة الخليج التجاري في دبي. مركز الأعمال والسكن الحديث.',
+  openGraph: {
+    url: 'https://propertywiki.ai/ar/locations/dubai/business-bay',
+    title: 'الخليج التجاري (بزنس باي) | بروبرتي ويكي',
+    description: 'دليل شامل لمنطقة الخليج التجاري في دبي. مركز الأعمال والسكن الحديث.',
+    locale: 'ar_AE',
+  },
   alternates: {
     canonical: 'https://propertywiki.ai/ar/locations/dubai/business-bay',
+    languages: {
+      'en': 'https://propertywiki.ai/locations/dubai/business-bay',
+      'ar': 'https://propertywiki.ai/ar/locations/dubai/business-bay',
+      'x-default': 'https://propertywiki.ai/locations/dubai/business-bay',
+    },
   },
 }
 

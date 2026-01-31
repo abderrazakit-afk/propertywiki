@@ -4,8 +4,19 @@ import type { Metadata } from 'next'
 export const metadata: Metadata = {
   title: 'توقعات سوق دبي العقاري 2025 | بروبرتي ويكي',
   description: 'تحليل شامل لتوقعات سوق العقارات في دبي لعام 2025. الأسعار، الطلب، والفرص الاستثمارية.',
+  openGraph: {
+    url: 'https://propertywiki.ai/ar/blog/dubai-market-outlook-2025',
+    title: 'توقعات سوق دبي العقاري 2025 | بروبرتي ويكي',
+    description: 'تحليل شامل لتوقعات سوق العقارات في دبي لعام 2025. الأسعار، الطلب، والفرص الاستثمارية.',
+    locale: 'ar_AE',
+  },
   alternates: {
     canonical: 'https://propertywiki.ai/ar/blog/dubai-market-outlook-2025',
+    languages: {
+      'en': 'https://propertywiki.ai/blog/dubai-market-outlook-2025',
+      'ar': 'https://propertywiki.ai/ar/blog/dubai-market-outlook-2025',
+      'x-default': 'https://propertywiki.ai/blog/dubai-market-outlook-2025',
+    },
   },
 }
 

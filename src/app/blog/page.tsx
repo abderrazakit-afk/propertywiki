@@ -6,13 +6,19 @@ import JsonLd from '@/components/seo/JsonLd'
 import { generateBreadcrumbSchema } from '@/lib/seo'
 
 export const metadata: Metadata = {
-  title: 'Property Blog - Latest Real Estate News & Analysis',
+  title: 'Property Blog - Real Estate News & Analysis',
   description: 'Stay updated with the latest real estate news, market trends, and expert analysis from PropertyWiki\'s editorial team.',
   alternates: {
     canonical: 'https://propertywiki.ai/blog',
+    languages: {
+      'en': 'https://propertywiki.ai/blog',
+      'ar': 'https://propertywiki.ai/ar/blog',
+      'x-default': 'https://propertywiki.ai/blog',
+    },
   },
   openGraph: {
-    title: 'Property Blog - Latest Real Estate News & Analysis | PropertyWiki',
+    url: 'https://propertywiki.ai/blog',
+    title: 'Property Blog - Real Estate News & Analysis',
     description: 'Stay updated with the latest real estate news and market trends.',
   },
 }

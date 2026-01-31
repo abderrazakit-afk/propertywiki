@@ -2,10 +2,21 @@ import Link from 'next/link'
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'مركز دبي المالي العالمي (DIFC) - دليل المنطقة | بروبرتي ويكي',
+  title: 'مركز دبي المالي (DIFC) | بروبرتي ويكي',
   description: 'دليل شامل لمنطقة DIFC في دبي. المركز المالي والفني والثقافي.',
+  openGraph: {
+    url: 'https://propertywiki.ai/ar/locations/dubai/difc',
+    title: 'مركز دبي المالي (DIFC) | بروبرتي ويكي',
+    description: 'دليل شامل لمنطقة DIFC في دبي. المركز المالي والفني والثقافي.',
+    locale: 'ar_AE',
+  },
   alternates: {
     canonical: 'https://propertywiki.ai/ar/locations/dubai/difc',
+    languages: {
+      'en': 'https://propertywiki.ai/locations/dubai/difc',
+      'ar': 'https://propertywiki.ai/ar/locations/dubai/difc',
+      'x-default': 'https://propertywiki.ai/locations/dubai/difc',
+    },
   },
 }
 

@@ -9,15 +9,21 @@ import JsonLd from '@/components/seo/JsonLd'
 import { generateArticleSchema, generateBreadcrumbSchema, generateFAQSchema } from '@/lib/seo'
 
 export const metadata: Metadata = {
-  title: 'Palm Jumeirah Property Guide - Luxury Villas, Apartments & Prices 2025',
-  description: 'Complete guide to Palm Jumeirah real estate. Explore luxury villas, waterfront apartments, signature residences, prices, rental yields, and investment opportunities on Dubai\'s iconic palm-shaped island.',
+  title: 'Palm Jumeirah Property Guide - Villas & Prices 2025',
+  description: 'Complete guide to Palm Jumeirah real estate. Explore luxury villas, apartments, prices, rental yields, and investment opportunities on Dubai\'s iconic island.',
   keywords: ['Palm Jumeirah', 'Palm Jumeirah villas', 'Palm Jumeirah property', 'Dubai luxury real estate', 'Palm Jumeirah apartments', 'Atlantis residences', 'Dubai waterfront property', 'Palm Jumeirah prices'],
   alternates: {
     canonical: 'https://propertywiki.ai/locations/dubai/palm-jumeirah',
+    languages: {
+      'en': 'https://propertywiki.ai/locations/dubai/palm-jumeirah',
+      'ar': 'https://propertywiki.ai/ar/locations/dubai/palm-jumeirah',
+      'x-default': 'https://propertywiki.ai/locations/dubai/palm-jumeirah',
+    },
   },
   openGraph: {
-    title: 'Palm Jumeirah Property Guide - Luxury Villas, Apartments & Prices 2025',
-    description: 'Complete guide to Palm Jumeirah real estate with luxury property prices, rental yields, and investment analysis on Dubai\'s iconic man-made island.',
+    url: 'https://propertywiki.ai/locations/dubai/palm-jumeirah',
+    title: 'Palm Jumeirah Property Guide - Villas & Prices 2025',
+    description: 'Complete guide to Palm Jumeirah real estate with luxury property prices and investment analysis.',
     type: 'article',
     publishedTime: '2024-03-15',
     modifiedTime: '2025-01-15',

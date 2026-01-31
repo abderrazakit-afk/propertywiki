@@ -2,10 +2,21 @@ import Link from 'next/link'
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'مواقع عقارية في دبي - بروبرتي ويكي',
-  description: 'استكشف أفضل المجتمعات السكنية في دبي. أدلة شاملة لكل حي تشمل الأسعار والمرافق ونمط الحياة.',
+  title: 'مواقع عقارية في دبي | بروبرتي ويكي',
+  description: 'استكشف أفضل المجتمعات السكنية في دبي. أدلة شاملة لكل حي تشمل الأسعار والمرافق.',
+  openGraph: {
+    url: 'https://propertywiki.ai/ar/locations',
+    title: 'مواقع عقارية في دبي | بروبرتي ويكي',
+    description: 'استكشف أفضل المجتمعات السكنية في دبي. أدلة شاملة لكل حي تشمل الأسعار والمرافق.',
+    locale: 'ar_AE',
+  },
   alternates: {
     canonical: 'https://propertywiki.ai/ar/locations',
+    languages: {
+      'en': 'https://propertywiki.ai/locations',
+      'ar': 'https://propertywiki.ai/ar/locations',
+      'x-default': 'https://propertywiki.ai/locations',
+    },
   },
 }
 

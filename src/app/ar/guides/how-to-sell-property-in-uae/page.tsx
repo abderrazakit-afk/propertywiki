@@ -2,10 +2,21 @@ import Link from 'next/link'
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'كيفية بيع عقار في الإمارات - دليل شامل | بروبرتي ويكي',
+  title: 'كيفية بيع عقار في الإمارات | بروبرتي ويكي',
   description: 'دليل شامل لبيع العقارات في الإمارات. من التقييم إلى إتمام الصفقة، كل ما تحتاج معرفته.',
+  openGraph: {
+    url: 'https://propertywiki.ai/ar/guides/how-to-sell-property-in-uae',
+    title: 'كيفية بيع عقار في الإمارات | بروبرتي ويكي',
+    description: 'دليل شامل لبيع العقارات في الإمارات. من التقييم إلى إتمام الصفقة، كل ما تحتاج معرفته.',
+    locale: 'ar_AE',
+  },
   alternates: {
     canonical: 'https://propertywiki.ai/ar/guides/how-to-sell-property-in-uae',
+    languages: {
+      'en': 'https://propertywiki.ai/guides/how-to-sell-property-in-uae',
+      'ar': 'https://propertywiki.ai/ar/guides/how-to-sell-property-in-uae',
+      'x-default': 'https://propertywiki.ai/guides/how-to-sell-property-in-uae',
+    },
   },
 }
 

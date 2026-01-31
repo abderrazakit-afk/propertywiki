@@ -2,10 +2,21 @@ import Link from 'next/link'
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'مخاطر الاستثمار في العقارات على المخطط | بروبرتي ويكي',
-  description: 'تعرف على مخاطر شراء العقارات على المخطط في دبي وكيفية تجنبها. دليل شامل للمستثمرين.',
+  title: 'مخاطر العقارات على المخطط | بروبرتي ويكي',
+  description: 'تعرف على مخاطر شراء العقارات على المخطط في دبي وكيفية تجنبها. دليل للمستثمرين.',
+  openGraph: {
+    url: 'https://propertywiki.ai/ar/blog/off-plan-investment-risks',
+    title: 'مخاطر العقارات على المخطط | بروبرتي ويكي',
+    description: 'تعرف على مخاطر شراء العقارات على المخطط في دبي وكيفية تجنبها. دليل للمستثمرين.',
+    locale: 'ar_AE',
+  },
   alternates: {
     canonical: 'https://propertywiki.ai/ar/blog/off-plan-investment-risks',
+    languages: {
+      'en': 'https://propertywiki.ai/blog/off-plan-investment-risks',
+      'ar': 'https://propertywiki.ai/ar/blog/off-plan-investment-risks',
+      'x-default': 'https://propertywiki.ai/blog/off-plan-investment-risks',
+    },
   },
 }
 

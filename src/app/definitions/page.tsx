@@ -5,14 +5,20 @@ import JsonLd from '@/components/seo/JsonLd'
 import { generateBreadcrumbSchema } from '@/lib/seo'
 
 export const metadata: Metadata = {
-  title: 'Property Definitions - Real Estate Glossary',
-  description: 'Comprehensive glossary of real estate terms and definitions. Learn the meaning of property terminology from freehold to off-plan and everything in between.',
+  title: 'Property Definitions - Real Estate Terms',
+  description: 'Glossary of Dubai real estate terms. Learn freehold, leasehold, off-plan meanings.',
   alternates: {
     canonical: 'https://propertywiki.ai/definitions',
+    languages: {
+      'en': 'https://propertywiki.ai/definitions',
+      'ar': 'https://propertywiki.ai/ar/definitions',
+      'x-default': 'https://propertywiki.ai/definitions',
+    },
   },
   openGraph: {
-    title: 'Property Definitions - Real Estate Glossary | PropertyWiki',
-    description: 'Comprehensive glossary of real estate terms and definitions.',
+    url: 'https://propertywiki.ai/definitions',
+    title: 'Property Definitions - Real Estate Terms',
+    description: 'Glossary of Dubai real estate terms. Learn freehold, leasehold, off-plan meanings.',
   },
 }
 

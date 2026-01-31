@@ -2,10 +2,20 @@ import { Metadata } from 'next'
 import Breadcrumbs from '@/components/layout/Breadcrumbs'
 
 export const metadata: Metadata = {
-  title: 'Contact PropertyWiki - Get in Touch',
-  description: 'Contact the PropertyWiki team for questions, feedback, or partnership inquiries.',
+  title: 'Contact Us - PropertyWiki',
+  description: 'Contact PropertyWiki for questions, feedback, or partnership inquiries.',
   alternates: {
     canonical: 'https://propertywiki.ai/contact',
+    languages: {
+      'en': 'https://propertywiki.ai/contact',
+      'ar': 'https://propertywiki.ai/ar/contact',
+      'x-default': 'https://propertywiki.ai/contact',
+    },
+  },
+  openGraph: {
+    url: 'https://propertywiki.ai/contact',
+    title: 'Contact Us - PropertyWiki',
+    description: 'Contact PropertyWiki for questions, feedback, or partnership inquiries.',
   },
 }
 

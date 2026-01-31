@@ -10,14 +10,20 @@ import JsonLd from '@/components/seo/JsonLd'
 import { generateArticleSchema, generateBreadcrumbSchema, generateFAQSchema } from '@/lib/seo'
 
 export const metadata: Metadata = {
-  title: 'Golden Visa Changes 2025 - What Property Investors Need to Know',
-  description: 'Comprehensive guide to UAE Golden Visa updates for 2025. Learn about property investment requirements, application process, and benefits for foreign investors.',
+  title: 'Golden Visa Changes 2025 - Property Investor Guide',
+  description: 'Guide to UAE Golden Visa updates for 2025. Learn about property investment requirements, application process, and benefits for foreign investors.',
   keywords: ['UAE Golden Visa', 'Dubai Golden Visa property', 'UAE residency visa', 'property investor visa'],
   alternates: {
     canonical: 'https://propertywiki.ai/blog/golden-visa-changes-2025',
+    languages: {
+      'en': 'https://propertywiki.ai/blog/golden-visa-changes-2025',
+      'ar': 'https://propertywiki.ai/ar/blog/golden-visa-changes-2025',
+      'x-default': 'https://propertywiki.ai/blog/golden-visa-changes-2025',
+    },
   },
   openGraph: {
-    title: 'Golden Visa Changes 2025 - What Property Investors Need to Know',
+    url: 'https://propertywiki.ai/blog/golden-visa-changes-2025',
+    title: 'Golden Visa Changes 2025 - Property Investor Guide',
     description: 'Comprehensive guide to UAE Golden Visa updates for 2025.',
     type: 'article',
     publishedTime: '2025-01-05',

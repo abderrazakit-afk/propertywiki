@@ -2,10 +2,21 @@ import Link from 'next/link'
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'جميرا بيتش ريزيدنس (JBR) - دليل المنطقة | بروبرتي ويكي',
+  title: 'جميرا بيتش ريزيدنس (JBR) | بروبرتي ويكي',
   description: 'دليل شامل لمنطقة JBR في دبي. الشاطئ، المطاعم، الأسعار ونمط الحياة.',
+  openGraph: {
+    url: 'https://propertywiki.ai/ar/locations/dubai/jbr',
+    title: 'جميرا بيتش ريزيدنس (JBR) | بروبرتي ويكي',
+    description: 'دليل شامل لمنطقة JBR في دبي. الشاطئ، المطاعم، الأسعار ونمط الحياة.',
+    locale: 'ar_AE',
+  },
   alternates: {
     canonical: 'https://propertywiki.ai/ar/locations/dubai/jbr',
+    languages: {
+      'en': 'https://propertywiki.ai/locations/dubai/jbr',
+      'ar': 'https://propertywiki.ai/ar/locations/dubai/jbr',
+      'x-default': 'https://propertywiki.ai/locations/dubai/jbr',
+    },
   },
 }
 

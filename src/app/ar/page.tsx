@@ -2,10 +2,23 @@ import Link from 'next/link'
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'بروبرتي ويكي - مركز المعرفة العقارية الشامل',
-  description: 'أدلة متخصصة، رؤى سوقية، ومعرفة عقارية شاملة لمساعدتك في اتخاذ قرارات عقارية واثقة في دبي والإمارات.',
+  title: 'بروبرتي ويكي - دليل العقارات في دبي',
+  description: 'دليلك الشامل للعقارات في دبي. نصائح خبراء لشراء وبيع واستئجار العقارات في دبي والإمارات.',
   alternates: {
     canonical: 'https://propertywiki.ai/ar',
+    languages: {
+      'en': 'https://propertywiki.ai',
+      'ar': 'https://propertywiki.ai/ar',
+      'x-default': 'https://propertywiki.ai',
+    },
+  },
+  openGraph: {
+    url: 'https://propertywiki.ai/ar',
+    title: 'بروبرتي ويكي - دليل العقارات في دبي',
+    description: 'دليلك الشامل للعقارات في دبي. نصائح خبراء لشراء وبيع واستئجار العقارات.',
+    type: 'website',
+    locale: 'ar_AE',
+    siteName: 'PropertyWiki',
   },
 }
 

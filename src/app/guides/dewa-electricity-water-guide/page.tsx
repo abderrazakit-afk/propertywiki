@@ -10,19 +10,24 @@ import JsonLd from '@/components/seo/JsonLd'
 import { generateArticleSchema, generateBreadcrumbSchema, generateFAQSchema } from '@/lib/seo'
 
 export const metadata: Metadata = {
-  title: 'DEWA Guide - Dubai Electricity & Water Authority Setup for Residents',
-  description: 'Complete guide to setting up DEWA (Dubai Electricity & Water Authority) services. Learn about registration, required documents, deposits, fees, smart home features, and bill payment options.',
+  title: 'DEWA Guide - Dubai Electricity & Water Setup',
+  description: 'Complete guide to setting up DEWA services. Learn about registration, required documents, deposits, fees, and bill payment options in Dubai.',
   keywords: ['DEWA Dubai', 'Dubai electricity', 'Dubai water', 'DEWA registration', 'DEWA deposit', 'DEWA smart home', 'Dubai utility setup', 'DEWA app', 'DEWA fees'],
   alternates: {
     canonical: 'https://propertywiki.ai/guides/dewa-electricity-water-guide',
+    languages: {
+      'en': 'https://propertywiki.ai/guides/dewa-electricity-water-guide',
+      'ar': 'https://propertywiki.ai/ar/guides/dewa-electricity-water-guide',
+      'x-default': 'https://propertywiki.ai/guides/dewa-electricity-water-guide',
+    },
   },
   openGraph: {
-    title: 'DEWA Guide - Dubai Electricity & Water Authority Setup for Residents',
-    description: 'Complete guide to setting up DEWA services in Dubai including registration, deposits, fees, and smart home integration.',
+    url: 'https://propertywiki.ai/guides/dewa-electricity-water-guide',
+    title: 'DEWA Guide - Dubai Electricity & Water Setup',
+    description: 'Complete guide to setting up DEWA services in Dubai including registration and deposits.',
     type: 'article',
     publishedTime: '2024-06-15',
     modifiedTime: '2025-01-20',
-    url: 'https://propertywiki.ai/guides/dewa-electricity-water-guide',
     images: [
       {
         url: 'https://propertywiki.ai/images/dewa-guide.jpg',

@@ -3,9 +3,19 @@ import Breadcrumbs from '@/components/layout/Breadcrumbs'
 
 export const metadata: Metadata = {
   title: 'Privacy Policy - PropertyWiki',
-  description: 'PropertyWiki privacy policy. Learn how we collect, use, and protect your personal information.',
+  description: 'PropertyWiki privacy policy explaining how we collect and protect your data.',
   alternates: {
     canonical: 'https://propertywiki.ai/privacy',
+    languages: {
+      'en': 'https://propertywiki.ai/privacy',
+      'ar': 'https://propertywiki.ai/ar/privacy',
+      'x-default': 'https://propertywiki.ai/privacy',
+    },
+  },
+  openGraph: {
+    url: 'https://propertywiki.ai/privacy',
+    title: 'Privacy Policy - PropertyWiki',
+    description: 'PropertyWiki privacy policy explaining how we collect and protect your data.',
   },
 }
 

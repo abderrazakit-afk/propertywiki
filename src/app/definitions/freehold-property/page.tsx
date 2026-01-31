@@ -9,15 +9,21 @@ import JsonLd from '@/components/seo/JsonLd'
 import { generateArticleSchema, generateBreadcrumbSchema, generateFAQSchema } from '@/lib/seo'
 
 export const metadata: Metadata = {
-  title: 'What is Freehold Property? Complete Definition & Guide',
-  description: 'Learn what freehold property means, how it differs from leasehold, and why it matters for property buyers and investors. Complete guide with examples.',
+  title: 'What is Freehold Property? Definition & Guide',
+  description: 'Learn what freehold property means, how it differs from leasehold, and why it matters for buyers and investors. Complete guide with examples.',
   keywords: ['freehold property', 'freehold definition', 'property ownership', 'freehold vs leasehold'],
   alternates: {
     canonical: 'https://propertywiki.ai/definitions/freehold-property',
+    languages: {
+      'en': 'https://propertywiki.ai/definitions/freehold-property',
+      'ar': 'https://propertywiki.ai/ar/definitions/freehold-property',
+      'x-default': 'https://propertywiki.ai/definitions/freehold-property',
+    },
   },
   openGraph: {
-    title: 'What is Freehold Property? Complete Definition & Guide',
-    description: 'Learn what freehold property means, how it differs from leasehold, and why it matters for property buyers and investors.',
+    url: 'https://propertywiki.ai/definitions/freehold-property',
+    title: 'What is Freehold Property? Definition & Guide',
+    description: 'Learn what freehold property means, how it differs from leasehold, and why it matters for buyers and investors.',
     type: 'article',
     publishedTime: '2024-01-15',
     modifiedTime: '2024-12-10',

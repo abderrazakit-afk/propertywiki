@@ -2,10 +2,21 @@ import Link from 'next/link'
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'كيفية شراء عقار في الإمارات - دليل شامل | بروبرتي ويكي',
+  title: 'كيفية شراء عقار في الإمارات | بروبرتي ويكي',
   description: 'دليل شامل لشراء العقارات في جميع إمارات الدولة. القوانين والإجراءات والمتطلبات.',
+  openGraph: {
+    url: 'https://propertywiki.ai/ar/guides/how-to-buy-property-in-uae',
+    title: 'كيفية شراء عقار في الإمارات | بروبرتي ويكي',
+    description: 'دليل شامل لشراء العقارات في جميع إمارات الدولة. القوانين والإجراءات والمتطلبات.',
+    locale: 'ar_AE',
+  },
   alternates: {
     canonical: 'https://propertywiki.ai/ar/guides/how-to-buy-property-in-uae',
+    languages: {
+      'en': 'https://propertywiki.ai/guides/how-to-buy-property-in-uae',
+      'ar': 'https://propertywiki.ai/ar/guides/how-to-buy-property-in-uae',
+      'x-default': 'https://propertywiki.ai/guides/how-to-buy-property-in-uae',
+    },
   },
 }
 

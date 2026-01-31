@@ -11,18 +11,23 @@ import { generateArticleSchema, generateBreadcrumbSchema, generateFAQSchema } fr
 
 export const metadata: Metadata = {
   title: 'How to Sell Property in UAE - Complete Seller\'s Guide',
-  description: 'Complete guide to selling property in the UAE. Learn about documentation, NOC process, DLD transfer, agent selection, pricing strategy, and timeline.',
+  description: 'Complete guide to selling property in the UAE. Learn about documentation, NOC process, DLD transfer, agent selection, and pricing strategy.',
   keywords: ['sell property UAE', 'sell property Dubai', 'UAE property sale', 'DLD transfer', 'property seller guide'],
   alternates: {
     canonical: 'https://propertywiki.ai/guides/how-to-sell-property-in-uae',
+    languages: {
+      'en': 'https://propertywiki.ai/guides/how-to-sell-property-in-uae',
+      'ar': 'https://propertywiki.ai/ar/guides/how-to-sell-property-in-uae',
+      'x-default': 'https://propertywiki.ai/guides/how-to-sell-property-in-uae',
+    },
   },
   openGraph: {
+    url: 'https://propertywiki.ai/guides/how-to-sell-property-in-uae',
     title: 'How to Sell Property in UAE - Complete Seller\'s Guide',
-    description: 'Step-by-step guide to selling property in the UAE, including documentation and legal processes.',
+    description: 'Step-by-step guide to selling property in the UAE with documentation and legal processes.',
     type: 'article',
     publishedTime: '2024-06-15',
     modifiedTime: '2024-12-20',
-    url: 'https://propertywiki.ai/guides/how-to-sell-property-in-uae',
   },
 }
 

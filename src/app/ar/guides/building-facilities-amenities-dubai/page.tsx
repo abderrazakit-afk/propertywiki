@@ -2,10 +2,21 @@ import Link from 'next/link'
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'مرافق المباني في دبي - دليل شامل | بروبرتي ويكي',
+  title: 'مرافق المباني في دبي | بروبرتي ويكي',
   description: 'دليل مرافق المباني السكنية في دبي. الخدمات، رسوم الخدمات، وما يجب معرفته.',
+  openGraph: {
+    url: 'https://propertywiki.ai/ar/guides/building-facilities-amenities-dubai',
+    title: 'مرافق المباني في دبي | بروبرتي ويكي',
+    description: 'دليل مرافق المباني السكنية في دبي. الخدمات، رسوم الخدمات، وما يجب معرفته.',
+    locale: 'ar_AE',
+  },
   alternates: {
     canonical: 'https://propertywiki.ai/ar/guides/building-facilities-amenities-dubai',
+    languages: {
+      'en': 'https://propertywiki.ai/guides/building-facilities-amenities-dubai',
+      'ar': 'https://propertywiki.ai/ar/guides/building-facilities-amenities-dubai',
+      'x-default': 'https://propertywiki.ai/guides/building-facilities-amenities-dubai',
+    },
   },
 }
 

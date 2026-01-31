@@ -2,10 +2,21 @@ import Link from 'next/link'
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'الاستثمار العقاري - بروبرتي ويكي',
+  title: 'الاستثمار العقاري | بروبرتي ويكي',
   description: 'دليل الاستثمار العقاري في دبي والإمارات. استراتيجيات وتحليلات للمستثمرين.',
+  openGraph: {
+    url: 'https://propertywiki.ai/ar/investing',
+    title: 'الاستثمار العقاري | بروبرتي ويكي',
+    description: 'دليل الاستثمار العقاري في دبي والإمارات. استراتيجيات وتحليلات للمستثمرين.',
+    locale: 'ar_AE',
+  },
   alternates: {
     canonical: 'https://propertywiki.ai/ar/investing',
+    languages: {
+      'en': 'https://propertywiki.ai/investing',
+      'ar': 'https://propertywiki.ai/ar/investing',
+      'x-default': 'https://propertywiki.ai/investing',
+    },
   },
 }
 

@@ -10,11 +10,22 @@ import JsonLd from '@/components/seo/JsonLd'
 import { generateArticleSchema, generateBreadcrumbSchema, generateFAQSchema } from '@/lib/seo'
 
 export const metadata: Metadata = {
-  title: 'What is Off-Plan Property? Definition, Risks & Benefits',
+  title: 'What is Off-Plan Property? Risks & Benefits Guide',
   description: 'Learn what off-plan property means, the benefits and risks of buying pre-construction, and how to evaluate off-plan investments.',
   keywords: ['off-plan property', 'pre-construction', 'off-plan investment', 'property development'],
   alternates: {
     canonical: 'https://propertywiki.ai/definitions/off-plan-property',
+    languages: {
+      'en': 'https://propertywiki.ai/definitions/off-plan-property',
+      'ar': 'https://propertywiki.ai/ar/definitions/off-plan-property',
+      'x-default': 'https://propertywiki.ai/definitions/off-plan-property',
+    },
+  },
+  openGraph: {
+    url: 'https://propertywiki.ai/definitions/off-plan-property',
+    title: 'What is Off-Plan Property? Risks & Benefits Guide',
+    description: 'Learn what off-plan property means, the benefits and risks of buying pre-construction.',
+    type: 'article',
   },
 }
 

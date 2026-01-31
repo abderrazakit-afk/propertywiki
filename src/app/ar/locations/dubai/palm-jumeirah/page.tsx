@@ -2,10 +2,21 @@ import Link from 'next/link'
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'نخلة جميرا - دليل المنطقة السكنية | بروبرتي ويكي',
-  description: 'دليل شامل لمنطقة نخلة جميرا السكنية. الأسعار، الفلل، الشقق، والحياة الفاخرة على الجزيرة.',
+  title: 'نخلة جميرا - دليل المنطقة | بروبرتي ويكي',
+  description: 'دليل شامل لنخلة جميرا. الأسعار، الفلل، الشقق، والحياة الفاخرة على الجزيرة.',
+  openGraph: {
+    url: 'https://propertywiki.ai/ar/locations/dubai/palm-jumeirah',
+    title: 'نخلة جميرا - دليل المنطقة | بروبرتي ويكي',
+    description: 'دليل شامل لنخلة جميرا. الأسعار، الفلل، الشقق، والحياة الفاخرة على الجزيرة.',
+    locale: 'ar_AE',
+  },
   alternates: {
     canonical: 'https://propertywiki.ai/ar/locations/dubai/palm-jumeirah',
+    languages: {
+      'en': 'https://propertywiki.ai/locations/dubai/palm-jumeirah',
+      'ar': 'https://propertywiki.ai/ar/locations/dubai/palm-jumeirah',
+      'x-default': 'https://propertywiki.ai/locations/dubai/palm-jumeirah',
+    },
   },
 }
 

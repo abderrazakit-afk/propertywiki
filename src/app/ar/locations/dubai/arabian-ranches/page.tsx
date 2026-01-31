@@ -2,10 +2,21 @@ import Link from 'next/link'
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'المرابع العربية (Arabian Ranches) - دليل المنطقة | بروبرتي ويكي',
+  title: 'المرابع العربية (Arabian Ranches) | بروبرتي ويكي',
   description: 'دليل شامل لمنطقة المرابع العربية في دبي. الفلل العائلية والمجتمع الهادئ.',
+  openGraph: {
+    url: 'https://propertywiki.ai/ar/locations/dubai/arabian-ranches',
+    title: 'المرابع العربية (Arabian Ranches) | بروبرتي ويكي',
+    description: 'دليل شامل لمنطقة المرابع العربية في دبي. الفلل العائلية والمجتمع الهادئ.',
+    locale: 'ar_AE',
+  },
   alternates: {
     canonical: 'https://propertywiki.ai/ar/locations/dubai/arabian-ranches',
+    languages: {
+      'en': 'https://propertywiki.ai/locations/dubai/arabian-ranches',
+      'ar': 'https://propertywiki.ai/ar/locations/dubai/arabian-ranches',
+      'x-default': 'https://propertywiki.ai/locations/dubai/arabian-ranches',
+    },
   },
 }
 

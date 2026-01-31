@@ -2,10 +2,21 @@ import Link from 'next/link'
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'مدونة العقارات - بروبرتي ويكي',
+  title: 'مدونة العقارات | بروبرتي ويكي',
   description: 'آخر أخبار سوق العقارات في دبي والإمارات. تحليلات وتوقعات من خبراء العقارات.',
+  openGraph: {
+    url: 'https://propertywiki.ai/ar/blog',
+    title: 'مدونة العقارات | بروبرتي ويكي',
+    description: 'آخر أخبار سوق العقارات في دبي والإمارات. تحليلات وتوقعات من خبراء العقارات.',
+    locale: 'ar_AE',
+  },
   alternates: {
     canonical: 'https://propertywiki.ai/ar/blog',
+    languages: {
+      'en': 'https://propertywiki.ai/blog',
+      'ar': 'https://propertywiki.ai/ar/blog',
+      'x-default': 'https://propertywiki.ai/blog',
+    },
   },
 }
 

@@ -2,10 +2,21 @@ import Link from 'next/link'
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'الملكية الحرة (Freehold) - تعريف ومعنى | بروبرتي ويكي',
-  description: 'ما هي الملكية الحرة في دبي والإمارات؟ تعرف على مفهوم Freehold Property ومناطق التملك الحر.',
+  title: 'الملكية الحرة (Freehold) | بروبرتي ويكي',
+  description: 'ما هي الملكية الحرة في دبي والإمارات؟ تعرف على مفهوم Freehold ومناطق التملك الحر.',
+  openGraph: {
+    url: 'https://propertywiki.ai/ar/definitions/freehold-property',
+    title: 'الملكية الحرة (Freehold) | بروبرتي ويكي',
+    description: 'ما هي الملكية الحرة في دبي والإمارات؟ تعرف على مفهوم Freehold ومناطق التملك الحر.',
+    locale: 'ar_AE',
+  },
   alternates: {
     canonical: 'https://propertywiki.ai/ar/definitions/freehold-property',
+    languages: {
+      'en': 'https://propertywiki.ai/definitions/freehold-property',
+      'ar': 'https://propertywiki.ai/ar/definitions/freehold-property',
+      'x-default': 'https://propertywiki.ai/definitions/freehold-property',
+    },
   },
 }
 

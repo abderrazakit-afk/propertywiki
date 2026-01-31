@@ -2,10 +2,20 @@ import { Metadata } from 'next'
 import Breadcrumbs from '@/components/layout/Breadcrumbs'
 
 export const metadata: Metadata = {
-  title: 'About PropertyWiki - Our Mission & Team',
-  description: 'Learn about PropertyWiki, our mission to democratize real estate knowledge, and the expert team behind our content.',
+  title: 'About Us - PropertyWiki',
+  description: 'Learn about PropertyWiki and the team behind Dubai real estate knowledge hub.',
   alternates: {
     canonical: 'https://propertywiki.ai/about',
+    languages: {
+      'en': 'https://propertywiki.ai/about',
+      'ar': 'https://propertywiki.ai/ar/about',
+      'x-default': 'https://propertywiki.ai/about',
+    },
+  },
+  openGraph: {
+    url: 'https://propertywiki.ai/about',
+    title: 'About Us - PropertyWiki',
+    description: 'Learn about PropertyWiki and the team behind Dubai real estate knowledge hub.',
   },
 }
 

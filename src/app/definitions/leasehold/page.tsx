@@ -10,11 +10,22 @@ import JsonLd from '@/components/seo/JsonLd'
 import { generateArticleSchema, generateBreadcrumbSchema, generateFAQSchema } from '@/lib/seo'
 
 export const metadata: Metadata = {
-  title: 'What is Leasehold Property? Complete Definition & Guide',
+  title: 'What is Leasehold Property? Definition & Guide',
   description: 'Learn what leasehold property means, how it differs from freehold, and key considerations for buyers. Complete guide with examples and FAQs.',
   keywords: ['leasehold property', 'leasehold definition', 'leasehold vs freehold', 'ground rent'],
   alternates: {
     canonical: 'https://propertywiki.ai/definitions/leasehold',
+    languages: {
+      'en': 'https://propertywiki.ai/definitions/leasehold',
+      'ar': 'https://propertywiki.ai/ar/definitions/leasehold',
+      'x-default': 'https://propertywiki.ai/definitions/leasehold',
+    },
+  },
+  openGraph: {
+    url: 'https://propertywiki.ai/definitions/leasehold',
+    title: 'What is Leasehold Property? Definition & Guide',
+    description: 'Learn what leasehold property means, how it differs from freehold, and key considerations for buyers.',
+    type: 'article',
   },
 }
 

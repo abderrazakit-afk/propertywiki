@@ -5,13 +5,19 @@ import JsonLd from '@/components/seo/JsonLd'
 import { generateBreadcrumbSchema } from '@/lib/seo'
 
 export const metadata: Metadata = {
-  title: 'Property Investment Insights - Fundamentals & Strategy',
+  title: 'Property Investment Insights - Strategy Guide',
   description: 'Learn the fundamentals of property investment including rental yields, capital appreciation, and strategic guidance for real estate investing.',
   alternates: {
     canonical: 'https://propertywiki.ai/investing',
+    languages: {
+      'en': 'https://propertywiki.ai/investing',
+      'ar': 'https://propertywiki.ai/ar/investing',
+      'x-default': 'https://propertywiki.ai/investing',
+    },
   },
   openGraph: {
-    title: 'Property Investment Insights | PropertyWiki',
+    url: 'https://propertywiki.ai/investing',
+    title: 'Property Investment Insights - Strategy Guide',
     description: 'Learn the fundamentals of property investment and real estate investing strategies.',
   },
 }

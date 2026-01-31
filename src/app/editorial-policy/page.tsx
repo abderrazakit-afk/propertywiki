@@ -3,9 +3,19 @@ import Breadcrumbs from '@/components/layout/Breadcrumbs'
 
 export const metadata: Metadata = {
   title: 'Editorial Policy - PropertyWiki',
-  description: 'PropertyWiki editorial standards and guidelines. Learn about our commitment to accuracy, transparency, and quality content.',
+  description: 'PropertyWiki editorial standards ensuring accurate real estate content.',
   alternates: {
     canonical: 'https://propertywiki.ai/editorial-policy',
+    languages: {
+      'en': 'https://propertywiki.ai/editorial-policy',
+      'ar': 'https://propertywiki.ai/ar/editorial-policy',
+      'x-default': 'https://propertywiki.ai/editorial-policy',
+    },
+  },
+  openGraph: {
+    url: 'https://propertywiki.ai/editorial-policy',
+    title: 'Editorial Policy - PropertyWiki',
+    description: 'PropertyWiki editorial standards ensuring accurate real estate content.',
   },
 }
 

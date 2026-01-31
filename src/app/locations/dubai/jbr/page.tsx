@@ -9,15 +9,21 @@ import JsonLd from '@/components/seo/JsonLd'
 import { generateArticleSchema, generateBreadcrumbSchema, generateFAQSchema } from '@/lib/seo'
 
 export const metadata: Metadata = {
-  title: 'JBR (Jumeirah Beach Residence) Property Guide - Prices, Investment & Lifestyle',
-  description: 'Complete guide to JBR real estate. Explore property prices, rental yields, amenities, and investment opportunities in Dubai\'s iconic 1.7km beachfront community with The Walk promenade.',
+  title: 'JBR Property Guide - Beachfront Prices & Investment',
+  description: 'Complete guide to JBR real estate. Explore property prices, rental yields, and investment opportunities in Dubai\'s iconic beachfront community.',
   keywords: ['JBR', 'Jumeirah Beach Residence', 'JBR property', 'JBR apartments', 'JBR prices', 'The Walk Dubai', 'Dubai beachfront property', 'JBR holiday homes'],
   alternates: {
     canonical: 'https://propertywiki.ai/locations/dubai/jbr',
+    languages: {
+      'en': 'https://propertywiki.ai/locations/dubai/jbr',
+      'ar': 'https://propertywiki.ai/ar/locations/dubai/jbr',
+      'x-default': 'https://propertywiki.ai/locations/dubai/jbr',
+    },
   },
   openGraph: {
-    title: 'JBR (Jumeirah Beach Residence) Property Guide - Prices, Investment & Lifestyle',
-    description: 'Complete guide to JBR real estate with property prices, rental yields, and investment analysis for Dubai\'s premier beachfront community.',
+    url: 'https://propertywiki.ai/locations/dubai/jbr',
+    title: 'JBR Property Guide - Beachfront Prices & Investment',
+    description: 'Complete guide to JBR real estate with property prices and investment analysis.',
     type: 'article',
     publishedTime: '2024-03-15',
     modifiedTime: '2024-12-20',

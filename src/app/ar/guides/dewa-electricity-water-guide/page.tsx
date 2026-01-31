@@ -2,10 +2,21 @@ import Link from 'next/link'
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'دليل ديوا للكهرباء والمياه في دبي | بروبرتي ويكي',
-  description: 'دليل شامل لإعداد خدمات الكهرباء والمياه مع هيئة كهرباء ومياه دبي (ديوا). التسجيل والفواتير والنصائح.',
+  title: 'دليل ديوا للكهرباء والمياه | بروبرتي ويكي',
+  description: 'دليل شامل لخدمات الكهرباء والمياه مع ديوا (DEWA) في دبي. التسجيل والفواتير والنصائح.',
+  openGraph: {
+    url: 'https://propertywiki.ai/ar/guides/dewa-electricity-water-guide',
+    title: 'دليل ديوا للكهرباء والمياه | بروبرتي ويكي',
+    description: 'دليل شامل لخدمات الكهرباء والمياه مع ديوا (DEWA) في دبي. التسجيل والفواتير والنصائح.',
+    locale: 'ar_AE',
+  },
   alternates: {
     canonical: 'https://propertywiki.ai/ar/guides/dewa-electricity-water-guide',
+    languages: {
+      'en': 'https://propertywiki.ai/guides/dewa-electricity-water-guide',
+      'ar': 'https://propertywiki.ai/ar/guides/dewa-electricity-water-guide',
+      'x-default': 'https://propertywiki.ai/guides/dewa-electricity-water-guide',
+    },
   },
 }
 

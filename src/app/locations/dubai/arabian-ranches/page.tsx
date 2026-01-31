@@ -9,15 +9,21 @@ import JsonLd from '@/components/seo/JsonLd'
 import { generateArticleSchema, generateBreadcrumbSchema, generateFAQSchema } from '@/lib/seo'
 
 export const metadata: Metadata = {
-  title: 'Arabian Ranches Property Guide - Villa Prices, Investment & Family Living',
-  description: 'Complete guide to Arabian Ranches real estate in Dubai. Explore villa prices, rental yields, schools, amenities, and investment opportunities in this master-planned family community by Emaar.',
+  title: 'Arabian Ranches Guide - Villa Prices & Investment',
+  description: 'Complete guide to Arabian Ranches real estate in Dubai. Explore villa prices, rental yields, schools, and investment opportunities in this family community.',
   keywords: ['Arabian Ranches', 'Arabian Ranches villas', 'Arabian Ranches Dubai', 'Arabian Ranches property', 'family community Dubai', 'Emaar villas Dubai'],
   alternates: {
     canonical: 'https://propertywiki.ai/locations/dubai/arabian-ranches',
+    languages: {
+      'en': 'https://propertywiki.ai/locations/dubai/arabian-ranches',
+      'ar': 'https://propertywiki.ai/ar/locations/dubai/arabian-ranches',
+      'x-default': 'https://propertywiki.ai/locations/dubai/arabian-ranches',
+    },
   },
   openGraph: {
-    title: 'Arabian Ranches Property Guide - Villa Prices, Investment & Family Living',
-    description: 'Complete guide to Arabian Ranches real estate with villa prices, rental yields, schools, and investment analysis for this premier family community.',
+    url: 'https://propertywiki.ai/locations/dubai/arabian-ranches',
+    title: 'Arabian Ranches Guide - Villa Prices & Investment',
+    description: 'Complete guide to Arabian Ranches real estate with villa prices and investment analysis.',
     type: 'article',
     publishedTime: '2024-03-15',
     modifiedTime: '2024-12-20',

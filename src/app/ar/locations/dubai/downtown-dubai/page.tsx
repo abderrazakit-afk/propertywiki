@@ -2,10 +2,21 @@ import Link from 'next/link'
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'داون تاون دبي - دليل المنطقة السكنية | بروبرتي ويكي',
+  title: 'داون تاون دبي - دليل المنطقة | بروبرتي ويكي',
   description: 'دليل شامل لمنطقة داون تاون دبي. برج خليفة، دبي مول، الأسعار والمرافق.',
+  openGraph: {
+    url: 'https://propertywiki.ai/ar/locations/dubai/downtown-dubai',
+    title: 'داون تاون دبي - دليل المنطقة | بروبرتي ويكي',
+    description: 'دليل شامل لمنطقة داون تاون دبي. برج خليفة، دبي مول، الأسعار والمرافق.',
+    locale: 'ar_AE',
+  },
   alternates: {
     canonical: 'https://propertywiki.ai/ar/locations/dubai/downtown-dubai',
+    languages: {
+      'en': 'https://propertywiki.ai/locations/dubai/downtown-dubai',
+      'ar': 'https://propertywiki.ai/ar/locations/dubai/downtown-dubai',
+      'x-default': 'https://propertywiki.ai/locations/dubai/downtown-dubai',
+    },
   },
 }
 

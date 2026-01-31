@@ -2,10 +2,21 @@ import Link from 'next/link'
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'صيانة المكيفات في دبي - دليل شامل | بروبرتي ويكي',
+  title: 'صيانة المكيفات في دبي | بروبرتي ويكي',
   description: 'دليل صيانة أنظمة التكييف في دبي. نصائح للحفاظ على برودة منزلك وتقليل فواتير الكهرباء.',
+  openGraph: {
+    url: 'https://propertywiki.ai/ar/guides/ac-maintenance-dubai',
+    title: 'صيانة المكيفات في دبي | بروبرتي ويكي',
+    description: 'دليل صيانة أنظمة التكييف في دبي. نصائح للحفاظ على برودة منزلك وتقليل فواتير الكهرباء.',
+    locale: 'ar_AE',
+  },
   alternates: {
     canonical: 'https://propertywiki.ai/ar/guides/ac-maintenance-dubai',
+    languages: {
+      'en': 'https://propertywiki.ai/guides/ac-maintenance-dubai',
+      'ar': 'https://propertywiki.ai/ar/guides/ac-maintenance-dubai',
+      'x-default': 'https://propertywiki.ai/guides/ac-maintenance-dubai',
+    },
   },
 }
 

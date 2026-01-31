@@ -9,15 +9,21 @@ import JsonLd from '@/components/seo/JsonLd'
 import { generateArticleSchema, generateBreadcrumbSchema, generateFAQSchema } from '@/lib/seo'
 
 export const metadata: Metadata = {
-  title: 'Business Bay Property Guide - Prices, Investment & Lifestyle',
-  description: 'Complete guide to Business Bay real estate in Dubai. Explore property prices, rental yields of 7-8%, amenities, and investment opportunities in Dubai\'s central business district along the Dubai Canal.',
+  title: 'Business Bay Property Guide - Prices & Investment',
+  description: 'Complete guide to Business Bay real estate in Dubai. Explore property prices, rental yields of 7-8%, and investment opportunities in Dubai\'s CBD.',
   keywords: ['Business Bay', 'Business Bay property', 'Business Bay apartments', 'Business Bay Dubai', 'Business Bay prices', 'Dubai Canal property', 'Business Bay investment'],
   alternates: {
     canonical: 'https://propertywiki.ai/locations/dubai/business-bay',
+    languages: {
+      'en': 'https://propertywiki.ai/locations/dubai/business-bay',
+      'ar': 'https://propertywiki.ai/ar/locations/dubai/business-bay',
+      'x-default': 'https://propertywiki.ai/locations/dubai/business-bay',
+    },
   },
   openGraph: {
-    title: 'Business Bay Property Guide - Prices, Investment & Lifestyle',
-    description: 'Complete guide to Business Bay real estate with property prices, rental yields, and investment analysis in Dubai\'s central business district.',
+    url: 'https://propertywiki.ai/locations/dubai/business-bay',
+    title: 'Business Bay Property Guide - Prices & Investment',
+    description: 'Complete guide to Business Bay real estate with property prices and investment analysis.',
     type: 'article',
     publishedTime: '2024-03-15',
     modifiedTime: '2025-01-20',

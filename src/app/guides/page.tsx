@@ -5,14 +5,20 @@ import JsonLd from '@/components/seo/JsonLd'
 import { generateBreadcrumbSchema } from '@/lib/seo'
 
 export const metadata: Metadata = {
-  title: 'Property Guides - Buy, Sell & Rent in UAE',
-  description: 'Comprehensive guides to buying, selling, and renting property in the UAE. Expert advice on procedures, documentation, costs, and legal requirements.',
+  title: 'Property Guides - Buy, Sell & Rent Dubai',
+  description: 'Guides to buying, selling, and renting property in Dubai and UAE.',
   alternates: {
     canonical: 'https://propertywiki.ai/guides',
+    languages: {
+      'en': 'https://propertywiki.ai/guides',
+      'ar': 'https://propertywiki.ai/ar/guides',
+      'x-default': 'https://propertywiki.ai/guides',
+    },
   },
   openGraph: {
-    title: 'Property Guides - Buy, Sell & Rent in UAE | PropertyWiki',
-    description: 'Expert guides to buying, selling, and renting property across the UAE.',
+    url: 'https://propertywiki.ai/guides',
+    title: 'Property Guides - Buy, Sell & Rent Dubai',
+    description: 'Guides to buying, selling, and renting property in Dubai and UAE.',
   },
 }
 

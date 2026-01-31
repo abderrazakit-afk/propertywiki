@@ -10,14 +10,20 @@ import JsonLd from '@/components/seo/JsonLd'
 import { generateArticleSchema, generateBreadcrumbSchema, generateFAQSchema } from '@/lib/seo'
 
 export const metadata: Metadata = {
-  title: 'Understanding Off-Plan Investment Risks - Complete Guide',
+  title: 'Off-Plan Investment Risks - Complete Guide',
   description: 'A balanced analysis of off-plan property investment risks and rewards. Learn how to evaluate developers, payment plans, and protect your investment.',
   keywords: ['off-plan property risks', 'pre-construction investment', 'Dubai off-plan', 'property investment risks'],
   alternates: {
     canonical: 'https://propertywiki.ai/blog/off-plan-investment-risks',
+    languages: {
+      'en': 'https://propertywiki.ai/blog/off-plan-investment-risks',
+      'ar': 'https://propertywiki.ai/ar/blog/off-plan-investment-risks',
+      'x-default': 'https://propertywiki.ai/blog/off-plan-investment-risks',
+    },
   },
   openGraph: {
-    title: 'Understanding Off-Plan Investment Risks - Complete Guide',
+    url: 'https://propertywiki.ai/blog/off-plan-investment-risks',
+    title: 'Off-Plan Investment Risks - Complete Guide',
     description: 'A balanced analysis of off-plan property investment risks and rewards.',
     type: 'article',
     publishedTime: '2025-01-10',

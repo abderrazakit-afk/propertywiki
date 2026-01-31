@@ -10,19 +10,24 @@ import JsonLd from '@/components/seo/JsonLd'
 import { generateArticleSchema, generateBreadcrumbSchema, generateFAQSchema } from '@/lib/seo'
 
 export const metadata: Metadata = {
-  title: 'AC Maintenance in Dubai - Complete Guide to Air Conditioning Care',
-  description: 'Comprehensive guide to AC maintenance in Dubai. Learn about split units, central AC, district cooling, maintenance contracts, common problems, and tips for reducing AC bills.',
+  title: 'AC Maintenance in Dubai - Complete Care Guide',
+  description: 'Comprehensive guide to AC maintenance in Dubai. Learn about split units, central AC, district cooling, maintenance contracts, and reducing bills.',
   keywords: ['AC maintenance Dubai', 'air conditioning Dubai', 'AC service Dubai', 'split AC maintenance', 'central AC Dubai', 'district cooling Dubai', 'Empower', 'Emicool', 'HVAC Dubai', 'AC repair Dubai'],
   alternates: {
     canonical: 'https://propertywiki.ai/guides/ac-maintenance-dubai',
+    languages: {
+      'en': 'https://propertywiki.ai/guides/ac-maintenance-dubai',
+      'ar': 'https://propertywiki.ai/ar/guides/ac-maintenance-dubai',
+      'x-default': 'https://propertywiki.ai/guides/ac-maintenance-dubai',
+    },
   },
   openGraph: {
-    title: 'AC Maintenance in Dubai - Complete Guide to Air Conditioning Care',
-    description: 'Everything you need to know about AC maintenance in Dubai, from regular servicing to annual maintenance contracts.',
+    url: 'https://propertywiki.ai/guides/ac-maintenance-dubai',
+    title: 'AC Maintenance in Dubai - Complete Care Guide',
+    description: 'Everything you need to know about AC maintenance in Dubai, from servicing to contracts.',
     type: 'article',
     publishedTime: '2024-06-15',
     modifiedTime: '2025-01-20',
-    url: 'https://propertywiki.ai/guides/ac-maintenance-dubai',
     images: [
       {
         url: 'https://propertywiki.ai/images/ac-maintenance-dubai.jpg',

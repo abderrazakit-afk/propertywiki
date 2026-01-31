@@ -2,10 +2,21 @@ import Link from 'next/link'
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'خدمات تنظيف المنازل في دبي - دليل شامل | بروبرتي ويكي',
+  title: 'خدمات تنظيف المنازل في دبي | بروبرتي ويكي',
   description: 'دليل خدمات التنظيف المنزلي في دبي. الأنواع، الأسعار، وكيفية اختيار الخدمة المناسبة.',
+  openGraph: {
+    url: 'https://propertywiki.ai/ar/guides/home-cleaning-services-dubai',
+    title: 'خدمات تنظيف المنازل في دبي | بروبرتي ويكي',
+    description: 'دليل خدمات التنظيف المنزلي في دبي. الأنواع، الأسعار، وكيفية اختيار الخدمة المناسبة.',
+    locale: 'ar_AE',
+  },
   alternates: {
     canonical: 'https://propertywiki.ai/ar/guides/home-cleaning-services-dubai',
+    languages: {
+      'en': 'https://propertywiki.ai/guides/home-cleaning-services-dubai',
+      'ar': 'https://propertywiki.ai/ar/guides/home-cleaning-services-dubai',
+      'x-default': 'https://propertywiki.ai/guides/home-cleaning-services-dubai',
+    },
   },
 }
 

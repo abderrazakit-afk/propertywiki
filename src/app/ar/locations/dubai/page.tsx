@@ -2,10 +2,21 @@ import Link from 'next/link'
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'مناطق دبي السكنية - دليل المجتمعات | بروبرتي ويكي',
+  title: 'مناطق دبي السكنية | بروبرتي ويكي',
   description: 'استكشف أفضل المناطق السكنية في دبي. من المارينا إلى نخلة جميرا، اعرف أين تسكن.',
+  openGraph: {
+    url: 'https://propertywiki.ai/ar/locations/dubai',
+    title: 'مناطق دبي السكنية | بروبرتي ويكي',
+    description: 'استكشف أفضل المناطق السكنية في دبي. من المارينا إلى نخلة جميرا، اعرف أين تسكن.',
+    locale: 'ar_AE',
+  },
   alternates: {
     canonical: 'https://propertywiki.ai/ar/locations/dubai',
+    languages: {
+      'en': 'https://propertywiki.ai/locations/dubai',
+      'ar': 'https://propertywiki.ai/ar/locations/dubai',
+      'x-default': 'https://propertywiki.ai/locations/dubai',
+    },
   },
 }
 

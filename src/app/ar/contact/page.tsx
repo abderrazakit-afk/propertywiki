@@ -4,8 +4,19 @@ import type { Metadata } from 'next'
 export const metadata: Metadata = {
   title: 'تواصل معنا | بروبرتي ويكي',
   description: 'تواصل مع فريق بروبرتي ويكي لأي استفسارات أو اقتراحات.',
+  openGraph: {
+    url: 'https://propertywiki.ai/ar/contact',
+    title: 'تواصل معنا | بروبرتي ويكي',
+    description: 'تواصل مع فريق بروبرتي ويكي لأي استفسارات أو اقتراحات.',
+    locale: 'ar_AE',
+  },
   alternates: {
     canonical: 'https://propertywiki.ai/ar/contact',
+    languages: {
+      'en': 'https://propertywiki.ai/contact',
+      'ar': 'https://propertywiki.ai/ar/contact',
+      'x-default': 'https://propertywiki.ai/contact',
+    },
   },
 }
 

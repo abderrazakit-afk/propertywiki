@@ -11,9 +11,15 @@ export const metadata: Metadata = {
   keywords: ['Dubai real estate', 'Dubai property', 'buy property Dubai', 'Dubai freehold zones'],
   alternates: {
     canonical: 'https://propertywiki.ai/locations/dubai',
+    languages: {
+      'en': 'https://propertywiki.ai/locations/dubai',
+      'ar': 'https://propertywiki.ai/ar/locations/dubai',
+      'x-default': 'https://propertywiki.ai/locations/dubai',
+    },
   },
   openGraph: {
-    title: 'Dubai Real Estate Guide - Property Market Overview | PropertyWiki',
+    url: 'https://propertywiki.ai/locations/dubai',
+    title: 'Dubai Real Estate Guide - Property Market Overview',
     description: 'Complete guide to Dubai\'s property market for foreign buyers and investors.',
   },
 }

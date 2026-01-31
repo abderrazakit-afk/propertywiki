@@ -9,14 +9,20 @@ import JsonLd from '@/components/seo/JsonLd'
 import { generateArticleSchema, generateBreadcrumbSchema } from '@/lib/seo'
 
 export const metadata: Metadata = {
-  title: 'Dubai Property Market Outlook 2025 - Analysis & Predictions',
-  description: 'Comprehensive analysis of Dubai\'s property market for 2025. Explore price trends, investment hotspots, and expert predictions for the UAE real estate market.',
+  title: 'Dubai Property Market Outlook 2025 - Analysis',
+  description: 'Comprehensive analysis of Dubai\'s property market for 2025. Explore price trends, investment hotspots, and expert predictions for UAE real estate.',
   keywords: ['Dubai property market 2025', 'UAE real estate forecast', 'Dubai property prices', 'property investment Dubai'],
   alternates: {
     canonical: 'https://propertywiki.ai/blog/dubai-market-outlook-2025',
+    languages: {
+      'en': 'https://propertywiki.ai/blog/dubai-market-outlook-2025',
+      'ar': 'https://propertywiki.ai/ar/blog/dubai-market-outlook-2025',
+      'x-default': 'https://propertywiki.ai/blog/dubai-market-outlook-2025',
+    },
   },
   openGraph: {
-    title: 'Dubai Property Market Outlook 2025 - Analysis & Predictions',
+    url: 'https://propertywiki.ai/blog/dubai-market-outlook-2025',
+    title: 'Dubai Property Market Outlook 2025 - Analysis',
     description: 'Comprehensive analysis of Dubai\'s property market for 2025.',
     type: 'article',
     publishedTime: '2025-01-15',

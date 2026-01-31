@@ -4,8 +4,19 @@ import type { Metadata } from 'next'
 export const metadata: Metadata = {
   title: 'السياسة التحريرية | بروبرتي ويكي',
   description: 'السياسة التحريرية لبروبرتي ويكي ومعايير جودة المحتوى.',
+  openGraph: {
+    url: 'https://propertywiki.ai/ar/editorial-policy',
+    title: 'السياسة التحريرية | بروبرتي ويكي',
+    description: 'السياسة التحريرية لبروبرتي ويكي ومعايير جودة المحتوى.',
+    locale: 'ar_AE',
+  },
   alternates: {
     canonical: 'https://propertywiki.ai/ar/editorial-policy',
+    languages: {
+      'en': 'https://propertywiki.ai/editorial-policy',
+      'ar': 'https://propertywiki.ai/ar/editorial-policy',
+      'x-default': 'https://propertywiki.ai/editorial-policy',
+    },
   },
 }
 

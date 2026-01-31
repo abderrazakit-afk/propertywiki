@@ -4,8 +4,23 @@ import JsonLd from '@/components/seo/JsonLd'
 import { generateOrganizationSchema } from '@/lib/seo'
 
 export const metadata: Metadata = {
+  title: 'PropertyWiki - Dubai Real Estate Knowledge Hub',
+  description: 'Your complete guide to Dubai real estate. Expert insights on buying, selling, and renting property in Dubai and UAE.',
   alternates: {
     canonical: 'https://propertywiki.ai',
+    languages: {
+      'en': 'https://propertywiki.ai',
+      'ar': 'https://propertywiki.ai/ar',
+      'x-default': 'https://propertywiki.ai',
+    },
+  },
+  openGraph: {
+    url: 'https://propertywiki.ai',
+    title: 'PropertyWiki - Dubai Real Estate Knowledge Hub',
+    description: 'Your complete guide to Dubai real estate. Expert insights on buying, selling, and renting property.',
+    type: 'website',
+    locale: 'en_US',
+    siteName: 'PropertyWiki',
   },
 }
 

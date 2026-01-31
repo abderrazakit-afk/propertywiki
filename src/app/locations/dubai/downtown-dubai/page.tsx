@@ -10,11 +10,22 @@ import JsonLd from '@/components/seo/JsonLd'
 import { generateArticleSchema, generateBreadcrumbSchema, generateFAQSchema } from '@/lib/seo'
 
 export const metadata: Metadata = {
-  title: 'Downtown Dubai Property Guide - Prices, Investment & Lifestyle',
+  title: 'Downtown Dubai Property Guide - Prices & Investment',
   description: 'Complete guide to Downtown Dubai real estate. Home to Burj Khalifa and Dubai Mall, explore property prices, rental yields, and investment opportunities.',
   keywords: ['Downtown Dubai', 'Downtown Dubai property', 'Burj Khalifa apartments', 'Dubai property investment'],
   alternates: {
     canonical: 'https://propertywiki.ai/locations/dubai/downtown-dubai',
+    languages: {
+      'en': 'https://propertywiki.ai/locations/dubai/downtown-dubai',
+      'ar': 'https://propertywiki.ai/ar/locations/dubai/downtown-dubai',
+      'x-default': 'https://propertywiki.ai/locations/dubai/downtown-dubai',
+    },
+  },
+  openGraph: {
+    url: 'https://propertywiki.ai/locations/dubai/downtown-dubai',
+    title: 'Downtown Dubai Property Guide - Prices & Investment',
+    description: 'Complete guide to Downtown Dubai real estate. Home to Burj Khalifa and Dubai Mall.',
+    type: 'article',
   },
 }
 

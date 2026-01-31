@@ -2,10 +2,21 @@ import Link from 'next/link'
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'كيفية استئجار عقار في الإمارات - دليل المستأجر | بروبرتي ويكي',
+  title: 'كيفية استئجار عقار في الإمارات | بروبرتي ويكي',
   description: 'دليل شامل لاستئجار العقارات في الإمارات. عقود الإيجار، إيجاري، حقوق المستأجر والمزيد.',
+  openGraph: {
+    url: 'https://propertywiki.ai/ar/guides/how-to-rent-property-in-uae',
+    title: 'كيفية استئجار عقار في الإمارات | بروبرتي ويكي',
+    description: 'دليل شامل لاستئجار العقارات في الإمارات. عقود الإيجار، إيجاري، حقوق المستأجر والمزيد.',
+    locale: 'ar_AE',
+  },
   alternates: {
     canonical: 'https://propertywiki.ai/ar/guides/how-to-rent-property-in-uae',
+    languages: {
+      'en': 'https://propertywiki.ai/guides/how-to-rent-property-in-uae',
+      'ar': 'https://propertywiki.ai/ar/guides/how-to-rent-property-in-uae',
+      'x-default': 'https://propertywiki.ai/guides/how-to-rent-property-in-uae',
+    },
   },
 }
 

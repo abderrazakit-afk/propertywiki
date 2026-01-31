@@ -2,10 +2,21 @@ import Link from 'next/link'
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'حق الانتفاع (Leasehold) - تعريف ومعنى | بروبرتي ويكي',
-  description: 'ما هو حق الانتفاع في دبي والإمارات؟ تعرف على مفهوم Leasehold والفرق بينه وبين الملكية الحرة.',
+  title: 'حق الانتفاع (Leasehold) | بروبرتي ويكي',
+  description: 'ما هو حق الانتفاع في دبي والإمارات؟ تعرف على Leasehold والفرق بينه وبين الملكية الحرة.',
+  openGraph: {
+    url: 'https://propertywiki.ai/ar/definitions/leasehold',
+    title: 'حق الانتفاع (Leasehold) | بروبرتي ويكي',
+    description: 'ما هو حق الانتفاع في دبي والإمارات؟ تعرف على Leasehold والفرق بينه وبين الملكية الحرة.',
+    locale: 'ar_AE',
+  },
   alternates: {
     canonical: 'https://propertywiki.ai/ar/definitions/leasehold',
+    languages: {
+      'en': 'https://propertywiki.ai/definitions/leasehold',
+      'ar': 'https://propertywiki.ai/ar/definitions/leasehold',
+      'x-default': 'https://propertywiki.ai/definitions/leasehold',
+    },
   },
 }
 
