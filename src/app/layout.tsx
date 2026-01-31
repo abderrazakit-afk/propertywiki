@@ -82,6 +82,12 @@ export default function RootLayout({
             gtag('config', 'G-G9J1Q36DRM');
           `}
         </Script>
+        <Script
+          src="https://analytics.ahrefs.com/analytics.js"
+          data-key="DBBWHsGJ9zfCW5ypDC5o7Q"
+          strategy="afterInteractive"
+          async
+        />
       </head>
       <body className="min-h-screen flex flex-col font-sans">
         <Suspense fallback={null}>
