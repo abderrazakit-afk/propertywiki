@@ -12,6 +12,9 @@ export const metadata: Metadata = {
   title: 'Dubai Marina Property Guide - Prices, Investment & Lifestyle',
   description: 'Complete guide to Dubai Marina real estate. Explore property prices, rental yields, amenities, and investment opportunities in this iconic waterfront community.',
   keywords: ['Dubai Marina', 'Dubai Marina property', 'Dubai Marina apartments', 'Dubai Marina prices'],
+  alternates: {
+    canonical: 'https://propertywiki.ai/locations/dubai/dubai-marina',
+  },
   openGraph: {
     title: 'Dubai Marina Property Guide - Prices, Investment & Lifestyle',
     description: 'Complete guide to Dubai Marina real estate with property prices, rental yields, and investment analysis.',

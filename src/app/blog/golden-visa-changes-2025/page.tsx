@@ -13,6 +13,9 @@ export const metadata: Metadata = {
   title: 'Golden Visa Changes 2025 - What Property Investors Need to Know',
   description: 'Comprehensive guide to UAE Golden Visa updates for 2025. Learn about property investment requirements, application process, and benefits for foreign investors.',
   keywords: ['UAE Golden Visa', 'Dubai Golden Visa property', 'UAE residency visa', 'property investor visa'],
+  alternates: {
+    canonical: 'https://propertywiki.ai/blog/golden-visa-changes-2025',
+  },
   openGraph: {
     title: 'Golden Visa Changes 2025 - What Property Investors Need to Know',
     description: 'Comprehensive guide to UAE Golden Visa updates for 2025.',

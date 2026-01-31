@@ -7,6 +7,9 @@ import { generateBreadcrumbSchema } from '@/lib/seo'
 export const metadata: Metadata = {
   title: 'Property Definitions - Real Estate Glossary',
   description: 'Comprehensive glossary of real estate terms and definitions. Learn the meaning of property terminology from freehold to off-plan and everything in between.',
+  alternates: {
+    canonical: 'https://propertywiki.ai/definitions',
+  },
   openGraph: {
     title: 'Property Definitions - Real Estate Glossary | PropertyWiki',
     description: 'Comprehensive glossary of real estate terms and definitions.',

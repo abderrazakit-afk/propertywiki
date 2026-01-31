@@ -12,6 +12,9 @@ export const metadata: Metadata = {
   title: 'Palm Jumeirah Property Guide - Luxury Villas, Apartments & Prices 2025',
   description: 'Complete guide to Palm Jumeirah real estate. Explore luxury villas, waterfront apartments, signature residences, prices, rental yields, and investment opportunities on Dubai\'s iconic palm-shaped island.',
   keywords: ['Palm Jumeirah', 'Palm Jumeirah villas', 'Palm Jumeirah property', 'Dubai luxury real estate', 'Palm Jumeirah apartments', 'Atlantis residences', 'Dubai waterfront property', 'Palm Jumeirah prices'],
+  alternates: {
+    canonical: 'https://propertywiki.ai/locations/dubai/palm-jumeirah',
+  },
   openGraph: {
     title: 'Palm Jumeirah Property Guide - Luxury Villas, Apartments & Prices 2025',
     description: 'Complete guide to Palm Jumeirah real estate with luxury property prices, rental yields, and investment analysis on Dubai\'s iconic man-made island.',

@@ -12,6 +12,9 @@ export const metadata: Metadata = {
   title: 'Dubai Property Market Outlook 2025 - Analysis & Predictions',
   description: 'Comprehensive analysis of Dubai\'s property market for 2025. Explore price trends, investment hotspots, and expert predictions for the UAE real estate market.',
   keywords: ['Dubai property market 2025', 'UAE real estate forecast', 'Dubai property prices', 'property investment Dubai'],
+  alternates: {
+    canonical: 'https://propertywiki.ai/blog/dubai-market-outlook-2025',
+  },
   openGraph: {
     title: 'Dubai Property Market Outlook 2025 - Analysis & Predictions',
     description: 'Comprehensive analysis of Dubai\'s property market for 2025.',

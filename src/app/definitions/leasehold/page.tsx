@@ -13,6 +13,9 @@ export const metadata: Metadata = {
   title: 'What is Leasehold Property? Complete Definition & Guide',
   description: 'Learn what leasehold property means, how it differs from freehold, and key considerations for buyers. Complete guide with examples and FAQs.',
   keywords: ['leasehold property', 'leasehold definition', 'leasehold vs freehold', 'ground rent'],
+  alternates: {
+    canonical: 'https://propertywiki.ai/definitions/leasehold',
+  },
 }
 
 const tableOfContents = [

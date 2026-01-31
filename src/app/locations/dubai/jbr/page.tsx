@@ -12,6 +12,9 @@ export const metadata: Metadata = {
   title: 'JBR (Jumeirah Beach Residence) Property Guide - Prices, Investment & Lifestyle',
   description: 'Complete guide to JBR real estate. Explore property prices, rental yields, amenities, and investment opportunities in Dubai\'s iconic 1.7km beachfront community with The Walk promenade.',
   keywords: ['JBR', 'Jumeirah Beach Residence', 'JBR property', 'JBR apartments', 'JBR prices', 'The Walk Dubai', 'Dubai beachfront property', 'JBR holiday homes'],
+  alternates: {
+    canonical: 'https://propertywiki.ai/locations/dubai/jbr',
+  },
   openGraph: {
     title: 'JBR (Jumeirah Beach Residence) Property Guide - Prices, Investment & Lifestyle',
     description: 'Complete guide to JBR real estate with property prices, rental yields, and investment analysis for Dubai\'s premier beachfront community.',

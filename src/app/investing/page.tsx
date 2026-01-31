@@ -7,6 +7,9 @@ import { generateBreadcrumbSchema } from '@/lib/seo'
 export const metadata: Metadata = {
   title: 'Property Investment Insights - Fundamentals & Strategy',
   description: 'Learn the fundamentals of property investment including rental yields, capital appreciation, and strategic guidance for real estate investing.',
+  alternates: {
+    canonical: 'https://propertywiki.ai/investing',
+  },
   openGraph: {
     title: 'Property Investment Insights | PropertyWiki',
     description: 'Learn the fundamentals of property investment and real estate investing strategies.',

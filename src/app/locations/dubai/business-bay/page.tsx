@@ -12,6 +12,9 @@ export const metadata: Metadata = {
   title: 'Business Bay Property Guide - Prices, Investment & Lifestyle',
   description: 'Complete guide to Business Bay real estate in Dubai. Explore property prices, rental yields of 7-8%, amenities, and investment opportunities in Dubai\'s central business district along the Dubai Canal.',
   keywords: ['Business Bay', 'Business Bay property', 'Business Bay apartments', 'Business Bay Dubai', 'Business Bay prices', 'Dubai Canal property', 'Business Bay investment'],
+  alternates: {
+    canonical: 'https://propertywiki.ai/locations/dubai/business-bay',
+  },
   openGraph: {
     title: 'Business Bay Property Guide - Prices, Investment & Lifestyle',
     description: 'Complete guide to Business Bay real estate with property prices, rental yields, and investment analysis in Dubai\'s central business district.',

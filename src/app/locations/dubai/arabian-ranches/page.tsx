@@ -12,6 +12,9 @@ export const metadata: Metadata = {
   title: 'Arabian Ranches Property Guide - Villa Prices, Investment & Family Living',
   description: 'Complete guide to Arabian Ranches real estate in Dubai. Explore villa prices, rental yields, schools, amenities, and investment opportunities in this master-planned family community by Emaar.',
   keywords: ['Arabian Ranches', 'Arabian Ranches villas', 'Arabian Ranches Dubai', 'Arabian Ranches property', 'family community Dubai', 'Emaar villas Dubai'],
+  alternates: {
+    canonical: 'https://propertywiki.ai/locations/dubai/arabian-ranches',
+  },
   openGraph: {
     title: 'Arabian Ranches Property Guide - Villa Prices, Investment & Family Living',
     description: 'Complete guide to Arabian Ranches real estate with villa prices, rental yields, schools, and investment analysis for this premier family community.',

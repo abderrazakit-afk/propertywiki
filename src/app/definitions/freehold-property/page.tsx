@@ -12,6 +12,9 @@ export const metadata: Metadata = {
   title: 'What is Freehold Property? Complete Definition & Guide',
   description: 'Learn what freehold property means, how it differs from leasehold, and why it matters for property buyers and investors. Complete guide with examples.',
   keywords: ['freehold property', 'freehold definition', 'property ownership', 'freehold vs leasehold'],
+  alternates: {
+    canonical: 'https://propertywiki.ai/definitions/freehold-property',
+  },
   openGraph: {
     title: 'What is Freehold Property? Complete Definition & Guide',
     description: 'Learn what freehold property means, how it differs from leasehold, and why it matters for property buyers and investors.',

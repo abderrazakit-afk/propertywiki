@@ -13,6 +13,9 @@ export const metadata: Metadata = {
   title: 'Downtown Dubai Property Guide - Prices, Investment & Lifestyle',
   description: 'Complete guide to Downtown Dubai real estate. Home to Burj Khalifa and Dubai Mall, explore property prices, rental yields, and investment opportunities.',
   keywords: ['Downtown Dubai', 'Downtown Dubai property', 'Burj Khalifa apartments', 'Dubai property investment'],
+  alternates: {
+    canonical: 'https://propertywiki.ai/locations/dubai/downtown-dubai',
+  },
 }
 
 const tableOfContents = [

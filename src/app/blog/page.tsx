@@ -8,6 +8,9 @@ import { generateBreadcrumbSchema } from '@/lib/seo'
 export const metadata: Metadata = {
   title: 'Property Blog - Latest Real Estate News & Analysis',
   description: 'Stay updated with the latest real estate news, market trends, and expert analysis from PropertyWiki\'s editorial team.',
+  alternates: {
+    canonical: 'https://propertywiki.ai/blog',
+  },
   openGraph: {
     title: 'Property Blog - Latest Real Estate News & Analysis | PropertyWiki',
     description: 'Stay updated with the latest real estate news and market trends.',

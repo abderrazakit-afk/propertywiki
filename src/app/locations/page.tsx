@@ -7,6 +7,9 @@ import { generateBreadcrumbSchema } from '@/lib/seo'
 export const metadata: Metadata = {
   title: 'Location Guides - Property Markets Worldwide',
   description: 'Explore comprehensive property market guides for cities and neighborhoods worldwide. In-depth analysis of Dubai, UAE, and more.',
+  alternates: {
+    canonical: 'https://propertywiki.ai/locations',
+  },
   openGraph: {
     title: 'Location Guides - Property Markets Worldwide | PropertyWiki',
     description: 'Explore comprehensive property market guides for cities and neighborhoods worldwide.',

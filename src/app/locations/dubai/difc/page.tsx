@@ -12,6 +12,9 @@ export const metadata: Metadata = {
   title: 'DIFC Property Guide - Dubai International Financial Centre Real Estate',
   description: 'Complete guide to DIFC (Dubai International Financial Centre) property. Explore luxury apartments, prices, rental yields, and investment opportunities in Dubai\'s premier financial hub.',
   keywords: ['DIFC', 'DIFC property', 'DIFC apartments', 'Dubai International Financial Centre', 'DIFC real estate', 'DIFC investment', 'Gate Building Dubai'],
+  alternates: {
+    canonical: 'https://propertywiki.ai/locations/dubai/difc',
+  },
   openGraph: {
     title: 'DIFC Property Guide - Dubai International Financial Centre Real Estate',
     description: 'Comprehensive guide to DIFC real estate featuring property prices, rental yields, and investment analysis in Dubai\'s financial hub.',

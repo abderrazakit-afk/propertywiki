@@ -13,6 +13,9 @@ export const metadata: Metadata = {
   title: 'What is Off-Plan Property? Definition, Risks & Benefits',
   description: 'Learn what off-plan property means, the benefits and risks of buying pre-construction, and how to evaluate off-plan investments.',
   keywords: ['off-plan property', 'pre-construction', 'off-plan investment', 'property development'],
+  alternates: {
+    canonical: 'https://propertywiki.ai/definitions/off-plan-property',
+  },
 }
 
 const tableOfContents = [
