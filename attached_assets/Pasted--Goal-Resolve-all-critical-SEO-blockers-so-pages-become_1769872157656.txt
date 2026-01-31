@@ -1,0 +1,229 @@
+🎯 Goal
+
+Resolve all critical SEO blockers so pages become:
+
+Indexable
+
+Canonical-clean
+
+Properly localized
+
+Shareable
+
+Crawl-efficient
+
+🔴 PRIORITY 1 — INDEXABILITY (BLOCKING)
+Task 1: Fix canonical URLs (CRITICAL)
+
+Issue:
+
+54 pages have incorrect canonicals
+
+Pages canonicalize to / or /ar instead of themselves
+
+Causes pages to be non-indexable
+
+Action:
+
+Remove any global/static canonical
+
+Implement dynamic self-canonical on every page
+
+Rule:
+
+canonical === full current URL
+
+
+Applies to:
+
+Homepage
+
+Blog pages
+
+Guides
+
+Definitions
+
+Location pages
+
+Arabic (/ar/*) pages
+
+Task 2: Regenerate sitemap.xml
+
+Issue:
+
+Sitemap contains non-canonical, redirected, or invalid URLs
+
+Action:
+
+Generate sitemap using ONLY:
+
+200 OK pages
+
+Self-canonical URLs
+
+Exclude:
+
+URLs canonicalizing elsewhere
+
+404 pages
+
+http / www versions
+
+🟠 PRIORITY 2 — REDIRECTS & DOMAIN CONSISTENCY
+Task 3: Enforce single domain version
+
+Issue:
+
+http://
+
+http://www
+
+https://www
+
+Action:
+
+Keep only:
+
+https://propertywiki.ai
+
+
+Add 301 redirects for all other variants
+
+Ensure sitemap uses ONLY canonical domain
+
+🟡 PRIORITY 3 — INTERNAL LINKING
+Task 4: Fix pages with no outgoing links (66 pages)
+
+Issue:
+
+Pages are isolated → poor crawl & ranking
+
+Action:
+
+Add internal links:
+
+From content to related pages
+
+From category pages to children
+
+From blog posts to guides / locations
+
+Minimum rule:
+
+Each page must have at least 2 internal links
+
+🟡 PRIORITY 4 — CONTENT STRUCTURE
+Task 5: Add missing H1 tags (66 pages)
+
+Issue:
+
+Pages missing <h1>
+
+Action:
+
+Each page must have one unique H1
+
+H1 should describe page intent (not brand name only)
+
+Task 6: Increase low word count pages (66 pages)
+
+Issue:
+
+Pages too thin to rank
+
+Action:
+
+Target:
+
+300–500 words for informational pages
+
+500–800 words for guides & locations
+
+🟡 PRIORITY 5 — META TAGS
+Task 7: Fix meta descriptions
+
+Issues:
+
+Too short
+
+Too long
+
+Changed frequently
+
+Action:
+
+Length: 140–160 characters
+
+Unique per page
+
+Include main keyword + location/context
+
+Task 8: Fix long titles
+
+Issue:
+
+Titles exceed SERP limits
+
+Action:
+
+Max 60 characters
+
+Format:
+
+Primary keyword – Secondary | PropertyWiki
+
+🟡 PRIORITY 6 — SOCIAL SHARING (OG TAGS)
+Task 9: Complete Open Graph tags
+
+Issues:
+
+Missing OG tags
+
+og:url does not match canonical
+
+Action:
+Ensure every page has:
+
+og:title
+og:description
+og:image
+og:url === canonical
+
+🟡 PRIORITY 7 — LOCALIZATION / i18n
+Task 10: Fix hreflang issues
+
+Issues:
+
+hreflang does not match <html lang>
+
+Missing x-default
+
+Action:
+
+Ensure:
+
+/ → en
+
+/ar/* → ar
+
+Add:
+
+<link rel="alternate" hreflang="en" href="..." />
+<link rel="alternate" hreflang="ar" href="..." />
+<link rel="alternate" hreflang="x-default" href="..." />
+
+🟢 PRIORITY 8 — INDEXNOW (OPTIONAL BOOST)
+Task 11: Submit pages to IndexNow
+
+Issue:
+
+56 pages ready but not submitted
+
+Action:
+
+Trigger IndexNow after:
+
+Canonical fix
+
+Sitemap update
