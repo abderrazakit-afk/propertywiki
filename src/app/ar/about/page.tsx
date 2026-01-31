@@ -4,6 +4,9 @@ import type { Metadata } from 'next'
 export const metadata: Metadata = {
   title: 'من نحن | بروبرتي ويكي',
   description: 'تعرف على بروبرتي ويكي - مصدرك الموثوق للمعلومات العقارية في الإمارات.',
+  alternates: {
+    canonical: 'https://propertywiki.ai/ar/about',
+  },
 }
 
 export default function AboutPage() {

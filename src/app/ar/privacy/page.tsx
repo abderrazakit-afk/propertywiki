@@ -4,6 +4,9 @@ import type { Metadata } from 'next'
 export const metadata: Metadata = {
   title: 'سياسة الخصوصية | بروبرتي ويكي',
   description: 'سياسة الخصوصية لموقع بروبرتي ويكي وكيفية حماية بياناتك.',
+  alternates: {
+    canonical: 'https://propertywiki.ai/ar/privacy',
+  },
 }
 
 export default function PrivacyPage() {

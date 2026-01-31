@@ -4,6 +4,9 @@ import type { Metadata } from 'next'
 export const metadata: Metadata = {
   title: 'السياسة التحريرية | بروبرتي ويكي',
   description: 'السياسة التحريرية لبروبرتي ويكي ومعايير جودة المحتوى.',
+  alternates: {
+    canonical: 'https://propertywiki.ai/ar/editorial-policy',
+  },
 }
 
 export default function EditorialPolicyPage() {

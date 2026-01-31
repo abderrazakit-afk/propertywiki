@@ -4,6 +4,9 @@ import type { Metadata } from 'next'
 export const metadata: Metadata = {
   title: 'الاستثمار العقاري - بروبرتي ويكي',
   description: 'دليل الاستثمار العقاري في دبي والإمارات. استراتيجيات وتحليلات للمستثمرين.',
+  alternates: {
+    canonical: 'https://propertywiki.ai/ar/investing',
+  },
 }
 
 const topics = [

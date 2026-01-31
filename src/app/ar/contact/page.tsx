@@ -4,6 +4,9 @@ import type { Metadata } from 'next'
 export const metadata: Metadata = {
   title: 'تواصل معنا | بروبرتي ويكي',
   description: 'تواصل مع فريق بروبرتي ويكي لأي استفسارات أو اقتراحات.',
+  alternates: {
+    canonical: 'https://propertywiki.ai/ar/contact',
+  },
 }
 
 export default function ContactPage() {

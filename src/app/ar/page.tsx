@@ -4,6 +4,9 @@ import type { Metadata } from 'next'
 export const metadata: Metadata = {
   title: 'بروبرتي ويكي - مركز المعرفة العقارية الشامل',
   description: 'أدلة متخصصة، رؤى سوقية، ومعرفة عقارية شاملة لمساعدتك في اتخاذ قرارات عقارية واثقة في دبي والإمارات.',
+  alternates: {
+    canonical: 'https://propertywiki.ai/ar',
+  },
 }
 
 const featuredGuides = [
