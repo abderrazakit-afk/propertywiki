@@ -26,6 +26,20 @@ export const metadata: Metadata = {
     siteName: 'بروبرتي ويكي',
     title: 'بروبرتي ويكي - مركز المعرفة العقارية الشامل',
     description: 'بروبرتي ويكي هو المصدر الموثوق للمعرفة العقارية.',
+    images: [
+      {
+        url: 'https://propertywiki.ai/og-image.png',
+        width: 1200,
+        height: 630,
+        alt: 'بروبرتي ويكي - دليل العقارات في دبي',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'بروبرتي ويكي - دليل العقارات في دبي',
+    description: 'دليلك الشامل للعقارات في دبي والإمارات.',
+    images: ['https://propertywiki.ai/og-image.png'],
   },
 }
 

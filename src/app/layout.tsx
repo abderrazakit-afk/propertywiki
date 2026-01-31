@@ -36,12 +36,21 @@ export const metadata: Metadata = {
     siteName: 'PropertyWiki',
     title: 'PropertyWiki - Your Complete Real Estate Knowledge Hub',
     description: 'PropertyWiki is the definitive resource for real estate knowledge. Explore property definitions, location guides, investing strategies, and expert insights.',
+    images: [
+      {
+        url: 'https://propertywiki.ai/og-image.png',
+        width: 1200,
+        height: 630,
+        alt: 'PropertyWiki - Dubai Real Estate Knowledge Hub',
+      },
+    ],
   },
   twitter: {
     card: 'summary_large_image',
     title: 'PropertyWiki - Your Complete Real Estate Knowledge Hub',
     description: 'PropertyWiki is the definitive resource for real estate knowledge.',
     creator: '@propertywiki',
+    images: ['https://propertywiki.ai/og-image.png'],
   },
   robots: {
     index: true,
