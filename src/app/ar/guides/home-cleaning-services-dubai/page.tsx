@@ -6,6 +6,39 @@ export const metadata: Metadata = {
   description: 'دليل خدمات التنظيف المنزلي في دبي. الأنواع، الأسعار، وكيفية اختيار الخدمة المناسبة.',
 }
 
+const relatedArticles = [
+  {
+    title: 'كيفية استئجار عقار',
+    href: '/ar/guides/how-to-rent-property-in-uae',
+    category: 'دليل',
+    description: 'دليل شامل للاستئجار في الإمارات.',
+  },
+  {
+    title: 'صيانة المكيفات',
+    href: '/ar/guides/ac-maintenance-dubai',
+    category: 'دليل',
+    description: 'الحفاظ على جودة الهواء في منزلك.',
+  },
+  {
+    title: 'مرافق المباني السكنية',
+    href: '/ar/guides/building-facilities-amenities-dubai',
+    category: 'دليل',
+    description: 'خدمات التنظيف في المناطق المشتركة.',
+  },
+  {
+    title: 'دبي مارينا',
+    href: '/ar/locations/dubai/dubai-marina',
+    category: 'موقع',
+    description: 'خدمات التنظيف المتوفرة في المنطقة.',
+  },
+  {
+    title: 'دليل ديوا',
+    href: '/ar/guides/dewa-electricity-water-guide',
+    category: 'دليل',
+    description: 'إعداد الخدمات عند الانتقال لمنزل جديد.',
+  },
+]
+
 export default function HomeCleaningPage() {
   return (
     <div className="bg-white min-h-screen">
@@ -42,9 +75,26 @@ export default function HomeCleaningPage() {
               </div>
               <div className="bg-warm-50 rounded-xl p-4">
                 <h3 className="font-semibold text-gray-900 mb-2">تنظيف نهاية الإيجار</h3>
-                <p className="text-warm-700 text-sm mb-2">تنظيف احترافي عند مغادرة الشقة لاسترداد التأمين.</p>
+                <p className="text-warm-700 text-sm mb-2">تنظيف احترافي عند <Link href="/ar/guides/how-to-rent-property-in-uae" className="text-primary-600 hover:underline">مغادرة الشقة</Link> لاسترداد التأمين.</p>
                 <p className="text-primary-600 font-medium">500-1,500 درهم</p>
               </div>
+            </div>
+          </section>
+
+          <section className="mb-10">
+            <h2 className="text-2xl font-serif font-bold text-gray-900 mb-4">خدمات إضافية مهمة</h2>
+            <p className="text-warm-700 mb-4">
+              لا تنسَ هذه الخدمات عند الانتقال لمنزل جديد:
+            </p>
+            <div className="grid md:grid-cols-2 gap-4">
+              <Link href="/ar/guides/ac-maintenance-dubai" className="block bg-primary-50 rounded-xl p-4 hover:bg-primary-100 transition-colors">
+                <h4 className="font-semibold text-gray-900">صيانة المكيفات</h4>
+                <p className="text-sm text-warm-600">تنظيف الفلاتر والصيانة الدورية</p>
+              </Link>
+              <Link href="/ar/guides/dewa-electricity-water-guide" className="block bg-primary-50 rounded-xl p-4 hover:bg-primary-100 transition-colors">
+                <h4 className="font-semibold text-gray-900">تفعيل ديوا</h4>
+                <p className="text-sm text-warm-600">خدمات الكهرباء والمياه</p>
+              </Link>
             </div>
           </section>
 
@@ -81,13 +131,45 @@ export default function HomeCleaningPage() {
             </ul>
           </section>
 
+          <section className="mb-10">
+            <h2 className="text-2xl font-serif font-bold text-gray-900 mb-4">مناطق شائعة للخدمة</h2>
+            <p className="text-warm-700 mb-4">
+              تتوفر خدمات التنظيف في جميع مناطق دبي، بما في ذلك:
+            </p>
+            <div className="grid md:grid-cols-3 gap-3">
+              <Link href="/ar/locations/dubai/dubai-marina" className="text-primary-600 hover:underline">دبي مارينا</Link>
+              <Link href="/ar/locations/dubai/downtown-dubai" className="text-primary-600 hover:underline">داون تاون دبي</Link>
+              <Link href="/ar/locations/dubai/palm-jumeirah" className="text-primary-600 hover:underline">نخلة جميرا</Link>
+              <Link href="/ar/locations/dubai/jbr" className="text-primary-600 hover:underline">جميرا بيتش ريزيدنس</Link>
+              <Link href="/ar/locations/dubai/business-bay" className="text-primary-600 hover:underline">الخليج التجاري</Link>
+              <Link href="/ar/locations/dubai/arabian-ranches" className="text-primary-600 hover:underline">المرابع العربية</Link>
+            </div>
+          </section>
+
           <div className="bg-accent-50 rounded-2xl p-6 border border-accent-200">
             <h3 className="font-semibold text-accent-800 mb-2">نصيحة</h3>
             <p className="text-accent-700 text-sm">
-              احجز خدمة التنظيف قبل الانتقال لشقة جديدة لضمان بيئة نظيفة وصحية من اليوم الأول.
+              احجز خدمة التنظيف قبل الانتقال لشقة جديدة لضمان بيئة نظيفة وصحية من اليوم الأول. اطلع على <Link href="/ar/guides/building-facilities-amenities-dubai" className="text-primary-600 hover:underline">مرافق المباني</Link> لمعرفة الخدمات المشتركة المتوفرة.
             </p>
           </div>
         </article>
+
+        <div className="mt-12 pt-8 border-t border-warm-200">
+          <h3 className="text-xl font-serif font-bold text-gray-900 mb-6">مقالات ذات صلة</h3>
+          <div className="grid md:grid-cols-2 gap-4">
+            {relatedArticles.map((article) => (
+              <Link
+                key={article.href}
+                href={article.href}
+                className="block bg-warm-50 rounded-xl p-4 hover:bg-warm-100 transition-colors"
+              >
+                <span className="text-xs text-primary-600 font-medium">{article.category}</span>
+                <h4 className="font-semibold text-gray-900 mt-1">{article.title}</h4>
+                <p className="text-sm text-warm-600 mt-1">{article.description}</p>
+              </Link>
+            ))}
+          </div>
+        </div>
 
         <div className="mt-12 pt-8 border-t border-warm-200">
           <p className="text-sm text-warm-500 mb-4">آخر تحديث: يناير 2026 | بواسطة فريق بروبرتي ويكي</p>

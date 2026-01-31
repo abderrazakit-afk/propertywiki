@@ -6,6 +6,39 @@ export const metadata: Metadata = {
   description: 'دليل شامل لشراء العقارات في جميع إمارات الدولة. القوانين والإجراءات والمتطلبات.',
 }
 
+const relatedArticles = [
+  {
+    title: 'كيفية شراء عقار في دبي',
+    href: '/ar/guides/how-to-buy-property-in-dubai',
+    category: 'دليل',
+    description: 'دليل تفصيلي لشراء العقارات في دبي خطوة بخطوة.',
+  },
+  {
+    title: 'التملك الحر في الإمارات',
+    href: '/ar/definitions/freehold-property',
+    category: 'تعريف',
+    description: 'تعرف على نظام التملك الحر وحقوق المالكين الأجانب.',
+  },
+  {
+    title: 'حق الانتفاع (Leasehold)',
+    href: '/ar/definitions/leasehold',
+    category: 'تعريف',
+    description: 'فهم نظام حق الانتفاع وكيف يختلف عن التملك الحر.',
+  },
+  {
+    title: 'داون تاون دبي',
+    href: '/ar/locations/dubai/downtown-dubai',
+    category: 'موقع',
+    description: 'استكشف قلب دبي النابض والعقارات الفاخرة.',
+  },
+  {
+    title: 'العقارات على الخارطة',
+    href: '/ar/definitions/off-plan-property',
+    category: 'تعريف',
+    description: 'كل ما تحتاج معرفته عن شراء العقارات قيد الإنشاء.',
+  },
+]
+
 export default function BuyPropertyUAEPage() {
   return (
     <div className="bg-white min-h-screen">
@@ -24,10 +57,13 @@ export default function BuyPropertyUAEPage() {
 
           <section className="mb-10">
             <h2 className="text-2xl font-serif font-bold text-gray-900 mb-4">التملك في كل إمارة</h2>
+            <p className="text-warm-700 mb-4">
+              تتيح الإمارات للأجانب تملك العقارات بنظام <Link href="/ar/definitions/freehold-property" className="text-primary-600 hover:underline">التملك الحر</Link> أو <Link href="/ar/definitions/leasehold" className="text-primary-600 hover:underline">حق الانتفاع</Link> حسب الإمارة والمنطقة. تُنظم <a href="https://www.rera.gov.ae" target="_blank" rel="noopener noreferrer" className="text-primary-600 hover:underline">مؤسسة التنظيم العقاري (RERA)</a> جميع المعاملات العقارية.
+            </p>
             <div className="space-y-4">
               <div className="bg-warm-50 rounded-xl p-4">
                 <h3 className="font-semibold text-gray-900 mb-2">دبي</h3>
-                <p className="text-warm-700 text-sm">تملك حر 100% للأجانب في مناطق محددة. أكبر سوق عقاري في الإمارات.</p>
+                <p className="text-warm-700 text-sm">تملك حر 100% للأجانب في مناطق محددة. أكبر سوق عقاري في الإمارات. تسجل المعاملات في <a href="https://www.dubailand.gov.ae" target="_blank" rel="noopener noreferrer" className="text-primary-600 hover:underline">دائرة الأراضي والأملاك</a>. اطلع على <Link href="/ar/guides/how-to-buy-property-in-dubai" className="text-primary-600 hover:underline">دليل شراء عقار في دبي</Link> للتفاصيل.</p>
               </div>
               <div className="bg-warm-50 rounded-xl p-4">
                 <h3 className="font-semibold text-gray-900 mb-2">أبوظبي</h3>
@@ -107,10 +143,27 @@ export default function BuyPropertyUAEPage() {
           <div className="bg-accent-50 rounded-2xl p-6 border border-accent-200">
             <h3 className="font-semibold text-accent-800 mb-2">تأشيرة المستثمر العقاري</h3>
             <p className="text-accent-700 text-sm">
-              شراء عقار بقيمة 750,000 درهم أو أكثر يؤهلك للحصول على تأشيرة إقامة مستثمر لمدة 2 سنة. عقارات بقيمة 2 مليون درهم+ تؤهل للإقامة الذهبية 10 سنوات.
+              شراء عقار بقيمة 750,000 درهم أو أكثر يؤهلك للحصول على تأشيرة إقامة مستثمر لمدة 2 سنة. عقارات بقيمة 2 مليون درهم+ تؤهل للإقامة الذهبية 10 سنوات. اطلع على <Link href="/ar/blog/golden-visa-changes-2025" className="text-primary-600 hover:underline">تحديثات التأشيرة الذهبية</Link> لمزيد من المعلومات.
             </p>
           </div>
         </article>
+
+        <div className="mt-12 pt-8 border-t border-warm-200">
+          <h3 className="text-xl font-serif font-bold text-gray-900 mb-6">مقالات ذات صلة</h3>
+          <div className="grid md:grid-cols-2 gap-4">
+            {relatedArticles.map((article) => (
+              <Link
+                key={article.href}
+                href={article.href}
+                className="block bg-warm-50 rounded-xl p-4 hover:bg-warm-100 transition-colors"
+              >
+                <span className="text-xs text-primary-600 font-medium">{article.category}</span>
+                <h4 className="font-semibold text-gray-900 mt-1">{article.title}</h4>
+                <p className="text-sm text-warm-600 mt-1">{article.description}</p>
+              </Link>
+            ))}
+          </div>
+        </div>
 
         <div className="mt-12 pt-8 border-t border-warm-200">
           <p className="text-sm text-warm-500 mb-4">آخر تحديث: يناير 2026 | بواسطة فريق بروبرتي ويكي</p>

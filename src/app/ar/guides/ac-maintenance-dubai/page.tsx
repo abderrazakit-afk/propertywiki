@@ -6,6 +6,39 @@ export const metadata: Metadata = {
   description: 'دليل صيانة أنظمة التكييف في دبي. نصائح للحفاظ على برودة منزلك وتقليل فواتير الكهرباء.',
 }
 
+const relatedArticles = [
+  {
+    title: 'دليل ديوا للكهرباء والمياه',
+    href: '/ar/guides/dewa-electricity-water-guide',
+    category: 'دليل',
+    description: 'فهم فواتير الكهرباء وكيفية توفير الاستهلاك.',
+  },
+  {
+    title: 'مرافق المباني السكنية',
+    href: '/ar/guides/building-facilities-amenities-dubai',
+    category: 'دليل',
+    description: 'الخدمات المشتركة في المباني السكنية.',
+  },
+  {
+    title: 'كيفية استئجار عقار',
+    href: '/ar/guides/how-to-rent-property-in-uae',
+    category: 'دليل',
+    description: 'دليل المستأجر الشامل للعيش في الإمارات.',
+  },
+  {
+    title: 'خدمات التنظيف المنزلي',
+    href: '/ar/guides/home-cleaning-services-dubai',
+    category: 'دليل',
+    description: 'الحفاظ على نظافة المنزل والمكيفات.',
+  },
+  {
+    title: 'داون تاون دبي',
+    href: '/ar/locations/dubai/downtown-dubai',
+    category: 'موقع',
+    description: 'العقارات والخدمات في قلب دبي.',
+  },
+]
+
 export default function ACMaintenancePage() {
   return (
     <div className="bg-white min-h-screen">
@@ -25,12 +58,12 @@ export default function ACMaintenancePage() {
           <section className="mb-10">
             <h2 className="text-2xl font-serif font-bold text-gray-900 mb-4">أهمية الصيانة الدورية</h2>
             <p className="text-warm-700 leading-relaxed mb-4">
-              في دبي حيث تصل درجات الحرارة إلى 50 درجة مئوية، يعمل نظام التكييف لساعات طويلة يومياً. الصيانة الدورية ضرورية لـ:
+              في دبي حيث تصل درجات الحرارة إلى 50 درجة مئوية، يعمل نظام التكييف لساعات طويلة يومياً. الصيانة الدورية ضرورية لتقليل فواتير <a href="https://www.dewa.gov.ae" target="_blank" rel="noopener noreferrer" className="text-primary-600 hover:underline">ديوا</a>:
             </p>
             <div className="grid md:grid-cols-2 gap-4">
               <div className="bg-accent-50 rounded-xl p-4">
                 <p className="font-medium text-gray-900 mb-1">توفير الطاقة</p>
-                <p className="text-sm text-warm-600">حتى 30% من فاتورة الكهرباء</p>
+                <p className="text-sm text-warm-600">حتى 30% من <Link href="/ar/guides/dewa-electricity-water-guide" className="text-primary-600 hover:underline">فاتورة الكهرباء</Link></p>
               </div>
               <div className="bg-accent-50 rounded-xl p-4">
                 <p className="font-medium text-gray-900 mb-1">إطالة عمر الجهاز</p>
@@ -77,6 +110,13 @@ export default function ACMaintenancePage() {
           </section>
 
           <section className="mb-10">
+            <h2 className="text-2xl font-serif font-bold text-gray-900 mb-4">مسؤولية الصيانة</h2>
+            <p className="text-warm-700 mb-4">
+              إذا كنت <Link href="/ar/guides/how-to-rent-property-in-uae" className="text-primary-600 hover:underline">مستأجراً</Link>، فعادة ما يكون المالك مسؤولاً عن صيانة التكييف المركزي، بينما أنت مسؤول عن تنظيف الفلاتر. راجع <Link href="/ar/guides/building-facilities-amenities-dubai" className="text-primary-600 hover:underline">دليل مرافق المباني</Link> لفهم الخدمات المشمولة.
+            </p>
+          </section>
+
+          <section className="mb-10">
             <h2 className="text-2xl font-serif font-bold text-gray-900 mb-4">تكاليف الصيانة</h2>
             <div className="overflow-x-auto">
               <table className="w-full text-sm">
@@ -111,10 +151,27 @@ export default function ACMaintenancePage() {
           <div className="bg-accent-50 rounded-2xl p-6 border border-accent-200">
             <h3 className="font-semibold text-accent-800 mb-2">نصيحة ذهبية</h3>
             <p className="text-accent-700 text-sm">
-              ضبط الثرموستات على 24 درجة بدلاً من 20 درجة يوفر حتى 30% من الكهرباء. استخدم المراوح لتوزيع الهواء البارد بشكل أفضل.
+              ضبط الثرموستات على 24 درجة بدلاً من 20 درجة يوفر حتى 30% من الكهرباء. استخدم المراوح لتوزيع الهواء البارد بشكل أفضل. تابع استهلاكك عبر <a href="https://www.dewa.gov.ae" target="_blank" rel="noopener noreferrer" className="text-primary-600 hover:underline">تطبيق ديوا</a>.
             </p>
           </div>
         </article>
+
+        <div className="mt-12 pt-8 border-t border-warm-200">
+          <h3 className="text-xl font-serif font-bold text-gray-900 mb-6">مقالات ذات صلة</h3>
+          <div className="grid md:grid-cols-2 gap-4">
+            {relatedArticles.map((article) => (
+              <Link
+                key={article.href}
+                href={article.href}
+                className="block bg-warm-50 rounded-xl p-4 hover:bg-warm-100 transition-colors"
+              >
+                <span className="text-xs text-primary-600 font-medium">{article.category}</span>
+                <h4 className="font-semibold text-gray-900 mt-1">{article.title}</h4>
+                <p className="text-sm text-warm-600 mt-1">{article.description}</p>
+              </Link>
+            ))}
+          </div>
+        </div>
 
         <div className="mt-12 pt-8 border-t border-warm-200">
           <p className="text-sm text-warm-500 mb-4">آخر تحديث: يناير 2026 | بواسطة فريق بروبرتي ويكي</p>
