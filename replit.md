@@ -74,6 +74,11 @@ npm run start # Production server
 - All content attributed to "PropertyWiki Team" for unified brand voice
 
 ## Recent Changes (January 2026)
+- **MAJOR SEO FIX: Resolved "Non-canonical page in sitemap" Ahrefs error**
+  - Removed global canonical inheritance from layout.tsx files (was causing all pages to canonicalize to homepage)
+  - Added self-referencing canonical URLs to all 58 pages (English + Arabic)
+  - Each page now correctly canonicalizes to its own URL via `alternates: { canonical: '...' }` in metadata
+  - Created layout.tsx files for client component pages (find-home) to support metadata export
 - Added 5 new Dubai community pages:
   - Palm Jumeirah (luxury island living)
   - Business Bay (commercial/residential hub)
