@@ -80,9 +80,21 @@ export default function InvestingPageAr() {
           ))}
         </div>
 
-        <p className="text-center text-warm-500 mt-12">
-          محتوى إضافي قريباً...
-        </p>
+        <section className="mt-12 pt-8 border-t border-warm-200">
+          <h2 className="text-2xl font-serif font-semibold text-gray-900 mb-6 text-center">استكشف المزيد</h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <Link href="/ar/guides/how-to-buy-property-in-dubai" className="group bg-white rounded-2xl p-6 border border-warm-100 hover:border-primary-200 transition-colors">
+              <span className="inline-block text-xs font-medium text-primary-600 uppercase tracking-wider mb-2">دليل</span>
+              <h3 className="text-lg font-medium text-gray-900 group-hover:text-primary-600 transition-colors mb-2">كيفية شراء عقار في دبي</h3>
+              <p className="text-sm text-gray-600">دليل شامل للمشترين الأجانب خطوة بخطوة.</p>
+            </Link>
+            <Link href="/ar/locations/dubai/dubai-marina" className="group bg-white rounded-2xl p-6 border border-warm-100 hover:border-primary-200 transition-colors">
+              <span className="inline-block text-xs font-medium text-primary-600 uppercase tracking-wider mb-2">منطقة</span>
+              <h3 className="text-lg font-medium text-gray-900 group-hover:text-primary-600 transition-colors mb-2">دليل دبي مارينا</h3>
+              <p className="text-sm text-gray-600">اكتشف إمكانيات الاستثمار في دبي مارينا.</p>
+            </Link>
+          </div>
+        </section>
       </div>
     </div>
   )

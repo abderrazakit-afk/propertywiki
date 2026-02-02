@@ -98,7 +98,28 @@ export default function AboutPage() {
           </div>
         </article>
 
-        <div className="mt-12 pt-8 border-t border-warm-200">
+        <section className="mt-12 pt-8 border-t border-warm-200">
+          <h2 className="text-2xl font-serif font-semibold text-gray-900 mb-6">ابدأ الاستكشاف</h2>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <Link href="/ar/guides/how-to-buy-property-in-dubai" className="group luxury-card p-5">
+              <span className="inline-block text-xs font-medium text-primary-600 uppercase tracking-wider mb-2">دليل</span>
+              <h3 className="text-lg font-medium text-gray-900 group-hover:text-primary-600 transition-colors mb-2">كيفية شراء عقار في دبي</h3>
+              <p className="text-sm text-gray-600 line-clamp-2">دليل شامل خطوة بخطوة للمشترين.</p>
+            </Link>
+            <Link href="/ar/definitions/freehold-property" className="group luxury-card p-5">
+              <span className="inline-block text-xs font-medium text-primary-600 uppercase tracking-wider mb-2">تعريف</span>
+              <h3 className="text-lg font-medium text-gray-900 group-hover:text-primary-600 transition-colors mb-2">ما هي الملكية الحرة؟</h3>
+              <p className="text-sm text-gray-600 line-clamp-2">فهم أنواع ملكية العقارات في دبي.</p>
+            </Link>
+            <Link href="/ar/locations/dubai/dubai-marina" className="group luxury-card p-5">
+              <span className="inline-block text-xs font-medium text-primary-600 uppercase tracking-wider mb-2">منطقة</span>
+              <h3 className="text-lg font-medium text-gray-900 group-hover:text-primary-600 transition-colors mb-2">دليل دبي مارينا</h3>
+              <p className="text-sm text-gray-600 line-clamp-2">اكتشف مجتمع الواجهة البحرية الفاخر.</p>
+            </Link>
+          </div>
+        </section>
+
+        <div className="mt-8">
           <Link href="/ar" className="text-primary-600 hover:text-primary-700 font-medium inline-flex items-center">
             <svg className="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
