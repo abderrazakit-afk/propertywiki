@@ -1,4 +1,5 @@
 import { Metadata } from 'next'
+import Link from 'next/link'
 import Breadcrumbs from '@/components/layout/Breadcrumbs'
 
 export const metadata: Metadata = {
@@ -93,6 +94,29 @@ export default function ContactPage() {
           </div>
         </div>
       </div>
+
+      <section className="mt-12 pt-8 border-t border-gray-200">
+        <h2 className="text-2xl font-serif font-semibold text-gray-900 mb-6">
+          Popular Resources
+        </h2>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <Link href="/guides" className="group luxury-card p-5">
+            <span className="inline-block text-xs font-medium text-primary-600 uppercase tracking-wider mb-2">Guides</span>
+            <h3 className="text-lg font-medium text-gray-900 group-hover:text-primary-600 transition-colors mb-2">Property Guides</h3>
+            <p className="text-sm text-gray-600 line-clamp-2">Step-by-step guides for buying, selling, and renting.</p>
+          </Link>
+          <Link href="/locations/dubai" className="group luxury-card p-5">
+            <span className="inline-block text-xs font-medium text-primary-600 uppercase tracking-wider mb-2">Locations</span>
+            <h3 className="text-lg font-medium text-gray-900 group-hover:text-primary-600 transition-colors mb-2">Dubai Communities</h3>
+            <p className="text-sm text-gray-600 line-clamp-2">Explore popular neighborhoods and areas.</p>
+          </Link>
+          <Link href="/definitions" className="group luxury-card p-5">
+            <span className="inline-block text-xs font-medium text-primary-600 uppercase tracking-wider mb-2">Definitions</span>
+            <h3 className="text-lg font-medium text-gray-900 group-hover:text-primary-600 transition-colors mb-2">Property Terms</h3>
+            <p className="text-sm text-gray-600 line-clamp-2">Clear explanations of real estate terminology.</p>
+          </Link>
+        </div>
+      </section>
     </div>
   )
 }
