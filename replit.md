@@ -73,7 +73,16 @@ npm run start # Production server
 - SEO-focused content structure
 - All content attributed to "PropertyWiki Team" for unified brand voice
 
-## Recent Changes (January 2026)
+## Recent Changes (February 2026)
+- **HTML Lang/Hreflang Alignment Fix**
+  - Fixed "Hreflang and HTML lang mismatch" issue flagged by Ahrefs
+  - Middleware now sets x-locale request header based on pathname (/ar/* → 'ar', others → 'en')
+  - Root layout dynamically sets `<html lang>` and `dir` attributes server-side
+  - Arabic pages now render `<html lang="ar" dir="rtl">` in SSR
+  - English pages render `<html lang="en" dir="ltr">`
+  - This ensures crawlers see matching hreflang and HTML lang attributes
+
+## Previous Changes (January 2026)
 - **COMPREHENSIVE SEO OVERHAUL**
   - **Canonical Fix**: Resolved "Non-canonical page in sitemap" - each page now self-canonicalizes
   - **OG Tags**: Added dynamic og:url matching canonical on all 58 pages
