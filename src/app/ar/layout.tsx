@@ -49,7 +49,7 @@ export default function ArabicLayout({
   children: React.ReactNode
 }) {
   return (
-    <div dir="rtl" lang="ar" className={`min-h-screen flex flex-col font-arabic ${notoArabic.variable}`}>
+    <div className={`min-h-screen flex flex-col font-arabic ${notoArabic.variable}`}>
       <HeaderAr />
       <main className="flex-grow">
         {children}
