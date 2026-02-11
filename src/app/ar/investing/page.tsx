@@ -20,6 +20,37 @@ export const metadata: Metadata = {
   },
 }
 
+const investingPages = [
+  {
+    title: 'أفضل 10 مناطق استثمارية في دبي 2026',
+    titleEn: 'Top 10 Investment Areas Dubai',
+    description: 'تصنيف شامل لأفضل مناطق الاستثمار العقاري في دبي مع نظام تقييم متعدد المعايير.',
+    href: '/ar/investing/top-10-investment-areas-dubai',
+    icon: '🏆',
+  },
+  {
+    title: 'بطاقة أداء الاستثمار العقاري 2026',
+    titleEn: 'Dubai Investment Scorecard 2026',
+    description: 'بطاقة أداء شاملة لتقييم فرص الاستثمار العقاري في دبي حسب معايير متعددة.',
+    href: '/ar/investing/dubai-investment-scorecard-2026',
+    icon: '📊',
+  },
+  {
+    title: 'تصنيف النمو الرأسمالي في دبي',
+    titleEn: 'Capital Growth Ranking Dubai',
+    description: 'تصنيف مناطق دبي حسب معدلات النمو الرأسمالي التاريخية والمتوقعة.',
+    href: '/ar/investing/capital-growth-ranking-dubai',
+    icon: '📈',
+  },
+  {
+    title: 'تصنيف الطلب الإيجاري في دبي',
+    titleEn: 'Rental Demand Ranking Dubai',
+    description: 'تحليل الطلب الإيجاري في مختلف مناطق دبي مع معدلات الإشغال.',
+    href: '/ar/investing/rental-demand-ranking-dubai',
+    icon: '🏠',
+  },
+]
+
 const topics = [
   {
     title: 'أساسيات الاستثمار العقاري',
@@ -63,24 +94,54 @@ export default function InvestingPageAr() {
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 gap-6">
-          {topics.map((topic) => (
-            <div
-              key={topic.title}
-              className="bg-white rounded-2xl p-6 border border-warm-100"
-            >
-              <span className="text-3xl mb-4 block">{topic.icon}</span>
-              <h2 className="text-lg font-serif font-bold text-gray-900 mb-2">
-                {topic.title}
-              </h2>
-              <p className="text-warm-600 text-sm">
-                {topic.description}
-              </p>
-            </div>
-          ))}
-        </div>
+        <section className="mb-12">
+          <h2 className="text-2xl font-serif font-bold text-gray-900 mb-6">تقارير الاستثمار</h2>
+          <div className="grid gap-4">
+            {investingPages.map((page) => (
+              <Link
+                key={page.href}
+                href={page.href}
+                className="group bg-white rounded-2xl p-6 hover:shadow-lg transition-all border border-warm-100"
+              >
+                <div className="flex items-start gap-4">
+                  <span className="text-3xl">{page.icon}</span>
+                  <div className="flex-1">
+                    <h3 className="text-lg font-serif font-bold text-gray-900 group-hover:text-primary-600 transition-colors mb-1">
+                      {page.title}
+                    </h3>
+                    <p className="text-sm text-primary-600 mb-2">{page.titleEn}</p>
+                    <p className="text-warm-600 text-sm">{page.description}</p>
+                  </div>
+                  <svg className="w-5 h-5 text-warm-400 group-hover:text-primary-600 transition-colors flex-shrink-0 mt-1 rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                  </svg>
+                </div>
+              </Link>
+            ))}
+          </div>
+        </section>
 
-        <section className="mt-12 pt-8 border-t border-warm-200">
+        <section className="mb-12">
+          <h2 className="text-2xl font-serif font-bold text-gray-900 mb-6">مواضيع استثمارية</h2>
+          <div className="grid md:grid-cols-2 gap-6">
+            {topics.map((topic) => (
+              <div
+                key={topic.title}
+                className="bg-white rounded-2xl p-6 border border-warm-100"
+              >
+                <span className="text-3xl mb-4 block">{topic.icon}</span>
+                <h3 className="text-lg font-serif font-bold text-gray-900 mb-2">
+                  {topic.title}
+                </h3>
+                <p className="text-warm-600 text-sm">
+                  {topic.description}
+                </p>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        <section className="pt-8 border-t border-warm-200">
           <h2 className="text-2xl font-serif font-semibold text-gray-900 mb-6 text-center">استكشف المزيد</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <Link href="/ar/guides/how-to-buy-property-in-dubai" className="group bg-white rounded-2xl p-6 border border-warm-100 hover:border-primary-200 transition-colors">
@@ -88,10 +149,10 @@ export default function InvestingPageAr() {
               <h3 className="text-lg font-medium text-gray-900 group-hover:text-primary-600 transition-colors mb-2">كيفية شراء عقار في دبي</h3>
               <p className="text-sm text-gray-600">دليل شامل للمشترين الأجانب خطوة بخطوة.</p>
             </Link>
-            <Link href="/ar/locations/dubai/dubai-marina" className="group bg-white rounded-2xl p-6 border border-warm-100 hover:border-primary-200 transition-colors">
-              <span className="inline-block text-xs font-medium text-primary-600 uppercase tracking-wider mb-2">منطقة</span>
-              <h3 className="text-lg font-medium text-gray-900 group-hover:text-primary-600 transition-colors mb-2">دليل دبي مارينا</h3>
-              <p className="text-sm text-gray-600">اكتشف إمكانيات الاستثمار في دبي مارينا.</p>
+            <Link href="/ar/guides/highest-rental-yield-areas-dubai" className="group bg-white rounded-2xl p-6 border border-warm-100 hover:border-primary-200 transition-colors">
+              <span className="inline-block text-xs font-medium text-primary-600 uppercase tracking-wider mb-2">عائد</span>
+              <h3 className="text-lg font-medium text-gray-900 group-hover:text-primary-600 transition-colors mb-2">أعلى مناطق العائد الإيجاري</h3>
+              <p className="text-sm text-gray-600">تعرف على أفضل المناطق للعائد الإيجاري في دبي.</p>
             </Link>
           </div>
         </section>

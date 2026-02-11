@@ -221,6 +221,25 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified,
       changeFrequency: 'monthly',
       priority: 0.8,
+      alternates: {
+        languages: {
+          en: `${baseUrl}/investing/${slug}`,
+          ar: `${baseUrl}/ar/investing/${slug}`,
+        },
+      },
+    })
+
+    sitemapEntries.push({
+      url: `${baseUrl}/ar/investing/${slug}`,
+      lastModified,
+      changeFrequency: 'monthly',
+      priority: 0.8,
+      alternates: {
+        languages: {
+          en: `${baseUrl}/investing/${slug}`,
+          ar: `${baseUrl}/ar/investing/${slug}`,
+        },
+      },
     })
   })
 
