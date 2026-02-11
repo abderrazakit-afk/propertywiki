@@ -101,6 +101,22 @@ npm run start # Production server
 - Updated domain to propertywiki.ai in sitemap and all email addresses
 - Added custom 404 page with branded design and helpful navigation links
 
+## Major Content Expansion (February 2026)
+Added 46 new high-quality content pages across 10 categories:
+- **Rental Yield & ROI** (5 pages): highest-rental-yield-areas-dubai, best-areas-8-percent-roi-dubai, jvc-vs-dubai-hills-investment, best-areas-under-1m-good-roi, studio-rental-yield-by-area
+- **Budget-Based** (5 pages): best-areas-buy-property-under-500k, where-to-buy-under-1-million-dubai, cheapest-freehold-areas-dubai, affordable-areas-near-metro-dubai, best-areas-first-time-buyers-dubai
+- **Metro/Transportation** (4 pages): best-areas-near-dubai-metro, walking-distance-metro-communities, property-near-red-line-metro-dubai, car-free-living-areas-dubai
+- **Off-Plan** (5 pages): best-off-plan-projects-under-1m, off-plan-vs-ready-property-roi, safest-off-plan-areas-dubai, payment-plan-communities-dubai, 1-percent-payment-plan-dubai
+- **Family & Lifestyle** (5 pages): best-areas-families-dubai, best-areas-near-schools-dubai, gated-communities-dubai, villa-communities-under-2m-dubai, quiet-residential-areas-dubai
+- **Airbnb/STR** (5 pages): best-areas-airbnb-dubai, short-term-rental-roi-dubai, airbnb-dubai-marina-guide, short-term-rental-license-dubai, highest-nightly-rate-areas-dubai
+- **Service Charges & Costs** (5 pages): service-charges-by-area-dubai, hidden-costs-buying-property-dubai, dld-fees-calculator-guide, maintenance-cost-by-community-dubai, dewa-cooling-charges-comparison
+- **Area Comparisons** (4 pages): business-bay-vs-downtown-dubai, dubai-marina-vs-jbr, palm-jumeirah-vs-emirates-hills, abu-dhabi-vs-dubai-investment
+- **Micro-Area Deep Dives** (4 pages): property-jvc-investment-guide, dubai-silicon-oasis-investment, al-furjan-investment-guide, arabian-ranches-pros-cons
+- **Investment Scorecards** (4 pages under /investing/): top-10-investment-areas-dubai, dubai-investment-scorecard-2026, capital-growth-ranking-dubai, rental-demand-ranking-dubai
+
+All pages include: SEO metadata, JSON-LD structured data, FAQs, Table of Contents, Author Box, Related Articles, cross-linking.
+Updated: sitemap (50+ guides + 4 investing), guides index, investing index, homepage categories, footer links, search data (searchData.ts)
+
 ## Search Feature
 Fuzzy search across all site content:
 - Uses Fuse.js for fuzzy matching (handles typos and partial matches)
