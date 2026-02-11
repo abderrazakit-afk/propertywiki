@@ -5,7 +5,6 @@ export function middleware(request: NextRequest) {
   const host = request.headers.get('host') || ''
   const protocol = request.headers.get('x-forwarded-proto') || 'https'
   const url = request.nextUrl.clone()
-  const pathname = request.nextUrl.pathname
 
   if (
     host.startsWith('www.') ||
@@ -18,15 +17,7 @@ export function middleware(request: NextRequest) {
     return NextResponse.redirect(url, 301)
   }
 
-  const locale = pathname.startsWith('/ar') ? 'ar' : 'en'
-  const requestHeaders = new Headers(request.headers)
-  requestHeaders.set('x-locale', locale)
-  
-  return NextResponse.next({
-    request: {
-      headers: requestHeaders,
-    },
-  })
+  return NextResponse.next()
 }
 
 export const config = {
