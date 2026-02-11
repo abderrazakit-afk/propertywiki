@@ -378,8 +378,20 @@ const guides = [
   },
 ]
 
-export default function GuidesPage() {
+const GUIDES_PER_PAGE = 10
+
+export default function GuidesPage({
+  searchParams,
+}: {
+  searchParams: { page?: string }
+}) {
   const breadcrumbs = [{ name: 'Guides', href: '/guides' }]
+
+  const currentPage = Math.max(1, parseInt(searchParams.page || '1', 10) || 1)
+  const totalPages = Math.ceil(guides.length / GUIDES_PER_PAGE)
+  const safePage = Math.min(currentPage, totalPages)
+  const startIndex = (safePage - 1) * GUIDES_PER_PAGE
+  const paginatedGuides = guides.slice(startIndex, startIndex + GUIDES_PER_PAGE)
 
   return (
     <>
@@ -401,10 +413,13 @@ export default function GuidesPage() {
             Expert guides to help you navigate buying, selling, and renting property in the UAE.
             Step-by-step procedures, costs, and legal requirements explained.
           </p>
+          <p className="text-sm text-gray-400 mt-3">
+            Showing {startIndex + 1}–{Math.min(startIndex + GUIDES_PER_PAGE, guides.length)} of {guides.length} guides
+          </p>
         </header>
 
         <div className="space-y-6">
-          {guides.map((guide) => (
+          {paginatedGuides.map((guide) => (
             <Link
               key={guide.slug}
               href={`/guides/${guide.slug}`}
@@ -416,7 +431,7 @@ export default function GuidesPage() {
                     <span className="text-xs font-semibold text-primary-600 uppercase tracking-wider">
                       {guide.category}
                     </span>
-                    <span className="text-xs text-gray-400">•</span>
+                    <span className="text-xs text-gray-400">&bull;</span>
                     <span className="text-xs text-gray-500">{guide.readTime}</span>
                   </div>
                   <h2 className="text-xl font-medium text-gray-900 group-hover:text-primary-600 transition-colors mb-2">
@@ -431,6 +446,60 @@ export default function GuidesPage() {
             </Link>
           ))}
         </div>
+
+        <nav className="mt-12 flex items-center justify-center gap-2" aria-label="Pagination">
+          {safePage > 1 ? (
+            <Link
+              href={safePage === 2 ? '/guides' : `/guides?page=${safePage - 1}`}
+              className="inline-flex items-center gap-1 px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors"
+            >
+              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+              </svg>
+              Previous
+            </Link>
+          ) : (
+            <span className="inline-flex items-center gap-1 px-4 py-2 text-sm font-medium text-gray-300 bg-gray-50 border border-gray-200 rounded-lg cursor-not-allowed">
+              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+              </svg>
+              Previous
+            </span>
+          )}
+
+          {Array.from({ length: totalPages }, (_, i) => i + 1).map((pageNum) => (
+            <Link
+              key={pageNum}
+              href={pageNum === 1 ? '/guides' : `/guides?page=${pageNum}`}
+              className={`inline-flex items-center justify-center w-10 h-10 text-sm font-medium rounded-lg transition-colors ${
+                pageNum === safePage
+                  ? 'bg-primary-600 text-white border border-primary-600'
+                  : 'text-gray-700 bg-white border border-gray-300 hover:bg-gray-50'
+              }`}
+            >
+              {pageNum}
+            </Link>
+          ))}
+
+          {safePage < totalPages ? (
+            <Link
+              href={`/guides?page=${safePage + 1}`}
+              className="inline-flex items-center gap-1 px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors"
+            >
+              Next
+              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+              </svg>
+            </Link>
+          ) : (
+            <span className="inline-flex items-center gap-1 px-4 py-2 text-sm font-medium text-gray-300 bg-gray-50 border border-gray-200 rounded-lg cursor-not-allowed">
+              Next
+              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+              </svg>
+            </span>
+          )}
+        </nav>
       </div>
     </>
   )
