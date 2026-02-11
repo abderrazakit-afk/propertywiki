@@ -85,7 +85,41 @@ const categories = [
       </svg>
     ),
     articles: [
-      { title: 'Investment Overview', href: '/investing' },
+      { title: 'Top 10 Investment Areas 2026', href: '/investing/top-10-investment-areas-dubai' },
+      { title: 'Highest Rental Yield Areas', href: '/guides/highest-rental-yield-areas-dubai' },
+      { title: 'Investment Scorecard 2026', href: '/investing/dubai-investment-scorecard-2026' },
+    ],
+  },
+  {
+    title: 'Buyer Guides',
+    description: 'Budget areas, first-time buyer tips, and cost breakdowns',
+    href: '/guides',
+    icon: (
+      <svg className="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+      </svg>
+    ),
+    articles: [
+      { title: 'Best Areas Under 500K AED', href: '/guides/best-areas-buy-property-under-500k' },
+      { title: 'First-Time Buyer Guide', href: '/guides/best-areas-first-time-buyers-dubai' },
+      { title: 'Hidden Costs of Buying', href: '/guides/hidden-costs-buying-property-dubai' },
+      { title: 'DLD Fees Calculator', href: '/guides/dld-fees-calculator-guide' },
+    ],
+  },
+  {
+    title: 'Lifestyle & Comparisons',
+    description: 'Area comparisons, family guides, and Airbnb insights',
+    href: '/guides',
+    icon: (
+      <svg className="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M3 6l3 1m0 0l-3 9a5.002 5.002 0 006.001 0M6 7l3 9M6 7l6-2m6 2l3-1m-3 1l-3 9a5.002 5.002 0 006.001 0M18 7l3 9m-3-9l-6-2m0-2v2m0 16V5m0 16H9m3 0h3" />
+      </svg>
+    ),
+    articles: [
+      { title: 'Best Areas for Families', href: '/guides/best-areas-families-dubai' },
+      { title: 'Best Areas for Airbnb', href: '/guides/best-areas-airbnb-dubai' },
+      { title: 'Marina vs JBR', href: '/guides/dubai-marina-vs-jbr' },
+      { title: 'Areas Near Metro', href: '/guides/best-areas-near-dubai-metro' },
     ],
   },
 ]
@@ -113,6 +147,30 @@ const featuredArticles = [
     href: '/definitions/freehold-property',
     category: 'Definition',
     readTime: '8 min read',
+    featured: false,
+  },
+  {
+    title: 'Top 10 Investment Areas in Dubai — Ranked by ROI',
+    description: 'Our data-driven ranking of the best investment areas in Dubai for 2026, scored by rental yield, capital growth, and demand.',
+    href: '/investing/top-10-investment-areas-dubai',
+    category: 'Investment',
+    readTime: '14 min read',
+    featured: false,
+  },
+  {
+    title: 'Service Charges by Area in Dubai — Full Comparison',
+    description: 'Compare annual service charges across every major Dubai community. Find out which areas offer the best value.',
+    href: '/guides/service-charges-by-area-dubai',
+    category: 'Costs',
+    readTime: '10 min read',
+    featured: false,
+  },
+  {
+    title: 'Best Areas for Airbnb in Dubai 2026',
+    description: 'Discover which Dubai neighborhoods deliver the highest short-term rental returns and how to get started.',
+    href: '/guides/best-areas-airbnb-dubai',
+    category: 'Airbnb',
+    readTime: '12 min read',
     featured: false,
   },
 ]

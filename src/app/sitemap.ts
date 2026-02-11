@@ -44,6 +44,55 @@ export default function sitemap(): MetadataRoute.Sitemap {
     'ac-maintenance-dubai',
     'home-cleaning-services-dubai',
     'building-facilities-amenities-dubai',
+    'highest-rental-yield-areas-dubai',
+    'best-areas-8-percent-roi-dubai',
+    'jvc-vs-dubai-hills-investment',
+    'best-areas-under-1m-good-roi',
+    'studio-rental-yield-by-area',
+    'best-areas-buy-property-under-500k',
+    'where-to-buy-under-1-million-dubai',
+    'cheapest-freehold-areas-dubai',
+    'affordable-areas-near-metro-dubai',
+    'best-areas-first-time-buyers-dubai',
+    'best-areas-near-dubai-metro',
+    'walking-distance-metro-communities',
+    'property-near-red-line-metro-dubai',
+    'car-free-living-areas-dubai',
+    'best-off-plan-projects-under-1m',
+    'off-plan-vs-ready-property-roi',
+    'safest-off-plan-areas-dubai',
+    'payment-plan-communities-dubai',
+    '1-percent-payment-plan-dubai',
+    'best-areas-families-dubai',
+    'best-areas-near-schools-dubai',
+    'gated-communities-dubai',
+    'villa-communities-under-2m-dubai',
+    'quiet-residential-areas-dubai',
+    'best-areas-airbnb-dubai',
+    'short-term-rental-roi-dubai',
+    'airbnb-dubai-marina-guide',
+    'short-term-rental-license-dubai',
+    'highest-nightly-rate-areas-dubai',
+    'service-charges-by-area-dubai',
+    'hidden-costs-buying-property-dubai',
+    'dld-fees-calculator-guide',
+    'maintenance-cost-by-community-dubai',
+    'dewa-cooling-charges-comparison',
+    'business-bay-vs-downtown-dubai',
+    'dubai-marina-vs-jbr',
+    'palm-jumeirah-vs-emirates-hills',
+    'abu-dhabi-vs-dubai-investment',
+    'property-jvc-investment-guide',
+    'dubai-silicon-oasis-investment',
+    'al-furjan-investment-guide',
+    'arabian-ranches-pros-cons',
+  ]
+
+  const investingPages = [
+    'top-10-investment-areas-dubai',
+    'dubai-investment-scorecard-2026',
+    'capital-growth-ranking-dubai',
+    'rental-demand-ranking-dubai',
   ]
 
   const blogPosts = [
@@ -163,6 +212,15 @@ export default function sitemap(): MetadataRoute.Sitemap {
           ar: `${baseUrl}/ar/guides/${slug}`,
         },
       },
+    })
+  })
+
+  investingPages.forEach((slug) => {
+    sitemapEntries.push({
+      url: `${baseUrl}/investing/${slug}`,
+      lastModified,
+      changeFrequency: 'monthly',
+      priority: 0.8,
     })
   })
 

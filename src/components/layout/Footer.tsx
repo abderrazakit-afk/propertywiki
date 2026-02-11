@@ -11,9 +11,12 @@ const footerNavigation = {
   knowledge: [
     { name: 'All Definitions', href: '/definitions' },
     { name: 'Buying Guides', href: '/guides' },
-    { name: 'Investment Tips', href: '/investing' },
-    { name: 'DEWA Setup', href: '/guides/dewa-electricity-water-guide' },
-    { name: 'AC Maintenance', href: '/guides/ac-maintenance-dubai' },
+    { name: 'Investment Rankings', href: '/investing/top-10-investment-areas-dubai' },
+    { name: 'Rental Yield Guide', href: '/guides/highest-rental-yield-areas-dubai' },
+    { name: 'Service Charges', href: '/guides/service-charges-by-area-dubai' },
+    { name: 'Areas Near Metro', href: '/guides/best-areas-near-dubai-metro' },
+    { name: 'Airbnb Guide', href: '/guides/best-areas-airbnb-dubai' },
+    { name: 'Hidden Costs', href: '/guides/hidden-costs-buying-property-dubai' },
   ],
   locations: [
     { name: 'Palm Jumeirah', href: '/locations/dubai/palm-jumeirah' },
