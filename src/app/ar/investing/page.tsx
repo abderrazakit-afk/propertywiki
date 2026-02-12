@@ -141,21 +141,35 @@ export default function InvestingPageAr() {
           </div>
         </section>
 
-        <section className="pt-8 border-t border-warm-200">
-          <h2 className="text-2xl font-serif font-semibold text-gray-900 mb-6 text-center">استكشف المزيد</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <Link href="/ar/guides/how-to-buy-property-in-dubai" className="group bg-white rounded-2xl p-6 border border-warm-100 hover:border-primary-200 transition-colors">
-              <span className="inline-block text-xs font-medium text-primary-600 uppercase tracking-wider mb-2">دليل</span>
-              <h3 className="text-lg font-medium text-gray-900 group-hover:text-primary-600 transition-colors mb-2">كيفية شراء عقار في دبي</h3>
-              <p className="text-sm text-gray-600">دليل شامل للمشترين الأجانب خطوة بخطوة.</p>
+        <nav className="mt-10 pt-8 border-t border-warm-200" aria-label="استكشف المزيد">
+          <h2 className="text-2xl font-serif font-semibold text-gray-900 mb-6">استكشف بروبرتي ويكي</h2>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            <Link href="/ar/investing/top-10-investment-areas-dubai" className="block p-4 bg-warm-50 rounded-xl hover:bg-warm-100 transition-colors">
+              <span className="text-xs font-medium text-primary-600 uppercase">استثمار</span>
+              <p className="font-medium text-gray-900 mt-1">أفضل 10 مناطق استثمارية</p>
             </Link>
-            <Link href="/ar/guides/highest-rental-yield-areas-dubai" className="group bg-white rounded-2xl p-6 border border-warm-100 hover:border-primary-200 transition-colors">
-              <span className="inline-block text-xs font-medium text-primary-600 uppercase tracking-wider mb-2">عائد</span>
-              <h3 className="text-lg font-medium text-gray-900 group-hover:text-primary-600 transition-colors mb-2">أعلى مناطق العائد الإيجاري</h3>
-              <p className="text-sm text-gray-600">تعرف على أفضل المناطق للعائد الإيجاري في دبي.</p>
+            <Link href="/ar/investing/dubai-investment-scorecard-2026" className="block p-4 bg-warm-50 rounded-xl hover:bg-warm-100 transition-colors">
+              <span className="text-xs font-medium text-primary-600 uppercase">استثمار</span>
+              <p className="font-medium text-gray-900 mt-1">بطاقة أداء الاستثمار 2026</p>
+            </Link>
+            <Link href="/ar/investing/capital-growth-ranking-dubai" className="block p-4 bg-warm-50 rounded-xl hover:bg-warm-100 transition-colors">
+              <span className="text-xs font-medium text-primary-600 uppercase">استثمار</span>
+              <p className="font-medium text-gray-900 mt-1">تصنيف النمو الرأسمالي</p>
+            </Link>
+            <Link href="/ar/investing/rental-demand-ranking-dubai" className="block p-4 bg-warm-50 rounded-xl hover:bg-warm-100 transition-colors">
+              <span className="text-xs font-medium text-primary-600 uppercase">استثمار</span>
+              <p className="font-medium text-gray-900 mt-1">تصنيف الطلب الإيجاري</p>
+            </Link>
+            <Link href="/ar/guides/how-to-buy-property-in-dubai" className="block p-4 bg-warm-50 rounded-xl hover:bg-warm-100 transition-colors">
+              <span className="text-xs font-medium text-primary-600 uppercase">دليل</span>
+              <p className="font-medium text-gray-900 mt-1">كيفية شراء عقار في دبي</p>
+            </Link>
+            <Link href="/ar/locations/dubai" className="block p-4 bg-warm-50 rounded-xl hover:bg-warm-100 transition-colors">
+              <span className="text-xs font-medium text-primary-600 uppercase">موقع</span>
+              <p className="font-medium text-gray-900 mt-1">مجتمعات دبي</p>
             </Link>
           </div>
-        </section>
+        </nav>
       </div>
     </div>
   )

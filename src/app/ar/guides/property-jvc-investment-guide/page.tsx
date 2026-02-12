@@ -212,6 +212,36 @@ export default function JVCInvestmentGuidePage() {
           </div>
         </div>
 
+        <nav className="mt-10 pt-8 border-t border-warm-200" aria-label="استكشف المزيد">
+          <h2 className="text-2xl font-serif font-semibold text-gray-900 mb-6">استكشف بروبرتي ويكي</h2>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            <Link href="/ar/locations/dubai/dubai-marina" className="block p-4 bg-warm-50 rounded-xl hover:bg-warm-100 transition-colors">
+              <span className="text-xs font-medium text-primary-600 uppercase">موقع</span>
+              <p className="font-medium text-gray-900 mt-1">دبي مارينا</p>
+            </Link>
+            <Link href="/ar/locations/dubai/business-bay" className="block p-4 bg-warm-50 rounded-xl hover:bg-warm-100 transition-colors">
+              <span className="text-xs font-medium text-primary-600 uppercase">موقع</span>
+              <p className="font-medium text-gray-900 mt-1">الخليج التجاري</p>
+            </Link>
+            <Link href="/ar/definitions/freehold-property" className="block p-4 bg-warm-50 rounded-xl hover:bg-warm-100 transition-colors">
+              <span className="text-xs font-medium text-primary-600 uppercase">تعريف</span>
+              <p className="font-medium text-gray-900 mt-1">التملك الحر في الإمارات</p>
+            </Link>
+            <Link href="/ar/guides/jvc-vs-dubai-hills-investment" className="block p-4 bg-warm-50 rounded-xl hover:bg-warm-100 transition-colors">
+              <span className="text-xs font-medium text-primary-600 uppercase">دليل</span>
+              <p className="font-medium text-gray-900 mt-1">مقارنة JVC مقابل دبي هيلز</p>
+            </Link>
+            <Link href="/ar/guides/best-areas-buy-property-under-500k" className="block p-4 bg-warm-50 rounded-xl hover:bg-warm-100 transition-colors">
+              <span className="text-xs font-medium text-primary-600 uppercase">دليل</span>
+              <p className="font-medium text-gray-900 mt-1">شراء عقار بأقل من 500 ألف</p>
+            </Link>
+            <Link href="/ar/guides/highest-rental-yield-areas-dubai" className="block p-4 bg-warm-50 rounded-xl hover:bg-warm-100 transition-colors">
+              <span className="text-xs font-medium text-primary-600 uppercase">دليل</span>
+              <p className="font-medium text-gray-900 mt-1">أعلى مناطق العائد الإيجاري</p>
+            </Link>
+          </div>
+        </nav>
+
         <div className="mt-12 pt-8 border-t border-warm-200">
           <p className="text-sm text-warm-500 mb-4">آخر تحديث: فبراير 2026 | بواسطة فريق بروبرتي ويكي</p>
           <Link href="/ar/guides" className="text-primary-600 hover:text-primary-700 font-medium inline-flex items-center">

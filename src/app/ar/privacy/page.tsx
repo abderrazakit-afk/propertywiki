@@ -123,26 +123,35 @@ export default function PrivacyPage() {
           </div>
         </article>
 
-        <section className="mt-12 pt-8 border-t border-warm-200">
+        <nav className="mt-10 pt-8 border-t border-warm-200" aria-label="استكشف المزيد">
           <h2 className="text-2xl font-serif font-semibold text-gray-900 mb-6">استكشف بروبرتي ويكي</h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <Link href="/ar/about" className="group luxury-card p-5">
-              <span className="inline-block text-xs font-medium text-primary-600 uppercase tracking-wider mb-2">الشركة</span>
-              <h3 className="text-lg font-medium text-gray-900 group-hover:text-primary-600 transition-colors mb-2">من نحن</h3>
-              <p className="text-sm text-gray-600 line-clamp-2">تعرف على مهمتنا وفريقنا.</p>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            <Link href="/ar/about" className="block p-4 bg-warm-50 rounded-xl hover:bg-warm-100 transition-colors">
+              <span className="text-xs font-medium text-primary-600 uppercase">الشركة</span>
+              <p className="font-medium text-gray-900 mt-1">من نحن</p>
             </Link>
-            <Link href="/ar/editorial-policy" className="group luxury-card p-5">
-              <span className="inline-block text-xs font-medium text-primary-600 uppercase tracking-wider mb-2">سياسة</span>
-              <h3 className="text-lg font-medium text-gray-900 group-hover:text-primary-600 transition-colors mb-2">السياسة التحريرية</h3>
-              <p className="text-sm text-gray-600 line-clamp-2">التزامنا بالمحتوى الدقيق.</p>
+            <Link href="/ar/contact" className="block p-4 bg-warm-50 rounded-xl hover:bg-warm-100 transition-colors">
+              <span className="text-xs font-medium text-primary-600 uppercase">الشركة</span>
+              <p className="font-medium text-gray-900 mt-1">تواصل معنا</p>
             </Link>
-            <Link href="/ar/guides/how-to-buy-property-in-dubai" className="group luxury-card p-5">
-              <span className="inline-block text-xs font-medium text-primary-600 uppercase tracking-wider mb-2">دليل</span>
-              <h3 className="text-lg font-medium text-gray-900 group-hover:text-primary-600 transition-colors mb-2">شراء عقار في دبي</h3>
-              <p className="text-sm text-gray-600 line-clamp-2">دليل شامل للمشترين.</p>
+            <Link href="/ar/editorial-policy" className="block p-4 bg-warm-50 rounded-xl hover:bg-warm-100 transition-colors">
+              <span className="text-xs font-medium text-primary-600 uppercase">الشركة</span>
+              <p className="font-medium text-gray-900 mt-1">السياسة التحريرية</p>
+            </Link>
+            <Link href="/ar/guides" className="block p-4 bg-warm-50 rounded-xl hover:bg-warm-100 transition-colors">
+              <span className="text-xs font-medium text-primary-600 uppercase">دليل</span>
+              <p className="font-medium text-gray-900 mt-1">جميع الأدلة العقارية</p>
+            </Link>
+            <Link href="/ar/locations" className="block p-4 bg-warm-50 rounded-xl hover:bg-warm-100 transition-colors">
+              <span className="text-xs font-medium text-primary-600 uppercase">موقع</span>
+              <p className="font-medium text-gray-900 mt-1">جميع المواقع</p>
+            </Link>
+            <Link href="/ar/definitions/freehold-property" className="block p-4 bg-warm-50 rounded-xl hover:bg-warm-100 transition-colors">
+              <span className="text-xs font-medium text-primary-600 uppercase">تعريف</span>
+              <p className="font-medium text-gray-900 mt-1">التملك الحر في الإمارات</p>
             </Link>
           </div>
-        </section>
+        </nav>
 
         <div className="mt-8">
           <Link href="/ar" className="text-primary-600 hover:text-primary-700 font-medium inline-flex items-center">

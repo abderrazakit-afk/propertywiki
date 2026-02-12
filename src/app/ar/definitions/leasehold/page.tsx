@@ -107,6 +107,32 @@ export default function LeaseholdDefinitionPage() {
           </section>
         </article>
 
+        <nav className="mt-12 pt-8 border-t border-warm-200" aria-label="استكشف المزيد">
+          <h2 className="text-2xl font-serif font-semibold text-gray-900 mb-6">استكشف بروبرتي ويكي</h2>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            <Link href="/ar/definitions/freehold-property" className="block p-4 bg-warm-50 rounded-xl hover:bg-warm-100 transition-colors">
+              <span className="text-xs font-medium text-primary-600 uppercase">تعريف</span>
+              <p className="font-medium text-gray-900 mt-1">التملك الحر</p>
+            </Link>
+            <Link href="/ar/definitions/off-plan-property" className="block p-4 bg-warm-50 rounded-xl hover:bg-warm-100 transition-colors">
+              <span className="text-xs font-medium text-primary-600 uppercase">تعريف</span>
+              <p className="font-medium text-gray-900 mt-1">العقارات على الخارطة</p>
+            </Link>
+            <Link href="/ar/locations/dubai/downtown-dubai" className="block p-4 bg-warm-50 rounded-xl hover:bg-warm-100 transition-colors">
+              <span className="text-xs font-medium text-primary-600 uppercase">موقع</span>
+              <p className="font-medium text-gray-900 mt-1">داون تاون دبي</p>
+            </Link>
+            <Link href="/ar/guides/how-to-buy-property-in-dubai" className="block p-4 bg-warm-50 rounded-xl hover:bg-warm-100 transition-colors">
+              <span className="text-xs font-medium text-primary-600 uppercase">دليل</span>
+              <p className="font-medium text-gray-900 mt-1">كيفية شراء عقار في دبي</p>
+            </Link>
+            <Link href="/ar/guides/how-to-rent-property-in-uae" className="block p-4 bg-warm-50 rounded-xl hover:bg-warm-100 transition-colors">
+              <span className="text-xs font-medium text-primary-600 uppercase">دليل</span>
+              <p className="font-medium text-gray-900 mt-1">كيفية استئجار عقار في الإمارات</p>
+            </Link>
+          </div>
+        </nav>
+
         <div className="mt-12 pt-8 border-t border-warm-200">
           <Link href="/ar/definitions" className="text-primary-600 hover:text-primary-700 font-medium inline-flex items-center">
             <svg className="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">

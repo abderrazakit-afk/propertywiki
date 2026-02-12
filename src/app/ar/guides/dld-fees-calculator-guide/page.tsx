@@ -206,6 +206,36 @@ export default function DldFeesCalculatorGuidePage() {
           </div>
         </div>
 
+        <nav className="mt-10 pt-8 border-t border-warm-200" aria-label="استكشف المزيد">
+          <h2 className="text-2xl font-serif font-semibold text-gray-900 mb-6">استكشف بروبرتي ويكي</h2>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            <Link href="/ar/locations/dubai/downtown-dubai" className="block p-4 bg-warm-50 rounded-xl hover:bg-warm-100 transition-colors">
+              <span className="text-xs font-medium text-primary-600 uppercase">موقع</span>
+              <p className="font-medium text-gray-900 mt-1">داون تاون دبي</p>
+            </Link>
+            <Link href="/ar/definitions/freehold-property" className="block p-4 bg-warm-50 rounded-xl hover:bg-warm-100 transition-colors">
+              <span className="text-xs font-medium text-primary-600 uppercase">تعريف</span>
+              <p className="font-medium text-gray-900 mt-1">التملك الحر في الإمارات</p>
+            </Link>
+            <Link href="/ar/guides/how-to-buy-property-in-dubai" className="block p-4 bg-warm-50 rounded-xl hover:bg-warm-100 transition-colors">
+              <span className="text-xs font-medium text-primary-600 uppercase">دليل</span>
+              <p className="font-medium text-gray-900 mt-1">كيفية شراء عقار في دبي</p>
+            </Link>
+            <Link href="/ar/guides/hidden-costs-buying-property-dubai" className="block p-4 bg-warm-50 rounded-xl hover:bg-warm-100 transition-colors">
+              <span className="text-xs font-medium text-primary-600 uppercase">دليل</span>
+              <p className="font-medium text-gray-900 mt-1">التكاليف الخفية لشراء عقار</p>
+            </Link>
+            <Link href="/ar/guides/service-charges-by-area-dubai" className="block p-4 bg-warm-50 rounded-xl hover:bg-warm-100 transition-colors">
+              <span className="text-xs font-medium text-primary-600 uppercase">دليل</span>
+              <p className="font-medium text-gray-900 mt-1">رسوم الخدمات حسب المنطقة</p>
+            </Link>
+            <Link href="/ar/guides/best-areas-first-time-buyers-dubai" className="block p-4 bg-warm-50 rounded-xl hover:bg-warm-100 transition-colors">
+              <span className="text-xs font-medium text-primary-600 uppercase">دليل</span>
+              <p className="font-medium text-gray-900 mt-1">أفضل المناطق للمشترين لأول مرة</p>
+            </Link>
+          </div>
+        </nav>
+
         <div className="mt-12 pt-8 border-t border-warm-200">
           <p className="text-sm text-warm-500 mb-4">آخر تحديث: فبراير 2026 | بواسطة فريق بروبرتي ويكي</p>
           <Link href="/ar/guides" className="text-primary-600 hover:text-primary-700 font-medium inline-flex items-center">

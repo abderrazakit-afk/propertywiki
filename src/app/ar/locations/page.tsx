@@ -118,6 +118,36 @@ export default function LocationsPageAr() {
             </Link>
           ))}
         </div>
+
+        <nav className="mt-12 pt-8 border-t border-warm-200" aria-label="استكشف المزيد">
+          <h2 className="text-2xl font-serif font-semibold text-gray-900 mb-6">استكشف بروبرتي ويكي</h2>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            <Link href="/ar/locations/dubai" className="block p-4 bg-white rounded-xl hover:bg-warm-100 transition-colors border border-warm-100">
+              <span className="text-xs font-medium text-primary-600 uppercase">موقع</span>
+              <p className="font-medium text-gray-900 mt-1">مناطق دبي السكنية</p>
+            </Link>
+            <Link href="/ar/definitions/freehold-property" className="block p-4 bg-white rounded-xl hover:bg-warm-100 transition-colors border border-warm-100">
+              <span className="text-xs font-medium text-primary-600 uppercase">تعريف</span>
+              <p className="font-medium text-gray-900 mt-1">التملك الحر</p>
+            </Link>
+            <Link href="/ar/definitions/off-plan-property" className="block p-4 bg-white rounded-xl hover:bg-warm-100 transition-colors border border-warm-100">
+              <span className="text-xs font-medium text-primary-600 uppercase">تعريف</span>
+              <p className="font-medium text-gray-900 mt-1">العقارات على الخارطة</p>
+            </Link>
+            <Link href="/ar/guides/how-to-buy-property-in-dubai" className="block p-4 bg-white rounded-xl hover:bg-warm-100 transition-colors border border-warm-100">
+              <span className="text-xs font-medium text-primary-600 uppercase">دليل</span>
+              <p className="font-medium text-gray-900 mt-1">كيفية شراء عقار في دبي</p>
+            </Link>
+            <Link href="/ar/guides/highest-rental-yield-areas-dubai" className="block p-4 bg-white rounded-xl hover:bg-warm-100 transition-colors border border-warm-100">
+              <span className="text-xs font-medium text-primary-600 uppercase">دليل</span>
+              <p className="font-medium text-gray-900 mt-1">أعلى مناطق العائد الإيجاري</p>
+            </Link>
+            <Link href="/ar/investing/top-10-investment-areas-dubai" className="block p-4 bg-white rounded-xl hover:bg-warm-100 transition-colors border border-warm-100">
+              <span className="text-xs font-medium text-primary-600 uppercase">استثمار</span>
+              <p className="font-medium text-gray-900 mt-1">أفضل 10 مناطق استثمارية</p>
+            </Link>
+          </div>
+        </nav>
       </div>
     </div>
   )

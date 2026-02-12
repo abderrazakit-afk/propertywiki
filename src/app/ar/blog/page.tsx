@@ -79,6 +79,36 @@ export default function BlogPageAr() {
         <p className="text-center text-warm-500 mt-12">
           المزيد من المقالات قريباً...
         </p>
+
+        <nav className="mt-10 pt-8 border-t border-warm-200" aria-label="استكشف المزيد">
+          <h2 className="text-2xl font-serif font-semibold text-gray-900 mb-6">استكشف بروبرتي ويكي</h2>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            <Link href="/ar/blog/dubai-market-outlook-2025" className="block p-4 bg-warm-50 rounded-xl hover:bg-warm-100 transition-colors">
+              <span className="text-xs font-medium text-primary-600 uppercase">مدونة</span>
+              <p className="font-medium text-gray-900 mt-1">توقعات سوق دبي 2025</p>
+            </Link>
+            <Link href="/ar/blog/golden-visa-changes-2025" className="block p-4 bg-warm-50 rounded-xl hover:bg-warm-100 transition-colors">
+              <span className="text-xs font-medium text-primary-600 uppercase">مدونة</span>
+              <p className="font-medium text-gray-900 mt-1">تغييرات الإقامة الذهبية 2025</p>
+            </Link>
+            <Link href="/ar/blog/off-plan-investment-risks" className="block p-4 bg-warm-50 rounded-xl hover:bg-warm-100 transition-colors">
+              <span className="text-xs font-medium text-primary-600 uppercase">مدونة</span>
+              <p className="font-medium text-gray-900 mt-1">مخاطر الاستثمار على الخارطة</p>
+            </Link>
+            <Link href="/ar/guides" className="block p-4 bg-warm-50 rounded-xl hover:bg-warm-100 transition-colors">
+              <span className="text-xs font-medium text-primary-600 uppercase">دليل</span>
+              <p className="font-medium text-gray-900 mt-1">جميع الأدلة العقارية</p>
+            </Link>
+            <Link href="/ar/locations" className="block p-4 bg-warm-50 rounded-xl hover:bg-warm-100 transition-colors">
+              <span className="text-xs font-medium text-primary-600 uppercase">موقع</span>
+              <p className="font-medium text-gray-900 mt-1">جميع المواقع</p>
+            </Link>
+            <Link href="/ar/investing" className="block p-4 bg-warm-50 rounded-xl hover:bg-warm-100 transition-colors">
+              <span className="text-xs font-medium text-primary-600 uppercase">استثمار</span>
+              <p className="font-medium text-gray-900 mt-1">الاستثمار العقاري</p>
+            </Link>
+          </div>
+        </nav>
       </div>
     </div>
   )
