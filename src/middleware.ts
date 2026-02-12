@@ -6,6 +6,11 @@ export function middleware(request: NextRequest) {
   const protocol = request.headers.get('x-forwarded-proto') || 'https'
   const url = request.nextUrl.clone()
 
+  const isLocalhost = host.includes('localhost') || host.includes('127.0.0.1') || host.includes('0.0.0.0') || host.includes('.replit.')
+  if (isLocalhost) {
+    return NextResponse.next()
+  }
+
   if (
     host.startsWith('www.') ||
     protocol === 'http' ||
