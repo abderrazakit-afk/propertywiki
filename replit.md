@@ -117,6 +117,16 @@ Added 46 new high-quality content pages across 10 categories:
 All pages include: SEO metadata, JSON-LD structured data, FAQs, Table of Contents, Author Box, Related Articles, cross-linking.
 Updated: sitemap (50+ guides + 4 investing), guides index, investing index, homepage categories, footer links, search data (searchData.ts)
 
+## Internal Linking SEO Fix (February 2026)
+Fixed Ahrefs "0 outlinks" detection across all content pages:
+- Added server-rendered "Explore PropertyWiki" nav sections with 6-8 cross-links on EVERY English and Arabic page
+- Added inline contextual links within article body text on location and definition pages (linking terms like "freehold", "off-plan", area names to their respective pages)
+- Fixed middleware to skip 301 redirects for localhost/development environments (was redirecting all http requests to https://propertywiki.ai)
+- Pages now show 60+ crawlable internal links in SSR HTML (vs previous 0 detected by Ahrefs)
+- Pattern: `<nav aria-label="Explore more">` with grid of Link cards, placed after RelatedArticles
+- Arabic pattern: `<nav aria-label="استكشف المزيد">` with "استكشف بروبرتي ويكي" heading
+- Categories: Location/Guide/Definition/Blog/Investing (Arabic: موقع/دليل/تعريف/مدونة/استثمار)
+
 ## Search Feature
 Fuzzy search across all site content:
 - Uses Fuse.js for fuzzy matching (handles typos and partial matches)
