@@ -145,7 +145,7 @@ export default function OffPlanPropertyPage() {
             </p>
             <p>
               This type of purchase is particularly common in rapidly developing markets like 
-              Dubai, where major developments are frequently launched for sale years before 
+              Dubai, where major developments in areas such as <Link href="/locations/dubai/business-bay" className="text-primary-600 hover:text-primary-700 underline">Business Bay</Link> are frequently launched for sale years before 
               completion. The concept allows developers to secure funding while offering buyers 
               potential discounts and customization options.
             </p>
@@ -173,7 +173,7 @@ export default function OffPlanPropertyPage() {
           <section id="benefits">
             <h2>Benefits of Buying Off-Plan</h2>
             <ul>
-              <li><strong>Lower prices:</strong> Typically 10-30% below completed property prices</li>
+              <li><strong>Lower prices:</strong> Typically 10-30% below completed <Link href="/definitions/freehold-property" className="text-primary-600 hover:text-primary-700 underline">freehold property</Link> prices</li>
               <li><strong>Payment flexibility:</strong> Spread payments over the construction period</li>
               <li><strong>Capital appreciation:</strong> Value often increases as construction progresses</li>
               <li><strong>Choice of units:</strong> Early buyers get the best selection</li>
@@ -185,7 +185,7 @@ export default function OffPlanPropertyPage() {
           <section id="risks">
             <h2>Risks and Considerations</h2>
             <ul>
-              <li><strong>Construction delays:</strong> Projects can be delayed months or years</li>
+              <li><strong>Construction delays:</strong> Projects can be delayed months or years. Understanding <Link href="/definitions/leasehold" className="text-primary-600 hover:text-primary-700 underline">leasehold</Link> terms is also important when evaluating off-plan contracts</li>
               <li><strong>Developer insolvency:</strong> Risk of losing deposits if developer fails</li>
               <li><strong>Quality concerns:</strong> Finished product may differ from expectations</li>
               <li><strong>Market changes:</strong> Property values could decline before completion</li>
@@ -206,7 +206,7 @@ export default function OffPlanPropertyPage() {
               <li>Clear terms for delays and compensation</li>
               <li>Penalty clauses if the final product differs from specifications</li>
               <li>Resale rights during construction</li>
-              <li>Independent legal review of the contract</li>
+              <li>Independent legal review of the contract — see our <Link href="/guides/how-to-buy-property-in-dubai" className="text-primary-600 hover:text-primary-700 underline">guide to buying property in Dubai</Link> for more details</li>
             </ul>
           </section>
         </div>
@@ -220,6 +220,44 @@ export default function OffPlanPropertyPage() {
         />
 
         <RelatedArticles articles={relatedArticles} />
+
+        <nav className="mt-12 pt-8 border-t border-warm-200" aria-label="Explore more">
+          <h2 className="text-2xl font-serif font-semibold text-gray-900 mb-6">Explore PropertyWiki</h2>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            <Link href="/definitions/freehold-property" className="block p-4 bg-warm-50 rounded-xl hover:bg-warm-100 transition-colors">
+              <span className="text-xs font-medium text-primary-600 uppercase">Definition</span>
+              <p className="font-medium text-gray-900 mt-1">What is Freehold Property?</p>
+            </Link>
+            <Link href="/definitions/leasehold" className="block p-4 bg-warm-50 rounded-xl hover:bg-warm-100 transition-colors">
+              <span className="text-xs font-medium text-primary-600 uppercase">Definition</span>
+              <p className="font-medium text-gray-900 mt-1">Understanding Leasehold Property</p>
+            </Link>
+            <Link href="/locations/dubai/business-bay" className="block p-4 bg-warm-50 rounded-xl hover:bg-warm-100 transition-colors">
+              <span className="text-xs font-medium text-primary-600 uppercase">Location</span>
+              <p className="font-medium text-gray-900 mt-1">Business Bay Property Guide</p>
+            </Link>
+            <Link href="/guides/how-to-buy-property-in-dubai" className="block p-4 bg-warm-50 rounded-xl hover:bg-warm-100 transition-colors">
+              <span className="text-xs font-medium text-primary-600 uppercase">Guide</span>
+              <p className="font-medium text-gray-900 mt-1">How to Buy Property in Dubai</p>
+            </Link>
+            <Link href="/guides/best-off-plan-projects-under-1m" className="block p-4 bg-warm-50 rounded-xl hover:bg-warm-100 transition-colors">
+              <span className="text-xs font-medium text-primary-600 uppercase">Guide</span>
+              <p className="font-medium text-gray-900 mt-1">Best Off-Plan Projects Under 1M AED</p>
+            </Link>
+            <Link href="/guides/off-plan-vs-ready-property-roi" className="block p-4 bg-warm-50 rounded-xl hover:bg-warm-100 transition-colors">
+              <span className="text-xs font-medium text-primary-600 uppercase">Guide</span>
+              <p className="font-medium text-gray-900 mt-1">Off-Plan vs Ready Property ROI</p>
+            </Link>
+            <Link href="/guides/safest-off-plan-areas-dubai" className="block p-4 bg-warm-50 rounded-xl hover:bg-warm-100 transition-colors">
+              <span className="text-xs font-medium text-primary-600 uppercase">Guide</span>
+              <p className="font-medium text-gray-900 mt-1">Safest Off-Plan Areas in Dubai</p>
+            </Link>
+            <Link href="/guides/1-percent-payment-plan-dubai" className="block p-4 bg-warm-50 rounded-xl hover:bg-warm-100 transition-colors">
+              <span className="text-xs font-medium text-primary-600 uppercase">Guide</span>
+              <p className="font-medium text-gray-900 mt-1">1% Payment Plan in Dubai</p>
+            </Link>
+          </div>
+        </nav>
       </article>
     </>
   )

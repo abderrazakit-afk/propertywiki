@@ -1,4 +1,5 @@
 import { Metadata } from 'next'
+import Link from 'next/link'
 import Image from 'next/image'
 import Breadcrumbs from '@/components/layout/Breadcrumbs'
 import TableOfContents from '@/components/article/TableOfContents'
@@ -162,11 +163,11 @@ export default function DubaiMarinaPage() {
             <p>
               The community features over 200 residential towers housing approximately 120,000 residents, 
               along with the famous Marina Walk promenade lined with restaurants, cafes, and retail outlets. 
-              Its proximity to JBR Beach, Dubai Media City, and Dubai Internet City makes it particularly 
+              Its proximity to <Link href="/locations/dubai/jbr">JBR</Link> Beach, Dubai Media City, and Dubai Internet City makes it particularly 
               popular with professionals working in these areas.
             </p>
             <p>
-              As a <a href="/definitions/freehold-property">freehold zone</a>, Dubai Marina allows 
+              As a <Link href="/definitions/freehold-property">freehold zone</Link>, Dubai Marina allows 
               foreign nationals to purchase property with full ownership rights, making it an 
               attractive destination for international investors and expatriates looking to establish 
               a permanent base in Dubai.
@@ -223,7 +224,7 @@ export default function DubaiMarinaPage() {
             </ul>
             <p>
               Smaller units typically achieve higher yields due to stronger demand from young 
-              professionals and tourists (for short-term rentals). The area&apos;s proximity to 
+              professionals and tourists (for <Link href="/guides/best-areas-airbnb-dubai">short-term rentals</Link>). The area&apos;s proximity to 
               business districts and the beach ensures consistent occupancy rates.
             </p>
           </section>
@@ -267,7 +268,7 @@ export default function DubaiMarinaPage() {
               <li>Strong tourism sector driving short-term rental demand</li>
               <li>Established community with proven track record</li>
               <li>Limited new supply in the immediate area</li>
-              <li>Proximity to Expo 2020 legacy district</li>
+              <li>Proximity to <Link href="/locations/dubai/palm-jumeirah">Palm Jumeirah</Link> and <Link href="/locations/dubai/downtown-dubai">Downtown Dubai</Link></li>
             </ul>
             <p>
               For investors seeking a balance of rental income and capital appreciation potential, 
@@ -285,6 +286,44 @@ export default function DubaiMarinaPage() {
         />
 
         <RelatedArticles articles={relatedArticles} />
+
+        <nav className="mt-12 pt-8 border-t border-warm-200" aria-label="Explore more">
+          <h2 className="text-2xl font-serif font-semibold text-gray-900 mb-6">Explore PropertyWiki</h2>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            <Link href="/locations/dubai/jbr" className="block p-4 bg-warm-50 rounded-xl hover:bg-warm-100 transition-colors">
+              <span className="text-xs font-medium text-primary-600 uppercase">Location</span>
+              <p className="font-medium text-gray-900 mt-1">JBR Beachfront Property Guide</p>
+            </Link>
+            <Link href="/locations/dubai/palm-jumeirah" className="block p-4 bg-warm-50 rounded-xl hover:bg-warm-100 transition-colors">
+              <span className="text-xs font-medium text-primary-600 uppercase">Location</span>
+              <p className="font-medium text-gray-900 mt-1">Palm Jumeirah Property Guide</p>
+            </Link>
+            <Link href="/locations/dubai/business-bay" className="block p-4 bg-warm-50 rounded-xl hover:bg-warm-100 transition-colors">
+              <span className="text-xs font-medium text-primary-600 uppercase">Location</span>
+              <p className="font-medium text-gray-900 mt-1">Business Bay Property Guide</p>
+            </Link>
+            <Link href="/locations/dubai/downtown-dubai" className="block p-4 bg-warm-50 rounded-xl hover:bg-warm-100 transition-colors">
+              <span className="text-xs font-medium text-primary-600 uppercase">Location</span>
+              <p className="font-medium text-gray-900 mt-1">Downtown Dubai Property Guide</p>
+            </Link>
+            <Link href="/guides/how-to-buy-property-in-dubai" className="block p-4 bg-warm-50 rounded-xl hover:bg-warm-100 transition-colors">
+              <span className="text-xs font-medium text-primary-600 uppercase">Guide</span>
+              <p className="font-medium text-gray-900 mt-1">How to Buy Property in Dubai</p>
+            </Link>
+            <Link href="/definitions/freehold-property" className="block p-4 bg-warm-50 rounded-xl hover:bg-warm-100 transition-colors">
+              <span className="text-xs font-medium text-primary-600 uppercase">Definition</span>
+              <p className="font-medium text-gray-900 mt-1">What is Freehold Property?</p>
+            </Link>
+            <Link href="/guides/highest-rental-yield-areas-dubai" className="block p-4 bg-warm-50 rounded-xl hover:bg-warm-100 transition-colors">
+              <span className="text-xs font-medium text-primary-600 uppercase">Guide</span>
+              <p className="font-medium text-gray-900 mt-1">Highest Rental Yield Areas in Dubai</p>
+            </Link>
+            <Link href="/guides/best-areas-airbnb-dubai" className="block p-4 bg-warm-50 rounded-xl hover:bg-warm-100 transition-colors">
+              <span className="text-xs font-medium text-primary-600 uppercase">Guide</span>
+              <p className="font-medium text-gray-900 mt-1">Best Areas for Airbnb in Dubai</p>
+            </Link>
+          </div>
+        </nav>
       </article>
     </>
   )

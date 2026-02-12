@@ -1,4 +1,5 @@
 import { Metadata } from 'next'
+import Link from 'next/link'
 import Image from 'next/image'
 import Breadcrumbs from '@/components/layout/Breadcrumbs'
 import TableOfContents from '@/components/article/TableOfContents'
@@ -176,11 +177,11 @@ export default function ArabianRanchesPage() {
               and Arabian Ranches 3, offering contemporary townhouses and smart home features.
             </p>
             <p>
-              As a <a href="/definitions/freehold-property">freehold zone</a>, Arabian Ranches allows 
+              As a <Link href="/definitions/freehold-property">freehold zone</Link>, Arabian Ranches allows 
               foreign nationals to purchase property with full ownership rights. The community is 
               particularly popular with families seeking a suburban lifestyle while remaining connected 
               to Dubai&apos;s key business and entertainment districts, located approximately 25 minutes 
-              from Downtown Dubai.
+              from <Link href="/locations/dubai/downtown-dubai">Downtown Dubai</Link>.
             </p>
           </section>
 
@@ -304,7 +305,7 @@ export default function ArabianRanchesPage() {
             <p>
               As Dubai continues to attract international families and remote workers seeking 
               quality of life, Arabian Ranches is well-positioned to benefit from this demographic 
-              shift toward family-friendly, spacious living environments.
+              shift toward <Link href="/guides/best-areas-families-dubai">family-friendly</Link>, spacious living environments.
             </p>
           </section>
         </div>
@@ -318,6 +319,44 @@ export default function ArabianRanchesPage() {
         />
 
         <RelatedArticles articles={relatedArticles} />
+
+        <nav className="mt-12 pt-8 border-t border-warm-200" aria-label="Explore more">
+          <h2 className="text-2xl font-serif font-semibold text-gray-900 mb-6">Explore PropertyWiki</h2>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            <Link href="/locations/dubai/dubai-marina" className="block p-4 bg-warm-50 rounded-xl hover:bg-warm-100 transition-colors">
+              <span className="text-xs font-medium text-primary-600 uppercase">Location</span>
+              <p className="font-medium text-gray-900 mt-1">Dubai Marina Property Guide</p>
+            </Link>
+            <Link href="/locations/dubai/palm-jumeirah" className="block p-4 bg-warm-50 rounded-xl hover:bg-warm-100 transition-colors">
+              <span className="text-xs font-medium text-primary-600 uppercase">Location</span>
+              <p className="font-medium text-gray-900 mt-1">Palm Jumeirah Property Guide</p>
+            </Link>
+            <Link href="/guides/how-to-buy-property-in-dubai" className="block p-4 bg-warm-50 rounded-xl hover:bg-warm-100 transition-colors">
+              <span className="text-xs font-medium text-primary-600 uppercase">Guide</span>
+              <p className="font-medium text-gray-900 mt-1">How to Buy Property in Dubai</p>
+            </Link>
+            <Link href="/definitions/freehold-property" className="block p-4 bg-warm-50 rounded-xl hover:bg-warm-100 transition-colors">
+              <span className="text-xs font-medium text-primary-600 uppercase">Definition</span>
+              <p className="font-medium text-gray-900 mt-1">What is Freehold Property?</p>
+            </Link>
+            <Link href="/guides/arabian-ranches-pros-cons" className="block p-4 bg-warm-50 rounded-xl hover:bg-warm-100 transition-colors">
+              <span className="text-xs font-medium text-primary-600 uppercase">Guide</span>
+              <p className="font-medium text-gray-900 mt-1">Arabian Ranches Pros & Cons</p>
+            </Link>
+            <Link href="/guides/best-areas-families-dubai" className="block p-4 bg-warm-50 rounded-xl hover:bg-warm-100 transition-colors">
+              <span className="text-xs font-medium text-primary-600 uppercase">Guide</span>
+              <p className="font-medium text-gray-900 mt-1">Best Areas for Families in Dubai</p>
+            </Link>
+            <Link href="/guides/gated-communities-dubai" className="block p-4 bg-warm-50 rounded-xl hover:bg-warm-100 transition-colors">
+              <span className="text-xs font-medium text-primary-600 uppercase">Guide</span>
+              <p className="font-medium text-gray-900 mt-1">Gated Communities in Dubai</p>
+            </Link>
+            <Link href="/guides/villa-communities-under-2m-dubai" className="block p-4 bg-warm-50 rounded-xl hover:bg-warm-100 transition-colors">
+              <span className="text-xs font-medium text-primary-600 uppercase">Guide</span>
+              <p className="font-medium text-gray-900 mt-1">Villa Communities Under 2M in Dubai</p>
+            </Link>
+          </div>
+        </nav>
       </article>
     </>
   )

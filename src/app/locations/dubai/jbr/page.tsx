@@ -1,4 +1,5 @@
 import { Metadata } from 'next'
+import Link from 'next/link'
 import Image from 'next/image'
 import Breadcrumbs from '@/components/layout/Breadcrumbs'
 import TableOfContents from '@/components/article/TableOfContents'
@@ -171,10 +172,10 @@ export default function JBRPage() {
               residents and tourists alike.
             </p>
             <p>
-              As a <a href="/definitions/freehold-property">freehold zone</a>, JBR allows foreign 
+              As a <Link href="/definitions/freehold-property">freehold zone</Link>, JBR allows foreign 
               nationals to purchase property with full ownership rights. The combination of beachfront 
               living, world-class amenities, and strong rental demand makes JBR particularly attractive 
-              for investors seeking holiday homes and short-term rental income.
+              for investors seeking holiday homes and <Link href="/guides/short-term-rental-license-dubai">short-term rental</Link> income.
             </p>
           </section>
 
@@ -211,7 +212,7 @@ export default function JBRPage() {
               The towers are organized into six clusters: Sadaf, Bahar, Murjan, Amwaj, Shams, and Rimal. 
               Shams towers, being the tallest with the best views, typically command premium prices. 
               Units with direct sea views can cost 20-40% more than those facing the community or 
-              <a href="/locations/dubai/dubai-marina"> Dubai Marina</a>.
+              <Link href="/locations/dubai/dubai-marina">Dubai Marina</Link>.
             </p>
           </section>
 
@@ -231,7 +232,8 @@ export default function JBRPage() {
             <p>
               The strong tourism sector makes JBR one of Dubai&apos;s top destinations for holiday 
               home investments. Studios and one-bedroom apartments are particularly popular for 
-              short-term rentals, achieving high occupancy rates during peak seasons (October-April).
+              short-term rentals, achieving high occupancy rates during peak seasons (October-April). 
+              See our guide on <Link href="/guides/highest-rental-yield-areas-dubai">highest rental yield areas in Dubai</Link> for more.
             </p>
           </section>
 
@@ -264,8 +266,8 @@ export default function JBRPage() {
               <li><strong>Metro:</strong> Connected to DMCC and Sobha Realty Metro stations via Dubai Tram</li>
               <li><strong>Roads:</strong> Direct access to Sheikh Zayed Road (E11) and Al Sufouh Road</li>
               <li><strong>Airport:</strong> 35-45 minutes to Dubai International Airport (DXB)</li>
-              <li><strong>Palm Jumeirah:</strong> 10 minutes drive to the Palm</li>
-              <li><strong>Dubai Marina:</strong> Walking distance to Dubai Marina Mall and Marina Walk</li>
+              <li><strong><Link href="/locations/dubai/palm-jumeirah">Palm Jumeirah</Link>:</strong> 10 minutes drive to the Palm</li>
+              <li><strong><Link href="/locations/dubai/dubai-marina">Dubai Marina</Link>:</strong> Walking distance to Dubai Marina Mall and Marina Walk</li>
             </ul>
           </section>
 
@@ -280,7 +282,7 @@ export default function JBRPage() {
               <li>Completion of nearby attractions including Ain Dubai and Bluewaters Island</li>
               <li>Limited beachfront land in Dubai making JBR a scarce asset</li>
               <li>Established community with mature infrastructure and proven track record</li>
-              <li>Proximity to Dubai Marina, Palm Jumeirah, and key business districts</li>
+              <li>Proximity to <Link href="/locations/dubai/dubai-marina">Dubai Marina</Link>, <Link href="/locations/dubai/palm-jumeirah">Palm Jumeirah</Link>, and key business districts</li>
               <li>Government initiatives supporting tourism and property investment</li>
             </ul>
             <p>
@@ -301,6 +303,44 @@ export default function JBRPage() {
         />
 
         <RelatedArticles articles={relatedArticles} />
+
+        <nav className="mt-12 pt-8 border-t border-warm-200" aria-label="Explore more">
+          <h2 className="text-2xl font-serif font-semibold text-gray-900 mb-6">Explore PropertyWiki</h2>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            <Link href="/locations/dubai/dubai-marina" className="block p-4 bg-warm-50 rounded-xl hover:bg-warm-100 transition-colors">
+              <span className="text-xs font-medium text-primary-600 uppercase">Location</span>
+              <p className="font-medium text-gray-900 mt-1">Dubai Marina Property Guide</p>
+            </Link>
+            <Link href="/locations/dubai/palm-jumeirah" className="block p-4 bg-warm-50 rounded-xl hover:bg-warm-100 transition-colors">
+              <span className="text-xs font-medium text-primary-600 uppercase">Location</span>
+              <p className="font-medium text-gray-900 mt-1">Palm Jumeirah Property Guide</p>
+            </Link>
+            <Link href="/locations/dubai/downtown-dubai" className="block p-4 bg-warm-50 rounded-xl hover:bg-warm-100 transition-colors">
+              <span className="text-xs font-medium text-primary-600 uppercase">Location</span>
+              <p className="font-medium text-gray-900 mt-1">Downtown Dubai Property Guide</p>
+            </Link>
+            <Link href="/guides/how-to-buy-property-in-dubai" className="block p-4 bg-warm-50 rounded-xl hover:bg-warm-100 transition-colors">
+              <span className="text-xs font-medium text-primary-600 uppercase">Guide</span>
+              <p className="font-medium text-gray-900 mt-1">How to Buy Property in Dubai</p>
+            </Link>
+            <Link href="/definitions/freehold-property" className="block p-4 bg-warm-50 rounded-xl hover:bg-warm-100 transition-colors">
+              <span className="text-xs font-medium text-primary-600 uppercase">Definition</span>
+              <p className="font-medium text-gray-900 mt-1">What is Freehold Property?</p>
+            </Link>
+            <Link href="/guides/short-term-rental-license-dubai" className="block p-4 bg-warm-50 rounded-xl hover:bg-warm-100 transition-colors">
+              <span className="text-xs font-medium text-primary-600 uppercase">Guide</span>
+              <p className="font-medium text-gray-900 mt-1">Short-Term Rental License in Dubai</p>
+            </Link>
+            <Link href="/guides/service-charges-by-area-dubai" className="block p-4 bg-warm-50 rounded-xl hover:bg-warm-100 transition-colors">
+              <span className="text-xs font-medium text-primary-600 uppercase">Guide</span>
+              <p className="font-medium text-gray-900 mt-1">Service Charges by Area in Dubai</p>
+            </Link>
+            <Link href="/guides/dubai-marina-vs-jbr" className="block p-4 bg-warm-50 rounded-xl hover:bg-warm-100 transition-colors">
+              <span className="text-xs font-medium text-primary-600 uppercase">Guide</span>
+              <p className="font-medium text-gray-900 mt-1">Dubai Marina vs JBR Comparison</p>
+            </Link>
+          </div>
+        </nav>
       </article>
     </>
   )

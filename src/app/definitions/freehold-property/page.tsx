@@ -1,4 +1,5 @@
 import { Metadata } from 'next'
+import Link from 'next/link'
 import Image from 'next/image'
 import Breadcrumbs from '@/components/layout/Breadcrumbs'
 import TableOfContents from '@/components/article/TableOfContents'
@@ -146,8 +147,7 @@ export default function FreeholdPropertyPage() {
             <h2>Definition of Freehold Property</h2>
             <p>
               <strong>Freehold property</strong> refers to a form of property ownership where the buyer 
-              owns both the building and the land it stands on outright and indefinitely. Unlike leasehold 
-              arrangements, there is no time limit on ownership, and the property can be passed down through 
+              owns both the building and the land it stands on outright and indefinitely. Unlike <Link href="/definitions/leasehold" className="text-primary-600 hover:text-primary-700 underline">leasehold</Link> arrangements, there is no time limit on ownership, and the property can be passed down through 
               generations or sold at the owner&apos;s discretion.
             </p>
             <p>
@@ -180,7 +180,7 @@ export default function FreeholdPropertyPage() {
           <section id="freehold-vs-leasehold">
             <h2>Freehold vs Leasehold</h2>
             <p>
-              Understanding the difference between freehold and <a href="/definitions/leasehold">leasehold</a> is 
+              Understanding the difference between freehold and <Link href="/definitions/leasehold" className="text-primary-600 hover:text-primary-700 underline">leasehold</Link> is 
               crucial for any property buyer. Here are the key distinctions:
             </p>
             <div className="overflow-x-auto my-6">
@@ -227,7 +227,7 @@ export default function FreeholdPropertyPage() {
               <li><strong>Complete ownership:</strong> You own the property and land outright with no expiration date</li>
               <li><strong>No ground rent:</strong> Unlike leasehold, you don&apos;t pay ongoing ground rent to a landlord</li>
               <li><strong>Greater control:</strong> Freedom to modify, extend, or renovate without landlord approval</li>
-              <li><strong>Better investment:</strong> Properties typically appreciate better without lease depreciation concerns</li>
+              <li><strong>Better investment:</strong> Properties typically appreciate better without lease depreciation concerns. Explore <Link href="/definitions/off-plan-property" className="text-primary-600 hover:text-primary-700 underline">off-plan property</Link> options for early-stage investment opportunities</li>
               <li><strong>Easier to sell:</strong> Buyers generally prefer freehold, making the property more marketable</li>
               <li><strong>Mortgage friendly:</strong> Lenders often offer better terms for freehold properties</li>
             </ul>
@@ -254,10 +254,10 @@ export default function FreeholdPropertyPage() {
               &quot;freehold zones&quot; which include many of Dubai&apos;s most prestigious developments:
             </p>
             <ul>
-              <li><a href="/locations/dubai/dubai-marina">Dubai Marina</a> - Waterfront living with luxury apartments</li>
-              <li><a href="/locations/dubai/downtown-dubai">Downtown Dubai</a> - Home to Burj Khalifa and Dubai Mall</li>
-              <li><a href="/locations/dubai/palm-jumeirah">Palm Jumeirah</a> - Iconic man-made island with villas and apartments</li>
-              <li><a href="/locations/dubai/jumeirah-beach-residence">JBR</a> - Beachfront residential and retail complex</li>
+              <li><Link href="/locations/dubai/dubai-marina" className="text-primary-600 hover:text-primary-700 underline">Dubai Marina</Link> - Waterfront living with luxury apartments</li>
+              <li><Link href="/locations/dubai/downtown-dubai" className="text-primary-600 hover:text-primary-700 underline">Downtown Dubai</Link> - Home to Burj Khalifa and Dubai Mall</li>
+              <li><Link href="/locations/dubai/palm-jumeirah" className="text-primary-600 hover:text-primary-700 underline">Palm Jumeirah</Link> - Iconic man-made island with villas and apartments</li>
+              <li><Link href="/locations/dubai/jbr" className="text-primary-600 hover:text-primary-700 underline">JBR</Link> - Beachfront residential and retail complex</li>
             </ul>
             <p>
               Owning freehold property in Dubai can also qualify foreign nationals for residency visas, 
@@ -276,6 +276,44 @@ export default function FreeholdPropertyPage() {
         />
 
         <RelatedArticles articles={relatedArticles} />
+
+        <nav className="mt-12 pt-8 border-t border-warm-200" aria-label="Explore more">
+          <h2 className="text-2xl font-serif font-semibold text-gray-900 mb-6">Explore PropertyWiki</h2>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            <Link href="/definitions/leasehold" className="block p-4 bg-warm-50 rounded-xl hover:bg-warm-100 transition-colors">
+              <span className="text-xs font-medium text-primary-600 uppercase">Definition</span>
+              <p className="font-medium text-gray-900 mt-1">Understanding Leasehold Property</p>
+            </Link>
+            <Link href="/definitions/off-plan-property" className="block p-4 bg-warm-50 rounded-xl hover:bg-warm-100 transition-colors">
+              <span className="text-xs font-medium text-primary-600 uppercase">Definition</span>
+              <p className="font-medium text-gray-900 mt-1">What is Off-Plan Property?</p>
+            </Link>
+            <Link href="/locations/dubai/dubai-marina" className="block p-4 bg-warm-50 rounded-xl hover:bg-warm-100 transition-colors">
+              <span className="text-xs font-medium text-primary-600 uppercase">Location</span>
+              <p className="font-medium text-gray-900 mt-1">Dubai Marina Property Guide</p>
+            </Link>
+            <Link href="/locations/dubai/palm-jumeirah" className="block p-4 bg-warm-50 rounded-xl hover:bg-warm-100 transition-colors">
+              <span className="text-xs font-medium text-primary-600 uppercase">Location</span>
+              <p className="font-medium text-gray-900 mt-1">Palm Jumeirah Property Guide</p>
+            </Link>
+            <Link href="/guides/how-to-buy-property-in-dubai" className="block p-4 bg-warm-50 rounded-xl hover:bg-warm-100 transition-colors">
+              <span className="text-xs font-medium text-primary-600 uppercase">Guide</span>
+              <p className="font-medium text-gray-900 mt-1">How to Buy Property in Dubai</p>
+            </Link>
+            <Link href="/guides/cheapest-freehold-areas-dubai" className="block p-4 bg-warm-50 rounded-xl hover:bg-warm-100 transition-colors">
+              <span className="text-xs font-medium text-primary-600 uppercase">Guide</span>
+              <p className="font-medium text-gray-900 mt-1">Cheapest Freehold Areas in Dubai</p>
+            </Link>
+            <Link href="/guides/best-areas-first-time-buyers-dubai" className="block p-4 bg-warm-50 rounded-xl hover:bg-warm-100 transition-colors">
+              <span className="text-xs font-medium text-primary-600 uppercase">Guide</span>
+              <p className="font-medium text-gray-900 mt-1">Best Areas for First-Time Buyers</p>
+            </Link>
+            <Link href="/guides/hidden-costs-buying-property-dubai" className="block p-4 bg-warm-50 rounded-xl hover:bg-warm-100 transition-colors">
+              <span className="text-xs font-medium text-primary-600 uppercase">Guide</span>
+              <p className="font-medium text-gray-900 mt-1">Hidden Costs of Buying Property in Dubai</p>
+            </Link>
+          </div>
+        </nav>
       </article>
     </>
   )

@@ -86,28 +86,43 @@ export default function AboutPage() {
         </section>
       </div>
 
-      <section className="mt-12 pt-8 border-t border-gray-200">
-        <h2 className="text-2xl font-serif font-semibold text-gray-900 mb-6">
-          Start Exploring
-        </h2>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          <Link href="/guides/how-to-buy-property-in-dubai" className="group luxury-card p-5">
-            <span className="inline-block text-xs font-medium text-primary-600 uppercase tracking-wider mb-2">Guide</span>
-            <h3 className="text-lg font-medium text-gray-900 group-hover:text-primary-600 transition-colors mb-2">How to Buy Property in Dubai</h3>
-            <p className="text-sm text-gray-600 line-clamp-2">Complete step-by-step guide for foreign buyers.</p>
+      <nav className="mt-12 pt-8 border-t border-warm-200" aria-label="Explore more">
+        <h2 className="text-2xl font-serif font-semibold text-gray-900 mb-6">Explore PropertyWiki</h2>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+          <Link href="/guides/how-to-buy-property-in-dubai" className="block p-4 bg-warm-50 rounded-xl hover:bg-warm-100 transition-colors">
+            <span className="text-xs font-medium text-primary-600 uppercase">Guide</span>
+            <p className="font-medium text-gray-900 mt-1">How to Buy Property in Dubai</p>
           </Link>
-          <Link href="/definitions/freehold-property" className="group luxury-card p-5">
-            <span className="inline-block text-xs font-medium text-primary-600 uppercase tracking-wider mb-2">Definition</span>
-            <h3 className="text-lg font-medium text-gray-900 group-hover:text-primary-600 transition-colors mb-2">What is Freehold Property?</h3>
-            <p className="text-sm text-gray-600 line-clamp-2">Understand freehold ownership in Dubai.</p>
+          <Link href="/guides/how-to-sell-property-in-uae" className="block p-4 bg-warm-50 rounded-xl hover:bg-warm-100 transition-colors">
+            <span className="text-xs font-medium text-primary-600 uppercase">Guide</span>
+            <p className="font-medium text-gray-900 mt-1">How to Sell Property in the UAE</p>
           </Link>
-          <Link href="/locations/dubai/dubai-marina" className="group luxury-card p-5">
-            <span className="inline-block text-xs font-medium text-primary-600 uppercase tracking-wider mb-2">Location</span>
-            <h3 className="text-lg font-medium text-gray-900 group-hover:text-primary-600 transition-colors mb-2">Dubai Marina Guide</h3>
-            <p className="text-sm text-gray-600 line-clamp-2">Explore Dubai&apos;s premier waterfront community.</p>
+          <Link href="/locations/dubai" className="block p-4 bg-warm-50 rounded-xl hover:bg-warm-100 transition-colors">
+            <span className="text-xs font-medium text-primary-600 uppercase">Location</span>
+            <p className="font-medium text-gray-900 mt-1">Dubai Property Areas</p>
+          </Link>
+          <Link href="/definitions/freehold-property" className="block p-4 bg-warm-50 rounded-xl hover:bg-warm-100 transition-colors">
+            <span className="text-xs font-medium text-primary-600 uppercase">Definition</span>
+            <p className="font-medium text-gray-900 mt-1">What is Freehold Property?</p>
+          </Link>
+          <Link href="/blog" className="block p-4 bg-warm-50 rounded-xl hover:bg-warm-100 transition-colors">
+            <span className="text-xs font-medium text-primary-600 uppercase">Blog</span>
+            <p className="font-medium text-gray-900 mt-1">Property Blog & Market News</p>
+          </Link>
+          <Link href="/contact" className="block p-4 bg-warm-50 rounded-xl hover:bg-warm-100 transition-colors">
+            <span className="text-xs font-medium text-primary-600 uppercase">Contact</span>
+            <p className="font-medium text-gray-900 mt-1">Get in Touch</p>
+          </Link>
+          <Link href="/editorial-policy" className="block p-4 bg-warm-50 rounded-xl hover:bg-warm-100 transition-colors">
+            <span className="text-xs font-medium text-primary-600 uppercase">Policy</span>
+            <p className="font-medium text-gray-900 mt-1">Editorial Policy</p>
+          </Link>
+          <Link href="/investing" className="block p-4 bg-warm-50 rounded-xl hover:bg-warm-100 transition-colors">
+            <span className="text-xs font-medium text-primary-600 uppercase">Investing</span>
+            <p className="font-medium text-gray-900 mt-1">Property Investment Insights</p>
           </Link>
         </div>
-      </section>
+      </nav>
     </div>
   )
 }

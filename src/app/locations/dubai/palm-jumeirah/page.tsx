@@ -1,4 +1,5 @@
 import { Metadata } from 'next'
+import Link from 'next/link'
 import Image from 'next/image'
 import Breadcrumbs from '@/components/layout/Breadcrumbs'
 import TableOfContents from '@/components/article/TableOfContents'
@@ -178,7 +179,7 @@ export default function PalmJumeirahPage() {
               Palm Jumeirah offers an exclusive island lifestyle while remaining connected to mainland Dubai.
             </p>
             <p>
-              As a <a href="/definitions/freehold-property">freehold zone</a>, Palm Jumeirah allows 
+              As a <Link href="/definitions/freehold-property">freehold zone</Link>, Palm Jumeirah allows 
               foreign nationals to purchase property with full ownership rights. The area has attracted 
               celebrities, business magnates, and high-net-worth individuals from around the world, 
               cementing its status as one of Dubai&apos;s most prestigious addresses.
@@ -238,9 +239,9 @@ export default function PalmJumeirahPage() {
               <li><strong>Penthouses:</strong> 2-3% gross yield</li>
             </ul>
             <p>
-              While yields are lower than areas like Dubai Marina or JVC, Palm Jumeirah properties 
+              While yields are lower than areas like <Link href="/locations/dubai/dubai-marina">Dubai Marina</Link> or JVC, Palm Jumeirah properties 
               have historically shown strong capital appreciation. The limited supply of beachfront 
-              land and global prestige of the address ensure sustained demand. Short-term rentals 
+              land and global prestige of the address ensure sustained demand. <Link href="/guides/highest-nightly-rate-areas-dubai">Short-term rentals</Link> 
               through platforms like Airbnb can achieve significantly higher returns for furnished 
               apartments, particularly during peak tourist seasons.
             </p>
@@ -270,7 +271,7 @@ export default function PalmJumeirahPage() {
             </p>
             <ul>
               <li><strong>Palm Monorail:</strong> A 5.45km automated rail system running from Gateway Towers to Atlantis, connecting to Dubai Tram at Palm Gateway station</li>
-              <li><strong>Dubai Tram Integration:</strong> Palm Gateway station connects to the Dubai Tram, which links to Dubai Metro Red Line at JLT and DMCC stations</li>
+              <li><strong>Dubai Tram Integration:</strong> Palm Gateway station connects to the Dubai Tram, which links to Dubai Metro Red Line at JLT and DMCC stations near <Link href="/locations/dubai/dubai-marina">Dubai Marina</Link></li>
               <li><strong>Road Access:</strong> Multi-lane undersea tunnel and bridge system connecting to Sheikh Zayed Road (E11)</li>
               <li><strong>Dubai Airport:</strong> 25-35 minutes to Dubai International Airport (DXB)</li>
               <li><strong>Al Maktoum Airport:</strong> 35-45 minutes to Dubai World Central (DWC)</li>
@@ -316,6 +317,40 @@ export default function PalmJumeirahPage() {
         />
 
         <RelatedArticles articles={relatedArticles} />
+
+        <nav className="mt-12 pt-8 border-t border-warm-200" aria-label="Explore more">
+          <h2 className="text-2xl font-serif font-semibold text-gray-900 mb-6">Explore PropertyWiki</h2>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            <Link href="/locations/dubai/dubai-marina" className="block p-4 bg-warm-50 rounded-xl hover:bg-warm-100 transition-colors">
+              <span className="text-xs font-medium text-primary-600 uppercase">Location</span>
+              <p className="font-medium text-gray-900 mt-1">Dubai Marina Property Guide</p>
+            </Link>
+            <Link href="/locations/dubai/jbr" className="block p-4 bg-warm-50 rounded-xl hover:bg-warm-100 transition-colors">
+              <span className="text-xs font-medium text-primary-600 uppercase">Location</span>
+              <p className="font-medium text-gray-900 mt-1">JBR Beachfront Property Guide</p>
+            </Link>
+            <Link href="/locations/dubai/downtown-dubai" className="block p-4 bg-warm-50 rounded-xl hover:bg-warm-100 transition-colors">
+              <span className="text-xs font-medium text-primary-600 uppercase">Location</span>
+              <p className="font-medium text-gray-900 mt-1">Downtown Dubai Property Guide</p>
+            </Link>
+            <Link href="/guides/how-to-buy-property-in-dubai" className="block p-4 bg-warm-50 rounded-xl hover:bg-warm-100 transition-colors">
+              <span className="text-xs font-medium text-primary-600 uppercase">Guide</span>
+              <p className="font-medium text-gray-900 mt-1">How to Buy Property in Dubai</p>
+            </Link>
+            <Link href="/definitions/freehold-property" className="block p-4 bg-warm-50 rounded-xl hover:bg-warm-100 transition-colors">
+              <span className="text-xs font-medium text-primary-600 uppercase">Definition</span>
+              <p className="font-medium text-gray-900 mt-1">What is Freehold Property?</p>
+            </Link>
+            <Link href="/guides/palm-jumeirah-vs-emirates-hills" className="block p-4 bg-warm-50 rounded-xl hover:bg-warm-100 transition-colors">
+              <span className="text-xs font-medium text-primary-600 uppercase">Guide</span>
+              <p className="font-medium text-gray-900 mt-1">Palm Jumeirah vs Emirates Hills</p>
+            </Link>
+            <Link href="/guides/highest-nightly-rate-areas-dubai" className="block p-4 bg-warm-50 rounded-xl hover:bg-warm-100 transition-colors">
+              <span className="text-xs font-medium text-primary-600 uppercase">Guide</span>
+              <p className="font-medium text-gray-900 mt-1">Highest Nightly Rate Areas in Dubai</p>
+            </Link>
+          </div>
+        </nav>
       </article>
     </>
   )

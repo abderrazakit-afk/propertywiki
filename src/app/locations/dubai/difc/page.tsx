@@ -1,4 +1,5 @@
 import { Metadata } from 'next'
+import Link from 'next/link'
 import Image from 'next/image'
 import Breadcrumbs from '@/components/layout/Breadcrumbs'
 import TableOfContents from '@/components/article/TableOfContents'
@@ -184,10 +185,11 @@ export default function DIFCPage() {
               executives from around the world.
             </p>
             <p>
-              As a <a href="/definitions/freehold-property">freehold zone</a>, DIFC allows foreign 
+              As a <Link href="/definitions/freehold-property">freehold zone</Link>, DIFC allows foreign 
               nationals to purchase property with full ownership rights, making it an attractive 
               destination for international investors seeking both lifestyle benefits and the 
-              security of a regulated financial centre.
+              security of a regulated financial centre. Properties are available under both freehold 
+              and <Link href="/definitions/leasehold">leasehold</Link> arrangements.
             </p>
           </section>
 
@@ -283,10 +285,10 @@ export default function DIFCPage() {
             </p>
             <ul>
               <li><strong>Metro:</strong> Financial Centre station on the Red Line provides direct access</li>
-              <li><strong>Walking Distance:</strong> Emirates Towers, Downtown Dubai, and Dubai Mall are all accessible on foot</li>
+              <li><strong>Walking Distance:</strong> Emirates Towers, <Link href="/locations/dubai/downtown-dubai">Downtown Dubai</Link>, and Dubai Mall are all accessible on foot</li>
               <li><strong>Roads:</strong> Direct access to Sheikh Zayed Road (E11) and Al Safa Street</li>
               <li><strong>Airport:</strong> 15-20 minutes to Dubai International Airport (DXB)</li>
-              <li><strong>Business Bay:</strong> Adjacent to the Business Bay district</li>
+              <li><strong><Link href="/locations/dubai/business-bay">Business Bay</Link>:</strong> Adjacent to the Business Bay district</li>
             </ul>
             <p>
               The central location means residents can reach most key Dubai destinations within 
@@ -324,6 +326,40 @@ export default function DIFCPage() {
         />
 
         <RelatedArticles articles={relatedArticles} />
+
+        <nav className="mt-12 pt-8 border-t border-warm-200" aria-label="Explore more">
+          <h2 className="text-2xl font-serif font-semibold text-gray-900 mb-6">Explore PropertyWiki</h2>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            <Link href="/locations/dubai/business-bay" className="block p-4 bg-warm-50 rounded-xl hover:bg-warm-100 transition-colors">
+              <span className="text-xs font-medium text-primary-600 uppercase">Location</span>
+              <p className="font-medium text-gray-900 mt-1">Business Bay Property Guide</p>
+            </Link>
+            <Link href="/locations/dubai/downtown-dubai" className="block p-4 bg-warm-50 rounded-xl hover:bg-warm-100 transition-colors">
+              <span className="text-xs font-medium text-primary-600 uppercase">Location</span>
+              <p className="font-medium text-gray-900 mt-1">Downtown Dubai Property Guide</p>
+            </Link>
+            <Link href="/locations/dubai/dubai-marina" className="block p-4 bg-warm-50 rounded-xl hover:bg-warm-100 transition-colors">
+              <span className="text-xs font-medium text-primary-600 uppercase">Location</span>
+              <p className="font-medium text-gray-900 mt-1">Dubai Marina Property Guide</p>
+            </Link>
+            <Link href="/guides/how-to-buy-property-in-dubai" className="block p-4 bg-warm-50 rounded-xl hover:bg-warm-100 transition-colors">
+              <span className="text-xs font-medium text-primary-600 uppercase">Guide</span>
+              <p className="font-medium text-gray-900 mt-1">How to Buy Property in Dubai</p>
+            </Link>
+            <Link href="/definitions/freehold-property" className="block p-4 bg-warm-50 rounded-xl hover:bg-warm-100 transition-colors">
+              <span className="text-xs font-medium text-primary-600 uppercase">Definition</span>
+              <p className="font-medium text-gray-900 mt-1">What is Freehold Property?</p>
+            </Link>
+            <Link href="/definitions/leasehold" className="block p-4 bg-warm-50 rounded-xl hover:bg-warm-100 transition-colors">
+              <span className="text-xs font-medium text-primary-600 uppercase">Definition</span>
+              <p className="font-medium text-gray-900 mt-1">What is Leasehold Property?</p>
+            </Link>
+            <Link href="/guides/service-charges-by-area-dubai" className="block p-4 bg-warm-50 rounded-xl hover:bg-warm-100 transition-colors">
+              <span className="text-xs font-medium text-primary-600 uppercase">Guide</span>
+              <p className="font-medium text-gray-900 mt-1">Service Charges by Area in Dubai</p>
+            </Link>
+          </div>
+        </nav>
       </article>
     </>
   )

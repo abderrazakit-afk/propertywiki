@@ -1,4 +1,5 @@
 import { Metadata } from 'next'
+import Link from 'next/link'
 import Image from 'next/image'
 import Breadcrumbs from '@/components/layout/Breadcrumbs'
 import TableOfContents from '@/components/article/TableOfContents'
@@ -166,11 +167,11 @@ export default function BusinessBayPage() {
             <p>
               The district features an impressive collection of over 240 commercial and residential 
               towers, housing a diverse community of professionals, entrepreneurs, and families. 
-              Its proximity to Downtown Dubai, with the Burj Khalifa and Dubai Mall just minutes away, 
+              Its proximity to <Link href="/locations/dubai/downtown-dubai">Downtown Dubai</Link>, with the Burj Khalifa and Dubai Mall just minutes away, 
               makes it an attractive alternative for those seeking similar prestige at more competitive prices.
             </p>
             <p>
-              As a <a href="/definitions/freehold-property">freehold zone</a>, Business Bay allows 
+              As a <Link href="/definitions/freehold-property">freehold zone</Link>, Business Bay allows 
               foreign nationals to purchase property with full ownership rights. The area&apos;s 
               continued development, combined with world-class infrastructure and the scenic Dubai 
               Canal waterfront, has established it as a premier destination for property investment.
@@ -226,7 +227,7 @@ export default function BusinessBayPage() {
               <li><strong>3-Bedroom:</strong> 5-6% gross yield</li>
             </ul>
             <p>
-              These yields are notably higher than neighboring Downtown Dubai, making Business Bay 
+              These yields are notably higher than neighboring <Link href="/locations/dubai/downtown-dubai">Downtown Dubai</Link>, making Business Bay 
               particularly attractive for investors seeking income-generating properties. The consistent 
               demand from corporate tenants and proximity to major business centers ensures healthy 
               occupancy rates throughout the year.
@@ -272,7 +273,7 @@ export default function BusinessBayPage() {
               <li><strong>Roads:</strong> Direct access to Sheikh Zayed Road (E11) and Al Khail Road (E44)</li>
               <li><strong>Airport:</strong> 15-20 minutes to Dubai International Airport (DXB)</li>
               <li><strong>Downtown:</strong> Walking distance to Downtown Dubai and Dubai Mall</li>
-              <li><strong>DIFC:</strong> 5-minute drive to Dubai International Financial Centre</li>
+              <li><strong><Link href="/locations/dubai/difc">DIFC</Link>:</strong> 5-minute drive to Dubai International Financial Centre</li>
             </ul>
             <p>
               The area&apos;s central location means most key Dubai destinations are within a 
@@ -288,7 +289,7 @@ export default function BusinessBayPage() {
               factors supporting future growth:
             </p>
             <ul>
-              <li>Strategic central location between Downtown Dubai and DIFC</li>
+              <li>Strategic central location between <Link href="/locations/dubai/downtown-dubai">Downtown Dubai</Link> and <Link href="/locations/dubai/difc">DIFC</Link></li>
               <li>Ongoing development of the Dubai Canal waterfront</li>
               <li>Higher rental yields compared to neighboring premium areas</li>
               <li>Strong demand from corporate tenants and professionals</li>
@@ -319,6 +320,40 @@ export default function BusinessBayPage() {
         />
 
         <RelatedArticles articles={relatedArticles} />
+
+        <nav className="mt-12 pt-8 border-t border-warm-200" aria-label="Explore more">
+          <h2 className="text-2xl font-serif font-semibold text-gray-900 mb-6">Explore PropertyWiki</h2>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            <Link href="/locations/dubai/downtown-dubai" className="block p-4 bg-warm-50 rounded-xl hover:bg-warm-100 transition-colors">
+              <span className="text-xs font-medium text-primary-600 uppercase">Location</span>
+              <p className="font-medium text-gray-900 mt-1">Downtown Dubai Property Guide</p>
+            </Link>
+            <Link href="/locations/dubai/dubai-marina" className="block p-4 bg-warm-50 rounded-xl hover:bg-warm-100 transition-colors">
+              <span className="text-xs font-medium text-primary-600 uppercase">Location</span>
+              <p className="font-medium text-gray-900 mt-1">Dubai Marina Property Guide</p>
+            </Link>
+            <Link href="/locations/dubai/difc" className="block p-4 bg-warm-50 rounded-xl hover:bg-warm-100 transition-colors">
+              <span className="text-xs font-medium text-primary-600 uppercase">Location</span>
+              <p className="font-medium text-gray-900 mt-1">DIFC Property Guide</p>
+            </Link>
+            <Link href="/guides/how-to-buy-property-in-dubai" className="block p-4 bg-warm-50 rounded-xl hover:bg-warm-100 transition-colors">
+              <span className="text-xs font-medium text-primary-600 uppercase">Guide</span>
+              <p className="font-medium text-gray-900 mt-1">How to Buy Property in Dubai</p>
+            </Link>
+            <Link href="/definitions/freehold-property" className="block p-4 bg-warm-50 rounded-xl hover:bg-warm-100 transition-colors">
+              <span className="text-xs font-medium text-primary-600 uppercase">Definition</span>
+              <p className="font-medium text-gray-900 mt-1">What is Freehold Property?</p>
+            </Link>
+            <Link href="/guides/business-bay-vs-downtown-dubai" className="block p-4 bg-warm-50 rounded-xl hover:bg-warm-100 transition-colors">
+              <span className="text-xs font-medium text-primary-600 uppercase">Guide</span>
+              <p className="font-medium text-gray-900 mt-1">Business Bay vs Downtown Dubai</p>
+            </Link>
+            <Link href="/guides/best-areas-under-1m-good-roi" className="block p-4 bg-warm-50 rounded-xl hover:bg-warm-100 transition-colors">
+              <span className="text-xs font-medium text-primary-600 uppercase">Guide</span>
+              <p className="font-medium text-gray-900 mt-1">Best Areas Under 1M with Good ROI</p>
+            </Link>
+          </div>
+        </nav>
       </article>
     </>
   )
