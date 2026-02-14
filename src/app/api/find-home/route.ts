@@ -41,21 +41,38 @@ async function queryMarketData(budget: number, propertyType?: string, bedrooms?:
   const budgetMin = budget * 0.5
   const budgetMax = budget * 1.5
 
-  const matchStage: Record<string, unknown> = {
-    transaction_amount: { $gte: budgetMin, $lte: budgetMax },
+  const toNum = (field: string) => ({ $toDouble: { $ifNull: [`$${field}`, '0'] } })
+
+  const convertFieldsStage = {
+    $addFields: {
+      _numAmount: toNum('transaction_amount'),
+      _numPricePerSqm: toNum('transaction_per_sqm_amount'),
+      _numArea: toNum('builtup_area_sqm'),
+      _numServiceCharge: toNum('service_charge_sqft_amount'),
+      _numYield: toNum('current_estimated_rental_yield'),
+      _numMonthlyRent: toNum('contract_monthly_amount'),
+      _numBeds: { $toInt: { $ifNull: ['$beds', '0'] } },
+    },
+  }
+
+  const salesMatchStage: Record<string, unknown> = {
     bayut_leaf_location_name_en: { $ne: '' },
   }
-
   if (propertyType) {
-    matchStage.bayut_property_type = propertyType
+    salesMatchStage.bayut_property_type = propertyType
   }
+
+  const salesPipeline: Record<string, unknown>[] = [
+    { $match: salesMatchStage },
+    convertFieldsStage,
+    { $match: { _numAmount: { $gte: budgetMin, $lte: budgetMax } } },
+  ]
 
   if (bedrooms) {
-    matchStage.beds = bedrooms
+    salesPipeline.push({ $match: { _numBeds: parseInt(bedrooms) } })
   }
 
-  const salesPipeline = [
-    { $match: matchStage },
+  salesPipeline.push(
     {
       $group: {
         _id: {
@@ -63,23 +80,23 @@ async function queryMarketData(budget: number, propertyType?: string, bedrooms?:
           areaAr: '$bayut_leaf_location_name_ar',
           l4: '$bayut_location_l4_name_en',
         },
-        avgPrice: { $avg: '$transaction_amount' },
-        minPrice: { $min: '$transaction_amount' },
-        maxPrice: { $max: '$transaction_amount' },
+        avgPrice: { $avg: '$_numAmount' },
+        minPrice: { $min: '$_numAmount' },
+        maxPrice: { $max: '$_numAmount' },
         totalTransactions: { $sum: 1 },
-        avgPricePerSqm: { $avg: '$transaction_per_sqm_amount' },
-        avgSize: { $avg: '$builtup_area_sqm' },
+        avgPricePerSqm: { $avg: '$_numPricePerSqm' },
+        avgSize: { $avg: '$_numArea' },
         propertyTypes: { $addToSet: '$bayut_property_type' },
-        bedrooms: { $addToSet: '$beds' },
-        avgServiceCharge: { $avg: '$service_charge_sqft_amount' },
-        avgRentalYield: { $avg: '$current_estimated_rental_yield' },
+        bedrooms: { $addToSet: '$_numBeds' },
+        avgServiceCharge: { $avg: '$_numServiceCharge' },
+        avgRentalYield: { $avg: '$_numYield' },
         developers: { $addToSet: '$developer_name_en' },
       },
     },
     { $match: { totalTransactions: { $gte: 3 } } },
     { $sort: { totalTransactions: -1 as const } },
     { $limit: 15 },
-  ]
+  )
 
   const salesData = await db.collection('sales').aggregate(salesPipeline).toArray()
 
@@ -87,34 +104,38 @@ async function queryMarketData(budget: number, propertyType?: string, bedrooms?:
 
   const rentalMatchStage: Record<string, unknown> = {
     bayut_location_l4_name_en: { $in: topAreas },
-    transaction_amount: { $gt: 0 },
   }
+
+  const rentalPipeline: Record<string, unknown>[] = [
+    { $match: rentalMatchStage },
+    convertFieldsStage,
+    { $match: { _numAmount: { $gt: 0 } } },
+  ]
 
   if (bedrooms) {
-    rentalMatchStage.beds = bedrooms
+    rentalPipeline.push({ $match: { _numBeds: parseInt(bedrooms) } })
   }
 
-  const rentalPipeline = [
-    { $match: rentalMatchStage },
+  rentalPipeline.push(
     {
       $group: {
         _id: {
           area: '$bayut_leaf_location_name_en',
           areaAr: '$bayut_leaf_location_name_ar',
         },
-        avgRent: { $avg: '$transaction_amount' },
-        minRent: { $min: '$transaction_amount' },
-        maxRent: { $max: '$transaction_amount' },
+        avgRent: { $avg: '$_numAmount' },
+        minRent: { $min: '$_numAmount' },
+        maxRent: { $max: '$_numAmount' },
         totalTransactions: { $sum: 1 },
-        avgMonthlyRent: { $avg: '$contract_monthly_amount' },
-        bedrooms: { $addToSet: '$beds' },
+        avgMonthlyRent: { $avg: '$_numMonthlyRent' },
+        bedrooms: { $addToSet: '$_numBeds' },
         propertyTypes: { $addToSet: '$bayut_property_type' },
       },
     },
     { $match: { totalTransactions: { $gte: 3 } } },
     { $sort: { totalTransactions: -1 as const } },
     { $limit: 15 },
-  ]
+  )
 
   const rentalData = await db.collection('rentals').aggregate(rentalPipeline).toArray()
 
@@ -128,11 +149,11 @@ async function queryMarketData(budget: number, propertyType?: string, bedrooms?:
     avgPricePerSqm: Math.round(d.avgPricePerSqm || 0),
     avgSize: Math.round(d.avgSize || 0),
     propertyTypes: d.propertyTypes.filter(Boolean),
-    bedrooms: d.bedrooms.filter(Boolean).sort(),
+    bedrooms: d.bedrooms.filter((b: number) => b > 0).sort().map(String),
     buildings: [],
     avgServiceCharge: d.avgServiceCharge ? Math.round(d.avgServiceCharge * 100) / 100 : null,
-    avgRentalYield: d.avgRentalYield ? Math.round(d.avgRentalYield * 100) / 100 : null,
-    developers: d.developers.filter(Boolean).slice(0, 5),
+    avgRentalYield: d.avgRentalYield ? Math.round(d.avgRentalYield * 10000) / 100 : null,
+    developers: d.developers.filter((dev: string) => dev && dev !== 'Unknown').slice(0, 5),
   }))
 
   const rentalStats: RentalStats[] = rentalData.map((d) => ({
@@ -143,18 +164,19 @@ async function queryMarketData(budget: number, propertyType?: string, bedrooms?:
     maxRent: Math.round(d.maxRent),
     totalTransactions: d.totalTransactions,
     avgMonthlyRent: Math.round(d.avgMonthlyRent || 0),
-    bedrooms: d.bedrooms.filter(Boolean).sort(),
+    bedrooms: d.bedrooms.filter(Boolean).sort().map(String),
     propertyTypes: d.propertyTypes.filter(Boolean),
   }))
 
   const overallStats = await db.collection('sales').aggregate([
-    { $match: { transaction_amount: { $gte: budgetMin, $lte: budgetMax } } },
+    convertFieldsStage,
+    { $match: { _numAmount: { $gte: budgetMin, $lte: budgetMax } } },
     {
       $group: {
         _id: null,
         totalTransactions: { $sum: 1 },
-        avgPrice: { $avg: '$transaction_amount' },
-        avgYield: { $avg: '$current_estimated_rental_yield' },
+        avgPrice: { $avg: '$_numAmount' },
+        avgYield: { $avg: '$_numYield' },
       },
     },
   ]).toArray()
@@ -165,22 +187,19 @@ async function queryMarketData(budget: number, propertyType?: string, bedrooms?:
     {
       $match: {
         bayut_leaf_location_name_en: { $in: topAreaNames },
-        transaction_amount: { $gt: 0 },
-        instance_date: { $exists: true, $ne: null },
+        date_transaction_nk: { $exists: true, $nin: ['', null, '1970-01-01'] },
       },
     },
     {
       $addFields: {
+        _numAmount: toNum('transaction_amount'),
+        _numPricePerSqm: toNum('transaction_per_sqm_amount'),
         parsedDate: {
-          $cond: {
-            if: { $eq: [{ $type: '$instance_date' }, 'date'] },
-            then: '$instance_date',
-            else: { $dateFromString: { dateString: '$instance_date', onError: null } }
-          }
-        }
-      }
+          $dateFromString: { dateString: '$date_transaction_nk', onError: null }
+        },
+      },
     },
-    { $match: { parsedDate: { $ne: null } } },
+    { $match: { parsedDate: { $ne: null }, _numAmount: { $gt: 0 } } },
     {
       $group: {
         _id: {
@@ -188,9 +207,9 @@ async function queryMarketData(budget: number, propertyType?: string, bedrooms?:
           quarter: { $ceil: { $divide: [{ $month: '$parsedDate' }, 3] } },
           area: '$bayut_leaf_location_name_en',
         },
-        avgPrice: { $avg: '$transaction_amount' },
+        avgPrice: { $avg: '$_numAmount' },
         totalTransactions: { $sum: 1 },
-        avgPricePerSqm: { $avg: '$transaction_per_sqm_amount' },
+        avgPricePerSqm: { $avg: '$_numPricePerSqm' },
       },
     },
     { $match: { totalTransactions: { $gte: 2 } } },
@@ -203,22 +222,18 @@ async function queryMarketData(budget: number, propertyType?: string, bedrooms?:
     {
       $match: {
         bayut_leaf_location_name_en: { $in: topAreaNames },
-        transaction_amount: { $gt: 0 },
-        contract_start_date: { $exists: true, $ne: null },
+        date_start_nk: { $exists: true, $nin: ['', null, '1970-01-01'] },
       },
     },
     {
       $addFields: {
+        _numMonthlyRent: toNum('contract_monthly_amount'),
         parsedDate: {
-          $cond: {
-            if: { $eq: [{ $type: '$contract_start_date' }, 'date'] },
-            then: '$contract_start_date',
-            else: { $dateFromString: { dateString: '$contract_start_date', onError: null } }
-          }
-        }
-      }
+          $dateFromString: { dateString: '$date_start_nk', onError: null }
+        },
+      },
     },
-    { $match: { parsedDate: { $ne: null } } },
+    { $match: { parsedDate: { $ne: null }, _numMonthlyRent: { $gt: 0 } } },
     {
       $group: {
         _id: {
@@ -226,7 +241,7 @@ async function queryMarketData(budget: number, propertyType?: string, bedrooms?:
           quarter: { $ceil: { $divide: [{ $month: '$parsedDate' }, 3] } },
           area: '$bayut_leaf_location_name_en',
         },
-        avgRent: { $avg: '$contract_monthly_amount' },
+        avgRent: { $avg: '$_numMonthlyRent' },
         totalTransactions: { $sum: 1 },
       },
     },
