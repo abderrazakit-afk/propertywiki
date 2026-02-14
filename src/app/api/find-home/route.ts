@@ -37,12 +37,13 @@ interface RentalStats {
   propertyTypes: string[]
 }
 
-async function queryMarketData(budget: number, propertyType?: string, bedrooms?: string) {
+async function queryMarketData(budget: number, propertyType?: string, bedrooms?: string, sendProgress?: (msg: string) => void) {
   const t0 = Date.now()
   console.log(`[FindHome] queryMarketData START - budget: ${budget}, type: ${propertyType || 'any'}, beds: ${bedrooms || 'any'}`)
 
   const { db } = await connectToTransactionsDb()
   console.log(`[FindHome] DB connected in ${Date.now() - t0}ms`)
+  sendProgress?.('Connected to database...')
 
   const budgetMin = budget * 0.5
   const budgetMax = budget * 1.5
@@ -111,9 +112,8 @@ async function queryMarketData(budget: number, propertyType?: string, bedrooms?:
 
   const aggOpts = { allowDiskUse: true }
 
-  console.log(`[FindHome] Sales pipeline:`, JSON.stringify(salesPipeline, null, 2))
-
   const t1 = Date.now()
+  sendProgress?.('Querying 500,000+ property transactions...')
   const [salesData, overallStatsResult] = await Promise.all([
     db.collection('sales').aggregate(salesPipeline, aggOpts).toArray(),
     db.collection('sales').aggregate([
@@ -130,8 +130,8 @@ async function queryMarketData(budget: number, propertyType?: string, bedrooms?:
       },
     ], aggOpts).toArray(),
   ])
-  console.log(`[FindHome] Sales + OverallStats queries done in ${Date.now() - t1}ms - found ${salesData.length} areas, overall: ${JSON.stringify(overallStatsResult[0] || {})}`)
-  console.log(`[FindHome] Top areas: ${salesData.slice(0, 5).map((d: any) => d._id.area).join(', ')}`)
+  console.log(`[FindHome] Sales + OverallStats queries done in ${Date.now() - t1}ms - found ${salesData.length} areas`)
+  sendProgress?.(`Found ${salesData.length} matching areas, analyzing rentals...`)
 
   const topAreas = salesData.map((d) => d._id.l4 || d._id.area).filter(Boolean)
   const topAreaNames = salesData.slice(0, 5).map((d) => d._id.area).filter(Boolean)
@@ -236,7 +236,7 @@ async function queryMarketData(budget: number, propertyType?: string, bedrooms?:
   ]
 
   const t2 = Date.now()
-  console.log(`[FindHome] Starting rental + trend queries for areas: ${topAreaNames.join(', ')}`)
+  sendProgress?.('Comparing rental yields and price trends...')
   const [rentalData, priceTrendData, rentalTrendData] = await Promise.all([
     db.collection('rentals').aggregate(rentalPipeline, aggOpts).toArray(),
     db.collection('sales').aggregate(priceTrendPipeline, aggOpts).toArray(),
@@ -341,55 +341,77 @@ function parseUserInput(description: string, budget: number) {
 
 export async function POST(request: NextRequest) {
   const postStart = Date.now()
-  try {
-    const { description, budget, sessionToken } = await request.json()
-    console.log(`[FindHome] POST request - budget: ${budget}`)
 
-    if (!description || description.trim().length < 10) {
-      return NextResponse.json(
-        { error: 'Please provide a more detailed description of your dream home.' },
-        { status: 400 }
-      )
-    }
+  const { description, budget, sessionToken } = await request.json()
+  console.log(`[FindHome] POST request - budget: ${budget}`)
 
-    if (!budget || budget < 50000) {
-      return NextResponse.json(
-        { error: 'Please provide a valid budget (minimum AED 50,000).' },
-        { status: 400 }
-      )
-    }
+  if (!description || description.trim().length < 10) {
+    return NextResponse.json(
+      { error: 'Please provide a more detailed description of your dream home.' },
+      { status: 400 }
+    )
+  }
 
-    if (!sessionToken) {
-      return NextResponse.json(
-        { error: 'Session expired. Please verify your email again.' },
-        { status: 401 }
-      )
-    }
+  if (!budget || budget < 50000) {
+    return NextResponse.json(
+      { error: 'Please provide a valid budget (minimum AED 50,000).' },
+      { status: 400 }
+    )
+  }
 
-    const email = await validateSessionToken(sessionToken)
-    if (!email) {
-      return NextResponse.json(
-        { error: 'Session expired. Please verify your email again.' },
-        { status: 401 }
-      )
-    }
+  if (!sessionToken) {
+    return NextResponse.json(
+      { error: 'Session expired. Please verify your email again.' },
+      { status: 401 }
+    )
+  }
 
-    const currentUsage = await getEmailUsageToday(email)
-    if (currentUsage >= DAILY_LIMIT) {
-      return NextResponse.json(
-        { error: 'Daily limit reached. Please try again tomorrow.' },
-        { status: 429 }
-      )
-    }
-    await incrementEmailUsage(email)
+  const email = await validateSessionToken(sessionToken)
+  if (!email) {
+    return NextResponse.json(
+      { error: 'Session expired. Please verify your email again.' },
+      { status: 401 }
+    )
+  }
 
-    const { propertyType, bedrooms } = parseUserInput(description, budget)
-    console.log(`[FindHome] Parsed input - type: ${propertyType || 'any'}, beds: ${bedrooms || 'any'} (${Date.now() - postStart}ms)`)
+  const currentUsage = await getEmailUsageToday(email)
+  if (currentUsage >= DAILY_LIMIT) {
+    return NextResponse.json(
+      { error: 'Daily limit reached. Please try again tomorrow.' },
+      { status: 429 }
+    )
+  }
+  await incrementEmailUsage(email)
 
-    const marketData = await queryMarketData(budget, propertyType, bedrooms)
-    console.log(`[FindHome] Market data fetched (${Date.now() - postStart}ms total so far)`)
+  const encoder = new TextEncoder()
+  const stream = new ReadableStream({
+    async start(controller) {
+      const sendProgress = (message: string) => {
+        try {
+          controller.enqueue(encoder.encode(`data: ${JSON.stringify({ type: 'progress', message })}\n\n`))
+        } catch {}
+      }
 
-    const systemPrompt = `You are PropertyWiki's expert real estate analyst for the UAE market. You have access to REAL transaction data from Dubai Land Department.
+      const keepAlive = setInterval(() => {
+        try {
+          controller.enqueue(encoder.encode(`data: ${JSON.stringify({ type: 'ping' })}\n\n`))
+        } catch {
+          clearInterval(keepAlive)
+        }
+      }, 5000)
+
+      try {
+        sendProgress('Analyzing your preferences...')
+
+        const { propertyType, bedrooms } = parseUserInput(description, budget)
+        console.log(`[FindHome] Parsed input - type: ${propertyType || 'any'}, beds: ${bedrooms || 'any'} (${Date.now() - postStart}ms)`)
+
+        const marketData = await queryMarketData(budget, propertyType, bedrooms, sendProgress)
+        console.log(`[FindHome] Market data fetched (${Date.now() - postStart}ms total so far)`)
+
+        sendProgress('Generating your personalized report...')
+
+        const systemPrompt = `You are PropertyWiki's expert real estate analyst for the UAE market. You have access to REAL transaction data from Dubai Land Department.
 
 Your task: Write a comprehensive, data-driven property report for a home seeker based on their preferences and REAL market data.
 
@@ -454,7 +476,7 @@ Respond in JSON format with this exact structure:
   "disclaimer": "Brief professional disclaimer about the data being historical and consulting a licensed agent"
 }`
 
-    const userMessage = `
+        const userMessage = `
 Home Seeker Profile:
 - Budget: AED ${budget.toLocaleString()}
 - Description: ${description}
@@ -464,34 +486,45 @@ ${bedrooms ? `- Bedrooms needed: ${bedrooms === '0' ? 'Studio' : bedrooms}` : ''
 Please analyze the real market data and generate a comprehensive property report for this home seeker.
 Recommend the top 3-5 areas that best match their needs and budget.`
 
-    const tAI = Date.now()
-    console.log(`[FindHome] Starting OpenAI call...`)
-    const completion = await openai.chat.completions.create({
-      model: 'gpt-4.1-mini',
-      messages: [
-        { role: 'system', content: systemPrompt },
-        { role: 'user', content: userMessage },
-      ],
-      response_format: { type: 'json_object' },
-      temperature: 0.4,
-      max_tokens: 4000,
-    })
-    console.log(`[FindHome] OpenAI call done in ${Date.now() - tAI}ms`)
+        const tAI = Date.now()
+        console.log(`[FindHome] Starting OpenAI call...`)
+        const completion = await openai.chat.completions.create({
+          model: 'gpt-4.1-mini',
+          messages: [
+            { role: 'system', content: systemPrompt },
+            { role: 'user', content: userMessage },
+          ],
+          response_format: { type: 'json_object' },
+          temperature: 0.4,
+          max_tokens: 4000,
+        })
+        console.log(`[FindHome] OpenAI call done in ${Date.now() - tAI}ms`)
 
-    const responseContent = completion.choices[0]?.message?.content
-    if (!responseContent) {
-      throw new Error('No response from AI')
-    }
+        const responseContent = completion.choices[0]?.message?.content
+        if (!responseContent) {
+          throw new Error('No response from AI')
+        }
 
-    const report = JSON.parse(responseContent)
-    report.chartData = marketData.chartData
-    console.log(`[FindHome] POST TOTAL: ${Date.now() - postStart}ms`)
-    return NextResponse.json(report)
-  } catch (error) {
-    console.error('Find Home API error:', error)
-    return NextResponse.json(
-      { error: 'Failed to generate your property report. Please try again.' },
-      { status: 500 }
-    )
-  }
+        const report = JSON.parse(responseContent)
+        report.chartData = marketData.chartData
+        console.log(`[FindHome] POST TOTAL: ${Date.now() - postStart}ms`)
+
+        controller.enqueue(encoder.encode(`data: ${JSON.stringify({ type: 'result', data: report })}\n\n`))
+      } catch (error) {
+        console.error('Find Home API error:', error)
+        controller.enqueue(encoder.encode(`data: ${JSON.stringify({ type: 'error', error: 'Failed to generate your property report. Please try again.' })}\n\n`))
+      } finally {
+        clearInterval(keepAlive)
+        controller.close()
+      }
+    },
+  })
+
+  return new Response(stream, {
+    headers: {
+      'Content-Type': 'text/event-stream',
+      'Cache-Control': 'no-cache',
+      'Connection': 'keep-alive',
+    },
+  })
 }

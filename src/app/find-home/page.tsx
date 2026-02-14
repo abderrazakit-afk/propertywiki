@@ -218,20 +218,7 @@ export default function FindHomePage() {
     setError('')
     setStep('loading')
 
-    const messages = [
-      'Analyzing your preferences...',
-      'Querying 500,000+ property transactions...',
-      'Finding best areas for your budget...',
-      'Comparing rental yields...',
-      'Generating your personalized report...',
-    ]
-
-    let msgIndex = 0
-    setLoadingMessage(messages[0])
-    const interval = setInterval(() => {
-      msgIndex = Math.min(msgIndex + 1, messages.length - 1)
-      setLoadingMessage(messages[msgIndex])
-    }, 3000)
+    setLoadingMessage('Analyzing your preferences...')
 
     try {
       const controller = new AbortController()
@@ -243,8 +230,6 @@ export default function FindHomePage() {
         signal: controller.signal,
       })
       clearTimeout(timeout)
-
-      clearInterval(interval)
 
       if (!response.ok) {
         const data = await response.json()
@@ -264,11 +249,40 @@ export default function FindHomePage() {
         throw new Error(data.error || 'Failed to generate report')
       }
 
-      const data = await response.json()
-      setReport(data)
-      setStep('results')
+      const reader = response.body?.getReader()
+      if (!reader) throw new Error('No response stream')
+
+      const decoder = new TextDecoder()
+      let buffer = ''
+
+      while (true) {
+        const { done, value } = await reader.read()
+        if (done) break
+
+        buffer += decoder.decode(value, { stream: true })
+        const lines = buffer.split('\n\n')
+        buffer = lines.pop() || ''
+
+        for (const line of lines) {
+          const cleaned = line.replace(/^data: /, '').trim()
+          if (!cleaned) continue
+          try {
+            const event = JSON.parse(cleaned)
+            if (event.type === 'progress') {
+              setLoadingMessage(event.message)
+            } else if (event.type === 'result') {
+              setReport(event.data)
+              setStep('results')
+            } else if (event.type === 'error') {
+              throw new Error(event.error)
+            }
+          } catch (e) {
+            if (e instanceof SyntaxError) continue
+            throw e
+          }
+        }
+      }
     } catch (err) {
-      clearInterval(interval)
       setError(err instanceof Error ? err.message : 'Something went wrong')
       setStep('preferences')
     }

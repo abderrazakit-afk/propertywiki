@@ -209,20 +209,7 @@ export default function FindHomePageAr() {
     setError('')
     setStep('loading')
 
-    const messages = [
-      'جاري تحليل تفضيلاتك...',
-      'جاري البحث في أكثر من 500,000 معاملة عقارية...',
-      'جاري إيجاد أفضل المناطق لميزانيتك...',
-      'جاري مقارنة عوائد الإيجار...',
-      'جاري إعداد تقريرك المخصص...',
-    ]
-
-    let msgIndex = 0
-    setLoadingMessage(messages[0])
-    const interval = setInterval(() => {
-      msgIndex = Math.min(msgIndex + 1, messages.length - 1)
-      setLoadingMessage(messages[msgIndex])
-    }, 3000)
+    setLoadingMessage('جاري تحليل تفضيلاتك...')
 
     try {
       const controller = new AbortController()
@@ -234,8 +221,6 @@ export default function FindHomePageAr() {
         signal: controller.signal,
       })
       clearTimeout(timeout)
-
-      clearInterval(interval)
 
       if (!response.ok) {
         const data = await response.json()
@@ -255,11 +240,49 @@ export default function FindHomePageAr() {
         throw new Error(data.error || 'فشل في إنشاء التقرير')
       }
 
-      const data = await response.json()
-      setReport(data)
-      setStep('results')
+      const reader = response.body?.getReader()
+      if (!reader) throw new Error('No response stream')
+
+      const decoder = new TextDecoder()
+      let buffer = ''
+
+      const progressMap: Record<string, string> = {
+        'Analyzing your preferences...': 'جاري تحليل تفضيلاتك...',
+        'Connected to database...': 'تم الاتصال بقاعدة البيانات...',
+        'Querying 500,000+ property transactions...': 'جاري البحث في أكثر من 500,000 معاملة عقارية...',
+        'Comparing rental yields and price trends...': 'جاري مقارنة عوائد الإيجار واتجاهات الأسعار...',
+        'Generating your personalized report...': 'جاري إعداد تقريرك المخصص...',
+      }
+
+      while (true) {
+        const { done, value } = await reader.read()
+        if (done) break
+
+        buffer += decoder.decode(value, { stream: true })
+        const lines = buffer.split('\n\n')
+        buffer = lines.pop() || ''
+
+        for (const line of lines) {
+          const cleaned = line.replace(/^data: /, '').trim()
+          if (!cleaned) continue
+          try {
+            const event = JSON.parse(cleaned)
+            if (event.type === 'progress') {
+              const arMsg = progressMap[event.message] || event.message
+              setLoadingMessage(arMsg.includes('Found') ? `تم العثور على ${event.message.match(/\d+/)?.[0] || ''} منطقة مطابقة...` : arMsg)
+            } else if (event.type === 'result') {
+              setReport(event.data)
+              setStep('results')
+            } else if (event.type === 'error') {
+              throw new Error(event.error)
+            }
+          } catch (e) {
+            if (e instanceof SyntaxError) continue
+            throw e
+          }
+        }
+      }
     } catch (err) {
-      clearInterval(interval)
       setError(err instanceof Error ? err.message : 'حدث خطأ ما')
       setStep('preferences')
     }
