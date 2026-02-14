@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import dynamic from 'next/dynamic'
 import Link from 'next/link'
 
@@ -89,6 +89,34 @@ export default function FindHomePageAr() {
   const [remainingSearches, setRemainingSearches] = useState<number | null>(null)
   const [loadingMessage, setLoadingMessage] = useState('')
   const [selectedPreset, setSelectedPreset] = useState<number | null>(2)
+  const [sessionToken, setSessionToken] = useState<string | null>(null)
+
+  useEffect(() => {
+    const stored = localStorage.getItem('pw_session_token')
+    if (stored) {
+      fetch('/api/check-session', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ sessionToken: stored }),
+      })
+        .then(res => res.json())
+        .then(data => {
+          if (data.valid && data.canUse) {
+            setSessionToken(stored)
+            setEmail(data.email)
+            setRemainingSearches(data.remaining)
+            setStep('preferences')
+          } else if (data.valid && !data.canUse) {
+            setStep('limit-reached')
+          } else {
+            localStorage.removeItem('pw_session_token')
+          }
+        })
+        .catch(() => {
+          localStorage.removeItem('pw_session_token')
+        })
+    }
+  }, [])
 
   const handleSendCode = async () => {
     if (!email || !email.includes('@')) {
@@ -140,6 +168,12 @@ export default function FindHomePageAr() {
         setStep('limit-reached')
         return
       }
+
+      if (data.sessionToken) {
+        localStorage.setItem('pw_session_token', data.sessionToken)
+        setSessionToken(data.sessionToken)
+      }
+
       setRemainingSearches(data.remaining)
       setStep('preferences')
     } catch {
@@ -196,7 +230,7 @@ export default function FindHomePageAr() {
       const response = await fetch('/api/find-home', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ description, budget, email }),
+        body: JSON.stringify({ description, budget, sessionToken }),
         signal: controller.signal,
       })
       clearTimeout(timeout)
@@ -207,6 +241,15 @@ export default function FindHomePageAr() {
         const data = await response.json()
         if (response.status === 429) {
           setStep('limit-reached')
+          return
+        }
+        if (response.status === 401) {
+          localStorage.removeItem('pw_session_token')
+          setSessionToken(null)
+          setCodeSent(false)
+          setVerificationCode('')
+          setStep('email')
+          setError('انتهت صلاحية الجلسة. يرجى التحقق من بريدك الإلكتروني مرة أخرى.')
           return
         }
         throw new Error(data.error || 'فشل في إنشاء التقرير')

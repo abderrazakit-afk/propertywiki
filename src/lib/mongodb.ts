@@ -127,3 +127,43 @@ export async function incrementEmailUsage(email: string): Promise<number> {
 }
 
 export const DAILY_LIMIT = 3
+
+export interface SessionToken {
+  token: string
+  email: string
+  createdAt: Date
+  expiresAt: Date
+}
+
+export async function createSessionToken(email: string): Promise<string> {
+  const { db } = await connectToDatabase()
+  const crypto = await import('crypto')
+  const token = crypto.randomBytes(32).toString('hex')
+  const now = new Date()
+  const expiresAt = new Date(now.getTime() + 30 * 60 * 1000)
+
+  await db.collection<SessionToken>('session_tokens').updateOne(
+    { email: email.toLowerCase() },
+    {
+      $set: {
+        token,
+        email: email.toLowerCase(),
+        createdAt: now,
+        expiresAt,
+      },
+    },
+    { upsert: true }
+  )
+
+  return token
+}
+
+export async function validateSessionToken(token: string): Promise<string | null> {
+  const { db } = await connectToDatabase()
+  const session = await db.collection<SessionToken>('session_tokens').findOne({
+    token,
+    expiresAt: { $gt: new Date() },
+  })
+
+  return session?.email || null
+}

@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { verifyCode, getEmailUsageToday, DAILY_LIMIT } from '@/lib/mongodb'
+import { verifyCode, getEmailUsageToday, DAILY_LIMIT, createSessionToken } from '@/lib/mongodb'
 
 export async function POST(request: NextRequest) {
   try {
@@ -25,11 +25,14 @@ export async function POST(request: NextRequest) {
     const remaining = Math.max(0, DAILY_LIMIT - usageCount)
     const canUse = usageCount < DAILY_LIMIT
 
+    const sessionToken = await createSessionToken(email)
+
     return NextResponse.json({
       verified: true,
       canUse,
       remaining,
       limit: DAILY_LIMIT,
+      sessionToken,
     })
   } catch (error) {
     console.error('Verify email error:', error)

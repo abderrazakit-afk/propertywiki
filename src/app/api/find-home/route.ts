@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server'
 import OpenAI from 'openai'
-import { connectToDatabase, connectToTransactionsDb, incrementEmailUsage, getEmailUsageToday, DAILY_LIMIT } from '@/lib/mongodb'
+import { connectToDatabase, connectToTransactionsDb, incrementEmailUsage, getEmailUsageToday, DAILY_LIMIT, validateSessionToken } from '@/lib/mongodb'
 
 export const maxDuration = 300
 
@@ -342,8 +342,8 @@ function parseUserInput(description: string, budget: number) {
 export async function POST(request: NextRequest) {
   const postStart = Date.now()
   try {
-    const { description, budget, email } = await request.json()
-    console.log(`[FindHome] POST request - budget: ${budget}, email: ${email}`)
+    const { description, budget, sessionToken } = await request.json()
+    console.log(`[FindHome] POST request - budget: ${budget}`)
 
     if (!description || description.trim().length < 10) {
       return NextResponse.json(
@@ -359,22 +359,17 @@ export async function POST(request: NextRequest) {
       )
     }
 
-    if (!email) {
+    if (!sessionToken) {
       return NextResponse.json(
-        { error: 'Email verification is required.' },
+        { error: 'Session expired. Please verify your email again.' },
         { status: 401 }
       )
     }
 
-    const { db: appDb } = await connectToDatabase()
-    const verification = await appDb.collection('email_verifications').findOne({
-      email: email.toLowerCase(),
-      verified: true,
-    })
-
-    if (!verification) {
+    const email = await validateSessionToken(sessionToken)
+    if (!email) {
       return NextResponse.json(
-        { error: 'Please verify your email first.' },
+        { error: 'Session expired. Please verify your email again.' },
         { status: 401 }
       )
     }
