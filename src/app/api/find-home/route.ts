@@ -103,9 +103,27 @@ async function queryMarketData(budget: number, propertyType?: string, bedrooms?:
     { $limit: 15 },
   )
 
-  const salesData = await db.collection('sales').aggregate(salesPipeline).toArray()
+  const aggOpts = { allowDiskUse: true }
+
+  const [salesData, overallStatsResult] = await Promise.all([
+    db.collection('sales').aggregate(salesPipeline, aggOpts).toArray(),
+    db.collection('sales').aggregate([
+      { $match: salesMatchStage },
+      { $addFields: { _numAmount: toNum('transaction_amount'), _numYield: toNum('current_estimated_rental_yield') } },
+      { $match: { _numAmount: { $gte: budgetMin, $lte: budgetMax } } },
+      {
+        $group: {
+          _id: null,
+          totalTransactions: { $sum: 1 },
+          avgPrice: { $avg: '$_numAmount' },
+          avgYield: { $avg: '$_numYield' },
+        },
+      },
+    ], aggOpts).toArray(),
+  ])
 
   const topAreas = salesData.map((d) => d._id.l4 || d._id.area).filter(Boolean)
+  const topAreaNames = salesData.slice(0, 5).map((d) => d._id.area).filter(Boolean)
 
   const rentalMatchStage: Record<string, unknown> = {
     bayut_location_l4_name_en: { $in: topAreas },
@@ -113,7 +131,7 @@ async function queryMarketData(budget: number, propertyType?: string, bedrooms?:
 
   const rentalPipeline: Record<string, unknown>[] = [
     { $match: rentalMatchStage },
-    convertFieldsStage,
+    { $addFields: { _numAmount: toNum('transaction_amount'), _numMonthlyRent: toNum('contract_monthly_amount'), _numBeds: toInt('beds') } },
     { $match: { _numAmount: { $gt: 0 } } },
   ]
 
@@ -141,52 +159,6 @@ async function queryMarketData(budget: number, propertyType?: string, bedrooms?:
     { $sort: { totalTransactions: -1 as const } },
     { $limit: 15 },
   )
-
-  const rentalData = await db.collection('rentals').aggregate(rentalPipeline).toArray()
-
-  const areaStats: AreaStats[] = salesData.map((d) => ({
-    area: d._id.area,
-    areaAr: d._id.areaAr || '',
-    avgPrice: Math.round(d.avgPrice),
-    minPrice: Math.round(d.minPrice),
-    maxPrice: Math.round(d.maxPrice),
-    totalTransactions: d.totalTransactions,
-    avgPricePerSqm: Math.round(d.avgPricePerSqm || 0),
-    avgSize: Math.round(d.avgSize || 0),
-    propertyTypes: d.propertyTypes.filter(Boolean),
-    bedrooms: d.bedrooms.filter((b: number) => b > 0).sort().map(String),
-    buildings: [],
-    avgServiceCharge: d.avgServiceCharge ? Math.round(d.avgServiceCharge * 100) / 100 : null,
-    avgRentalYield: d.avgRentalYield ? Math.round(d.avgRentalYield * 10000) / 100 : null,
-    developers: d.developers.filter((dev: string) => dev && dev !== 'Unknown').slice(0, 5),
-  }))
-
-  const rentalStats: RentalStats[] = rentalData.map((d) => ({
-    area: d._id.area,
-    areaAr: d._id.areaAr || '',
-    avgRent: Math.round(d.avgRent),
-    minRent: Math.round(d.minRent),
-    maxRent: Math.round(d.maxRent),
-    totalTransactions: d.totalTransactions,
-    avgMonthlyRent: Math.round(d.avgMonthlyRent || 0),
-    bedrooms: d.bedrooms.filter(Boolean).sort().map(String),
-    propertyTypes: d.propertyTypes.filter(Boolean),
-  }))
-
-  const overallStats = await db.collection('sales').aggregate([
-    convertFieldsStage,
-    { $match: { _numAmount: { $gte: budgetMin, $lte: budgetMax } } },
-    {
-      $group: {
-        _id: null,
-        totalTransactions: { $sum: 1 },
-        avgPrice: { $avg: '$_numAmount' },
-        avgYield: { $avg: '$_numYield' },
-      },
-    },
-  ]).toArray()
-
-  const topAreaNames = areaStats.slice(0, 5).map(a => a.area)
 
   const priceTrendPipeline = [
     {
@@ -221,8 +193,6 @@ async function queryMarketData(budget: number, propertyType?: string, bedrooms?:
     { $sort: { '_id.year': 1 as const, '_id.quarter': 1 as const } },
   ]
 
-  const priceTrendData = await db.collection('sales').aggregate(priceTrendPipeline).toArray()
-
   const rentalTrendPipeline = [
     {
       $match: {
@@ -254,7 +224,40 @@ async function queryMarketData(budget: number, propertyType?: string, bedrooms?:
     { $sort: { '_id.year': 1 as const, '_id.quarter': 1 as const } },
   ]
 
-  const rentalTrendData = await db.collection('rentals').aggregate(rentalTrendPipeline).toArray()
+  const [rentalData, priceTrendData, rentalTrendData] = await Promise.all([
+    db.collection('rentals').aggregate(rentalPipeline, aggOpts).toArray(),
+    db.collection('sales').aggregate(priceTrendPipeline, aggOpts).toArray(),
+    db.collection('rentals').aggregate(rentalTrendPipeline, aggOpts).toArray(),
+  ])
+
+  const areaStats: AreaStats[] = salesData.map((d) => ({
+    area: d._id.area,
+    areaAr: d._id.areaAr || '',
+    avgPrice: Math.round(d.avgPrice),
+    minPrice: Math.round(d.minPrice),
+    maxPrice: Math.round(d.maxPrice),
+    totalTransactions: d.totalTransactions,
+    avgPricePerSqm: Math.round(d.avgPricePerSqm || 0),
+    avgSize: Math.round(d.avgSize || 0),
+    propertyTypes: d.propertyTypes.filter(Boolean),
+    bedrooms: d.bedrooms.filter((b: number) => b > 0).sort().map(String),
+    buildings: [],
+    avgServiceCharge: d.avgServiceCharge ? Math.round(d.avgServiceCharge * 100) / 100 : null,
+    avgRentalYield: d.avgRentalYield ? Math.round(d.avgRentalYield * 10000) / 100 : null,
+    developers: d.developers.filter((dev: string) => dev && dev !== 'Unknown').slice(0, 5),
+  }))
+
+  const rentalStats: RentalStats[] = rentalData.map((d) => ({
+    area: d._id.area,
+    areaAr: d._id.areaAr || '',
+    avgRent: Math.round(d.avgRent),
+    minRent: Math.round(d.minRent),
+    maxRent: Math.round(d.maxRent),
+    totalTransactions: d.totalTransactions,
+    avgMonthlyRent: Math.round(d.avgMonthlyRent || 0),
+    bedrooms: d.bedrooms.filter(Boolean).sort().map(String),
+    propertyTypes: d.propertyTypes.filter(Boolean),
+  }))
 
   const chartData = {
     priceTrends: priceTrendData.map(d => ({
@@ -297,7 +300,7 @@ async function queryMarketData(budget: number, propertyType?: string, bedrooms?:
   return {
     salesByArea: areaStats,
     rentalsByArea: rentalStats,
-    marketOverview: overallStats[0] || { totalTransactions: 0, avgPrice: 0, avgYield: 0 },
+    marketOverview: overallStatsResult[0] || { totalTransactions: 0, avgPrice: 0, avgYield: 0 },
     chartData,
   }
 }

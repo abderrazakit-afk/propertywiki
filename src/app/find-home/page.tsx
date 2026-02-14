@@ -201,11 +201,15 @@ export default function FindHomePage() {
     }, 3000)
 
     try {
+      const controller = new AbortController()
+      const timeout = setTimeout(() => controller.abort(), 120000)
       const response = await fetch('/api/find-home', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ description, budget, email }),
+        signal: controller.signal,
       })
+      clearTimeout(timeout)
 
       clearInterval(interval)
 
