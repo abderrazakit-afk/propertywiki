@@ -36,7 +36,11 @@ interface RentalStats {
 }
 
 async function queryMarketData(budget: number, propertyType?: string, bedrooms?: string) {
+  const t0 = Date.now()
+  console.log(`[FindHome] queryMarketData START - budget: ${budget}, type: ${propertyType || 'any'}, beds: ${bedrooms || 'any'}`)
+
   const { db } = await connectToTransactionsDb()
+  console.log(`[FindHome] DB connected in ${Date.now() - t0}ms`)
 
   const budgetMin = budget * 0.5
   const budgetMax = budget * 1.5
@@ -105,6 +109,9 @@ async function queryMarketData(budget: number, propertyType?: string, bedrooms?:
 
   const aggOpts = { allowDiskUse: true }
 
+  console.log(`[FindHome] Sales pipeline:`, JSON.stringify(salesPipeline, null, 2))
+
+  const t1 = Date.now()
   const [salesData, overallStatsResult] = await Promise.all([
     db.collection('sales').aggregate(salesPipeline, aggOpts).toArray(),
     db.collection('sales').aggregate([
@@ -121,6 +128,8 @@ async function queryMarketData(budget: number, propertyType?: string, bedrooms?:
       },
     ], aggOpts).toArray(),
   ])
+  console.log(`[FindHome] Sales + OverallStats queries done in ${Date.now() - t1}ms - found ${salesData.length} areas, overall: ${JSON.stringify(overallStatsResult[0] || {})}`)
+  console.log(`[FindHome] Top areas: ${salesData.slice(0, 5).map((d: any) => d._id.area).join(', ')}`)
 
   const topAreas = salesData.map((d) => d._id.l4 || d._id.area).filter(Boolean)
   const topAreaNames = salesData.slice(0, 5).map((d) => d._id.area).filter(Boolean)
@@ -224,11 +233,14 @@ async function queryMarketData(budget: number, propertyType?: string, bedrooms?:
     { $sort: { '_id.year': 1 as const, '_id.quarter': 1 as const } },
   ]
 
+  const t2 = Date.now()
+  console.log(`[FindHome] Starting rental + trend queries for areas: ${topAreaNames.join(', ')}`)
   const [rentalData, priceTrendData, rentalTrendData] = await Promise.all([
     db.collection('rentals').aggregate(rentalPipeline, aggOpts).toArray(),
     db.collection('sales').aggregate(priceTrendPipeline, aggOpts).toArray(),
     db.collection('rentals').aggregate(rentalTrendPipeline, aggOpts).toArray(),
   ])
+  console.log(`[FindHome] Rental + Trend queries done in ${Date.now() - t2}ms - rentals: ${rentalData.length}, priceTrends: ${priceTrendData.length}, rentalTrends: ${rentalTrendData.length}`)
 
   const areaStats: AreaStats[] = salesData.map((d) => ({
     area: d._id.area,
@@ -297,6 +309,8 @@ async function queryMarketData(budget: number, propertyType?: string, bedrooms?:
     }),
   }
 
+  console.log(`[FindHome] queryMarketData TOTAL: ${Date.now() - t0}ms`)
+
   return {
     salesByArea: areaStats,
     rentalsByArea: rentalStats,
@@ -324,8 +338,10 @@ function parseUserInput(description: string, budget: number) {
 }
 
 export async function POST(request: NextRequest) {
+  const postStart = Date.now()
   try {
     const { description, budget, email } = await request.json()
+    console.log(`[FindHome] POST request - budget: ${budget}, email: ${email}`)
 
     if (!description || description.trim().length < 10) {
       return NextResponse.json(
@@ -371,7 +387,10 @@ export async function POST(request: NextRequest) {
     await incrementEmailUsage(email)
 
     const { propertyType, bedrooms } = parseUserInput(description, budget)
+    console.log(`[FindHome] Parsed input - type: ${propertyType || 'any'}, beds: ${bedrooms || 'any'} (${Date.now() - postStart}ms)`)
+
     const marketData = await queryMarketData(budget, propertyType, bedrooms)
+    console.log(`[FindHome] Market data fetched (${Date.now() - postStart}ms total so far)`)
 
     const systemPrompt = `You are PropertyWiki's expert real estate analyst for the UAE market. You have access to REAL transaction data from Dubai Land Department.
 
@@ -448,6 +467,8 @@ ${bedrooms ? `- Bedrooms needed: ${bedrooms === '0' ? 'Studio' : bedrooms}` : ''
 Please analyze the real market data and generate a comprehensive property report for this home seeker.
 Recommend the top 3-5 areas that best match their needs and budget.`
 
+    const tAI = Date.now()
+    console.log(`[FindHome] Starting OpenAI call...`)
     const completion = await openai.chat.completions.create({
       model: 'gpt-4.1-mini',
       messages: [
@@ -458,6 +479,7 @@ Recommend the top 3-5 areas that best match their needs and budget.`
       temperature: 0.4,
       max_tokens: 4000,
     })
+    console.log(`[FindHome] OpenAI call done in ${Date.now() - tAI}ms`)
 
     const responseContent = completion.choices[0]?.message?.content
     if (!responseContent) {
@@ -466,6 +488,7 @@ Recommend the top 3-5 areas that best match their needs and budget.`
 
     const report = JSON.parse(responseContent)
     report.chartData = marketData.chartData
+    console.log(`[FindHome] POST TOTAL: ${Date.now() - postStart}ms`)
     return NextResponse.json(report)
   } catch (error) {
     console.error('Find Home API error:', error)
