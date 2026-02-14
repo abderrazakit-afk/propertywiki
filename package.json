@@ -15,7 +15,8 @@
     "openai": "^6.16.0",
     "posthog-js": "^1.335.5",
     "react": "^18.3.1",
-    "react-dom": "^18.3.1"
+    "react-dom": "^18.3.1",
+    "resend": "^6.9.2"
   },
   "devDependencies": {
     "@tailwindcss/typography": "^0.5.19",

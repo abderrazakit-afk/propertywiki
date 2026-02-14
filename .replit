@@ -32,3 +32,8 @@ externalPort = 80
 
 [nix]
 channel = "stable-25_05"
+
+[userenv]
+
+[userenv.shared]
+MONGODB_TRANSACTIONS_URI = "mongodb+srv://data_engineer:WgfAQjGfS4DWTdsh@coralytics-dev.u7oea.mongodb.net/transactions_db?appName=coralytics-dev"
