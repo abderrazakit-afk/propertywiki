@@ -23,7 +23,7 @@ export async function POST(request: NextRequest) {
     await storeVerificationCode(email, code)
 
     await resend.emails.send({
-      from: 'PropertyWiki <onboarding@resend.dev>',
+      from: 'PropertyWiki <support@propertywiki.ai>',
       to: email,
       subject: 'Your PropertyWiki Verification Code',
       html: `
