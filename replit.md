@@ -144,20 +144,21 @@ Floating chat assistant for real-time property questions:
 - Uses OpenAI gpt-4.1-mini model
 - Located at: src/components/chat/ChatButton.tsx, src/components/chat/ChatModal.tsx, src/app/api/chat/route.ts
 
-## Find Home Feature
-Interactive AI-powered property recommendation tool:
-- Dedicated page at `/find-home` (linked from header button)
-- Multi-step flow: describe lifestyle → phone verification → AI recommendations
-- User describes their ideal home and lifestyle in free-form text
-- Phone verification with OTP (currently using dummy code: 00000)
-- AI analyzes description and provides personalized recommendations
-- Results include property types, communities, price ranges (rent & buy), and highlights
-- Uses OpenAI API (requires OPENAI_API_KEY secret)
-- **Daily usage limit**: 3 free searches per phone number per day
-- Shows remaining searches after verification
-- Upgrade prompt when limit is reached with Premium benefits
-- Usage tracked in MongoDB (MONGODB_URI secret required)
-- Located at: src/app/find-home/page.tsx, src/app/api/find-home/route.ts, src/app/api/check-usage/route.ts, src/lib/mongodb.ts
+## Find Home Feature (Revamped February 2026)
+AI-powered property report generator backed by real transaction data:
+- Dedicated page at `/find-home` and `/ar/find-home` (linked from header button)
+- Multi-step flow: email verification → budget selection + dream home description → AI-generated detailed report
+- **Email verification**: 6-digit code sent via Resend, stored in MongoDB with 10-min expiry
+- **Budget selection**: 7 preset ranges (Under 500K to 10M+) or custom input
+- **AI Agent**: Queries real MongoDB transactions database (510K+ sales, 1.7M+ rentals) with aggregation pipelines, feeds actual market data to OpenAI gpt-4.1-mini for analysis
+- **Report sections**: Executive Summary, Market Overview (transaction count, avg price, yield), Recommended Areas (3-5 with price ranges, yields, developers, highlights), Cost Breakdown (purchase + DLD + agency fees), Investment Insights (rental yield analysis, capital appreciation, recommendation), Next Steps
+- **Server-side security**: Requires verified email before generating report, validates email verification status in MongoDB
+- **Daily usage limit**: 3 free reports per email per day
+- **Data sources**: 
+  - MONGODB_URI (propertywiki db) - email verifications, usage tracking
+  - MONGODB_TRANSACTIONS_URI (transactions_db) - sales and rentals collections with real Dubai Land Department data
+- **Secrets required**: OPENAI_API_KEY, RESEND_API_KEY, MONGODB_URI, MONGODB_TRANSACTIONS_URI
+- Located at: src/app/find-home/page.tsx, src/app/ar/find-home/page.tsx, src/app/api/find-home/route.ts, src/app/api/send-verification/route.ts, src/app/api/verify-email/route.ts, src/app/api/check-usage/route.ts, src/lib/mongodb.ts
 
 ## Arabic Version (RTL) - 100% Coverage
 Full Arabic translation of the website with RTL support (33 Arabic pages matching 33 English pages):
