@@ -159,10 +159,126 @@ async function queryMarketData(budget: number, propertyType?: string, bedrooms?:
     },
   ]).toArray()
 
+  const topAreaNames = areaStats.slice(0, 5).map(a => a.area)
+
+  const priceTrendPipeline = [
+    {
+      $match: {
+        bayut_leaf_location_name_en: { $in: topAreaNames },
+        transaction_amount: { $gt: 0 },
+        instance_date: { $exists: true, $ne: null },
+      },
+    },
+    {
+      $addFields: {
+        parsedDate: {
+          $cond: {
+            if: { $eq: [{ $type: '$instance_date' }, 'date'] },
+            then: '$instance_date',
+            else: { $dateFromString: { dateString: '$instance_date', onError: null } }
+          }
+        }
+      }
+    },
+    { $match: { parsedDate: { $ne: null } } },
+    {
+      $group: {
+        _id: {
+          year: { $year: '$parsedDate' },
+          quarter: { $ceil: { $divide: [{ $month: '$parsedDate' }, 3] } },
+          area: '$bayut_leaf_location_name_en',
+        },
+        avgPrice: { $avg: '$transaction_amount' },
+        totalTransactions: { $sum: 1 },
+        avgPricePerSqm: { $avg: '$transaction_per_sqm_amount' },
+      },
+    },
+    { $match: { totalTransactions: { $gte: 2 } } },
+    { $sort: { '_id.year': 1 as const, '_id.quarter': 1 as const } },
+  ]
+
+  const priceTrendData = await db.collection('sales').aggregate(priceTrendPipeline).toArray()
+
+  const rentalTrendPipeline = [
+    {
+      $match: {
+        bayut_leaf_location_name_en: { $in: topAreaNames },
+        transaction_amount: { $gt: 0 },
+        contract_start_date: { $exists: true, $ne: null },
+      },
+    },
+    {
+      $addFields: {
+        parsedDate: {
+          $cond: {
+            if: { $eq: [{ $type: '$contract_start_date' }, 'date'] },
+            then: '$contract_start_date',
+            else: { $dateFromString: { dateString: '$contract_start_date', onError: null } }
+          }
+        }
+      }
+    },
+    { $match: { parsedDate: { $ne: null } } },
+    {
+      $group: {
+        _id: {
+          year: { $year: '$parsedDate' },
+          quarter: { $ceil: { $divide: [{ $month: '$parsedDate' }, 3] } },
+          area: '$bayut_leaf_location_name_en',
+        },
+        avgRent: { $avg: '$contract_monthly_amount' },
+        totalTransactions: { $sum: 1 },
+      },
+    },
+    { $match: { totalTransactions: { $gte: 2 } } },
+    { $sort: { '_id.year': 1 as const, '_id.quarter': 1 as const } },
+  ]
+
+  const rentalTrendData = await db.collection('rentals').aggregate(rentalTrendPipeline).toArray()
+
+  const chartData = {
+    priceTrends: priceTrendData.map(d => ({
+      period: `Q${d._id.quarter} ${d._id.year}`,
+      year: d._id.year,
+      quarter: d._id.quarter,
+      area: d._id.area,
+      avgPrice: Math.round(d.avgPrice),
+      transactions: d.totalTransactions,
+      avgPricePerSqm: Math.round(d.avgPricePerSqm || 0),
+    })),
+    rentalTrends: rentalTrendData.map(d => ({
+      period: `Q${d._id.quarter} ${d._id.year}`,
+      year: d._id.year,
+      quarter: d._id.quarter,
+      area: d._id.area,
+      avgRent: Math.round(d.avgRent),
+      transactions: d.totalTransactions,
+    })),
+    areaComparison: areaStats.slice(0, 5).map(a => ({
+      area: a.area,
+      avgPrice: a.avgPrice,
+      avgPricePerSqm: a.avgPricePerSqm,
+      transactions: a.totalTransactions,
+      rentalYield: a.avgRentalYield || 0,
+      avgSize: a.avgSize,
+    })),
+    yieldComparison: areaStats.slice(0, 5).map(a => {
+      const rental = rentalStats.find(r => r.area === a.area)
+      return {
+        area: a.area,
+        rentalYield: a.avgRentalYield || 0,
+        avgPrice: a.avgPrice,
+        avgRent: rental?.avgMonthlyRent || 0,
+        annualRent: (rental?.avgMonthlyRent || 0) * 12,
+      }
+    }),
+  }
+
   return {
     salesByArea: areaStats,
     rentalsByArea: rentalStats,
     marketOverview: overallStats[0] || { totalTransactions: 0, avgPrice: 0, avgYield: 0 },
+    chartData,
   }
 }
 
@@ -326,6 +442,7 @@ Recommend the top 3-5 areas that best match their needs and budget.`
     }
 
     const report = JSON.parse(responseContent)
+    report.chartData = marketData.chartData
     return NextResponse.json(report)
   } catch (error) {
     console.error('Find Home API error:', error)

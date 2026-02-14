@@ -1,8 +1,11 @@
 'use client'
 
 import { useState } from 'react'
+import dynamic from 'next/dynamic'
 import Link from 'next/link'
 import Breadcrumbs from '@/components/layout/Breadcrumbs'
+
+const ReportCharts = dynamic(() => import('@/components/charts/ReportCharts'), { ssr: false })
 
 type Step = 'email' | 'verify' | 'preferences' | 'loading' | 'results' | 'limit-reached'
 
@@ -26,6 +29,13 @@ interface AreaRecommendation {
   rentalYield: string
   developers: string[]
   highlights: string[]
+}
+
+interface ChartData {
+  priceTrends: Array<{ period: string; year: number; quarter: number; area: string; avgPrice: number; transactions: number; avgPricePerSqm: number }>
+  rentalTrends: Array<{ period: string; year: number; quarter: number; area: string; avgRent: number; transactions: number }>
+  areaComparison: Array<{ area: string; avgPrice: number; avgPricePerSqm: number; transactions: number; rentalYield: number; avgSize: number }>
+  yieldComparison: Array<{ area: string; rentalYield: number; avgPrice: number; avgRent: number; annualRent: number }>
 }
 
 interface Report {
@@ -53,6 +63,7 @@ interface Report {
   }
   nextSteps: string[]
   disclaimer: string
+  chartData?: ChartData
 }
 
 const BUDGET_PRESETS = [
@@ -568,6 +579,10 @@ export default function FindHomePage() {
                 ))}
               </div>
             </div>
+
+            {report.chartData && (
+              <ReportCharts chartData={report.chartData} lang="en" />
+            )}
 
             <div className="bg-white rounded-2xl shadow-lg p-8 md:p-10">
               <h2 className="text-2xl font-serif font-bold text-gray-900 mb-6">Cost Breakdown</h2>

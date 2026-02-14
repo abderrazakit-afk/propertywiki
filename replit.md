@@ -151,7 +151,14 @@ AI-powered property report generator backed by real transaction data:
 - **Email verification**: 6-digit code sent via Resend, stored in MongoDB with 10-min expiry
 - **Budget selection**: 7 preset ranges (Under 500K to 10M+) or custom input
 - **AI Agent**: Queries real MongoDB transactions database (510K+ sales, 1.7M+ rentals) with aggregation pipelines, feeds actual market data to OpenAI gpt-4.1-mini for analysis
-- **Report sections**: Executive Summary, Market Overview (transaction count, avg price, yield), Recommended Areas (3-5 with price ranges, yields, developers, highlights), Cost Breakdown (purchase + DLD + agency fees), Investment Insights (rental yield analysis, capital appreciation, recommendation), Next Steps
+- **Report sections**: Executive Summary, Market Overview (transaction count, avg price, yield), Recommended Areas (3-5 with price ranges, yields, developers, highlights), **Interactive Charts** (price trends, forecast, area comparison, rental yield comparison, rental trends), Cost Breakdown (purchase + DLD + agency fees), Investment Insights (rental yield analysis, capital appreciation, recommendation), Next Steps
+- **Charts** (Recharts library, dynamic import, SSR disabled):
+  - Price Trend Line: Historical average sale prices by quarter per area
+  - Price Forecast: Projected prices based on quarterly growth rates (dashed lines)
+  - Area Price Comparison: Bar + line combo chart (avg price + transaction volume)
+  - Rental Yield Comparison: Bar chart comparing yields across areas
+  - Rental Trend: Area chart showing monthly rent trends over time
+  - Chart component: src/components/charts/ReportCharts.tsx (supports en/ar labels)
 - **Server-side security**: Requires verified email before generating report, validates email verification status in MongoDB
 - **Daily usage limit**: 3 free reports per email per day
 - **Data sources**: 

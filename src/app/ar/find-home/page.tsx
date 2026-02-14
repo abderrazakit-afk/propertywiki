@@ -1,7 +1,10 @@
 'use client'
 
 import { useState } from 'react'
+import dynamic from 'next/dynamic'
 import Link from 'next/link'
+
+const ReportCharts = dynamic(() => import('@/components/charts/ReportCharts'), { ssr: false })
 
 type Step = 'email' | 'preferences' | 'loading' | 'results' | 'limit-reached'
 
@@ -25,6 +28,13 @@ interface AreaRecommendation {
   rentalYield: string
   developers: string[]
   highlights: string[]
+}
+
+interface ChartData {
+  priceTrends: Array<{ period: string; year: number; quarter: number; area: string; avgPrice: number; transactions: number; avgPricePerSqm: number }>
+  rentalTrends: Array<{ period: string; year: number; quarter: number; area: string; avgRent: number; transactions: number }>
+  areaComparison: Array<{ area: string; avgPrice: number; avgPricePerSqm: number; transactions: number; rentalYield: number; avgSize: number }>
+  yieldComparison: Array<{ area: string; rentalYield: number; avgPrice: number; avgRent: number; annualRent: number }>
 }
 
 interface Report {
@@ -52,6 +62,7 @@ interface Report {
   }
   nextSteps: string[]
   disclaimer: string
+  chartData?: ChartData
 }
 
 const BUDGET_PRESETS = [
@@ -538,6 +549,10 @@ export default function FindHomePageAr() {
                 ))}
               </div>
             </div>
+
+            {report.chartData && (
+              <ReportCharts chartData={report.chartData} lang="ar" />
+            )}
 
             <div className="bg-white rounded-2xl shadow-lg p-8 md:p-10">
               <h2 className="text-2xl font-serif font-bold text-gray-900 mb-6">تفاصيل التكاليف</h2>
