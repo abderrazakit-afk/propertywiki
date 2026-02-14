@@ -41,7 +41,12 @@ async function queryMarketData(budget: number, propertyType?: string, bedrooms?:
   const budgetMin = budget * 0.5
   const budgetMax = budget * 1.5
 
-  const toNum = (field: string) => ({ $toDouble: { $ifNull: [`$${field}`, '0'] } })
+  const toNum = (field: string) => ({
+    $convert: { input: `$${field}`, to: 'double', onError: 0, onNull: 0 }
+  })
+  const toInt = (field: string) => ({
+    $convert: { input: `$${field}`, to: 'int', onError: 0, onNull: 0 }
+  })
 
   const convertFieldsStage = {
     $addFields: {
@@ -51,7 +56,7 @@ async function queryMarketData(budget: number, propertyType?: string, bedrooms?:
       _numServiceCharge: toNum('service_charge_sqft_amount'),
       _numYield: toNum('current_estimated_rental_yield'),
       _numMonthlyRent: toNum('contract_monthly_amount'),
-      _numBeds: { $toInt: { $ifNull: ['$beds', '0'] } },
+      _numBeds: toInt('beds'),
     },
   }
 
