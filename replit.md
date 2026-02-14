@@ -146,6 +146,17 @@ Floating chat assistant for real-time property questions:
 
 ## Find Home Feature (Revamped February 2026)
 AI-powered property report generator backed by real transaction data:
+- **AI Pre-Analysis**: GPT-4.1-mini analyzes user description FIRST to extract structured filters (target areas, property type, bedrooms, lifestyle tags, priority factors) before querying database
+  - Maps user requirements like "near metro", "beachfront", "family-friendly" to actual Dubai areas
+  - Returns targetL4Areas (broad: Business Bay, JVC) and targetAreas (specific: Binghatti Avenue)
+  - Falls back to regex parsing if AI call fails
+- **Smart Area Filtering**: Database queries use AI-identified areas via $regex on bayut_location_l4_name_en and bayut_leaf_location_name_en
+  - Auto-relaxes filters if too few results found (< 3 areas) to ensure useful reports
+- **Streaming Response**: Uses Server-Sent Events (SSE) to prevent proxy timeout on long requests (~70s)
+  - Sends keep-alive pings every 5 seconds
+  - Real-time progress messages from actual processing steps
+  - Prevents "Failed to fetch" errors from connection drops
+- **Session Token Auth**: 30-minute session tokens stored in MongoDB + localStorage for seamless multi-report experience
 - Dedicated page at `/find-home` and `/ar/find-home` (linked from header button)
 - Multi-step flow: email verification → budget selection + dream home description → AI-generated detailed report
 - **Email verification**: 6-digit code sent via Resend, stored in MongoDB with 10-min expiry

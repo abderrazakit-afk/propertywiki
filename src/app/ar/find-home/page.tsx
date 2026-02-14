@@ -247,6 +247,7 @@ export default function FindHomePageAr() {
       let buffer = ''
 
       const progressMap: Record<string, string> = {
+        'Understanding your requirements with AI...': 'جاري فهم متطلباتك بالذكاء الاصطناعي...',
         'Analyzing your preferences...': 'جاري تحليل تفضيلاتك...',
         'Connected to database...': 'تم الاتصال بقاعدة البيانات...',
         'Querying 500,000+ property transactions...': 'جاري البحث في أكثر من 500,000 معاملة عقارية...',
@@ -268,8 +269,15 @@ export default function FindHomePageAr() {
           try {
             const event = JSON.parse(cleaned)
             if (event.type === 'progress') {
-              const arMsg = progressMap[event.message] || event.message
-              setLoadingMessage(arMsg.includes('Found') ? `تم العثور على ${event.message.match(/\d+/)?.[0] || ''} منطقة مطابقة...` : arMsg)
+              let arMsg = progressMap[event.message] || event.message
+              if (event.message.includes('Identified') && event.message.includes('target areas')) {
+                const num = event.message.match(/\d+/)?.[0] || ''
+                arMsg = `تم تحديد ${num} مناطق مستهدفة تتوافق مع احتياجاتك...`
+              } else if (event.message.includes('Found') && event.message.includes('matching areas')) {
+                const num = event.message.match(/\d+/)?.[0] || ''
+                arMsg = `تم العثور على ${num} منطقة مطابقة، جاري تحليل الإيجارات...`
+              }
+              setLoadingMessage(arMsg)
             } else if (event.type === 'result') {
               setReport(event.data)
               setStep('results')

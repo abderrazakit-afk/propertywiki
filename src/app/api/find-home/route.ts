@@ -37,9 +37,10 @@ interface RentalStats {
   propertyTypes: string[]
 }
 
-async function queryMarketData(budget: number, propertyType?: string, bedrooms?: string, sendProgress?: (msg: string) => void) {
+async function queryMarketData(budget: number, analysis: PreAnalysis, sendProgress?: (msg: string) => void) {
   const t0 = Date.now()
-  console.log(`[FindHome] queryMarketData START - budget: ${budget}, type: ${propertyType || 'any'}, beds: ${bedrooms || 'any'}`)
+  const { propertyType, bedrooms, targetAreas, targetL4Areas } = analysis
+  console.log(`[FindHome] queryMarketData START - budget: ${budget}, type: ${propertyType || 'any'}, beds: ${bedrooms || 'any'}, l4Areas: ${targetL4Areas?.join(', ') || 'none'}`)
 
   const { db } = await connectToTransactionsDb()
   console.log(`[FindHome] DB connected in ${Date.now() - t0}ms`)
@@ -70,8 +71,22 @@ async function queryMarketData(budget: number, propertyType?: string, bedrooms?:
   const salesMatchStage: Record<string, unknown> = {
     bayut_leaf_location_name_en: { $ne: '' },
   }
-  if (propertyType) {
+  if (propertyType && propertyType !== 'null') {
     salesMatchStage.bayut_property_type = propertyType
+  }
+
+  const hasAreaFilters = (targetL4Areas && targetL4Areas.length > 0) || (targetAreas && targetAreas.length > 0)
+  if (hasAreaFilters) {
+    const areaConditions: Record<string, unknown>[] = []
+    if (targetL4Areas && targetL4Areas.length > 0) {
+      const l4Regex = targetL4Areas.map(a => a.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')).join('|')
+      areaConditions.push({ bayut_location_l4_name_en: { $regex: l4Regex, $options: 'i' } })
+    }
+    if (targetAreas && targetAreas.length > 0) {
+      const leafRegex = targetAreas.map(a => a.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')).join('|')
+      areaConditions.push({ bayut_leaf_location_name_en: { $regex: leafRegex, $options: 'i' } })
+    }
+    salesMatchStage.$or = areaConditions
   }
 
   const salesPipeline: Record<string, unknown>[] = [
@@ -80,7 +95,7 @@ async function queryMarketData(budget: number, propertyType?: string, bedrooms?:
     { $match: { _numAmount: { $gte: budgetMin, $lte: budgetMax } } },
   ]
 
-  if (bedrooms) {
+  if (bedrooms && bedrooms !== 'null') {
     salesPipeline.push({ $match: { _numBeds: parseInt(bedrooms) } })
   }
 
@@ -114,7 +129,7 @@ async function queryMarketData(budget: number, propertyType?: string, bedrooms?:
 
   const t1 = Date.now()
   sendProgress?.('Querying 500,000+ property transactions...')
-  const [salesData, overallStatsResult] = await Promise.all([
+  let [salesData, overallStatsResult] = await Promise.all([
     db.collection('sales').aggregate(salesPipeline, aggOpts).toArray(),
     db.collection('sales').aggregate([
       { $match: salesMatchStage },
@@ -131,6 +146,58 @@ async function queryMarketData(budget: number, propertyType?: string, bedrooms?:
     ], aggOpts).toArray(),
   ])
   console.log(`[FindHome] Sales + OverallStats queries done in ${Date.now() - t1}ms - found ${salesData.length} areas`)
+
+  if (salesData.length < 3 && hasAreaFilters) {
+    console.log(`[FindHome] Too few results (${salesData.length}) with area filters, retrying without area restrictions...`)
+    sendProgress?.('Expanding search to find more options...')
+
+    const relaxedMatch: Record<string, unknown> = {
+      bayut_leaf_location_name_en: { $ne: '' },
+    }
+    if (propertyType && propertyType !== 'null') {
+      relaxedMatch.bayut_property_type = propertyType
+    }
+    const relaxedPipeline: Record<string, unknown>[] = [
+      { $match: relaxedMatch },
+      convertFieldsStage,
+      { $match: { _numAmount: { $gte: budgetMin, $lte: budgetMax } } },
+    ]
+    if (bedrooms && bedrooms !== 'null') {
+      relaxedPipeline.push({ $match: { _numBeds: parseInt(bedrooms) } })
+    }
+    relaxedPipeline.push(
+      {
+        $group: {
+          _id: {
+            area: '$bayut_leaf_location_name_en',
+            areaAr: '$bayut_leaf_location_name_ar',
+            l4: '$bayut_location_l4_name_en',
+          },
+          avgPrice: { $avg: '$_numAmount' },
+          minPrice: { $min: '$_numAmount' },
+          maxPrice: { $max: '$_numAmount' },
+          totalTransactions: { $sum: 1 },
+          avgPricePerSqm: { $avg: '$_numPricePerSqm' },
+          avgSize: { $avg: '$_numArea' },
+          propertyTypes: { $addToSet: '$bayut_property_type' },
+          bedrooms: { $addToSet: '$_numBeds' },
+          avgServiceCharge: { $avg: '$_numServiceCharge' },
+          avgRentalYield: { $avg: '$_numYield' },
+          developers: { $addToSet: '$developer_name_en' },
+        },
+      },
+      { $match: { totalTransactions: { $gte: 3 } } },
+      { $sort: { totalTransactions: -1 as const } },
+      { $limit: 15 },
+    )
+    const fallbackData = await db.collection('sales').aggregate(relaxedPipeline, aggOpts).toArray()
+    console.log(`[FindHome] Fallback query found ${fallbackData.length} areas`)
+    if (fallbackData.length > salesData.length) {
+      salesData.length = 0
+      salesData.push(...fallbackData)
+    }
+  }
+
   sendProgress?.(`Found ${salesData.length} matching areas, analyzing rentals...`)
 
   const topAreas = salesData.map((d) => d._id.l4 || d._id.area).filter(Boolean)
@@ -146,7 +213,7 @@ async function queryMarketData(budget: number, propertyType?: string, bedrooms?:
     { $match: { _numAmount: { $gt: 0 } } },
   ]
 
-  if (bedrooms) {
+  if (bedrooms && bedrooms !== 'null' && !isNaN(parseInt(bedrooms))) {
     rentalPipeline.push({ $match: { _numBeds: parseInt(bedrooms) } })
   }
 
@@ -321,7 +388,81 @@ async function queryMarketData(budget: number, propertyType?: string, bedrooms?:
   }
 }
 
-function parseUserInput(description: string, budget: number) {
+interface PreAnalysis {
+  propertyType?: string
+  bedrooms?: string
+  targetAreas: string[]
+  targetL4Areas: string[]
+  lifestyleTags: string[]
+  reasoning: string
+  priorityFactors: string[]
+}
+
+async function analyzeUserRequest(description: string, budget: number): Promise<PreAnalysis> {
+  const t0 = Date.now()
+  console.log(`[FindHome] AI pre-analysis START`)
+
+  const completion = await openai.chat.completions.create({
+    model: 'gpt-4.1-mini',
+    messages: [
+      {
+        role: 'system',
+        content: `You are a Dubai real estate expert. Analyze the user's property request and extract structured search filters.
+
+You must map the user's requirements to ACTUAL Dubai areas/communities. Use your knowledge of Dubai geography, metro lines, schools, beaches, lifestyle, etc.
+
+IMPORTANT AREA MAPPING RULES:
+- "near metro" → areas along Dubai Metro Red/Green lines: Business Bay, Dubai Marina, JLT, DIFC, Downtown Dubai, Dubai Internet City, Dubai Media City, Al Barsha, Deira, Bur Dubai, JVC (near future metro), Dubai Hills (near future metro), Creek Harbour
+- "beachfront/beach" → Dubai Marina, JBR, Palm Jumeirah, La Mer, Bluewaters
+- "family-friendly" → Arabian Ranches, Dubai Hills, JVC, Mirdif, Al Furjan, Motor City, Springs, Meadows, Town Square
+- "near schools" → Arabian Ranches, Dubai Hills, JVC, Mirdif, Al Barsha, Motor City, Springs
+- "luxury" → Palm Jumeirah, Downtown Dubai, DIFC, Emirates Hills, Dubai Hills, Bluewaters
+- "affordable/budget" → JVC, Dubai Silicon Oasis, International City, Discovery Gardens, Sports City, Al Furjan, Town Square, Dubailand
+- "investment/ROI" → JVC, Business Bay, Dubai Marina, Sports City, Dubai Silicon Oasis, Arjan
+- "nightlife/entertainment" → Dubai Marina, JBR, Downtown Dubai, Business Bay, DIFC, City Walk
+- "quiet/peaceful" → Arabian Ranches, Mirdif, Al Furjan, Springs, Meadows, Motor City
+- "work in DIFC/Downtown" → DIFC, Downtown Dubai, Business Bay, Zabeel, World Trade Centre
+- "new/modern" → Business Bay, Dubai Hills, Creek Harbour, MBR City, Sobha Hartland, JVC (newer buildings)
+
+For targetAreas: Use the community/building-level names as they appear in Dubai transactions (e.g., "Binghatti Avenue", "Sobha Hartland Greens", "Park Heights"). These map to bayut_leaf_location_name_en.
+For targetL4Areas: Use broader area names (e.g., "Business Bay", "Dubai Marina", "JVC", "Downtown Dubai"). These map to bayut_location_l4_name_en.
+
+Property types in database: Villa, Apartment, Townhouse, Penthouse, Land, Hotel Apartment, Office
+Bedrooms: 0 = Studio, 1, 2, 3, 4, 5+
+
+Respond in JSON:
+{
+  "propertyType": "Villa|Apartment|Townhouse|Penthouse|Land|null",
+  "bedrooms": "0|1|2|3|4|5|null",
+  "targetAreas": ["specific community/building names that match - up to 20"],
+  "targetL4Areas": ["broader area names - up to 10, ALWAYS include these based on lifestyle/location requirements"],
+  "lifestyleTags": ["metro-adjacent", "beachfront", "family-friendly", etc.],
+  "reasoning": "Brief explanation of why these areas were chosen based on the user's request",
+  "priorityFactors": ["What matters most to this user - e.g., metro proximity, ROI, family amenities"]
+}`
+      },
+      {
+        role: 'user',
+        content: `Budget: AED ${budget.toLocaleString()}\nRequest: ${description}`
+      }
+    ],
+    response_format: { type: 'json_object' },
+    temperature: 0.3,
+    max_tokens: 1000,
+  })
+
+  const content = completion.choices[0]?.message?.content
+  if (!content) {
+    console.log(`[FindHome] AI pre-analysis failed, using fallback`)
+    return fallbackParseInput(description)
+  }
+
+  const result = JSON.parse(content) as PreAnalysis
+  console.log(`[FindHome] AI pre-analysis done in ${Date.now() - t0}ms - areas: ${result.targetL4Areas?.join(', ')}, type: ${result.propertyType || 'any'}, beds: ${result.bedrooms || 'any'}, tags: ${result.lifestyleTags?.join(', ')}`)
+  return result
+}
+
+function fallbackParseInput(description: string): PreAnalysis {
   const descLower = description.toLowerCase()
 
   let propertyType: string | undefined
@@ -336,7 +477,7 @@ function parseUserInput(description: string, budget: number) {
   if (bedMatch) bedrooms = bedMatch[1]
   if (descLower.includes('studio')) bedrooms = '0'
 
-  return { propertyType, bedrooms, budget }
+  return { propertyType, bedrooms, targetAreas: [], targetL4Areas: [], lifestyleTags: [], reasoning: '', priorityFactors: [] }
 }
 
 export async function POST(request: NextRequest) {
@@ -401,12 +542,21 @@ export async function POST(request: NextRequest) {
       }, 5000)
 
       try {
-        sendProgress('Analyzing your preferences...')
+        sendProgress('Understanding your requirements with AI...')
 
-        const { propertyType, bedrooms } = parseUserInput(description, budget)
-        console.log(`[FindHome] Parsed input - type: ${propertyType || 'any'}, beds: ${bedrooms || 'any'} (${Date.now() - postStart}ms)`)
+        let analysis: PreAnalysis
+        try {
+          analysis = await analyzeUserRequest(description, budget)
+          if (analysis.propertyType === 'null') analysis.propertyType = undefined
+          if (analysis.bedrooms === 'null') analysis.bedrooms = undefined
+        } catch (e) {
+          console.error('[FindHome] AI pre-analysis failed, using fallback:', e)
+          analysis = fallbackParseInput(description)
+        }
+        sendProgress(`Identified ${analysis.targetL4Areas?.length || 0} target areas matching your needs...`)
+        console.log(`[FindHome] AI analysis complete (${Date.now() - postStart}ms) - reasoning: ${analysis.reasoning}`)
 
-        const marketData = await queryMarketData(budget, propertyType, bedrooms, sendProgress)
+        const marketData = await queryMarketData(budget, analysis, sendProgress)
         console.log(`[FindHome] Market data fetched (${Date.now() - postStart}ms total so far)`)
 
         sendProgress('Generating your personalized report...')
@@ -415,6 +565,13 @@ export async function POST(request: NextRequest) {
 
 Your task: Write a comprehensive, data-driven property report for a home seeker based on their preferences and REAL market data.
 
+IMPORTANT CONTEXT FROM PRE-ANALYSIS:
+The user's request was analyzed and the following was identified:
+- Target areas: ${analysis.targetL4Areas?.join(', ') || 'All areas'}
+- Lifestyle requirements: ${analysis.lifestyleTags?.join(', ') || 'None specified'}
+- Priority factors: ${analysis.priorityFactors?.join(', ') || 'General search'}
+- Analysis reasoning: ${analysis.reasoning || 'General property search'}
+
 IMPORTANT RULES:
 - Use ONLY the real transaction data provided below. Do NOT make up prices or statistics.
 - Format all prices in AED with proper commas (e.g., AED 1,250,000)
@@ -422,6 +579,7 @@ IMPORTANT RULES:
 - Include actual data points (transaction counts, avg prices, yields)
 - Write in a professional but friendly advisory tone
 - The report should be detailed and actionable
+- CRITICALLY: In the "whyRecommended" field, explain how each area matches the user's SPECIFIC requirements (e.g., metro proximity, beach access, family amenities). Reference the lifestyle tags and priority factors.
 
 REAL MARKET DATA:
 ${JSON.stringify(marketData, null, 2)}
@@ -429,7 +587,7 @@ ${JSON.stringify(marketData, null, 2)}
 Respond in JSON format with this exact structure:
 {
   "reportTitle": "Your Personalized Property Report",
-  "executiveSummary": "2-3 paragraphs summarizing what you found based on their needs and the data. Include specific numbers.",
+  "executiveSummary": "2-3 paragraphs summarizing what you found based on their needs and the data. Include specific numbers. Reference how the areas match their specific lifestyle requirements.",
   "marketOverview": {
     "totalTransactionsAnalyzed": number,
     "averagePriceInRange": "formatted price string",
@@ -442,7 +600,7 @@ Respond in JSON format with this exact structure:
       "areaName": "Area name from data",
       "areaNameAr": "Arabic name if available",
       "matchScore": "Excellent/Very Good/Good",
-      "whyRecommended": "2-3 sentences explaining why this area fits their needs, referencing real data",
+      "whyRecommended": "2-3 sentences explaining why this area fits their SPECIFIC needs (metro proximity, beach access, schools, etc.), referencing real data",
       "priceRange": {
         "buyMin": "formatted",
         "buyMax": "formatted",
@@ -480,11 +638,13 @@ Respond in JSON format with this exact structure:
 Home Seeker Profile:
 - Budget: AED ${budget.toLocaleString()}
 - Description: ${description}
-${propertyType ? `- Preferred property type: ${propertyType}` : ''}
-${bedrooms ? `- Bedrooms needed: ${bedrooms === '0' ? 'Studio' : bedrooms}` : ''}
+${analysis.propertyType && analysis.propertyType !== 'null' ? `- Preferred property type: ${analysis.propertyType}` : ''}
+${analysis.bedrooms && analysis.bedrooms !== 'null' ? `- Bedrooms needed: ${analysis.bedrooms === '0' ? 'Studio' : analysis.bedrooms}` : ''}
+- Lifestyle preferences: ${analysis.lifestyleTags?.join(', ') || 'None specified'}
+- Key priorities: ${analysis.priorityFactors?.join(', ') || 'General search'}
 
 Please analyze the real market data and generate a comprehensive property report for this home seeker.
-Recommend the top 3-5 areas that best match their needs and budget.`
+Recommend the top 3-5 areas that best match their needs and budget, with special emphasis on how each area fulfills their specific requirements.`
 
         const tAI = Date.now()
         console.log(`[FindHome] Starting OpenAI call...`)
