@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import { Inter, Playfair_Display } from 'next/font/google'
 import Script from 'next/script'
 import { Suspense } from 'react'
+import { headers } from 'next/headers'
 import './globals.css'
 import ConditionalLayout from '@/components/layout/ConditionalLayout'
 import PostHogProvider from '@/components/providers/PostHogProvider'
@@ -73,8 +74,12 @@ export default function RootLayout({
 }: {
   children: React.ReactNode
 }) {
+  const headersList = headers()
+  const locale = headersList.get('x-locale') || 'en'
+  const isArabic = locale === 'ar'
+
   return (
-    <html lang="en" className={`${inter.variable} ${playfair.variable}`}>
+    <html lang={locale} dir={isArabic ? 'rtl' : 'ltr'} className={`${inter.variable} ${playfair.variable}`}>
       <head>
         <Script
           src="https://www.googletagmanager.com/gtag/js?id=G-G9J1Q36DRM"
