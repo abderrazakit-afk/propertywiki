@@ -331,35 +331,24 @@ export default function FindHomeForm() {
   return (
     <>
       {step === 'preferences' && (
-        <div className="bg-white rounded-2xl shadow-lg p-8 md:p-12">
-          <div className="text-center mb-8">
-            <div className="w-20 h-20 bg-primary-100 rounded-full flex items-center justify-center mx-auto mb-6">
-              <svg className="w-10 h-10 text-primary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
-              </svg>
-            </div>
-            <h2 className="text-3xl md:text-4xl font-serif font-bold text-gray-900 mb-3">Tell Us About Your Dream Home</h2>
-            <p className="text-lg text-gray-600 max-w-xl mx-auto">
-              Set your budget and describe what you&apos;re looking for.
+        <div className="bg-white rounded-2xl shadow-lg p-6 md:p-8">
+          {remainingSearches !== null && (
+            <p className="text-primary-600 font-medium text-sm text-center mb-4">
+              {remainingSearches} free {remainingSearches === 1 ? 'report' : 'reports'} remaining today
             </p>
-            {remainingSearches !== null && (
-              <p className="text-primary-600 font-medium mt-2">
-                {remainingSearches} free {remainingSearches === 1 ? 'report' : 'reports'} remaining today
-              </p>
-            )}
-          </div>
+          )}
 
-          <div className="space-y-8">
+          <div className="space-y-5">
             <div>
-              <label className="block text-sm font-semibold text-gray-700 mb-3">
+              <label className="block text-sm font-semibold text-gray-700 mb-2">
                 Your Budget (AED)
               </label>
-              <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 mb-3">
+              <div className="grid grid-cols-4 sm:grid-cols-4 gap-1.5 mb-2">
                 {BUDGET_PRESETS.map((preset, index) => (
                   <button
                     key={index}
                     onClick={() => handleBudgetPreset(index, preset.value)}
-                    className={`py-3 px-4 rounded-xl text-sm font-medium transition-all ${
+                    className={`py-2 px-3 rounded-lg text-xs font-medium transition-all ${
                       selectedPreset === index
                         ? 'bg-primary-600 text-white shadow-md'
                         : 'bg-warm-50 text-gray-700 hover:bg-warm-100 border border-warm-200'
@@ -370,45 +359,51 @@ export default function FindHomeForm() {
                 ))}
               </div>
               <div className="relative">
-                <span className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 font-medium">AED</span>
+                <span className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 text-sm font-medium">AED</span>
                 <input
                   type="text"
                   value={customBudget || (selectedPreset !== null ? formatNumber(budget) : '')}
                   onChange={(e) => handleCustomBudget(e.target.value)}
-                  className="w-full pl-14 pr-5 py-4 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent text-base"
+                  className="w-full pl-14 pr-5 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent text-sm"
                   placeholder="Or enter custom budget..."
                 />
               </div>
             </div>
 
             <div>
-              <label className="block text-sm font-semibold text-gray-700 mb-3">
+              <label className="block text-sm font-semibold text-gray-700 mb-2">
                 Describe Your Dream Home
               </label>
               <textarea
                 value={description}
                 onChange={(e) => setDescription(e.target.value)}
-                rows={6}
-                className="w-full px-5 py-4 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent resize-none text-base"
-                placeholder="Example: I'm looking for a 2-bedroom apartment near the beach. I work in DIFC and need a short commute. I love outdoor activities, gyms, and restaurants nearby. Looking for a modern building with a pool and gym. Family-friendly area with good schools would be a plus..."
+                rows={4}
+                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent resize-none text-sm"
+                placeholder="Example: 2-bedroom apartment near the beach, close to DIFC, modern building with pool and gym, family-friendly area with good schools..."
               />
-              <p className="text-sm text-gray-500 mt-2">
-                Include: location preferences, property type, bedrooms, lifestyle needs, work area, family size, must-have amenities
+              <p className="text-xs text-gray-400 mt-1">
+                Include: location, property type, bedrooms, lifestyle needs, amenities
               </p>
             </div>
 
             {error && (
-              <div className="bg-red-50 border border-red-200 rounded-xl p-4">
+              <div className="bg-red-50 border border-red-200 rounded-lg p-3">
                 <p className="text-red-600 text-sm">{error}</p>
               </div>
             )}
 
             <button
               onClick={handleContinueFromPreferences}
-              className="w-full bg-primary-600 text-white py-4 px-6 rounded-xl font-medium text-lg hover:bg-primary-700 transition-colors shadow-sm"
+              className="w-full bg-primary-600 text-white py-3.5 px-6 rounded-xl font-medium text-base hover:bg-primary-700 transition-colors shadow-sm"
             >
-              Continue
+              Get My Free Report
             </button>
+
+            <div className="flex items-center gap-3">
+              <div className="flex-1 border-t border-gray-200"></div>
+              <span className="text-xs text-gray-400">3 free reports per day</span>
+              <div className="flex-1 border-t border-gray-200"></div>
+            </div>
           </div>
         </div>
       )}
@@ -751,35 +746,6 @@ export default function FindHomeForm() {
         </div>
       )}
 
-      <nav className="mt-12 pt-8 border-t border-warm-200" aria-label="Explore more">
-        <h2 className="text-2xl font-serif font-semibold text-gray-900 mb-6">Explore PropertyWiki</h2>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-          <Link href="/guides/how-to-buy-property-in-dubai" className="block p-4 bg-warm-50 rounded-xl hover:bg-warm-100 transition-colors">
-            <span className="text-xs font-medium text-primary-600 uppercase">Guide</span>
-            <p className="font-medium text-gray-900 mt-1">How to Buy Property in Dubai</p>
-          </Link>
-          <Link href="/locations/dubai/dubai-marina" className="block p-4 bg-warm-50 rounded-xl hover:bg-warm-100 transition-colors">
-            <span className="text-xs font-medium text-primary-600 uppercase">Location</span>
-            <p className="font-medium text-gray-900 mt-1">Dubai Marina Guide</p>
-          </Link>
-          <Link href="/guides/highest-rental-yield-areas-dubai" className="block p-4 bg-warm-50 rounded-xl hover:bg-warm-100 transition-colors">
-            <span className="text-xs font-medium text-primary-600 uppercase">Guide</span>
-            <p className="font-medium text-gray-900 mt-1">Highest Rental Yield Areas</p>
-          </Link>
-          <Link href="/definitions/freehold-property" className="block p-4 bg-warm-50 rounded-xl hover:bg-warm-100 transition-colors">
-            <span className="text-xs font-medium text-primary-600 uppercase">Definition</span>
-            <p className="font-medium text-gray-900 mt-1">What is Freehold Property?</p>
-          </Link>
-          <Link href="/guides/best-areas-families-dubai" className="block p-4 bg-warm-50 rounded-xl hover:bg-warm-100 transition-colors">
-            <span className="text-xs font-medium text-primary-600 uppercase">Guide</span>
-            <p className="font-medium text-gray-900 mt-1">Best Areas for Families</p>
-          </Link>
-          <Link href="/investing" className="block p-4 bg-warm-50 rounded-xl hover:bg-warm-100 transition-colors">
-            <span className="text-xs font-medium text-primary-600 uppercase">Investing</span>
-            <p className="font-medium text-gray-900 mt-1">Investment Insights</p>
-          </Link>
-        </div>
-      </nav>
     </>
   )
 }

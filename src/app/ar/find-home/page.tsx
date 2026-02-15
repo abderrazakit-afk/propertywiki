@@ -67,6 +67,13 @@ export default function FindHomePageAr() {
           <span className="text-warm-600 text-sm">ابحث عن منزل</span>
         </nav>
 
+        <section className="text-center mb-10">
+          <h1 className="text-4xl md:text-5xl font-serif font-bold text-gray-900 mb-4">ابحث عن منزل أحلامك في دبي</h1>
+          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+            احصل على تقرير عقاري مجاني بالذكاء الاصطناعي يحلل أكثر من 500,000 معاملة حقيقية. توصيات مخصصة للمناطق والأسعار وعوائد الإيجار — في ثوانٍ.
+          </p>
+        </section>
+
         <FindHomeFormAr />
 
         <section className="mt-16">
@@ -175,6 +182,36 @@ export default function FindHomePageAr() {
             ))}
           </div>
         </section>
+
+        <nav className="mt-16 pt-8 border-t border-warm-200" aria-label="استكشف المزيد">
+          <h2 className="text-2xl font-serif font-semibold text-gray-900 mb-6">استكشف بروبرتي ويكي</h2>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            <Link href="/ar/guides/how-to-buy-property-in-dubai" className="block p-4 bg-warm-50 rounded-xl hover:bg-warm-100 transition-colors">
+              <span className="text-xs font-medium text-primary-600 uppercase">دليل</span>
+              <p className="font-medium text-gray-900 mt-1">كيف تشتري عقاراً في دبي</p>
+            </Link>
+            <Link href="/ar/locations/dubai/dubai-marina" className="block p-4 bg-warm-50 rounded-xl hover:bg-warm-100 transition-colors">
+              <span className="text-xs font-medium text-primary-600 uppercase">موقع</span>
+              <p className="font-medium text-gray-900 mt-1">دبي مارينا</p>
+            </Link>
+            <Link href="/ar/guides/highest-rental-yield-areas-dubai" className="block p-4 bg-warm-50 rounded-xl hover:bg-warm-100 transition-colors">
+              <span className="text-xs font-medium text-primary-600 uppercase">دليل</span>
+              <p className="font-medium text-gray-900 mt-1">أعلى مناطق عائد إيجاري</p>
+            </Link>
+            <Link href="/ar/definitions/freehold-property" className="block p-4 bg-warm-50 rounded-xl hover:bg-warm-100 transition-colors">
+              <span className="text-xs font-medium text-primary-600 uppercase">تعريف</span>
+              <p className="font-medium text-gray-900 mt-1">ما هو العقار الحر؟</p>
+            </Link>
+            <Link href="/ar/guides/best-areas-families-dubai" className="block p-4 bg-warm-50 rounded-xl hover:bg-warm-100 transition-colors">
+              <span className="text-xs font-medium text-primary-600 uppercase">دليل</span>
+              <p className="font-medium text-gray-900 mt-1">أفضل المناطق للعائلات</p>
+            </Link>
+            <Link href="/ar/investing" className="block p-4 bg-warm-50 rounded-xl hover:bg-warm-100 transition-colors">
+              <span className="text-xs font-medium text-primary-600 uppercase">استثمار</span>
+              <p className="font-medium text-gray-900 mt-1">رؤى استثمارية</p>
+            </Link>
+          </div>
+        </nav>
 
         <script
           type="application/ld+json"

@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import Link from 'next/link'
 import Breadcrumbs from '@/components/layout/Breadcrumbs'
 import FindHomeForm from '@/components/find-home/FindHomeForm'
 
@@ -64,6 +65,13 @@ export default function FindHomePage() {
     <div className="min-h-screen bg-warm-50">
       <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 py-12">
         <Breadcrumbs items={breadcrumbs} />
+
+        <section className="text-center mb-10">
+          <h1 className="text-4xl md:text-5xl font-serif font-bold text-gray-900 mb-4">Find Your Dream Home in Dubai</h1>
+          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+            Get a free AI-powered property report based on 500,000+ real transactions. Personalized area recommendations, price insights, and rental yields — all in seconds.
+          </p>
+        </section>
 
         <FindHomeForm />
 
@@ -173,6 +181,36 @@ export default function FindHomePage() {
             ))}
           </div>
         </section>
+
+        <nav className="mt-16 pt-8 border-t border-warm-200" aria-label="Explore more">
+          <h2 className="text-2xl font-serif font-semibold text-gray-900 mb-6">Explore PropertyWiki</h2>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            <Link href="/guides/how-to-buy-property-in-dubai" className="block p-4 bg-warm-50 rounded-xl hover:bg-warm-100 transition-colors">
+              <span className="text-xs font-medium text-primary-600 uppercase">Guide</span>
+              <p className="font-medium text-gray-900 mt-1">How to Buy Property in Dubai</p>
+            </Link>
+            <Link href="/locations/dubai/dubai-marina" className="block p-4 bg-warm-50 rounded-xl hover:bg-warm-100 transition-colors">
+              <span className="text-xs font-medium text-primary-600 uppercase">Location</span>
+              <p className="font-medium text-gray-900 mt-1">Dubai Marina Guide</p>
+            </Link>
+            <Link href="/guides/highest-rental-yield-areas-dubai" className="block p-4 bg-warm-50 rounded-xl hover:bg-warm-100 transition-colors">
+              <span className="text-xs font-medium text-primary-600 uppercase">Guide</span>
+              <p className="font-medium text-gray-900 mt-1">Highest Rental Yield Areas</p>
+            </Link>
+            <Link href="/definitions/freehold-property" className="block p-4 bg-warm-50 rounded-xl hover:bg-warm-100 transition-colors">
+              <span className="text-xs font-medium text-primary-600 uppercase">Definition</span>
+              <p className="font-medium text-gray-900 mt-1">What is Freehold Property?</p>
+            </Link>
+            <Link href="/guides/best-areas-families-dubai" className="block p-4 bg-warm-50 rounded-xl hover:bg-warm-100 transition-colors">
+              <span className="text-xs font-medium text-primary-600 uppercase">Guide</span>
+              <p className="font-medium text-gray-900 mt-1">Best Areas for Families</p>
+            </Link>
+            <Link href="/investing" className="block p-4 bg-warm-50 rounded-xl hover:bg-warm-100 transition-colors">
+              <span className="text-xs font-medium text-primary-600 uppercase">Investing</span>
+              <p className="font-medium text-gray-900 mt-1">Investment Insights</p>
+            </Link>
+          </div>
+        </nav>
 
         <script
           type="application/ld+json"
