@@ -158,7 +158,9 @@ AI-powered property report generator backed by real transaction data:
   - Prevents "Failed to fetch" errors from connection drops
 - **Session Token Auth**: 30-minute session tokens stored in MongoDB + localStorage for seamless multi-report experience
 - Dedicated page at `/find-home` and `/ar/find-home` (linked from header button)
-- Multi-step flow: email verification → budget selection + dream home description → AI-generated detailed report
+- **Reordered Flow**: preferences (budget + description) → email verification → AI-generated report (better UX/conversion)
+- **SEO Content**: Server-rendered pages with How It Works, What You'll Get, FAQ sections + FAQPage JSON-LD structured data
+- **Architecture**: Server component (page.tsx with metadata + SEO) + Client component (FindHomeForm.tsx / FindHomeFormAr.tsx with interactive logic)
 - **Email verification**: 6-digit code sent via Resend, stored in MongoDB with 10-min expiry
 - **Budget selection**: 7 preset ranges (Under 500K to 10M+) or custom input
 - **AI Agent**: Queries real MongoDB transactions database (510K+ sales, 1.7M+ rentals) with aggregation pipelines, feeds actual market data to OpenAI gpt-4.1-mini for analysis
@@ -176,7 +178,7 @@ AI-powered property report generator backed by real transaction data:
   - MONGODB_URI (propertywiki db) - email verifications, usage tracking
   - MONGODB_TRANSACTIONS_URI (transactions_db) - sales and rentals collections with real Dubai Land Department data
 - **Secrets required**: OPENAI_API_KEY, RESEND_API_KEY, MONGODB_URI, MONGODB_TRANSACTIONS_URI
-- Located at: src/app/find-home/page.tsx, src/app/ar/find-home/page.tsx, src/app/api/find-home/route.ts, src/app/api/send-verification/route.ts, src/app/api/verify-email/route.ts, src/app/api/check-usage/route.ts, src/lib/mongodb.ts
+- Located at: src/app/find-home/page.tsx, src/components/find-home/FindHomeForm.tsx, src/app/ar/find-home/page.tsx, src/components/find-home/FindHomeFormAr.tsx, src/app/api/find-home/route.ts, src/app/api/send-verification/route.ts, src/app/api/verify-email/route.ts, src/app/api/check-usage/route.ts, src/lib/mongodb.ts
 
 ## Arabic Version (RTL) - 100% Coverage
 Full Arabic translation of the website with RTL support (33 Arabic pages matching 33 English pages):
