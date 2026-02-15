@@ -61,12 +61,6 @@ export default function FindHomePageAr() {
   return (
     <div className="min-h-screen bg-warm-50">
       <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 py-12">
-        <nav className="mb-8 text-center">
-          <Link href="/ar" className="text-primary-600 hover:text-primary-700 text-sm">الرئيسية</Link>
-          <span className="mx-2 text-warm-400">/</span>
-          <span className="text-warm-600 text-sm">ابحث عن منزل</span>
-        </nav>
-
         <section className="text-center mb-10">
           <h1 className="text-4xl md:text-5xl font-serif font-bold text-gray-900 mb-4">ابحث عن منزل أحلامك في دبي</h1>
           <p className="text-lg text-gray-600 max-w-2xl mx-auto">

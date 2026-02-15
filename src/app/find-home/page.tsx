@@ -1,6 +1,5 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
-import Breadcrumbs from '@/components/layout/Breadcrumbs'
 import FindHomeForm from '@/components/find-home/FindHomeForm'
 
 export const metadata: Metadata = {
@@ -58,14 +57,10 @@ const faqJsonLd = {
   })),
 }
 
-const breadcrumbs = [{ name: 'Find Home', href: '/find-home' }]
-
 export default function FindHomePage() {
   return (
     <div className="min-h-screen bg-warm-50">
       <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 py-12">
-        <Breadcrumbs items={breadcrumbs} />
-
         <section className="text-center mb-10">
           <h1 className="text-4xl md:text-5xl font-serif font-bold text-gray-900 mb-4">Find Your Dream Home in Dubai</h1>
           <p className="text-lg text-gray-600 max-w-2xl mx-auto">
