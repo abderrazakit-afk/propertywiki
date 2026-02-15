@@ -263,9 +263,11 @@ export default function FindHomeForm() {
       }
 
       setRemainingSearches(data.remaining)
+      setLoading(false)
+      handleGenerateReport()
+      return
     } catch {
       setError('Verification failed. Please try again.')
-      return
     } finally {
       setLoading(false)
     }
@@ -274,12 +276,6 @@ export default function FindHomeForm() {
   const handleVerifyAndGenerate = async () => {
     await handleVerifyCode()
   }
-
-  useEffect(() => {
-    if (sessionToken && step === 'verify') {
-      handleGenerateReport()
-    }
-  }, [sessionToken, step, handleGenerateReport])
 
   const handleBudgetPreset = (index: number, value: number) => {
     setSelectedPreset(index)
@@ -499,8 +495,6 @@ export default function FindHomeForm() {
           </div>
         </div>
       )}
-
-      {step === 'verify' && null}
 
       {step === 'loading' && (
         <div className="bg-white rounded-2xl shadow-lg p-12 md:p-16 text-center">

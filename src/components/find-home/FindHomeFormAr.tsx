@@ -280,9 +280,11 @@ export default function FindHomeFormAr() {
       }
 
       setRemainingSearches(data.remaining)
+      setLoading(false)
+      handleGenerateReport()
+      return
     } catch {
       setError('فشل التحقق. يرجى المحاولة مرة أخرى.')
-      return
     } finally {
       setLoading(false)
     }
@@ -291,12 +293,6 @@ export default function FindHomeFormAr() {
   const handleVerifyAndGenerate = async () => {
     await handleVerifyCode()
   }
-
-  useEffect(() => {
-    if (sessionToken && step === 'verify') {
-      handleGenerateReport()
-    }
-  }, [sessionToken, step, handleGenerateReport])
 
   const handleBudgetPreset = (index: number, value: number) => {
     setSelectedPreset(index)
@@ -520,7 +516,6 @@ export default function FindHomeFormAr() {
         </div>
       )}
 
-      {step === 'verify' && null}
 
       {step === 'loading' && (
         <div className="bg-white rounded-2xl shadow-lg p-12 md:p-16 text-center">
