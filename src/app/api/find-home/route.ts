@@ -667,6 +667,67 @@ Recommend the top 3-5 areas that best match their needs and budget, with special
 
         const report = JSON.parse(responseContent)
         report.chartData = marketData.chartData
+
+        sendProgress('Fetching recent transactions for recommended areas...')
+        try {
+          const { db: txDb } = await connectToTransactionsDb()
+          const areaNames = (report.recommendedAreas || []).map((a: { areaName: string }) => a.areaName)
+          const recentTransactions: Record<string, Array<{
+            building: string
+            propertyType: string
+            bedrooms: string
+            size: string
+            price: string
+            date: string
+          }>> = {}
+
+          const toNum = (field: string) => ({
+            $convert: { input: `$${field}`, to: 'double', onError: 0, onNull: 0 }
+          })
+
+          await Promise.all(areaNames.map(async (areaName: string) => {
+            const escapedName = areaName.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
+            const txs = await txDb.collection('sales').aggregate([
+              {
+                $match: {
+                  $or: [
+                    { bayut_leaf_location_name_en: { $regex: escapedName, $options: 'i' } },
+                    { bayut_location_l4_name_en: { $regex: escapedName, $options: 'i' } },
+                  ],
+                },
+              },
+              { $addFields: { _numAmount: toNum('transaction_amount'), _numArea: toNum('builtup_area_sqm') } },
+              { $match: { _numAmount: { $gt: 0 } } },
+              { $sort: { registration_date: -1 } },
+              { $limit: 5 },
+              {
+                $project: {
+                  building: { $ifNull: ['$bayut_leaf_location_name_en', 'N/A'] },
+                  propertyType: { $ifNull: ['$bayut_property_type', 'N/A'] },
+                  bedrooms: '$beds',
+                  size: '$_numArea',
+                  price: '$_numAmount',
+                  date: '$registration_date',
+                },
+              },
+            ]).toArray()
+
+            recentTransactions[areaName] = txs.map((tx: Record<string, unknown>) => ({
+              building: String(tx.building || 'N/A'),
+              propertyType: String(tx.propertyType || 'N/A'),
+              bedrooms: tx.bedrooms === 0 || tx.bedrooms === '0' ? 'Studio' : String(tx.bedrooms || 'N/A'),
+              size: tx.size ? `${Math.round(Number(tx.size))} sqm` : 'N/A',
+              price: tx.price ? `AED ${Math.round(Number(tx.price)).toLocaleString()}` : 'N/A',
+              date: tx.date ? String(tx.date).split('T')[0] : 'N/A',
+            }))
+          }))
+
+          report.recentTransactions = recentTransactions
+        } catch (txErr) {
+          console.error('[FindHome] Error fetching recent transactions:', txErr)
+          report.recentTransactions = {}
+        }
+
         console.log(`[FindHome] POST TOTAL: ${Date.now() - postStart}ms`)
 
         controller.enqueue(encoder.encode(`data: ${JSON.stringify({ type: 'result', data: report })}\n\n`))

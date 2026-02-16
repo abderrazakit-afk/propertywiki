@@ -5,6 +5,7 @@ import dynamic from 'next/dynamic'
 import Link from 'next/link'
 
 const ReportCharts = dynamic(() => import('@/components/charts/ReportCharts'), { ssr: false })
+const AreaMap = dynamic(() => import('@/components/map/AreaMap'), { ssr: false })
 
 type Step = 'preferences' | 'email' | 'verify' | 'loading' | 'results' | 'limit-reached'
 
@@ -63,6 +64,14 @@ interface Report {
   nextSteps: string[]
   disclaimer: string
   chartData?: ChartData
+  recentTransactions?: Record<string, Array<{
+    building: string
+    propertyType: string
+    bedrooms: string
+    size: string
+    price: string
+    date: string
+  }>>
 }
 
 const BUDGET_PRESETS = [
@@ -667,6 +676,73 @@ export default function FindHomeFormAr() {
               ))}
             </div>
           </div>
+
+          <div className="bg-white rounded-2xl shadow-lg p-8 md:p-10">
+            <h2 className="text-2xl font-serif font-bold text-gray-900 mb-6">خريطة المناطق</h2>
+            <AreaMap
+              areas={report.recommendedAreas.map((area) => ({
+                areaName: area.areaName,
+                rank: area.rank,
+                matchScore: area.matchScore,
+                avgPrice: area.priceRange.buyAvg,
+                rentalYield: area.rentalYield,
+              }))}
+              lang="ar"
+            />
+            <p className="text-xs text-gray-400 mt-3 text-center">انقر على العلامات لعرض تفاصيل المنطقة</p>
+          </div>
+
+          {report.recentTransactions && Object.keys(report.recentTransactions).length > 0 && (
+            <div className="bg-white rounded-2xl shadow-lg p-8 md:p-10">
+              <h2 className="text-2xl font-serif font-bold text-gray-900 mb-6">أحدث المعاملات</h2>
+              <div className="space-y-8">
+                {report.recommendedAreas.map((area) => {
+                  const txs = report.recentTransactions?.[area.areaName]
+                  if (!txs || txs.length === 0) return null
+                  return (
+                    <div key={area.areaName}>
+                      <h3 className="text-lg font-serif font-semibold text-gray-900 mb-3 flex items-center gap-2">
+                        <span className={`inline-flex items-center justify-center w-6 h-6 rounded-full text-xs font-bold ${
+                          area.rank === 1 ? 'bg-yellow-100 text-yellow-700' :
+                          area.rank === 2 ? 'bg-gray-100 text-gray-700' :
+                          'bg-orange-50 text-orange-700'
+                        }`}>
+                          #{area.rank}
+                        </span>
+                        {area.areaName}
+                      </h3>
+                      <div className="overflow-x-auto">
+                        <table className="w-full text-sm" dir="ltr">
+                          <thead>
+                            <tr className="border-b border-warm-200">
+                              <th className="text-left py-2 pr-4 text-xs font-semibold text-gray-500">المبنى</th>
+                              <th className="text-left py-2 pr-4 text-xs font-semibold text-gray-500">النوع</th>
+                              <th className="text-left py-2 pr-4 text-xs font-semibold text-gray-500">الغرف</th>
+                              <th className="text-left py-2 pr-4 text-xs font-semibold text-gray-500">المساحة</th>
+                              <th className="text-left py-2 pr-4 text-xs font-semibold text-gray-500">السعر</th>
+                              <th className="text-left py-2 text-xs font-semibold text-gray-500">التاريخ</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            {txs.map((tx, i) => (
+                              <tr key={i} className="border-b border-warm-100 last:border-0">
+                                <td className="py-2.5 pr-4 text-gray-900 font-medium max-w-[200px] truncate">{tx.building}</td>
+                                <td className="py-2.5 pr-4 text-gray-600">{tx.propertyType}</td>
+                                <td className="py-2.5 pr-4 text-gray-600">{tx.bedrooms}</td>
+                                <td className="py-2.5 pr-4 text-gray-600">{tx.size}</td>
+                                <td className="py-2.5 pr-4 text-primary-700 font-semibold whitespace-nowrap">{tx.price}</td>
+                                <td className="py-2.5 text-gray-500">{tx.date}</td>
+                              </tr>
+                            ))}
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+                  )
+                })}
+              </div>
+            </div>
+          )}
 
           {report.chartData && (
             <ReportCharts chartData={report.chartData} lang="ar" />
