@@ -42,8 +42,8 @@ export default function ContactPage() {
                   <span className="text-xl">📧</span>
                   <div>
                     <p className="font-medium text-gray-900">البريد الإلكتروني</p>
-                    <a href="mailto:hello@propertywiki.ai" className="text-primary-600 hover:text-primary-700 text-sm">
-                      hello@propertywiki.ai
+                    <a href="mailto:support@propertywiki.ai" className="text-primary-600 hover:text-primary-700 text-sm">
+                      support@propertywiki.ai
                     </a>
                   </div>
                 </div>

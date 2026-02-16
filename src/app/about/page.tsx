@@ -81,7 +81,7 @@ export default function AboutPage() {
           <h2>Contact Us</h2>
           <p>
             Have questions, suggestions, or want to contribute? We&apos;d love to hear from you. 
-            Reach out to our editorial team at <strong>editorial@propertywiki.ai</strong>.
+            Reach out to our editorial team at <strong>support@propertywiki.ai</strong>.
           </p>
         </section>
       </div>

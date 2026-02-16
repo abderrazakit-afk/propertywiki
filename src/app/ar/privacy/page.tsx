@@ -115,8 +115,8 @@ export default function PrivacyPage() {
               <h2 className="text-2xl font-serif font-bold text-gray-900 mb-4">التواصل</h2>
               <p className="text-warm-700 leading-relaxed">
                 لأي استفسارات تتعلق بالخصوصية، تواصل معنا على:{' '}
-                <a href="mailto:privacy@propertywiki.ai" className="text-primary-600 hover:text-primary-700">
-                  privacy@propertywiki.ai
+                <a href="mailto:support@propertywiki.ai" className="text-primary-600 hover:text-primary-700">
+                  support@propertywiki.ai
                 </a>
               </p>
             </section>

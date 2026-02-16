@@ -106,7 +106,7 @@ export default function FooterAr() {
               © 2026 بروبرتي ويكي. جميع الحقوق محفوظة.
             </p>
             <p className="text-warm-500 text-sm">
-              البريد الإلكتروني: hello@propertywiki.ai
+              البريد الإلكتروني: support@propertywiki.ai
             </p>
           </div>
         </div>

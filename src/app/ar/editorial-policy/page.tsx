@@ -98,8 +98,8 @@ export default function EditorialPolicyPage() {
               <h2 className="text-2xl font-serif font-bold text-gray-900 mb-4">تصحيح الأخطاء</h2>
               <p className="text-warm-700 leading-relaxed">
                 إذا وجدت معلومة غير دقيقة، نرجو إبلاغنا فوراً على{' '}
-                <a href="mailto:corrections@propertywiki.ai" className="text-primary-600 hover:text-primary-700">
-                  corrections@propertywiki.ai
+                <a href="mailto:support@propertywiki.ai" className="text-primary-600 hover:text-primary-700">
+                  support@propertywiki.ai
                 </a>
                 . نلتزم بالتحقق والتصحيح خلال 48 ساعة.
               </p>
