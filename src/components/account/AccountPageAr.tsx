@@ -168,7 +168,7 @@ export default function AccountPageAr() {
           ) : (
             <div className="space-y-4">
               {reports.map((report) => (
-                <div key={report.id} className="border border-warm-200 rounded-xl p-5 hover:border-primary-300 hover:shadow-sm transition-all">
+                <Link key={report.id} href={`/ar/report/${report.id}`} className="block border border-warm-200 rounded-xl p-5 hover:border-primary-300 hover:shadow-sm transition-all">
                   <div className="flex items-start justify-between gap-4">
                     <div className="text-left shrink-0">
                       <p className="text-sm font-medium text-primary-600">{formatBudget(report.budget)}</p>
@@ -189,7 +189,7 @@ export default function AccountPageAr() {
                       </div>
                     </div>
                   </div>
-                </div>
+                </Link>
               ))}
             </div>
           )}

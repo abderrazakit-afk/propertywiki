@@ -212,6 +212,16 @@ export async function getReportsByEmail(email: string): Promise<SavedReport[]> {
     .toArray()
 }
 
+export async function getReportById(reportId: string): Promise<SavedReport | null> {
+  const { ObjectId } = await import('mongodb')
+  const { db } = await connectToDatabase()
+  try {
+    return await db.collection<SavedReport>('saved_reports').findOne({ _id: new ObjectId(reportId) as any })
+  } catch {
+    return null
+  }
+}
+
 export const CHAT_DAILY_LIMIT = 20
 
 export async function getChatUsageToday(email: string): Promise<number> {

@@ -168,7 +168,7 @@ export default function AccountPage() {
           ) : (
             <div className="space-y-4">
               {reports.map((report) => (
-                <div key={report.id} className="border border-warm-200 rounded-xl p-5 hover:border-primary-300 hover:shadow-sm transition-all">
+                <Link key={report.id} href={`/report/${report.id}`} className="block border border-warm-200 rounded-xl p-5 hover:border-primary-300 hover:shadow-sm transition-all">
                   <div className="flex items-start justify-between gap-4">
                     <div className="flex-1 min-w-0">
                       <h4 className="font-semibold text-gray-900 text-sm mb-1">{report.reportTitle}</h4>
@@ -189,7 +189,7 @@ export default function AccountPage() {
                       <p className="text-xs text-gray-400 mt-1">{formatDate(report.createdAt)}</p>
                     </div>
                   </div>
-                </div>
+                </Link>
               ))}
             </div>
           )}
