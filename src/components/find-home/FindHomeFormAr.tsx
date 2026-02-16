@@ -87,6 +87,8 @@ const BUDGET_PRESETS = [
 export default function FindHomeFormAr() {
   const [step, setStep] = useState<Step>('preferences')
   const [email, setEmail] = useState('')
+  const [name, setName] = useState('')
+  const [phone, setPhone] = useState('')
   const [verificationCode, setVerificationCode] = useState('')
   const [budget, setBudget] = useState<number>(1500000)
   const [customBudget, setCustomBudget] = useState('')
@@ -122,7 +124,7 @@ export default function FindHomeFormAr() {
       const response = await fetch('/api/find-home', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ description, budget, sessionToken: currentToken }),
+        body: JSON.stringify({ description, budget, sessionToken: currentToken, name, phone, email }),
         signal: controller.signal,
       })
       clearTimeout(timeout)
@@ -199,7 +201,7 @@ export default function FindHomeFormAr() {
       setError(err instanceof Error ? err.message : 'حدث خطأ ما')
       setStep('preferences')
     }
-  }, [description, budget, sessionToken])
+  }, [description, budget, sessionToken, name, phone, email])
 
   useEffect(() => {
     const stored = localStorage.getItem('pw_session_token')
@@ -240,7 +242,7 @@ export default function FindHomeFormAr() {
       const response = await fetch('/api/send-verification', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email }),
+        body: JSON.stringify({ email, name, phone }),
       })
       const data = await response.json()
 
@@ -344,6 +346,8 @@ export default function FindHomeFormAr() {
     setSelectedPreset(2)
     setReport(null)
     setError('')
+    setName('')
+    setPhone('')
   }
 
   const formatNumber = (num: number) => {
@@ -446,6 +450,35 @@ export default function FindHomeFormAr() {
           </div>
 
           <div className="space-y-6 max-w-md mx-auto">
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-2">
+                الاسم الكامل
+              </label>
+              <input
+                type="text"
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+                className="w-full px-5 py-4 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent text-base"
+                placeholder="الاسم الكامل"
+                disabled={codeSent}
+              />
+            </div>
+
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-2">
+                رقم الهاتف
+              </label>
+              <input
+                type="tel"
+                value={phone}
+                onChange={(e) => setPhone(e.target.value)}
+                className="w-full px-5 py-4 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent text-base"
+                placeholder="+971 XX XXX XXXX"
+                dir="ltr"
+                disabled={codeSent}
+              />
+            </div>
+
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-2">
                 البريد الإلكتروني

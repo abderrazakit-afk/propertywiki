@@ -10,7 +10,7 @@ function generateCode(): string {
 
 export async function POST(request: NextRequest) {
   try {
-    const { email } = await request.json()
+    const { email, name, phone } = await request.json()
 
     if (!email || !email.includes('@')) {
       return NextResponse.json(
@@ -20,7 +20,7 @@ export async function POST(request: NextRequest) {
     }
 
     const code = generateCode()
-    await storeVerificationCode(email, code)
+    await storeVerificationCode(email, code, name, phone)
 
     await resend.emails.send({
       from: 'PropertyWiki <support@propertywiki.ai>',

@@ -54,22 +54,42 @@ export default function ChatModalAr({ isOpen, onClose }: ChatModalProps) {
   ])
   const [input, setInput] = useState('')
   const [isLoading, setIsLoading] = useState(false)
+  const [chatEmail, setChatEmail] = useState('')
+  const [emailSubmitted, setEmailSubmitted] = useState(false)
+  const [limitReached, setLimitReached] = useState(false)
   const messagesEndRef = useRef<HTMLDivElement>(null)
   const inputRef = useRef<HTMLInputElement>(null)
+  const emailInputRef = useRef<HTMLInputElement>(null)
 
   useEffect(() => {
-    if (isOpen && inputRef.current) {
-      inputRef.current.focus()
+    if (isOpen) {
+      const stored = localStorage.getItem('pw_chat_email')
+      if (stored) {
+        setChatEmail(stored)
+        setEmailSubmitted(true)
+      }
+      setTimeout(() => {
+        if (emailSubmitted && inputRef.current) inputRef.current.focus()
+        else if (emailInputRef.current) emailInputRef.current.focus()
+      }, 100)
     }
-  }, [isOpen])
+  }, [isOpen, emailSubmitted])
 
   useEffect(() => {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' })
   }, [messages])
 
+  const handleEmailSubmit = (e: React.FormEvent) => {
+    e.preventDefault()
+    if (!chatEmail || !chatEmail.includes('@')) return
+    localStorage.setItem('pw_chat_email', chatEmail)
+    setEmailSubmitted(true)
+    setTimeout(() => inputRef.current?.focus(), 100)
+  }
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    if (!input.trim() || isLoading) return
+    if (!input.trim() || isLoading || limitReached) return
 
     const userMessage = input.trim()
     trackChatMessageSent(userMessage.length)
@@ -83,13 +103,17 @@ export default function ChatModalAr({ isOpen, onClose }: ChatModalProps) {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          messages: allMessages.slice(1).map(m => ({ role: m.role, content: m.content }))
+          messages: allMessages.slice(1).map(m => ({ role: m.role, content: m.content })),
+          email: chatEmail,
         }),
       })
 
       const data = await response.json()
       
-      if (data.error) {
+      if (response.status === 429 || data.limitReached) {
+        setLimitReached(true)
+        setMessages(prev => [...prev, { role: 'assistant', content: data.error || 'تم الوصول إلى الحد اليومي. يرجى المحاولة غداً.' }])
+      } else if (data.error) {
         setMessages(prev => [...prev, { role: 'assistant', content: 'عذراً، حدث خطأ. يرجى المحاولة مرة أخرى.' }])
       } else {
         setMessages(prev => [...prev, { role: 'assistant', content: data.message }])
@@ -130,62 +154,91 @@ export default function ChatModalAr({ isOpen, onClose }: ChatModalProps) {
           </div>
         </div>
 
-        <div className="flex-1 overflow-y-auto p-4 space-y-4 bg-gray-50">
-          {messages.map((message, index) => (
-            <div
-              key={index}
-              className={`flex ${message.role === 'user' ? 'justify-start' : 'justify-end'}`}
-            >
-              <div
-                className={`max-w-[85%] px-4 py-3 rounded-2xl ${
-                  message.role === 'user'
-                    ? 'bg-primary-500 text-white rounded-bl-md'
-                    : 'bg-white text-gray-800 shadow-sm border border-gray-100 rounded-br-md'
-                }`}
+        {!emailSubmitted ? (
+          <div className="flex-1 flex items-center justify-center p-6">
+            <form onSubmit={handleEmailSubmit} className="w-full space-y-4">
+              <div className="text-center mb-4">
+                <p className="text-gray-700 font-medium">أدخل بريدك الإلكتروني لبدء المحادثة</p>
+                <p className="text-xs text-gray-400 mt-1">20 رسالة مجانية يومياً</p>
+              </div>
+              <input
+                ref={emailInputRef}
+                type="email"
+                value={chatEmail}
+                onChange={(e) => setChatEmail(e.target.value)}
+                placeholder="your@email.com"
+                dir="ltr"
+                className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-primary-500 text-sm"
+              />
+              <button
+                type="submit"
+                disabled={!chatEmail || !chatEmail.includes('@')}
+                className="w-full py-3 bg-primary-600 text-white rounded-xl font-medium hover:bg-primary-700 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
               >
-                <p className="text-sm whitespace-pre-wrap leading-relaxed text-right">
-                  {message.role === 'assistant' ? formatMessage(message.content) : message.content}
-                </p>
-              </div>
-            </div>
-          ))}
-          {isLoading && (
-            <div className="flex justify-end">
-              <div className="bg-white text-gray-800 px-4 py-3 rounded-2xl rounded-br-md shadow-sm border border-gray-100">
-                <div className="flex space-x-1.5 space-x-reverse">
-                  <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce" style={{ animationDelay: '0ms' }} />
-                  <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce" style={{ animationDelay: '150ms' }} />
-                  <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce" style={{ animationDelay: '300ms' }} />
-                </div>
-              </div>
-            </div>
-          )}
-          <div ref={messagesEndRef} />
-        </div>
-
-        <form onSubmit={handleSubmit} className="p-4 border-t border-gray-100 bg-white">
-          <div className="flex items-center space-x-2 space-x-reverse">
-            <button
-              type="submit"
-              disabled={!input.trim() || isLoading}
-              className="w-11 h-11 bg-primary-500 text-white rounded-full flex items-center justify-center hover:bg-primary-600 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
-            >
-              <svg className="w-5 h-5 rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
-              </svg>
-            </button>
-            <input
-              ref={inputRef}
-              type="text"
-              value={input}
-              onChange={(e) => setInput(e.target.value)}
-              placeholder="اسأل عن العقارات والمجتمعات..."
-              className="flex-1 px-4 py-3 bg-gray-100 rounded-full text-sm focus:outline-none focus:ring-2 focus:ring-primary-500 focus:bg-white transition-all text-right"
-              disabled={isLoading}
-              dir="rtl"
-            />
+                ابدأ المحادثة
+              </button>
+            </form>
           </div>
-        </form>
+        ) : (
+          <>
+            <div className="flex-1 overflow-y-auto p-4 space-y-4 bg-gray-50">
+              {messages.map((message, index) => (
+                <div
+                  key={index}
+                  className={`flex ${message.role === 'user' ? 'justify-start' : 'justify-end'}`}
+                >
+                  <div
+                    className={`max-w-[85%] px-4 py-3 rounded-2xl ${
+                      message.role === 'user'
+                        ? 'bg-primary-500 text-white rounded-bl-md'
+                        : 'bg-white text-gray-800 shadow-sm border border-gray-100 rounded-br-md'
+                    }`}
+                  >
+                    <p className="text-sm whitespace-pre-wrap leading-relaxed text-right">
+                      {message.role === 'assistant' ? formatMessage(message.content) : message.content}
+                    </p>
+                  </div>
+                </div>
+              ))}
+              {isLoading && (
+                <div className="flex justify-end">
+                  <div className="bg-white text-gray-800 px-4 py-3 rounded-2xl rounded-br-md shadow-sm border border-gray-100">
+                    <div className="flex space-x-1.5 space-x-reverse">
+                      <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce" style={{ animationDelay: '0ms' }} />
+                      <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce" style={{ animationDelay: '150ms' }} />
+                      <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce" style={{ animationDelay: '300ms' }} />
+                    </div>
+                  </div>
+                </div>
+              )}
+              <div ref={messagesEndRef} />
+            </div>
+
+            <form onSubmit={handleSubmit} className="p-4 border-t border-gray-100 bg-white">
+              <div className="flex items-center space-x-2 space-x-reverse">
+                <button
+                  type="submit"
+                  disabled={!input.trim() || isLoading || limitReached}
+                  className="w-11 h-11 bg-primary-500 text-white rounded-full flex items-center justify-center hover:bg-primary-600 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+                >
+                  <svg className="w-5 h-5 rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
+                  </svg>
+                </button>
+                <input
+                  ref={inputRef}
+                  type="text"
+                  value={input}
+                  onChange={(e) => setInput(e.target.value)}
+                  placeholder={limitReached ? 'تم الوصول إلى الحد اليومي' : 'اسأل عن العقارات والمجتمعات...'}
+                  className="flex-1 px-4 py-3 bg-gray-100 rounded-full text-sm focus:outline-none focus:ring-2 focus:ring-primary-500 focus:bg-white transition-all text-right"
+                  disabled={isLoading || limitReached}
+                  dir="rtl"
+                />
+              </div>
+            </form>
+          </>
+        )}
       </div>
     </div>
   )

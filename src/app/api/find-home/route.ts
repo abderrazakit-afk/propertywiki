@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server'
 import OpenAI from 'openai'
-import { connectToDatabase, connectToTransactionsDb, incrementEmailUsage, getEmailUsageToday, DAILY_LIMIT, validateSessionToken } from '@/lib/mongodb'
+import { connectToDatabase, connectToTransactionsDb, incrementEmailUsage, getEmailUsageToday, DAILY_LIMIT, validateSessionToken, saveReport } from '@/lib/mongodb'
 
 export const maxDuration = 300
 
@@ -483,7 +483,7 @@ function fallbackParseInput(description: string): PreAnalysis {
 export async function POST(request: NextRequest) {
   const postStart = Date.now()
 
-  const { description, budget, sessionToken } = await request.json()
+  const { description, budget, sessionToken, name, phone, email: userEmail } = await request.json()
   console.log(`[FindHome] POST request - budget: ${budget}`)
 
   if (!description || description.trim().length < 10) {
@@ -729,6 +729,12 @@ Recommend the top 3-5 areas that best match their needs and budget, with special
         }
 
         console.log(`[FindHome] POST TOTAL: ${Date.now() - postStart}ms`)
+
+        try {
+          await saveReport(email, description, budget, report, name, phone)
+        } catch (saveErr) {
+          console.error('[FindHome] Error saving report:', saveErr)
+        }
 
         controller.enqueue(encoder.encode(`data: ${JSON.stringify({ type: 'result', data: report })}\n\n`))
       } catch (error) {

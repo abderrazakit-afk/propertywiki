@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server'
 import OpenAI from 'openai'
+import { getChatUsageToday, incrementChatUsage, CHAT_DAILY_LIMIT } from '@/lib/mongodb'
 
 const openai = new OpenAI({
   apiKey: process.env.OPENAI_API_KEY,
@@ -56,7 +57,7 @@ Example response format:
 
 export async function POST(request: NextRequest) {
   try {
-    const { messages } = await request.json()
+    const { messages, email } = await request.json()
 
     if (!messages || !Array.isArray(messages) || messages.length === 0) {
       return NextResponse.json(
@@ -64,6 +65,23 @@ export async function POST(request: NextRequest) {
         { status: 400 }
       )
     }
+
+    if (!email || !email.includes('@')) {
+      return NextResponse.json(
+        { error: 'Please provide your email to use the chat.' },
+        { status: 400 }
+      )
+    }
+
+    const usage = await getChatUsageToday(email)
+    if (usage >= CHAT_DAILY_LIMIT) {
+      return NextResponse.json(
+        { error: `Daily limit reached (${CHAT_DAILY_LIMIT} messages/day). Try again tomorrow.`, limitReached: true },
+        { status: 429 }
+      )
+    }
+
+    await incrementChatUsage(email)
 
     const completion = await openai.chat.completions.create({
       model: 'gpt-4.1-mini',

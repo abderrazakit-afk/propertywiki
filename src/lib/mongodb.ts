@@ -48,6 +48,8 @@ export interface EmailVerification {
   createdAt: Date
   expiresAt: Date
   verified: boolean
+  name?: string
+  phone?: string
 }
 
 export interface EmailUsage {
@@ -58,21 +60,23 @@ export interface EmailUsage {
   updatedAt: Date
 }
 
-export async function storeVerificationCode(email: string, code: string): Promise<void> {
+export async function storeVerificationCode(email: string, code: string, name?: string, phone?: string): Promise<void> {
   const { db } = await connectToDatabase()
   const now = new Date()
   const expiresAt = new Date(now.getTime() + 10 * 60 * 1000)
 
+  const setFields: Record<string, unknown> = {
+    code,
+    createdAt: now,
+    expiresAt,
+    verified: false,
+  }
+  if (name) setFields.name = name
+  if (phone) setFields.phone = phone
+
   await db.collection<EmailVerification>('email_verifications').updateOne(
     { email: email.toLowerCase() },
-    {
-      $set: {
-        code,
-        createdAt: now,
-        expiresAt,
-        verified: false,
-      },
-    },
+    { $set: setFields },
     { upsert: true }
   )
 }
@@ -166,4 +170,72 @@ export async function validateSessionToken(token: string): Promise<string | null
   })
 
   return session?.email || null
+}
+
+export interface SavedReport {
+  email: string
+  name?: string
+  phone?: string
+  description: string
+  budget: number
+  report: Record<string, unknown>
+  createdAt: Date
+}
+
+export async function saveReport(
+  email: string,
+  description: string,
+  budget: number,
+  report: Record<string, unknown>,
+  name?: string,
+  phone?: string
+): Promise<string> {
+  const { db } = await connectToDatabase()
+  const result = await db.collection<SavedReport>('saved_reports').insertOne({
+    email: email.toLowerCase(),
+    name: name || undefined,
+    phone: phone || undefined,
+    description,
+    budget,
+    report,
+    createdAt: new Date(),
+  })
+  return result.insertedId.toString()
+}
+
+export async function getReportsByEmail(email: string): Promise<SavedReport[]> {
+  const { db } = await connectToDatabase()
+  return db.collection<SavedReport>('saved_reports')
+    .find({ email: email.toLowerCase() })
+    .sort({ createdAt: -1 })
+    .limit(20)
+    .toArray()
+}
+
+export const CHAT_DAILY_LIMIT = 20
+
+export async function getChatUsageToday(email: string): Promise<number> {
+  const { db } = await connectToDatabase()
+  const today = new Date().toISOString().split('T')[0]
+  const usage = await db.collection('chat_usage').findOne({
+    email: email.toLowerCase(),
+    date: today,
+  })
+  return usage?.count || 0
+}
+
+export async function incrementChatUsage(email: string): Promise<number> {
+  const { db } = await connectToDatabase()
+  const today = new Date().toISOString().split('T')[0]
+  const now = new Date()
+  const result = await db.collection('chat_usage').findOneAndUpdate(
+    { email: email.toLowerCase(), date: today },
+    {
+      $inc: { count: 1 },
+      $set: { updatedAt: now },
+      $setOnInsert: { createdAt: now },
+    },
+    { upsert: true, returnDocument: 'after' }
+  )
+  return result?.count || 1
 }
