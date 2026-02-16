@@ -170,6 +170,10 @@ export default function AreaMap({ areas, lang = 'en' }: AreaMapProps) {
 
     mapInstanceRef.current = map
 
+    setTimeout(() => {
+      map.invalidateSize()
+    }, 200)
+
     return () => {
       if (mapInstanceRef.current) {
         mapInstanceRef.current.remove()
@@ -179,9 +183,13 @@ export default function AreaMap({ areas, lang = 'en' }: AreaMapProps) {
   }, [areas, lang])
 
   return (
-    <div
-      ref={mapRef}
-      className="w-full h-[400px] rounded-xl overflow-hidden border border-warm-200"
-    />
+    <>
+      <style>{`.custom-marker { background: transparent !important; border: none !important; }`}</style>
+      <div
+        ref={mapRef}
+        className="w-full h-[400px] rounded-xl overflow-hidden border border-warm-200"
+        style={{ zIndex: 1 }}
+      />
+    </>
   )
 }
